@@ -77,18 +77,27 @@
         <strong>Subscribe to access full leaderboard.</strong>
     </p>
 
-    <form action="https://app.convertkit.com/forms/123456/subscriptions" method="post" class="space-y-4">
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+
+    <form action="https://app.kit.com/forms/8848906/subscriptions" 
+          class="seva-form formkit-form space-y-4" 
+          method="post" 
+          data-sv-form="8848906" 
+          data-uid="c5142792e3" 
+          data-format="inline" 
+          data-version="5">
         
         <input type="email" name="email_address" placeholder="Enter your email" required 
-               class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition">
+               class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition">
         
-        <textarea name="fields[message]" placeholder="Which YouTuber should we audit next? (Optional)" rows="2"
-                  class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm"></textarea>
+        <input type="text" name="fields[first_name]" placeholder="Which YouTuber Should We Audit Next? (Optional)"
+               class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm">
 
-        <button type="submit" 
-                class="w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
+        <button data-element="submit" class="formkit-submit w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
             Subscribe Now
         </button>
+
+        <ul class="formkit-alert formkit-alert-error text-red-400 text-sm mt-2" data-element="errors" data-group="alert"></ul>
     </form>
 
     <p class="mt-4 text-xs text-gray-500">
