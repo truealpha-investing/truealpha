@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | True Alpha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-green {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 decoration-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
+            </a>
+            <div class="text-xs text-gray-500 font-mono hidden sm:block">
+                DATABASE: 2000+ PREDICTIONS
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-3xl mx-auto px-4 py-12 sm:py-20">
+        
+        <a href="index.html" class="inline-flex items-center text-sm text-green-500 hover:text-green-400 mb-8 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+        </a>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            Our Methodology
+        </h1>
+        <p class="text-lg text-gray-400 mb-12 border-b border-gray-800 pb-8">
+            We built this engine to answer one question: <span class="text-gray-200">Who is actually beating the market?</span> Here is exactly how we calculate the numbers.
+        </p>
+
+        <div class="space-y-12">
+            
+            <div class="relative pl-8 border-l-2 border-gray-800 hover:border-green-500 transition duration-300">
+                <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-gray-900 border-2 border-green-500"></span>
+                <h3 class="text-2xl font-bold text-white mb-2">1. Data Collection (The Scrape)</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    We don't manually watch videos. We run automated scripts that scrape YouTube transcripts from the top finance channels daily. We use Natural Language Processing (NLP) to detect specific keywords like "Buy," "Load up," "Sell," and identify ticker symbols (e.g., $TSLA, $NVDA) in the context of a prediction.
+                </p>
+            </div>
+
+            <div class="relative pl-8 border-l-2 border-gray-800 hover:border-green-500 transition duration-300">
+                <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-gray-900 border-2 border-green-500"></span>
+                <h3 class="text-2xl font-bold text-white mb-2">2. The "Entry" Price</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Accuracy requires fairness. Since most viewers watch videos hours after they are posted, we assume an investor cannot buy at the exact moment of upload. 
+                    <br><br>
+                    <strong class="text-gray-200">Our Rule:</strong> We log the "Entry Price" as the <span class="text-green-400 font-mono">Open Price of the next trading day</span> following the video upload.
+                </p>
+            </div>
+
+            <div class="relative pl-8 border-l-2 border-gray-800 hover:border-green-500 transition duration-300">
+                <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-gray-900 border-2 border-green-500"></span>
+                <h3 class="text-2xl font-bold text-white mb-2">3. Benchmarking (The Alpha)</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Returns are meaningless without context. If a YouTuber is up 5% but the S&P 500 is up 10% in the same timeframe, they actually lost you money. 
+                    <br><br>
+                    We calculate <strong>"True Alpha"</strong> by subtracting the S&P 500 (SPY) return from the YouTuber's stock return over the same holding period.
+                </p>
+                <div class="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700 font-mono text-sm text-green-400">
+                    Formula: (Stock Return %) - (SPY Return %) = Alpha
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            
+            <div>
+                <h4 class="font-bold text-white mb-4">The Methodology</h4>
+                <p class="text-gray-500 mb-2">
+                    1. We scrape video transcripts daily.
+                </p>
+                <p class="text-gray-500 mb-2">
+                    2. We log "Buy/Sell" calls vs the Next Day Open price.
+                </p>
+                <p class="text-gray-500">
+                    3. We calculate Alpha vs SPY over fixed timeframes.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white mb-4">The Mission</h4>
