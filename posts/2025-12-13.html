@@ -51,10 +51,106 @@
         </header>
 
         <section class="mb-12">
-            <h3 class="text-white font-bold text-lg mb-4">🚨 Database Status Update</h3>
+            <h3 class="text-white font-bold text-lg mb-4">🚨 Database Status</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div class="glass-panel p-4 rounded-lg border-l-2 border-green-500">
                     <div class="text-2xl font-bold text-white mb-1">1,100+</div>
                     <div class="text-green-400 font-bold text-xs uppercase tracking-wide mb-2">Finalized Predictions</div>
                     <p class="text-gray-500 text-xs leading-relaxed">
-                        These are "closed" calls where the specific timeframe (e.g., 1-month or 1-year) has officially ended. This is the hard data we use to calculate
+                        These are predictions where the timeframe (e.g., 1-month or 1-year) has officially ended. This is the hard data we use to score the Leaderboard.
+                    </p>
+                </div>
+                <div class="glass-panel p-4 rounded-lg border-l-2 border-blue-500">
+                    <div class="text-2xl font-bold text-white mb-1">2,000+</div>
+                    <div class="text-blue-400 font-bold text-xs uppercase tracking-wide mb-2">Pending Predictions</div>
+                    <p class="text-gray-500 text-xs leading-relaxed">
+                        These are active calls currently "in play." We are tracking them daily against the market, but they are not scored yet until the timeframe completes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 glass-panel p-6 rounded-xl border-l-4 border-green-500">
+            <h3 class="text-green-400 font-bold uppercase tracking-widest text-xs mb-2">🏆 Weekly Winner</h3>
+            <h2 class="text-2xl font-bold text-white mb-4">Wolf of Dubai</h2>
+            <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+                <div class="bg-gray-800/50 p-3 rounded">
+                    <div class="text-gray-500 text-xs">Best Call (Ticker)</div>
+                    <div class="font-mono text-green-400 font-bold">$TSLA (+179%)</div>
+                </div>
+                <div class="bg-gray-800/50 p-3 rounded">
+                    <div class="text-gray-500 text-xs">Accuracy</div>
+                    <div class="font-mono text-white font-bold">70%</div>
+                </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed">
+                While most channels were calling for a correction, Wolf identified a technical breakout on Tesla 3 days before the run-up. Our scripts confirmed his "Buy" signal at $210.
+            </p>
+        </section>
+
+        <section class="mb-12 glass-panel p-6 rounded-xl border-l-4 border-red-500">
+            <h3 class="text-red-400 font-bold uppercase tracking-widest text-xs mb-2">📉 Weekly Underperformer</h3>
+            <h2 class="text-2xl font-bold text-white mb-4">Meet Kevin</h2>
+            <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+                <div class="bg-gray-800/50 p-3 rounded">
+                    <div class="text-gray-500 text-xs">Worst Call (Ticker)</div>
+                    <div class="font-mono text-red-400 font-bold">$ENPH (-170%)</div>
+                </div>
+                <div class="bg-gray-800/50 p-3 rounded">
+                    <div class="text-gray-500 text-xs">Accuracy</div>
+                    <div class="font-mono text-white font-bold">36%</div>
+                </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed">
+                Volume is high, but accuracy is low. Several leveraged calls made earlier this month have been decimated by the recent rate hike announcements.
+            </p>
+        </section>
+
+        <article class="prose prose-invert prose-lg text-gray-400 leading-relaxed mb-16">
+            <h3>The Market Context</h3>
+            <p>
+                We analyzed over 150 predictions this week. The general sentiment has shifted to Bearish (60% of creators predicting a crash), yet the S&P 500 remains resilient. The data suggests a "contrarian" approach might be profitable right now.
+            </p>
+
+            <h3>What's Coming Next?</h3>
+            <p>
+                We are aggressively expanding the engine. In the coming weeks, we are auditing <strong>28 new creators</strong> to add to the leaderboard. This includes highly requested channels like:
+            </p>
+            <ul class="text-sm font-mono text-gray-300 bg-gray-800/50 p-4 rounded-lg list-none">
+                <li>• Stock Moe</li>
+                <li>• Graham Stephan</li>
+                <li>• Financial Education (Jeremy)</li>
+                <li>• Tom Nash</li>
+                <li>• FAST Graphs</li>
+                <li>• Mark Moss</li>
+                <li>• ...and 22 others.</li>
+            </ul>
+            <p>
+                <strong>Stabilizing the Data:</strong> We are also continuing to audit the back-catalogs of existing creators. Our goal is to stabilize the data so results are not a "fluke"—we want statistically significant track records for every single name on the list.
+            </p>
+        </article>
+
+        <div class="mt-16 p-8 bg-gray-800 rounded-xl text-center border border-gray-700">
+            <h3 class="text-white font-bold text-xl mb-2">Don't miss the next audit.</h3>
+            <p class="text-gray-400 text-sm mb-6">Join hundreds of retail investors tracking the truth. Let's build a community.</p>
+            <a href="../index.html" class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg glow-green">
+                Subscribe for Free
+            </a>
+        </div>
+
+        <div class="mt-8 max-w-xl mx-auto text-center">
+            <p class="text-gray-500 text-xs mb-4">Have a creator you want us to audit? Found a bug?</p>
+            
+            <div class="glass-panel p-2 rounded-xl overflow-hidden">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdIsNwjsI2O2jh_NN5gpi0V1mKJna_bg-YGaG9e-K80s7I8IQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12 text-center text-gray-600 text-xs">
+        <p>&copy; 2025 True Alpha Research. Not financial advice.</p>
+    </footer>
+
+</body>
+</html>
