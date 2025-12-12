@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Insights | True Alpha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hover-card:hover {
+            border-color: rgba(34, 197, 94, 0.5); /* Green Border on Hover */
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 decoration-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
+            </a>
+            <div class="text-xs text-gray-500 font-mono hidden sm:block">
+                WEEKLY AUDITS
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center pt-20 pb-12 px-4">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            Market Audits & Insights
+        </h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            Deep dives into the data. Every week, we expose the best and worst predictions from the finance creator economy.
+        </p>
+    </div>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 pb-20 space-y-6">
+
+        <a href="#" target="_blank" class="block group">
+            <div class="glass-panel p-6 sm:p-8 rounded-xl transition duration-300 hover-card flex flex-col sm:flex-row gap-6 items-start">
+                
+                <div class="sm:w-24 shrink-0">
+                    <div class="text-xs font-mono text-green-500 mb-1">DEC 13</div>
+                    <div class="text-2xl font-bold text-gray-500 group-hover:text-white transition">2025</div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition">
+                        Welcome to True Alpha (Issue #1)
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Why do we hold Wall Street analysts to high standards but let finance YouTubers delete their bad calls? We built a dataset to track 2,000+ predictions. Here is what we found.
+                    </p>
+                    <span class="text-xs font-bold uppercase tracking-widest text-green-600 group-hover:text-green-400 flex items-center gap-1">
+                        Read Newsletter <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </span>
+                </div>
+            </div>
+        </a>
+
+        </main>
+
+    <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <a href="methodology.html" class="hover:text-green-500 transition"><h4 class="font-bold text-white mb-4">The Methodology &rarr;</h4></a>
+                <p class="text-gray-500 mb-2">1. We scrape video transcripts daily.</p>
+                <p class="text-gray-500 mb-2">2. We log "Buy/Sell" calls vs the Next Day Open price.</p>
+                <p class="text-gray-500">3. We calculate Alpha vs SPY over fixed timeframes.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">The Mission</h4>
+                <p class="text-gray-500 mb-4">Retail investors lose billions following bad advice. True Alpha exists to bring institutional-grade accountability to the creator economy.</p>
+                <a href="faq.html" class="text-green-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">Read the FAQ &rarr;</a>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Connect</h4>
+                <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Reddit Profile</a>
+                <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
+                <p class="text-gray-600 mt-4 text-xs">&copy; 2025 True Alpha Research.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
