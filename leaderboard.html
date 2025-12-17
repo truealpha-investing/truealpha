@@ -27,6 +27,15 @@
         .custom-scroll::-webkit-scrollbar-thumb:hover {
             background: #22c55e; 
         }
+        
+        /* New Button Animation */
+        .btn-hover-effect {
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
@@ -57,8 +66,19 @@
                 </p>
             </div>
             
-            <div class="bg-gray-800 px-4 py-2 rounded-lg text-xs font-mono text-gray-400 border border-gray-700">
-                Filter: <span class="text-white font-bold">Verified (N > 20)</span>
+            <div class="flex items-center gap-3">
+                <div class="bg-gray-800 px-4 py-2 rounded-lg text-xs font-mono text-gray-400 border border-gray-700 h-10 flex items-center">
+                    Filter: <span class="text-white font-bold ml-1">Verified (N > 20)</span>
+                </div>
+
+                <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657" 
+                   target="_blank" 
+                   class="bg-green-600 hover:bg-green-500 text-white text-xs font-bold py-2 px-4 rounded-lg border border-green-500 flex items-center gap-2 btn-hover-effect h-10 decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    FULL DATABASE
+                </a>
             </div>
         </div>
 
@@ -165,7 +185,10 @@
             
             <div class="bg-gray-800/50 p-4 text-xs text-gray-500 flex justify-between items-center">
                 <span>Showing Top 5 of 50+ Creators</span>
-                <a href="https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?usp=sharing" target="_blank" class="text-green-500 hover:text-white transition font-bold">
+                
+                <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657" 
+                   target="_blank" 
+                   class="bg-gray-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition-colors duration-200">
                     View Full Database (Google Sheets) &rarr;
                 </a>
             </div>
@@ -178,3 +201,8 @@
             <div>
                 <a href="methodology.html" class="hover:text-green-500 transition"><h4 class="font-bold text-white mb-4">The Methodology &rarr;</h4></a>
                 <p class="text-gray-500 mb-2">1. We scrape video transcripts daily.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
