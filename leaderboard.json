@@ -1,17 +1,101 @@
 {
-  "lastUpdated": "Dec 2025",
+  "version": "2.0",
+  "last_updated": "Dec 2025",
+  "min_threshold": 20,
   "metric": "Average Alpha vs S&P 500",
-  "minThreshold": 20,
-  "topPerformers": [
-    { "rank": 1, "creator": "Tom Nash", "avgAlpha": 159.27 },
-    { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "avgAlpha": 42.97 },
-    { "rank": 3, "creator": "Stealth Wealth Investing", "avgAlpha": 21.48 },
-    { "rank": 4, "creator": "Daniel Pronk", "avgAlpha": 20.37 }
+
+  "top": [
+    { "name": "Tom Nash", "avg_alpha": 159.27 },
+    { "name": "Wolf of Dubai Day Trading & Investing", "avg_alpha": 42.97 },
+    { "name": "Stealth Wealth Investing", "avg_alpha": 21.48 },
+    { "name": "Daniel Pronk", "avg_alpha": 20.37 }
   ],
-  "underperformers": [
-    { "rank": 1, "creator": "Meet Kevin", "avgAlpha": -11.45 },
-    { "rank": 2, "creator": "Mark Moss", "avgAlpha": -10.82 },
-    { "rank": 3, "creator": "FX Evolution", "avgAlpha": -10.61 },
-    { "rank": 4, "creator": "Patrick Boyle", "avgAlpha": -9.04 }
-  ]
+  "bottom": [
+    { "name": "Meet Kevin", "avg_alpha": -11.45 },
+    { "name": "Mark Moss", "avg_alpha": -10.82 },
+    { "name": "FX Evolution", "avg_alpha": -10.61 },
+    { "name": "Patrick Boyle", "avg_alpha": -9.04 }
+  ],
+
+  "dashboards": {
+    "alpha": {
+      "title": "Top & Bottom Creators by Alpha",
+      "unit": "avg_alpha_pct",
+      "top": [
+        { "rank": 1, "creator": "Tom Nash", "n": 11, "avg_alpha": 159.27 },
+        { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": 35, "avg_alpha": 42.97 },
+        { "rank": 3, "creator": "Stealth Wealth Investing", "n": 54, "avg_alpha": 21.48 },
+        { "rank": 4, "creator": "Daniel Pronk", "n": 65, "avg_alpha": 20.37 }
+      ],
+      "bottom": [
+        { "rank": 1, "creator": "Meet Kevin", "n": 31, "avg_alpha": -11.45 },
+        { "rank": 2, "creator": "Mark Moss", "n": 28, "avg_alpha": -10.82 },
+        { "rank": 3, "creator": "FX Evolution", "n": 21, "avg_alpha": -10.61 },
+        { "rank": 4, "creator": "Patrick Boyle", "n": 33, "avg_alpha": -9.04 }
+      ]
+    },
+
+    "accuracy": {
+      "title": "Top & Bottom Creators by Win Rate",
+      "unit": "win_rate_pct",
+      "top": [
+        { "rank": 1, "creator": "Stealth Wealth Investing", "n": 54, "win_rate": 70.37 },
+        { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": 35, "win_rate": 66.71 },
+        { "rank": 3, "creator": "Tom Nash", "n": 11, "win_rate": 63.64 },
+        { "rank": 4, "creator": "Daniel Pronk", "n": 65, "win_rate": 55.38 }
+      ],
+      "bottom": [
+        { "rank": 1, "creator": "Meet Kevin", "n": 31, "win_rate": 35.48 },
+        { "rank": 2, "creator": "Patrick Boyle", "n": 33, "win_rate": 39.39 },
+        { "rank": 3, "creator": "FX Evolution", "n": 21, "win_rate": 38.10 },
+        { "rank": 4, "creator": "Mark Moss", "n": 28, "win_rate": 39.29 }
+      ]
+    },
+
+    "recommended_stocks": {
+      "title": "Most Recommended by Top Creators",
+      "scope": "verified_only",
+      "top_creator_definition": "Top creators by avg alpha (verified threshold applied)",
+      "items": [
+        { "ticker": "PLTR", "mentions": 14 },
+        { "ticker": "TSLA", "mentions": 11 },
+        { "ticker": "NVDA", "mentions": 9 },
+        { "ticker": "SPY", "mentions": 8 },
+        { "ticker": "BTC", "mentions": 7 }
+      ],
+      "note": "Most useful when limited to verified creators only."
+    },
+
+    "time_interval": {
+      "title": "Creator Performance by Time Interval",
+      "unit": "alpha_pct",
+      "short_term": {
+        "definition": "< 6 months",
+        "top": [
+          { "rank": 1, "creator": "Tom Nash", "alpha": -9.86 },
+          { "rank": 2, "creator": "Stealth Wealth Investing", "alpha": 4.18 }
+        ],
+        "bottom": [
+          { "rank": 1, "creator": "Meet Kevin", "alpha": -12.92 },
+          { "rank": 2, "creator": "Mark Moss", "alpha": -11.79 }
+        ]
+      },
+      "long_term": {
+        "definition": "≥ 6 months",
+        "top": [
+          { "rank": 1, "creator": "Tom Nash", "alpha": 362.24 },
+          { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "alpha": 71.15 }
+        ],
+        "bottom": [
+          { "rank": 1, "creator": "FX Evolution", "alpha": -12.71 },
+          { "rank": 2, "creator": "Meet Kevin", "alpha": -7.53 }
+        ]
+      }
+    }
+  },
+
+  "links": {
+    "full_database": "https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657",
+    "methodology": "/methodology.html"
+  }
 }
