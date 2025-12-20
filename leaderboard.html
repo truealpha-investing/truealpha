@@ -217,6 +217,9 @@
 
   <script>
     const JSON_PATH = "./leaderboard.json"; // keep JSON in same folder as this HTML
+    
+    // YOUR NEW LINK
+    const NEW_DB_URL = "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=462898390#gid=462898390";
 
     const fmtPct = (n, decimals = 2) => {
       const num = Number(n);
@@ -283,8 +286,8 @@
         document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
         document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "Mentions across verified top creators.";
         
-        // UPDATED: Set default URL fallback to your new link
-        setDbLinks(data?.meta?.databaseUrl || "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=462898390#gid=462898390");
+        // FORCE THE NEW LINK HERE (Ignoring the JSON file's link)
+        setDbLinks(NEW_DB_URL);
 
         // alpha lists
         const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
