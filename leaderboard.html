@@ -4,231 +4,384 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard | True Alpha</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
     body { font-family: 'Inter', sans-serif; }
     .glass {
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
+    .card {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .soft-shadow { box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+    .ring-soft { box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset; }
+    .cta-glow { box-shadow: 0 0 30px rgba(34,197,94,.25); }
   </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <!-- NAV -->
-  <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
+  <!-- TOP NAV (Sticky) -->
+  <nav class="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/85 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
       </a>
-      <div class="text-xs text-gray-500 font-mono hidden sm:block">DASHBOARD</div>
+
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-400">
+        <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
+        <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
+        <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
+      </div>
+
+      <!-- Primary CTA: first thing users see -->
+      <a id="ctaBtnTop"
+         href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
+         target="_blank"
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-sm cta-glow transition">
+        <span>View Full Database</span>
+        <span class="opacity-90">→</span>
+      </a>
     </div>
   </nav>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-10">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
       <div>
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Leaderboard</h1>
-        <p class="text-gray-400 mt-2">Quick scan of creator performance — alpha, accuracy, and what they recommend.</p>
+        <p class="mt-2 text-gray-400 max-w-2xl">
+          A quick scan of creator performance — <span class="text-green-400 font-semibold">alpha</span>, <span class="text-green-400 font-semibold">accuracy</span>, and what top creators recommend.
+        </p>
       </div>
-      <div class="text-xs text-gray-400 font-mono">
-        <span id="lastUpdated">Last Updated: —</span>
-        <span class="mx-2 text-gray-700">|</span>
-        <span id="threshold">Filter: Verified (N &gt; —)</span>
+
+      <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
+        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40">
+          <span class="text-gray-500">Last Updated:</span> <span id="lastUpdated">—</span>
+        </div>
+        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40">
+          <span class="text-gray-500">Filter:</span> <span id="thresholdText">Verified (N &gt; 20)</span>
+        </div>
+        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40 hidden sm:block">
+          <span class="text-gray-500">Metric:</span> <span id="metricText">Average Alpha vs S&P 500</span>
+        </div>
       </div>
     </div>
 
-    <!-- GRID OF CARDS -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Alpha Card -->
-      <section class="glass rounded-2xl p-6 md:col-span-1">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-bold text-white">Top Performers</h2>
-          <span class="text-xs text-green-400 font-mono">AVG ALPHA</span>
-        </div>
-        <div id="alphaTop" class="space-y-3 text-sm"></div>
-
-        <div class="border-t border-gray-800 my-5"></div>
-
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-bold text-white">Underperformers</h2>
-          <span class="text-xs text-red-400 font-mono">AVG ALPHA</span>
-        </div>
-        <div id="alphaBottom" class="space-y-3 text-sm"></div>
-      </section>
-
-      <!-- Accuracy Card -->
-      <section class="glass rounded-2xl p-6 md:col-span-1">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-bold text-white">Most Accurate</h2>
-          <span class="text-xs text-green-400 font-mono">WIN RATE</span>
-        </div>
-        <div id="accTop" class="space-y-3 text-sm"></div>
-
-        <div class="border-t border-gray-800 my-5"></div>
-
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-bold text-white">Least Accurate</h2>
-          <span class="text-xs text-red-400 font-mono">WIN RATE</span>
-        </div>
-        <div id="accBottom" class="space-y-3 text-sm"></div>
-      </section>
-
-      <!-- Stocks Card -->
-      <section class="glass rounded-2xl p-6 md:col-span-1">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-bold text-white" id="stocksTitle">Stocks Recommended</h2>
-          <span class="text-xs text-blue-300 font-mono">TOP CREATOR SIGNALS</span>
-        </div>
-        <div id="stocksList" class="space-y-3 text-sm"></div>
-
-        <div class="border-t border-gray-800 my-5"></div>
-
-        <div class="text-xs text-gray-400 leading-relaxed">
-          Tip: this is most useful when it’s limited to <span class="text-white font-semibold">verified creators only</span>.
-        </div>
-      </section>
-
-      <!-- Interval Performance Card (wide) -->
-      <section class="glass rounded-2xl p-6 md:col-span-3">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="font-bold text-white" id="intervalTitle">Creator Performance by Time Interval</h2>
-          <span class="text-xs text-gray-400 font-mono">SHORT vs LONG HORIZON</span>
+    <!-- GRID: Alpha / Accuracy / Recommended -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Alpha card -->
+      <div class="glass card soft-shadow ring-soft lg:col-span-4">
+        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+          <div>
+            <div class="text-sm font-bold">Top + Bottom by Alpha</div>
+            <div class="text-xs text-gray-400">Avg Alpha vs S&P 500</div>
+          </div>
+          <div class="text-[11px] font-mono text-gray-500">AVG ALPHA</div>
         </div>
 
-        <div id="intervalGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-      </section>
+        <div class="p-5 space-y-5">
+          <div>
+            <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top Performers</div>
+            <div id="alphaTop" class="space-y-3">
+              <div class="text-sm text-gray-500">Loading…</div>
+            </div>
+          </div>
 
-    </div>
+          <div class="pt-1">
+            <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Underperformers</div>
+            <div id="alphaBottom" class="space-y-3">
+              <div class="text-sm text-gray-500">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-      <p class="text-xs text-gray-500 font-mono">Metric: Average Alpha vs S&P 500 (unless otherwise noted)</p>
-      <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
-         target="_blank"
-         class="inline-flex items-center justify-center rounded-lg px-4 py-2 bg-gray-800 hover:bg-green-600 transition text-sm font-bold">
-        View Full Database →
-      </a>
-    </div>
+      <!-- Accuracy card -->
+      <div class="glass card soft-shadow ring-soft lg:col-span-4">
+        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+          <div>
+            <div class="text-sm font-bold">Top + Bottom by Accuracy</div>
+            <div class="text-xs text-gray-400">Win rate (directional)</div>
+          </div>
+          <div class="text-[11px] font-mono text-gray-500">WIN RATE</div>
+        </div>
+
+        <div class="p-5 space-y-5">
+          <div>
+            <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Most Accurate</div>
+            <div id="accTop" class="space-y-3">
+              <div class="text-sm text-gray-500">Loading…</div>
+            </div>
+          </div>
+
+          <div class="pt-1">
+            <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Least Accurate</div>
+            <div id="accBottom" class="space-y-3">
+              <div class="text-sm text-gray-500">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended stocks card -->
+      <div class="glass card soft-shadow ring-soft lg:col-span-4">
+        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+          <div>
+            <div class="text-sm font-bold">Stocks Recommended by Top Creators</div>
+            <div class="text-xs text-gray-400">Mentions across verified top creators</div>
+          </div>
+          <div class="text-[11px] font-mono text-gray-500">MENTIONS</div>
+        </div>
+
+        <div class="p-5">
+          <div class="text-xs text-gray-500 mb-4">
+            Tip: this is most useful when limited to <span class="text-gray-300 font-semibold">verified creators</span> only.
+          </div>
+
+          <div class="grid grid-cols-1 gap-3" id="tickersList">
+            <div class="text-sm text-gray-500">Loading…</div>
+          </div>
+
+          <div class="mt-5">
+            <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
+               target="_blank"
+               class="inline-flex items-center justify-center w-full px-4 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold cta-glow transition">
+              View Full Database →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Time interval section -->
+    <section class="mt-8 glass card soft-shadow ring-soft">
+      <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+        <div>
+          <div class="text-sm font-bold">Creator Performance by Time Interval</div>
+          <div class="text-xs text-gray-400">Short vs Long horizon alpha</div>
+        </div>
+        <div class="text-[11px] font-mono text-gray-500">SHORT vs LONG</div>
+      </div>
+
+      <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Short -->
+        <div class="glass card ring-soft">
+          <div class="p-4 border-b border-gray-800 flex items-center justify-between">
+            <div class="font-bold">Short Term (&lt; 6 months)</div>
+            <div class="text-[11px] font-mono text-gray-500">alpha</div>
+          </div>
+          <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top</div>
+              <div id="shortTop" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Bottom</div>
+              <div id="shortBottom" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long -->
+        <div class="glass card ring-soft">
+          <div class="p-4 border-b border-gray-800 flex items-center justify-between">
+            <div class="font-bold">Long Term (≥ 6 months)</div>
+            <div class="text-[11px] font-mono text-gray-500">alpha</div>
+          </div>
+          <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top</div>
+              <div id="longTop" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Bottom</div>
+              <div id="longBottom" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-5 pb-5 text-[11px] text-gray-500 font-mono flex flex-wrap gap-3 justify-between">
+        <span>Metric: Average Alpha vs S&P 500 (unless otherwise noted)</span>
+        <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
+           target="_blank"
+           class="text-green-400 hover:text-green-300 font-semibold">
+          Open Full Database →
+        </a>
+      </div>
+    </section>
   </main>
 
-  <footer class="border-t border-gray-800 bg-gray-900 py-10 mt-10">
-    <div class="max-w-7xl mx-auto px-4 text-xs text-gray-600">
-      © 2025 True Alpha Research — Not financial advice. Data for entertainment & analysis purposes only.
+  <footer class="border-t border-gray-800 bg-gray-950 py-10 mt-10">
+    <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <div class="font-bold text-gray-200">True Alpha Research</div>
+        <div class="mt-1">Not financial advice. For entertainment & data purposes only.</div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a class="hover:text-green-400" href="https://x.com/TruealphaInvest" target="_blank">X / Twitter</a>
+        <a class="hover:text-green-400" href="methodology.html">Methodology</a>
+      </div>
     </div>
   </footer>
 
+  <!-- ======================
+       JSON-DRIVEN SCRIPT
+       ====================== -->
   <script>
-    const $ = (id) => document.getElementById(id);
-
-    function fmtSignedPct(n, digits=2) {
+    // -------- helpers
+    const fmtPct = (n) => {
       const num = Number(n);
+      if (Number.isNaN(num)) return "—";
       const sign = num > 0 ? "+" : "";
-      return `${sign}${num.toFixed(digits)}%`;
-    }
+      return `${sign}${num.toFixed(2)}%`;
+    };
 
-    function miniRow({ rank, creator, value, n }, opts) {
-      const isGood = opts.mode === "good";
-      const valueClass = isGood ? "text-green-400" : "text-red-400";
-      const pillClass = isGood ? "bg-green-500/10 border-green-500/30 text-green-300" : "bg-red-500/10 border-red-500/30 text-red-300";
+    const safe = (s) => (s ?? "").toString();
+
+    function rowLine({ rank, creator, n, valueText, tone }) {
+      const toneRing = tone === "good"
+        ? "border-green-500/30 bg-green-500/10 text-green-300"
+        : "border-red-500/30 bg-red-500/10 text-red-300";
+
+      const valueTone = tone === "good" ? "text-green-400" : "text-red-400";
 
       return `
         <div class="flex items-center justify-between gap-3">
           <div class="flex items-center gap-3 min-w-0">
-            <div class="w-6 h-6 flex items-center justify-center rounded-full border ${pillClass} text-xs font-bold shrink-0">${rank}</div>
+            <div class="w-7 h-7 rounded-full border ${toneRing} flex items-center justify-center text-xs font-bold shrink-0">${rank}</div>
             <div class="min-w-0">
-              <div class="text-white font-semibold truncate">${creator}</div>
-              <div class="text-[11px] text-gray-500 font-mono">n=${n ?? "—"}</div>
+              <div class="text-sm font-semibold text-gray-100 truncate">${creator}</div>
+              <div class="text-[11px] text-gray-500 font-mono">${n != null ? `n=${n}` : ""}</div>
             </div>
           </div>
-          <div class="font-mono font-bold ${valueClass} shrink-0">${fmtSignedPct(value)}</div>
+          <div class="text-sm font-bold ${valueTone} font-mono shrink-0">${valueText}</div>
         </div>
       `;
     }
 
-    function stockRow({ ticker, mentions }) {
+    function tickerLine({ ticker, mentions }) {
       return `
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center justify-between px-4 py-3 rounded-xl border border-gray-800 bg-gray-900/30">
           <div class="flex items-center gap-3">
-            <div class="w-10 text-center font-mono font-bold text-white">${ticker}</div>
+            <div class="text-sm font-extrabold tracking-wide">${ticker}</div>
             <div class="text-[11px] text-gray-500 font-mono">${mentions} mentions</div>
           </div>
-          <div class="text-xs text-blue-300 font-mono">signal</div>
+          <div class="text-[11px] text-gray-400 font-mono">signal</div>
         </div>
       `;
     }
 
-    function intervalCard(interval) {
-      const top = (interval.top || []).map(x => `
-        <div class="flex items-center justify-between">
-          <div class="truncate text-gray-200">${x.creator}</div>
-          <div class="font-mono font-bold text-green-400">${fmtSignedPct(x.value)}</div>
-        </div>
-      `).join("");
-
-      const bottom = (interval.bottom || []).map(x => `
-        <div class="flex items-center justify-between">
-          <div class="truncate text-gray-200">${x.creator}</div>
-          <div class="font-mono font-bold text-red-400">${fmtSignedPct(x.value)}</div>
-        </div>
-      `).join("");
-
-      return `
-        <div class="rounded-xl border border-gray-800 p-5 bg-black/10">
-          <div class="flex items-center justify-between mb-4">
-            <div class="font-bold text-white">${interval.label}</div>
-            <div class="text-[11px] text-gray-500 font-mono">alpha</div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <div class="text-xs text-green-300 font-mono mb-2">Top</div>
-              <div class="space-y-2 text-sm">${top || `<div class="text-sm text-gray-500">—</div>`}</div>
-            </div>
-            <div>
-              <div class="text-xs text-red-300 font-mono mb-2">Bottom</div>
-              <div class="space-y-2 text-sm">${bottom || `<div class="text-sm text-gray-500">—</div>`}</div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
+    // -------- loader
     async function loadDashboard() {
       try {
-        const res = await fetch("./dashboard.json", { cache: "no-store" });
+        // Use absolute path to avoid route issues on /leaderboard
+        const res = await fetch("/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        const j = await res.json();
 
-        $("lastUpdated").textContent = `Last Updated: ${data.lastUpdated || "—"}`;
-        $("threshold").textContent = `Filter: Verified (N > ${data.minThreshold ?? "—"})`;
+        // header meta
+        document.getElementById("lastUpdated").textContent = j.lastUpdated ?? j.last_updated ?? "—";
+        document.getElementById("metricText").textContent = j.metric ?? "Average Alpha vs S&P 500";
+        const t = j.minThreshold ?? j.min_threshold;
+        if (typeof t === "number") document.getElementById("thresholdText").textContent = `Verified (N > ${t})`;
 
-        // Alpha
-        $("alphaTop").innerHTML = (data.alpha?.top || []).slice(0,4).map((r,i)=>miniRow(r,{mode:"good"})).join("");
-        $("alphaBottom").innerHTML = (data.alpha?.bottom || []).slice(0,4).map((r,i)=>miniRow(r,{mode:"bad"})).join("");
+        // -------- ALPHA (top/bottom)
+        const topAlpha = j.topPerformers ?? j.top ?? [];
+        const bottomAlpha = j.underperformers ?? j.bottom ?? [];
 
-        // Accuracy
-        $("accTop").innerHTML = (data.accuracy?.top || []).slice(0,4).map((r)=>miniRow(r,{mode:"good"})).join("");
-        $("accBottom").innerHTML = (data.accuracy?.bottom || []).slice(0,4).map((r)=>miniRow(r,{mode:"bad"})).join("");
+        document.getElementById("alphaTop").innerHTML =
+          topAlpha.slice(0,4).map((r, i) => rowLine({
+            rank: (r.rank ?? (i+1)),
+            creator: safe(r.creator ?? r.name),
+            n: r.n ?? r.sampleSize ?? null,
+            valueText: fmtPct(r.avgAlpha ?? r.avg_alpha),
+            tone: "good"
+          })).join("") || `<div class="text-sm text-gray-500">No data.</div>`;
 
-        // Stocks
-        if (data.recommendedStocks?.title) $("stocksTitle").textContent = data.recommendedStocks.title;
-        $("stocksList").innerHTML = (data.recommendedStocks?.items || []).slice(0,6).map(stockRow).join("");
+        document.getElementById("alphaBottom").innerHTML =
+          bottomAlpha.slice(0,4).map((r, i) => rowLine({
+            rank: (r.rank ?? (i+1)),
+            creator: safe(r.creator ?? r.name),
+            n: r.n ?? r.sampleSize ?? null,
+            valueText: fmtPct(r.avgAlpha ?? r.avg_alpha),
+            tone: "bad"
+          })).join("") || `<div class="text-sm text-gray-500">No data.</div>`;
 
-        // Intervals
-        if (data.intervalPerformance?.title) $("intervalTitle").textContent = data.intervalPerformance.title;
-        $("intervalGrid").innerHTML = (data.intervalPerformance?.intervals || []).map(intervalCard).join("");
+        // -------- ACCURACY (optional JSON sections)
+        // Expecting something like:
+        // j.mostAccurate = [{rank, creator, n, winRate}]
+        // j.leastAccurate = [...]
+        const mostAcc = j.mostAccurate ?? j.accuracyTop ?? [];
+        const leastAcc = j.leastAccurate ?? j.accuracyBottom ?? [];
+
+        document.getElementById("accTop").innerHTML =
+          mostAcc.slice(0,4).map((r, i) => rowLine({
+            rank: (r.rank ?? (i+1)),
+            creator: safe(r.creator ?? r.name),
+            n: r.n ?? r.sampleSize ?? null,
+            valueText: fmtPct(r.winRate ?? r.win_rate ?? r.accuracy),
+            tone: "good"
+          })).join("") || `<div class="text-sm text-gray-500">Add mostAccurate/leastAccurate to JSON to populate.</div>`;
+
+        document.getElementById("accBottom").innerHTML =
+          leastAcc.slice(0,4).map((r, i) => rowLine({
+            rank: (r.rank ?? (i+1)),
+            creator: safe(r.creator ?? r.name),
+            n: r.n ?? r.sampleSize ?? null,
+            valueText: fmtPct(r.winRate ?? r.win_rate ?? r.accuracy),
+            tone: "bad"
+          })).join("") || `<div class="text-sm text-gray-500">Add mostAccurate/leastAccurate to JSON to populate.</div>`;
+
+        // -------- TICKERS (optional)
+        // Expecting: j.topTickers = [{ticker:"PLTR", mentions:14}, ...]
+        const tickers = j.topTickers ?? j.recommendedTickers ?? [];
+        document.getElementById("tickersList").innerHTML =
+          tickers.slice(0,6).map(tickerLine).join("") || `<div class="text-sm text-gray-500">Add topTickers to JSON to populate.</div>`;
+
+        // -------- TIME INTERVAL (optional)
+        // Expecting:
+        // j.shortTermTop / j.shortTermBottom (alpha)
+        // j.longTermTop / j.longTermBottom (alpha)
+        const shortTop = j.shortTermTop ?? [];
+        const shortBottom = j.shortTermBottom ?? [];
+        const longTop = j.longTermTop ?? [];
+        const longBottom = j.longTermBottom ?? [];
+
+        const renderMini = (arr, elId, tone) => {
+          document.getElementById(elId).innerHTML =
+            (arr.slice(0,3).map((r, i) => rowLine({
+              rank: (r.rank ?? (i+1)),
+              creator: safe(r.creator ?? r.name),
+              n: r.n ?? r.sampleSize ?? null,
+              valueText: fmtPct(r.alpha ?? r.avgAlpha ?? r.avg_alpha),
+              tone
+            })).join("")) || `<div class="text-sm text-gray-500">Add data to JSON.</div>`;
+        };
+
+        renderMini(shortTop, "shortTop", "good");
+        renderMini(shortBottom, "shortBottom", "bad");
+        renderMini(longTop, "longTop", "good");
+        renderMini(longBottom, "longBottom", "bad");
 
       } catch (e) {
         console.error(e);
-        $("alphaTop").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
-        $("alphaBottom").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
-        $("accTop").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
-        $("accBottom").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
-        $("stocksList").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
-        $("intervalGrid").innerHTML = `<div class="text-sm text-red-400">Failed to load dashboard.json</div>`;
+        // Fail gracefully
+        ["alphaTop","alphaBottom","accTop","accBottom","tickersList","shortTop","shortBottom","longTop","longBottom"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+        });
       }
     }
 
