@@ -178,83 +178,77 @@
   </footer>
 
   <!-- JSON-DRIVEN LEADERBOARD SCRIPT -->
-  <script>
-    function fmtPct(n) {
-      const sign = n > 0 ? "+" : "";
-      return `${sign}${n.toFixed(2)}%`;
-    }
+<script>
+  function fmtPct(n) {
+    const sign = n > 0 ? "+" : "";
+    return `${sign}${Number(n).toFixed(2)}%`;
+  }
 
-    function barWidthAlpha(alpha, maxAbs) {
-      // width as percent of maxAbs (clamped 5..100 so small values still visible)
-      const w = Math.min(100, Math.max(5, Math.round((Math.abs(alpha) / maxAbs) * 100)));
-      return w;
-    }
+  function barWidthAlpha(alpha, maxAbs) {
+    const w = Math.min(100, Math.max(5, Math.round((Math.abs(alpha) / maxAbs) * 100)));
+    return w;
+  }
 
-    function topBarClass(i) {
-      // subtle variation for visual depth
-      return ["bg-green-500", "bg-green-600", "bg-green-700", "bg-green-800"][i] || "bg-green-700";
-    }
+  function rowHTML({ creator, avgAlpha }, i, isTop, maxAbs) {
+    const pct = fmtPct(avgAlpha);
+    const width = barWidthAlpha(avgAlpha, maxAbs);
 
-    function bottomBarClass(i) {
-      return ["bg-red-500", "bg-red-600", "bg-red-700", "bg-red-800"][i] || "bg-red-700";
-    }
+    const valueClass = isTop ? "text-green-400" : "text-red-400";
+    const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
+    const barClass = isTop
+      ? ["bg-green-500","bg-green-600","bg-green-700","bg-green-800"][i] || "bg-green-700"
+      : ["bg-red-500","bg-red-600","bg-red-700","bg-red-800"][i] || "bg-red-700";
 
-    function rowHTML({ name, avg_alpha }, i, isTop, maxAbs) {
-      const pct = fmtPct(avg_alpha);
-      const width = barWidthAlpha(avg_alpha, maxAbs);
-
-      const valueClass = isTop ? "text-green-400" : "text-red-400";
-      const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
-      const barClass = isTop ? topBarClass(i) : bottomBarClass(i);
-      const barOpacity = i === 0 ? "" : `opacity-${isTop ? (80 - i*10) : (80 - i*10)}`;
-
-      return `
-        <div>
-          <div class="flex justify-between text-sm ${labelClass} mb-1">
-            <span>${name}</span>
-            <span class="${valueClass}">${pct}</span>
-          </div>
-          <div class="w-full bg-gray-800 rounded-full h-2">
-            <div class="${barClass} h-2 rounded-full ${barOpacity}" style="width:${width}%"></div>
-          </div>
+    return `
+      <div>
+        <div class="flex justify-between text-sm ${labelClass} mb-1">
+          <span>${creator}</span>
+          <span class="${valueClass}">${pct}</span>
         </div>
-      `;
-    }
+        <div class="w-full bg-gray-800 rounded-full h-2">
+          <div class="${barClass} h-2 rounded-full" style="width:${width}%"></div>
+        </div>
+      </div>
+    `;
+  }
 
-    async function loadLeaderboard() {
-      const topEl = document.getElementById("topList");
-      const bottomEl = document.getElementById("bottomList");
+  async function loadLeaderboard() {
+    const topEl = document.getElementById("topList");
+    const bottomEl = document.getElementById("bottomList");
 
-      try {
-        const res = await fetch("./leaderboard.json", { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    try {
+      // IMPORTANT: absolute path since you confirmed it exists at /leaderboard.json
+      const res = await fetch("/leaderboard.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
 
-        const data = await res.json();
-
-        // meta text
-        document.getElementById("metricText").textContent = `Metric: ${data.metric || "Average Alpha vs S&P 500"}`;
-        document.getElementById("updatedText").textContent = `Last Updated: ${data.last_updated || "—"}`;
-        if (typeof data.min_threshold === "number") {
-          document.getElementById("thresholdText").textContent = `Filter: Verified (N > ${data.min_threshold})`;
-        }
-
-        // compute max abs alpha for bar scaling
-        const all = [...(data.top || []), ...(data.bottom || [])].map(x => Math.abs(Number(x.avg_alpha) || 0));
-        const maxAbs = Math.max(...all, 1);
-
-        // render
-        topEl.innerHTML = (data.top || []).slice(0, 4).map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
-        bottomEl.innerHTML = (data.bottom || []).slice(0, 4).map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
-
-      } catch (err) {
-        topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
-        bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
-        console.error(err);
+      document.getElementById("metricText").textContent =
+        `Metric: ${data.metric || "Average Alpha vs S&P 500"}`;
+      document.getElementById("updatedText").textContent =
+        `Last Updated: ${data.lastUpdated || "—"}`;
+      if (typeof data.minThreshold === "number") {
+        document.getElementById("thresholdText").textContent =
+          `Filter: Verified (N > ${data.minThreshold})`;
       }
-    }
 
-    loadLeaderboard();
-  </script>
+      const top = (data.topPerformers || []).slice(0, 4);
+      const bottom = (data.underperformers || []).slice(0, 4);
+
+      const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0));
+      const maxAbs = Math.max(...allAbs, 1);
+
+      topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
+      bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
+
+    } catch (err) {
+      topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
+      bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
+      console.error("Leaderboard load error:", err);
+    }
+  }
+
+  loadLeaderboard();
+</script>
 
 </body>
 </html>
