@@ -10,12 +10,17 @@
 
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
+    .glass-panel{
+      background: rgba(255,255,255,.03);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,.10);
     }
-    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+    .glow-green{ box-shadow: 0 0 20px rgba(34,197,94,.20); }
+    .btn-hover-effect{ transition: all .2s ease-in-out; }
+    .btn-hover-effect:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(34,197,94,.25);
+    }
   </style>
 </head>
 
@@ -23,7 +28,7 @@
 
   <!-- NAV -->
   <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
 
       <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,9 +44,14 @@
         <a href="blog.html" class="hover:text-green-400 transition-colors">Weekly Insights</a>
       </div>
 
-      <div class="text-xs text-gray-500 font-mono hidden sm:block">
-        DATABASE: +4000 PREDICTIONS
-      </div>
+      <!-- Make CTA the first thing users see -->
+      <a
+        href="leaderboard.html"
+        class="ml-auto bg-green-600 hover:bg-green-500 text-white text-sm font-bold py-2 px-4 rounded-lg border border-green-500 flex items-center gap-2 btn-hover-effect decoration-none"
+        aria-label="View Full Database"
+      >
+        View Full Database →
+      </a>
     </div>
   </nav>
 
@@ -58,56 +68,77 @@
     </h1>
 
     <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl">
-      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&P 500.
+      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&amp;P 500.
     </p>
 
     <!-- LEADERBOARD CARD -->
-    <div class="w-full max-w-4xl mb-12 relative group text-left">
+    <div class="w-full max-w-4xl mb-10 relative group text-left">
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
-      <div class="relative glass-panel rounded-lg p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="relative glass-panel rounded-lg p-6 sm:p-8">
 
-        <!-- TOP -->
-        <div>
-          <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-            </svg>
-            Top Performers (Avg Alpha)
-          </h3>
-
-          <div id="topList" class="space-y-4">
-            <!-- injected by JS -->
-            <div class="text-sm text-gray-400">Loading…</div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <div>
+            <div class="text-xs font-mono text-gray-400">Quick Scan</div>
+            <div class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+              Top &amp; Bottom Creators (Verified)
+            </div>
+            <div class="text-sm text-gray-400">
+              Average Alpha vs S&amp;P 500 • Filter: <span class="text-gray-200 font-semibold">N &gt; 20</span>
+            </div>
           </div>
+
+          <a
+            href="leaderboard.html"
+            class="bg-green-600 hover:bg-green-500 text-white text-sm font-bold py-3 px-5 rounded-xl border border-green-500 btn-hover-effect decoration-none text-center"
+          >
+            View Full Database →
+          </a>
         </div>
 
-        <!-- BOTTOM -->
-        <div>
-          <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-            </svg>
-            Underperformers
-          </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <div id="bottomList" class="space-y-4">
-            <!-- injected by JS -->
-            <div class="text-sm text-gray-400">Loading…</div>
+          <!-- TOP -->
+          <div>
+            <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              Top Performers (Avg Alpha)
+            </h3>
+
+            <div id="topList" class="space-y-4">
+              <div class="text-sm text-gray-400">Loading…</div>
+            </div>
           </div>
+
+          <!-- BOTTOM -->
+          <div>
+            <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+              </svg>
+              Underperformers
+            </h3>
+
+            <div id="bottomList" class="space-y-4">
+              <div class="text-sm text-gray-400">Loading…</div>
+            </div>
+          </div>
+
         </div>
 
-      </div>
+        <div class="mt-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-xs text-gray-500 font-mono">
+          <span id="metricText">Metric: Average Alpha vs S&amp;P 500</span>
+          <span id="updatedText">Last Updated: —</span>
+        </div>
 
-      <div class="mt-4 flex justify-between items-center text-xs text-gray-500 font-mono px-2">
-        <span id="metricText">Metric: Average Alpha vs S&P 500</span>
-        <span id="updatedText">Last Updated: —</span>
-      </div>
+        <div class="mt-2 text-[11px] text-gray-500 font-mono">
+          <span id="thresholdText">Filter: Verified (N &gt; 20)</span>
+        </div>
 
-      <div class="mt-3 text-[11px] text-gray-500 font-mono px-2">
-        <span id="thresholdText">Filter: Verified (N &gt; 20)</span>
       </div>
     </div>
 
@@ -115,7 +146,7 @@
     <div class="w-full max-w-md bg-gray-800/50 border border-gray-700 p-8 rounded-2xl shadow-xl">
       <h3 class="text-2xl font-bold text-white mb-2">Get the "Fake Guru" Audit</h3>
       <p class="text-gray-400 mb-2 text-sm">
-        Don't get dumped on. We send one email a week exposing the worst predictions.
+        Don’t get dumped on. We send one email a week exposing the worst predictions.
       </p>
 
       <p class="mb-6 font-bold text-lg text-green-400 uppercase tracking-wide">
@@ -161,7 +192,7 @@
         <p class="text-gray-500 mb-4 leading-relaxed">
           Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
           <br><br>
-          We believe that if someone profits from selling financial opinions, their track record should be public, auditable, and undeniable. We don't just watch videos; we compute the truth so you can stop guessing who to trust.
+          We believe that if someone profits from selling financial opinions, their track record should be public, auditable, and undeniable.
         </p>
       </div>
 
@@ -171,84 +202,119 @@
         <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
         <p class="text-gray-600 mt-4 text-xs">
           &copy; 2025 True Alpha Research. <br>
-          Not financial advice. For entertainment & data purposes only.
+          Not financial advice. For entertainment &amp; data purposes only.
         </p>
       </div>
     </div>
   </footer>
 
   <!-- JSON-DRIVEN LEADERBOARD SCRIPT -->
-<script>
-  function fmtPct(n) {
-    const sign = n > 0 ? "+" : "";
-    return `${sign}${Number(n).toFixed(2)}%`;
-  }
+  <script>
+    // ✅ This script supports BOTH JSON schemas:
+    // 1) Your current one:
+    //    { lastUpdated, metric, minThreshold, topPerformers:[{creator,avgAlpha}], underperformers:[...] }
+    // 2) The earlier one I suggested:
+    //    { last_updated, metric, min_threshold, top:[{name,avg_alpha}], bottom:[...] }
 
-  function barWidthAlpha(alpha, maxAbs) {
-    const w = Math.min(100, Math.max(5, Math.round((Math.abs(alpha) / maxAbs) * 100)));
-    return w;
-  }
-
-  function rowHTML({ creator, avgAlpha }, i, isTop, maxAbs) {
-    const pct = fmtPct(avgAlpha);
-    const width = barWidthAlpha(avgAlpha, maxAbs);
-
-    const valueClass = isTop ? "text-green-400" : "text-red-400";
-    const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
-    const barClass = isTop
-      ? ["bg-green-500","bg-green-600","bg-green-700","bg-green-800"][i] || "bg-green-700"
-      : ["bg-red-500","bg-red-600","bg-red-700","bg-red-800"][i] || "bg-red-700";
-
-    return `
-      <div>
-        <div class="flex justify-between text-sm ${labelClass} mb-1">
-          <span>${creator}</span>
-          <span class="${valueClass}">${pct}</span>
-        </div>
-        <div class="w-full bg-gray-800 rounded-full h-2">
-          <div class="${barClass} h-2 rounded-full" style="width:${width}%"></div>
-        </div>
-      </div>
-    `;
-  }
-
-  async function loadLeaderboard() {
-    const topEl = document.getElementById("topList");
-    const bottomEl = document.getElementById("bottomList");
-
-    try {
-      // IMPORTANT: absolute path since you confirmed it exists at /leaderboard.json
-      const res = await fetch("/leaderboard.json", { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-
-      document.getElementById("metricText").textContent =
-        `Metric: ${data.metric || "Average Alpha vs S&P 500"}`;
-      document.getElementById("updatedText").textContent =
-        `Last Updated: ${data.lastUpdated || "—"}`;
-      if (typeof data.minThreshold === "number") {
-        document.getElementById("thresholdText").textContent =
-          `Filter: Verified (N > ${data.minThreshold})`;
-      }
-
-      const top = (data.topPerformers || []).slice(0, 4);
-      const bottom = (data.underperformers || []).slice(0, 4);
-
-      const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0));
-      const maxAbs = Math.max(...allAbs, 1);
-
-      topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
-      bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
-
-    } catch (err) {
-      topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
-      bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
-      console.error("Leaderboard load error:", err);
+    function fmtPct(n) {
+      const num = Number(n) || 0;
+      const sign = num > 0 ? "+" : "";
+      return `${sign}${num.toFixed(2)}%`;
     }
-  }
 
-  loadLeaderboard();
-</script>
+    function barWidthAlpha(alpha, maxAbs) {
+      const a = Math.abs(Number(alpha) || 0);
+      const w = Math.min(100, Math.max(6, Math.round((a / maxAbs) * 100)));
+      return w;
+    }
+
+    function rowHTML(item, i, isTop, maxAbs) {
+      // normalize keys
+      const creator = item.creator ?? item.name ?? "—";
+      const avgAlpha = item.avgAlpha ?? item.avg_alpha ?? 0;
+
+      const pct = fmtPct(avgAlpha);
+      const width = barWidthAlpha(avgAlpha, maxAbs);
+
+      const valueClass = isTop ? "text-green-400" : "text-red-400";
+      const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
+      const barClass = isTop
+        ? ["bg-green-500","bg-green-600","bg-green-700","bg-green-800"][i] || "bg-green-700"
+        : ["bg-red-500","bg-red-600","bg-red-700","bg-red-800"][i] || "bg-red-700";
+
+      return `
+        <div>
+          <div class="flex justify-between text-sm ${labelClass} mb-1">
+            <span>${creator}</span>
+            <span class="${valueClass}">${pct}</span>
+          </div>
+          <div class="w-full bg-gray-800 rounded-full h-2">
+            <div class="${barClass} h-2 rounded-full" style="width:${width}%"></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function normalizeData(data) {
+      const metric = data.metric || "Average Alpha vs S&P 500";
+      const lastUpdated = data.lastUpdated || data.last_updated || data.lastUpdatedAt || "—";
+      const minThreshold =
+        (typeof data.minThreshold === "number" ? data.minThreshold :
+         typeof data.min_threshold === "number" ? data.min_threshold :
+         20);
+
+      const top = data.topPerformers || data.top || [];
+      const bottom = data.underperformers || data.bottom || [];
+
+      return { metric, lastUpdated, minThreshold, top, bottom };
+    }
+
+    async function loadLeaderboard() {
+      const topEl = document.getElementById("topList");
+      const bottomEl = document.getElementById("bottomList");
+
+      try {
+        // Use absolute + cache-bust so GitHub Pages / CDN updates reliably
+        const url = new URL("/leaderboard.json", window.location.origin);
+        url.searchParams.set("v", Date.now());
+
+        const res = await fetch(url.toString(), { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const raw = await res.json();
+        const data = normalizeData(raw);
+
+        document.getElementById("metricText").textContent = `Metric: ${data.metric}`;
+        document.getElementById("updatedText").textContent = `Last Updated: ${data.lastUpdated}`;
+        document.getElementById("thresholdText").textContent = `Filter: Verified (N > ${data.minThreshold})`;
+
+        const top = data.top.slice(0, 4);
+        const bottom = data.bottom.slice(0, 4);
+
+        const allAbs = [...top, ...bottom].map(x => {
+          const v = x.avgAlpha ?? x.avg_alpha ?? 0;
+          return Math.abs(Number(v) || 0);
+        });
+        const maxAbs = Math.max(...allAbs, 1);
+
+        topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
+        bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
+
+        if (!top.length || !bottom.length) {
+          // If JSON loaded but arrays empty, show helpful hint
+          if (!top.length) topEl.innerHTML = `<div class="text-sm text-gray-400">No top performer data found in JSON.</div>`;
+          if (!bottom.length) bottomEl.innerHTML = `<div class="text-sm text-gray-400">No underperformer data found in JSON.</div>`;
+        }
+
+      } catch (err) {
+        console.error("Leaderboard load error:", err);
+        topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+        bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+      }
+    }
+
+    loadLeaderboard();
+  </script>
 
 </body>
 </html>
