@@ -11,381 +11,392 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     .glass {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .card {
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .soft-shadow { box-shadow: 0 10px 40px rgba(0,0,0,.35); }
-    .ring-soft { box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset; }
-    .cta-glow { box-shadow: 0 0 30px rgba(34,197,94,.25); }
+    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
   </style>
 </head>
 
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <!-- TOP NAV (Sticky) -->
-  <nav class="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/85 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
+        <span class="font-extrabold tracking-tight text-lg">
+          TRUE<span class="text-green-500">ALPHA</span>
+        </span>
       </a>
 
-      <div class="hidden md:flex items-center gap-6 text-sm text-gray-400">
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-300">
         <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
         <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
         <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
       </div>
 
-      <!-- Primary CTA: first thing users see -->
-      <a id="ctaBtnTop"
-         href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
+      <!-- PRIMARY CTA (most prominent) -->
+      <a id="dbBtnTop"
+         href="#"
          target="_blank"
-         class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-sm cta-glow transition">
-        <span>View Full Database</span>
-        <span class="opacity-90">→</span>
+         class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+        View Full Database <span aria-hidden="true">→</span>
       </a>
     </div>
   </nav>
 
+  <!-- PAGE -->
   <main class="max-w-7xl mx-auto px-4 py-10">
+
     <!-- Header -->
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
       <div>
-        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Leaderboard</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Leaderboard</h1>
         <p class="mt-2 text-gray-400 max-w-2xl">
-          A quick scan of creator performance — <span class="text-green-400 font-semibold">alpha</span>, <span class="text-green-400 font-semibold">accuracy</span>, and what top creators recommend.
+          Quick scan of creator performance — <span class="text-green-400 font-semibold">alpha</span>,
+          <span class="text-green-400 font-semibold">accuracy</span>, what top creators recommend, and how results change by time horizon.
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
-        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40">
-          <span class="text-gray-500">Last Updated:</span> <span id="lastUpdated">—</span>
+      <!-- Meta chips -->
+      <div class="flex flex-wrap gap-2 justify-start lg:justify-end">
+        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
+          <span class="text-gray-400">Last Updated:</span> <span id="lastUpdated">—</span>
         </div>
-        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40">
-          <span class="text-gray-500">Filter:</span> <span id="thresholdText">Verified (N &gt; 20)</span>
+        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
+          <span class="text-gray-400">Filter:</span> <span id="filterText">—</span>
         </div>
-        <div class="px-3 py-2 rounded-lg border border-gray-800 bg-gray-900/40 hidden sm:block">
-          <span class="text-gray-500">Metric:</span> <span id="metricText">Average Alpha vs S&P 500</span>
+        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
+          <span class="text-gray-400">Metric:</span> <span id="metricAlpha">—</span>
         </div>
       </div>
     </div>
 
-    <!-- GRID: Alpha / Accuracy / Recommended -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- Main grid -->
+    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
       <!-- Alpha card -->
-      <div class="glass card soft-shadow ring-soft lg:col-span-4">
-        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+      <div class="glass soft-shadow rounded-2xl p-5">
+        <div class="flex items-start justify-between">
           <div>
-            <div class="text-sm font-bold">Top + Bottom by Alpha</div>
-            <div class="text-xs text-gray-400">Avg Alpha vs S&P 500</div>
+            <h2 class="font-bold text-lg">Top + Bottom by Alpha</h2>
+            <p class="text-xs text-gray-400 mt-1" id="alphaSub">—</p>
           </div>
-          <div class="text-[11px] font-mono text-gray-500">AVG ALPHA</div>
+          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Avg Alpha</div>
         </div>
 
-        <div class="p-5 space-y-5">
-          <div>
-            <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top Performers</div>
-            <div id="alphaTop" class="space-y-3">
-              <div class="text-sm text-gray-500">Loading…</div>
-            </div>
-          </div>
+        <div class="mt-5">
+          <div class="text-xs font-bold text-green-400 tracking-wider">TOP PERFORMERS</div>
+          <div id="alphaTop" class="mt-3 space-y-2"></div>
+        </div>
 
-          <div class="pt-1">
-            <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Underperformers</div>
-            <div id="alphaBottom" class="space-y-3">
-              <div class="text-sm text-gray-500">Loading…</div>
-            </div>
-          </div>
+        <div class="mt-6">
+          <div class="text-xs font-bold text-red-400 tracking-wider">UNDERPERFORMERS</div>
+          <div id="alphaBottom" class="mt-3 space-y-2"></div>
         </div>
       </div>
 
       <!-- Accuracy card -->
-      <div class="glass card soft-shadow ring-soft lg:col-span-4">
-        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+      <div class="glass soft-shadow rounded-2xl p-5">
+        <div class="flex items-start justify-between">
           <div>
-            <div class="text-sm font-bold">Top + Bottom by Accuracy</div>
-            <div class="text-xs text-gray-400">Win rate (directional)</div>
+            <h2 class="font-bold text-lg">Top + Bottom by Accuracy</h2>
+            <p class="text-xs text-gray-400 mt-1" id="accuracySub">—</p>
           </div>
-          <div class="text-[11px] font-mono text-gray-500">WIN RATE</div>
+          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Win Rate</div>
         </div>
 
-        <div class="p-5 space-y-5">
-          <div>
-            <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Most Accurate</div>
-            <div id="accTop" class="space-y-3">
-              <div class="text-sm text-gray-500">Loading…</div>
-            </div>
-          </div>
+        <div class="mt-5">
+          <div class="text-xs font-bold text-green-400 tracking-wider">MOST ACCURATE</div>
+          <div id="accTop" class="mt-3 space-y-2"></div>
+        </div>
 
-          <div class="pt-1">
-            <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Least Accurate</div>
-            <div id="accBottom" class="space-y-3">
-              <div class="text-sm text-gray-500">Loading…</div>
-            </div>
-          </div>
+        <div class="mt-6">
+          <div class="text-xs font-bold text-red-400 tracking-wider">LEAST ACCURATE</div>
+          <div id="accBottom" class="mt-3 space-y-2"></div>
         </div>
       </div>
 
-      <!-- Recommended stocks card -->
-      <div class="glass card soft-shadow ring-soft lg:col-span-4">
-        <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+      <!-- Stocks card (CTA inside as well) -->
+      <div class="glass soft-shadow rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-4">
           <div>
-            <div class="text-sm font-bold">Stocks Recommended by Top Creators</div>
-            <div class="text-xs text-gray-400">Mentions across verified top creators</div>
+            <h2 class="font-bold text-lg">Stocks Recommended by Top Creators</h2>
+            <p class="text-xs text-gray-400 mt-1" id="stocksSub">—</p>
           </div>
-          <div class="text-[11px] font-mono text-gray-500">MENTIONS</div>
+          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Mentions</div>
         </div>
 
-        <div class="p-5">
-          <div class="text-xs text-gray-500 mb-4">
-            Tip: this is most useful when limited to <span class="text-gray-300 font-semibold">verified creators</span> only.
-          </div>
+        <div class="mt-4 text-xs text-gray-400">
+          Tip: most useful when limited to <span class="text-gray-200 font-semibold">verified creators</span> only.
+        </div>
 
-          <div class="grid grid-cols-1 gap-3" id="tickersList">
-            <div class="text-sm text-gray-500">Loading…</div>
-          </div>
+        <div id="stocksList" class="mt-4 space-y-2"></div>
 
-          <div class="mt-5">
-            <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
-               target="_blank"
-               class="inline-flex items-center justify-center w-full px-4 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold cta-glow transition">
-              View Full Database →
-            </a>
-          </div>
+        <a id="dbBtnCard"
+           href="#"
+           target="_blank"
+           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          View Full Database <span aria-hidden="true">→</span>
+        </a>
+
+        <div class="mt-3 text-[11px] text-gray-500">
+          Powered by the public Google Sheet database.
         </div>
       </div>
+
     </section>
 
-    <!-- Time interval section -->
-    <section class="mt-8 glass card soft-shadow ring-soft">
-      <div class="p-5 border-b border-gray-800 flex items-center justify-between">
+    <!-- Interval section -->
+    <section class="mt-6 glass soft-shadow rounded-2xl p-5">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <div class="text-sm font-bold">Creator Performance by Time Interval</div>
-          <div class="text-xs text-gray-400">Short vs Long horizon alpha</div>
+          <h2 class="font-bold text-lg">Creator Performance by Time Interval</h2>
+          <p class="text-xs text-gray-400 mt-1" id="intervalSub">Short vs Long horizon alpha</p>
         </div>
-        <div class="text-[11px] font-mono text-gray-500">SHORT vs LONG</div>
+        <div class="text-[11px] text-gray-400 uppercase tracking-wider">Short vs Long</div>
       </div>
 
-      <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Short -->
-        <div class="glass card ring-soft">
-          <div class="p-4 border-b border-gray-800 flex items-center justify-between">
-            <div class="font-bold">Short Term (&lt; 6 months)</div>
-            <div class="text-[11px] font-mono text-gray-500">alpha</div>
+        <div class="glass rounded-2xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="font-bold" id="shortLabel">Short Term</div>
+            <div class="text-xs text-gray-400">alpha</div>
           </div>
-          <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <div class="mt-4 grid grid-cols-2 gap-4">
             <div>
-              <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top</div>
-              <div id="shortTop" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+              <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
+              <div id="shortTop" class="mt-3 space-y-2"></div>
             </div>
             <div>
-              <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Bottom</div>
-              <div id="shortBottom" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+              <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
+              <div id="shortBottom" class="mt-3 space-y-2"></div>
             </div>
           </div>
         </div>
 
         <!-- Long -->
-        <div class="glass card ring-soft">
-          <div class="p-4 border-b border-gray-800 flex items-center justify-between">
-            <div class="font-bold">Long Term (≥ 6 months)</div>
-            <div class="text-[11px] font-mono text-gray-500">alpha</div>
+        <div class="glass rounded-2xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="font-bold" id="longLabel">Long Term</div>
+            <div class="text-xs text-gray-400">alpha</div>
           </div>
-          <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <div class="mt-4 grid grid-cols-2 gap-4">
             <div>
-              <div class="text-xs font-bold text-green-400 uppercase tracking-wider mb-3">Top</div>
-              <div id="longTop" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+              <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
+              <div id="longTop" class="mt-3 space-y-2"></div>
             </div>
             <div>
-              <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Bottom</div>
-              <div id="longBottom" class="space-y-3"><div class="text-sm text-gray-500">Loading…</div></div>
+              <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
+              <div id="longBottom" class="mt-3 space-y-2"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="px-5 pb-5 text-[11px] text-gray-500 font-mono flex flex-wrap gap-3 justify-between">
+      <div class="mt-4 flex items-center justify-between text-[11px] text-gray-500">
         <span>Metric: Average Alpha vs S&P 500 (unless otherwise noted)</span>
-        <a href="https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
-           target="_blank"
-           class="text-green-400 hover:text-green-300 font-semibold">
+        <a id="dbLinkBottom" href="#" target="_blank" class="text-green-400 hover:text-green-300 font-semibold">
           Open Full Database →
         </a>
       </div>
     </section>
+
   </main>
 
-  <footer class="border-t border-gray-800 bg-gray-950 py-10 mt-10">
-    <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+  <footer class="border-t border-gray-800/70 bg-gray-950 py-10 mt-10">
+    <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
       <div>
-        <div class="font-bold text-gray-200">True Alpha Research</div>
-        <div class="mt-1">Not financial advice. For entertainment & data purposes only.</div>
+        <div class="font-semibold text-gray-300">True Alpha Research</div>
+        <div class="text-xs mt-1">Not financial advice. For entertainment & data purposes only.</div>
       </div>
-      <div class="flex items-center gap-4">
-        <a class="hover:text-green-400" href="https://x.com/TruealphaInvest" target="_blank">X / Twitter</a>
-        <a class="hover:text-green-400" href="methodology.html">Methodology</a>
+      <div class="text-xs">
+        <a href="https://x.com/TruealphaInvest" target="_blank" class="hover:text-green-400">X / Twitter</a>
       </div>
     </div>
   </footer>
 
-  <!-- ======================
-       JSON-DRIVEN SCRIPT
-       ====================== -->
   <script>
-    // -------- helpers
-    const fmtPct = (n) => {
+    const JSON_PATH = "./leaderboard.json"; // keep JSON in same folder as this HTML
+
+    const fmtPct = (n, decimals = 2) => {
       const num = Number(n);
-      if (Number.isNaN(num)) return "—";
+      if (!Number.isFinite(num)) return "—";
       const sign = num > 0 ? "+" : "";
-      return `${sign}${num.toFixed(2)}%`;
+      return `${sign}${num.toFixed(decimals)}%`;
     };
 
-    const safe = (s) => (s ?? "").toString();
+    const fmtRate = (n) => {
+      const num = Number(n);
+      if (!Number.isFinite(num)) return "—";
+      return `${num.toFixed(2)}%`;
+    };
 
-    function rowLine({ rank, creator, n, valueText, tone }) {
-      const toneRing = tone === "good"
-        ? "border-green-500/30 bg-green-500/10 text-green-300"
-        : "border-red-500/30 bg-red-500/10 text-red-300";
+    function pillRank(rank, kind) {
+      const base = "w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold";
+      if (kind === "good") return `<div class="${base} bg-green-500/15 text-green-300 border border-green-400/20">${rank}</div>`;
+      if (kind === "bad") return `<div class="${base} bg-red-500/15 text-red-300 border border-red-400/20">${rank}</div>`;
+      return `<div class="${base} bg-gray-500/15 text-gray-200 border border-gray-400/20">${rank}</div>`;
+    }
 
-      const valueTone = tone === "good" ? "text-green-400" : "text-red-400";
-
+    function rowCreator({ rank, creator, n, valueText, valueClass, subText }) {
       return `
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
           <div class="flex items-center gap-3 min-w-0">
-            <div class="w-7 h-7 rounded-full border ${toneRing} flex items-center justify-center text-xs font-bold shrink-0">${rank}</div>
+            ${rank}
             <div class="min-w-0">
               <div class="text-sm font-semibold text-gray-100 truncate">${creator}</div>
-              <div class="text-[11px] text-gray-500 font-mono">${n != null ? `n=${n}` : ""}</div>
+              <div class="text-[11px] text-gray-400">${subText}</div>
             </div>
           </div>
-          <div class="text-sm font-bold ${valueTone} font-mono shrink-0">${valueText}</div>
+          <div class="text-sm font-extrabold ${valueClass} whitespace-nowrap">${valueText}</div>
         </div>
       `;
     }
 
-    function tickerLine({ ticker, mentions }) {
+    function rowTicker({ ticker, mentions }) {
       return `
-        <div class="flex items-center justify-between px-4 py-3 rounded-xl border border-gray-800 bg-gray-900/30">
-          <div class="flex items-center gap-3">
-            <div class="text-sm font-extrabold tracking-wide">${ticker}</div>
-            <div class="text-[11px] text-gray-500 font-mono">${mentions} mentions</div>
-          </div>
-          <div class="text-[11px] text-gray-400 font-mono">signal</div>
+        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
+          <div class="text-sm font-extrabold tracking-wide">${ticker}</div>
+          <div class="text-xs text-gray-400">${mentions} mentions</div>
         </div>
       `;
     }
 
-    // -------- loader
-    async function loadDashboard() {
+    function setDbLinks(url) {
+      ["dbBtnTop", "dbBtnCard", "dbLinkBottom"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = url;
+      });
+    }
+
+    async function init() {
       try {
-        // Use absolute path to avoid route issues on /leaderboard
-        const res = await fetch("/leaderboard.json", { cache: "no-store" });
+        const res = await fetch(JSON_PATH, { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const j = await res.json();
+        const data = await res.json();
 
-        // header meta
-        document.getElementById("lastUpdated").textContent = j.lastUpdated ?? j.last_updated ?? "—";
-        document.getElementById("metricText").textContent = j.metric ?? "Average Alpha vs S&P 500";
-        const t = j.minThreshold ?? j.min_threshold;
-        if (typeof t === "number") document.getElementById("thresholdText").textContent = `Verified (N > ${t})`;
+        // meta
+        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "—";
+        document.getElementById("filterText").textContent = data?.meta?.filter || "—";
+        document.getElementById("metricAlpha").textContent = data?.meta?.metricAlpha || "—";
+        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "—";
+        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
+        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "Mentions across verified top creators.";
+        setDbLinks(data?.meta?.databaseUrl || "#");
 
-        // -------- ALPHA (top/bottom)
-        const topAlpha = j.topPerformers ?? j.top ?? [];
-        const bottomAlpha = j.underperformers ?? j.bottom ?? [];
+        // alpha lists
+        const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
+          rank: pillRank(x.rank ?? "", "good"),
+          creator: x.creator || "—",
+          n: x.n,
+          valueText: fmtPct(x.avgAlpha),
+          valueClass: "text-green-300",
+          subText: typeof x.n === "number" ? `n=${x.n}` : ""
+        })).join("");
 
-        document.getElementById("alphaTop").innerHTML =
-          topAlpha.slice(0,4).map((r, i) => rowLine({
-            rank: (r.rank ?? (i+1)),
-            creator: safe(r.creator ?? r.name),
-            n: r.n ?? r.sampleSize ?? null,
-            valueText: fmtPct(r.avgAlpha ?? r.avg_alpha),
-            tone: "good"
-          })).join("") || `<div class="text-sm text-gray-500">No data.</div>`;
+        const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
+          rank: pillRank(x.rank ?? "", "bad"),
+          creator: x.creator || "—",
+          n: x.n,
+          valueText: fmtPct(x.avgAlpha),
+          valueClass: "text-red-300",
+          subText: typeof x.n === "number" ? `n=${x.n}` : ""
+        })).join("");
 
-        document.getElementById("alphaBottom").innerHTML =
-          bottomAlpha.slice(0,4).map((r, i) => rowLine({
-            rank: (r.rank ?? (i+1)),
-            creator: safe(r.creator ?? r.name),
-            n: r.n ?? r.sampleSize ?? null,
-            valueText: fmtPct(r.avgAlpha ?? r.avg_alpha),
-            tone: "bad"
-          })).join("") || `<div class="text-sm text-gray-500">No data.</div>`;
+        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // -------- ACCURACY (optional JSON sections)
-        // Expecting something like:
-        // j.mostAccurate = [{rank, creator, n, winRate}]
-        // j.leastAccurate = [...]
-        const mostAcc = j.mostAccurate ?? j.accuracyTop ?? [];
-        const leastAcc = j.leastAccurate ?? j.accuracyBottom ?? [];
+        // accuracy lists
+        const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
+          rank: pillRank(x.rank ?? "", "good"),
+          creator: x.creator || "—",
+          n: x.n,
+          valueText: fmtRate(x.winRate),
+          valueClass: "text-green-300",
+          subText: typeof x.n === "number" ? `n=${x.n}` : ""
+        })).join("");
 
-        document.getElementById("accTop").innerHTML =
-          mostAcc.slice(0,4).map((r, i) => rowLine({
-            rank: (r.rank ?? (i+1)),
-            creator: safe(r.creator ?? r.name),
-            n: r.n ?? r.sampleSize ?? null,
-            valueText: fmtPct(r.winRate ?? r.win_rate ?? r.accuracy),
-            tone: "good"
-          })).join("") || `<div class="text-sm text-gray-500">Add mostAccurate/leastAccurate to JSON to populate.</div>`;
+        const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
+          rank: pillRank(x.rank ?? "", "bad"),
+          creator: x.creator || "—",
+          n: x.n,
+          valueText: fmtRate(x.winRate),
+          valueClass: "text-red-300",
+          subText: typeof x.n === "number" ? `n=${x.n}` : ""
+        })).join("");
 
-        document.getElementById("accBottom").innerHTML =
-          leastAcc.slice(0,4).map((r, i) => rowLine({
-            rank: (r.rank ?? (i+1)),
-            creator: safe(r.creator ?? r.name),
-            n: r.n ?? r.sampleSize ?? null,
-            valueText: fmtPct(r.winRate ?? r.win_rate ?? r.accuracy),
-            tone: "bad"
-          })).join("") || `<div class="text-sm text-gray-500">Add mostAccurate/leastAccurate to JSON to populate.</div>`;
+        document.getElementById("accTop").innerHTML = accTop || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("accBottom").innerHTML = accBottom || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // -------- TICKERS (optional)
-        // Expecting: j.topTickers = [{ticker:"PLTR", mentions:14}, ...]
-        const tickers = j.topTickers ?? j.recommendedTickers ?? [];
-        document.getElementById("tickersList").innerHTML =
-          tickers.slice(0,6).map(tickerLine).join("") || `<div class="text-sm text-gray-500">Add topTickers to JSON to populate.</div>`;
+        // stocks
+        const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
+        document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // -------- TIME INTERVAL (optional)
-        // Expecting:
-        // j.shortTermTop / j.shortTermBottom (alpha)
-        // j.longTermTop / j.longTermBottom (alpha)
-        const shortTop = j.shortTermTop ?? [];
-        const shortBottom = j.shortTermBottom ?? [];
-        const longTop = j.longTermTop ?? [];
-        const longBottom = j.longTermBottom ?? [];
+        // intervals
+        const short = data?.intervals?.shortTerm || {};
+        const long = data?.intervals?.longTerm || {};
 
-        const renderMini = (arr, elId, tone) => {
-          document.getElementById(elId).innerHTML =
-            (arr.slice(0,3).map((r, i) => rowLine({
-              rank: (r.rank ?? (i+1)),
-              creator: safe(r.creator ?? r.name),
-              n: r.n ?? r.sampleSize ?? null,
-              valueText: fmtPct(r.alpha ?? r.avgAlpha ?? r.avg_alpha),
-              tone
-            })).join("")) || `<div class="text-sm text-gray-500">Add data to JSON.</div>`;
-        };
+        document.getElementById("shortLabel").textContent = short.label || "Short Term";
+        document.getElementById("longLabel").textContent = long.label || "Long Term";
 
-        renderMini(shortTop, "shortTop", "good");
-        renderMini(shortBottom, "shortBottom", "bad");
-        renderMini(longTop, "longTop", "good");
-        renderMini(longBottom, "longBottom", "bad");
+        const shortTop = (short.top || []).slice(0, 4).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "good"),
+          creator: x.creator || "—",
+          valueText: fmtPct(x.alpha),
+          valueClass: "text-green-300",
+          subText: ""
+        })).join("");
+
+        const shortBottom = (short.bottom || []).slice(0, 4).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "bad"),
+          creator: x.creator || "—",
+          valueText: fmtPct(x.alpha),
+          valueClass: "text-red-300",
+          subText: ""
+        })).join("");
+
+        const longTop = (long.top || []).slice(0, 4).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "good"),
+          creator: x.creator || "—",
+          valueText: fmtPct(x.alpha),
+          valueClass: "text-green-300",
+          subText: ""
+        })).join("");
+
+        const longBottom = (long.bottom || []).slice(0, 4).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "bad"),
+          creator: x.creator || "—",
+          valueText: fmtPct(x.alpha),
+          valueClass: "text-red-300",
+          subText: ""
+        })).join("");
+
+        document.getElementById("shortTop").innerHTML = shortTop || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("shortBottom").innerHTML = shortBottom || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("longTop").innerHTML = longTop || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("longBottom").innerHTML = longBottom || `<div class="text-sm text-gray-400">No data.</div>`;
 
       } catch (e) {
         console.error(e);
-        // Fail gracefully
-        ["alphaTop","alphaBottom","accTop","accBottom","tickersList","shortTop","shortBottom","longTop","longBottom"].forEach(id => {
+        // fail softly
+        ["alphaTop","alphaBottom","accTop","accBottom","stocksList","shortTop","shortBottom","longTop","longBottom"].forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+          if (el) el.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
         });
       }
     }
 
-    loadDashboard();
+    init();
   </script>
+
 </body>
 </html>
