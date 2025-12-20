@@ -1,503 +1,260 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>True Alpha | Stock YouTuber Audits</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-
     body { font-family: 'Inter', sans-serif; }
-
     .glass-panel {
-
       background: rgba(255, 255, 255, 0.03);
-
       backdrop-filter: blur(10px);
-
       border: 1px solid rgba(255, 255, 255, 0.1);
-
     }
-
     .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-
   </style>
-
 </head>
-
-
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-
-
+  <!-- NAV -->
   <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
-
     <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
 
       <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-
             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-
         </svg>
-
         <span class="font-bold text-xl tracking-tight">TRUE<span class="text-green-500">ALPHA</span></span>
-
       </a>
 
-
-
       <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-
         <a href="methodology.html" class="hover:text-green-400 transition-colors">Methodology</a>
-
         <a href="faq.html" class="hover:text-green-400 transition-colors">FAQ</a>
-
         <a href="blog.html" class="hover:text-green-400 transition-colors">Weekly Insights</a>
-
       </div>
-
-
 
       <div class="text-xs text-gray-500 font-mono hidden sm:block">
-
         DATABASE: +4000 PREDICTIONS
-
       </div>
-
     </div>
-
   </nav>
 
-
-
+  <!-- MAIN -->
   <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 sm:py-20 text-center">
 
-
-
     <div class="mb-6 inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-semibold uppercase tracking-wider">
-
       As seen on r/StockMarket
-
     </div>
 
-
-
     <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 max-w-4xl">
-
-      We Tracked <span class="text-green-500">+4000</span> Stock Guru Predictions.<br class="hidden sm:block" />
-
+      We Tracked <span class="text-green-500">+4000</span> Stock Guru Predictions. <br class="hidden sm:block" />
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">See Who Actually Makes Money.</span>
-
     </h1>
 
-
-
     <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl">
-
-      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices,
-
-      and benchmark them against the S&P 500.
-
+      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&P 500.
     </p>
 
-
-
-    <!-- UPDATED: Top 4 / Bottom 4 (Avg Alpha) -->
-
+    <!-- LEADERBOARD CARD -->
     <div class="w-full max-w-4xl mb-12 relative group text-left">
-
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-
-
 
       <div class="relative glass-panel rounded-lg p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
 
-
-
-        <!-- TOP PERFORMERS -->
-
+        <!-- TOP -->
         <div>
-
           <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
-
             Top Performers (Avg Alpha)
-
           </h3>
 
-
-
-          <div class="space-y-4">
-
-            <!-- #1 -->
-
-            <div>
-
-              <div class="flex justify-between text-sm font-semibold mb-1">
-
-                <span>Wolf of Dubai Day Trading &amp; Investing</span>
-
-                <span class="text-green-400">+42.97%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- #2 -->
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Couch Investor</span>
-
-                <span class="text-green-500">+25.42%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-green-600 h-2 rounded-full opacity-80" style="width: 59%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- #3 -->
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Alex Ditto - Investor in Valor</span>
-
-                <span class="text-green-500">+23.42%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-green-700 h-2 rounded-full opacity-70" style="width: 54%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- #4 -->
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Stealth Wealth Investing</span>
-
-                <span class="text-green-500">+21.48%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-green-800 h-2 rounded-full opacity-60" style="width: 50%"></div>
-
-              </div>
-
-            </div>
-
+          <div id="topList" class="space-y-4">
+            <!-- injected by JS -->
+            <div class="text-sm text-gray-400">Loading…</div>
           </div>
-
         </div>
 
-
-
-        <!-- UNDERPERFORMERS -->
-
+        <!-- BOTTOM -->
         <div>
-
           <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
             </svg>
-
-            Underperformers (Avg Alpha)
-
+            Underperformers
           </h3>
 
-
-
-          <div class="space-y-4">
-
-            <!-- Worst -->
-
-            <div>
-
-              <div class="flex justify-between text-sm font-semibold mb-1">
-
-                <span>Meet Kevin</span>
-
-                <span class="text-red-400">-11.40%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-red-500 h-2 rounded-full" style="width: 100%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Patrick Boyle</span>
-
-                <span class="text-red-500">-9.04%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-red-600 h-2 rounded-full opacity-80" style="width: 79%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Chicken Genius Singapore</span>
-
-                <span class="text-red-500">-7.02%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-red-700 h-2 rounded-full opacity-70" style="width: 62%"></div>
-
-              </div>
-
-            </div>
-
-
-
-            <div>
-
-              <div class="flex justify-between text-sm font-medium mb-1 text-gray-300">
-
-                <span>Andrei Jikh</span>
-
-                <span class="text-red-500">-3.83%</span>
-
-              </div>
-
-              <div class="w-full bg-gray-800 rounded-full h-2">
-
-                <div class="bg-red-800 h-2 rounded-full opacity-60" style="width: 34%"></div>
-
-              </div>
-
-            </div>
-
+          <div id="bottomList" class="space-y-4">
+            <!-- injected by JS -->
+            <div class="text-sm text-gray-400">Loading…</div>
           </div>
-
         </div>
-
-
 
       </div>
-
-
 
       <div class="mt-4 flex justify-between items-center text-xs text-gray-500 font-mono px-2">
-
-        <span>Metric: Average Alpha vs S&amp;P 500</span>
-
-        <span>Last Updated: Dec 2025</span>
-
+        <span id="metricText">Metric: Average Alpha vs S&P 500</span>
+        <span id="updatedText">Last Updated: —</span>
       </div>
 
+      <div class="mt-3 text-[11px] text-gray-500 font-mono px-2">
+        <span id="thresholdText">Filter: Verified (N &gt; 20)</span>
+      </div>
     </div>
 
-
-
+    <!-- SUBSCRIBE CARD -->
     <div class="w-full max-w-md bg-gray-800/50 border border-gray-700 p-8 rounded-2xl shadow-xl">
-
       <h3 class="text-2xl font-bold text-white mb-2">Get the "Fake Guru" Audit</h3>
-
       <p class="text-gray-400 mb-2 text-sm">
-
         Don't get dumped on. We send one email a week exposing the worst predictions.
-
       </p>
-
-
 
       <p class="mb-6 font-bold text-lg text-green-400 uppercase tracking-wide">
-
         Subscribe to access full leaderboard.
-
       </p>
-
-
 
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 
-
-
       <form action="https://app.kit.com/forms/8848906/subscriptions"
-
-        class="seva-form formkit-form space-y-4"
-
-        method="post"
-
-        data-sv-form="8848906"
-
-        data-uid="c5142792e3"
-
-        data-format="inline"
-
-        data-version="5">
-
-
+            class="seva-form formkit-form space-y-4"
+            method="post"
+            data-sv-form="8848906"
+            data-uid="c5142792e3"
+            data-format="inline"
+            data-version="5">
 
         <input type="email" name="email_address" placeholder="Enter your email" required
-
-          class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition" />
-
-
+              class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition">
 
         <input type="text" name="fields[first_name]" placeholder="Which YouTuber Should We Audit Next? (Optional)"
-
-          class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm" />
-
-
+              class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm">
 
         <button data-element="submit"
-
-          class="formkit-submit w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
-
+                class="formkit-submit w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
           Subscribe Now
-
         </button>
 
-
-
         <ul class="formkit-alert formkit-alert-error text-red-400 text-sm mt-2" data-element="errors" data-group="alert"></ul>
-
       </form>
 
-
-
       <p class="mt-4 text-xs text-gray-500">
-
         100% Free. No spam. Unsubscribe anytime.
-
       </p>
-
     </div>
-
-
 
   </main>
 
-
-
+  <!-- FOOTER -->
   <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
-
     <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
-
-
-
       <div>
-
         <h4 class="font-bold text-white mb-4">The Mission</h4>
-
         <p class="text-gray-500 mb-4 leading-relaxed">
-
-          Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade
-
-          accountability to the creator economy.
-
+          Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
           <br><br>
-
-          We believe that if someone profits from selling financial opinions, their track record should be public, auditable, and
-
-          undeniable. We don't just watch videos; we compute the truth so you can stop guessing who to trust.
-
+          We believe that if someone profits from selling financial opinions, their track record should be public, auditable, and undeniable. We don't just watch videos; we compute the truth so you can stop guessing who to trust.
         </p>
-
       </div>
-
-
 
       <div class="md:text-right">
-
         <h4 class="font-bold text-white mb-4">Connect</h4>
-
         <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Reddit Profile</a>
-
         <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
-
         <p class="text-gray-600 mt-4 text-xs">
-
-          &copy; 2025 True Alpha Research.<br />
-
-          Not financial advice. For entertainment &amp; data purposes only.
-
+          &copy; 2025 True Alpha Research. <br>
+          Not financial advice. For entertainment & data purposes only.
         </p>
-
       </div>
-
-
-
     </div>
-
   </footer>
 
+  <!-- JSON-DRIVEN LEADERBOARD SCRIPT -->
+  <script>
+    function fmtPct(n) {
+      const sign = n > 0 ? "+" : "";
+      return `${sign}${n.toFixed(2)}%`;
+    }
 
+    function barWidthAlpha(alpha, maxAbs) {
+      // width as percent of maxAbs (clamped 5..100 so small values still visible)
+      const w = Math.min(100, Math.max(5, Math.round((Math.abs(alpha) / maxAbs) * 100)));
+      return w;
+    }
+
+    function topBarClass(i) {
+      // subtle variation for visual depth
+      return ["bg-green-500", "bg-green-600", "bg-green-700", "bg-green-800"][i] || "bg-green-700";
+    }
+
+    function bottomBarClass(i) {
+      return ["bg-red-500", "bg-red-600", "bg-red-700", "bg-red-800"][i] || "bg-red-700";
+    }
+
+    function rowHTML({ name, avg_alpha }, i, isTop, maxAbs) {
+      const pct = fmtPct(avg_alpha);
+      const width = barWidthAlpha(avg_alpha, maxAbs);
+
+      const valueClass = isTop ? "text-green-400" : "text-red-400";
+      const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
+      const barClass = isTop ? topBarClass(i) : bottomBarClass(i);
+      const barOpacity = i === 0 ? "" : `opacity-${isTop ? (80 - i*10) : (80 - i*10)}`;
+
+      return `
+        <div>
+          <div class="flex justify-between text-sm ${labelClass} mb-1">
+            <span>${name}</span>
+            <span class="${valueClass}">${pct}</span>
+          </div>
+          <div class="w-full bg-gray-800 rounded-full h-2">
+            <div class="${barClass} h-2 rounded-full ${barOpacity}" style="width:${width}%"></div>
+          </div>
+        </div>
+      `;
+    }
+
+    async function loadLeaderboard() {
+      const topEl = document.getElementById("topList");
+      const bottomEl = document.getElementById("bottomList");
+
+      try {
+        const res = await fetch("./leaderboard.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const data = await res.json();
+
+        // meta text
+        document.getElementById("metricText").textContent = `Metric: ${data.metric || "Average Alpha vs S&P 500"}`;
+        document.getElementById("updatedText").textContent = `Last Updated: ${data.last_updated || "—"}`;
+        if (typeof data.min_threshold === "number") {
+          document.getElementById("thresholdText").textContent = `Filter: Verified (N > ${data.min_threshold})`;
+        }
+
+        // compute max abs alpha for bar scaling
+        const all = [...(data.top || []), ...(data.bottom || [])].map(x => Math.abs(Number(x.avg_alpha) || 0));
+        const maxAbs = Math.max(...all, 1);
+
+        // render
+        topEl.innerHTML = (data.top || []).slice(0, 4).map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
+        bottomEl.innerHTML = (data.bottom || []).slice(0, 4).map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
+
+      } catch (err) {
+        topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
+        bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load leaderboard.json</div>`;
+        console.error(err);
+      }
+    }
+
+    loadLeaderboard();
+  </script>
 
 </body>
-
 </html>
