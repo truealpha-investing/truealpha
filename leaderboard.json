@@ -1,69 +1,77 @@
 {
-  "last_updated": "Dec 2025",
-  "metric": "Average Alpha vs S&P 500",
-  "filter": {
-    "label": "Verified",
-    "min_n": 20
+  "meta": {
+    "lastUpdated": "Dec 2025",
+    "filter": "Verified (N > 20)",
+    "metricAlpha": "Average Alpha vs S&P 500",
+    "metricAccuracy": "Win Rate (directional)",
+    "databaseUrl": "https://docs.google.com/spreadsheets/d/1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU/edit?gid=1231233657#gid=1231233657"
   },
-  "tables": {
-    "alpha": {
+
+  "alpha": {
+    "top": [
+      { "rank": 1, "creator": "Tom Nash", "n": 11, "avgAlpha": 159.27 },
+      { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": 35, "avgAlpha": 42.97 },
+      { "rank": 3, "creator": "Stealth Wealth Investing", "n": 54, "avgAlpha": 21.48 },
+      { "rank": 4, "creator": "Daniel Pronk", "n": 65, "avgAlpha": 20.37 }
+    ],
+    "bottom": [
+      { "rank": 1, "creator": "Meet Kevin", "n": 31, "avgAlpha": -11.45 },
+      { "rank": 2, "creator": "Mark Moss", "n": 28, "avgAlpha": -10.82 },
+      { "rank": 3, "creator": "FX Evolution", "n": 21, "avgAlpha": -10.61 },
+      { "rank": 4, "creator": "Patrick Boyle", "n": 33, "avgAlpha": -9.04 }
+    ]
+  },
+
+  "accuracy": {
+    "top": [
+      { "rank": 1, "creator": "Stealth Wealth Investing", "n": 54, "winRate": 70.37 },
+      { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": 35, "winRate": 66.71 },
+      { "rank": 3, "creator": "Tom Nash", "n": 11, "winRate": 63.64 },
+      { "rank": 4, "creator": "Daniel Pronk", "n": 65, "winRate": 55.38 }
+    ],
+    "bottom": [
+      { "rank": 1, "creator": "Meet Kevin", "n": 31, "winRate": 35.48 },
+      { "rank": 2, "creator": "Patrick Boyle", "n": 33, "winRate": 39.39 },
+      { "rank": 3, "creator": "FX Evolution", "n": 21, "winRate": 38.10 },
+      { "rank": 4, "creator": "Mark Moss", "n": 28, "winRate": 39.29 }
+    ]
+  },
+
+  "stocksRecommended": {
+    "note": "Mentions across verified top creators.",
+    "items": [
+      { "ticker": "PLTR", "mentions": 14 },
+      { "ticker": "TSLA", "mentions": 11 },
+      { "ticker": "NVDA", "mentions": 9 },
+      { "ticker": "SPY", "mentions": 8 },
+      { "ticker": "BTC", "mentions": 7 }
+    ]
+  },
+
+  "intervals": {
+    "shortTerm": {
+      "label": "Short Term (< 6 months)",
+      "metric": "alpha",
       "top": [
-        { "rank": 1, "name": "Tom Nash", "n": 11, "avg_alpha": 159.27 },
-        { "rank": 2, "name": "Wolf of Dubai Day Trading & Investing", "n": 35, "avg_alpha": 42.97 },
-        { "rank": 3, "name": "Stealth Wealth Investing", "n": 54, "avg_alpha": 21.48 },
-        { "rank": 4, "name": "Daniel Pronk", "n": 65, "avg_alpha": 20.37 }
+        { "rank": 1, "creator": "Tom Nash", "alpha": -9.86 },
+        { "rank": 2, "creator": "Stealth Wealth Investing", "alpha": 4.18 }
       ],
       "bottom": [
-        { "rank": 1, "name": "Meet Kevin", "n": 31, "avg_alpha": -11.45 },
-        { "rank": 2, "name": "Mark Moss", "n": 28, "avg_alpha": -10.82 },
-        { "rank": 3, "name": "FX Evolution", "n": 21, "avg_alpha": -10.61 },
-        { "rank": 4, "name": "Patrick Boyle", "n": 33, "avg_alpha": -9.04 }
+        { "rank": 1, "creator": "Meet Kevin", "alpha": -12.92 },
+        { "rank": 2, "creator": "Mark Moss", "alpha": -11.79 }
       ]
     },
-    "accuracy": {
+    "longTerm": {
+      "label": "Long Term (≥ 6 months)",
+      "metric": "alpha",
       "top": [
-        { "rank": 1, "name": "Stealth Wealth Investing", "n": 54, "win_rate": 70.37 },
-        { "rank": 2, "name": "Wolf of Dubai Day Trading & Investing", "n": 35, "win_rate": 66.71 },
-        { "rank": 3, "name": "Tom Nash", "n": 11, "win_rate": 63.64 },
-        { "rank": 4, "name": "Daniel Pronk", "n": 65, "win_rate": 55.38 }
+        { "rank": 1, "creator": "Tom Nash", "alpha": 362.24 },
+        { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "alpha": 71.15 }
       ],
       "bottom": [
-        { "rank": 1, "name": "Meet Kevin", "n": 31, "win_rate": 35.48 },
-        { "rank": 2, "name": "Patrick Boyle", "n": 33, "win_rate": 39.39 },
-        { "rank": 3, "name": "FX Evolution", "n": 21, "win_rate": 38.10 },
-        { "rank": 4, "name": "Mark Moss", "n": 28, "win_rate": 39.29 }
+        { "rank": 1, "creator": "FX Evolution", "alpha": -12.71 },
+        { "rank": 2, "creator": "Meet Kevin", "alpha": -7.53 }
       ]
-    },
-    "recommended_stocks": {
-      "top_tickers": [
-        { "ticker": "PLTR", "mentions": 14 },
-        { "ticker": "TSLA", "mentions": 11 },
-        { "ticker": "NVDA", "mentions": 9 },
-        { "ticker": "SPY", "mentions": 8 },
-        { "ticker": "BTC", "mentions": 7 }
-      ]
-    },
-    "time_interval_alpha": {
-      "short_term_lt_6m": {
-        "top": [
-          { "rank": 1, "name": "Tom Nash", "alpha": -9.86 },
-          { "rank": 2, "name": "Stealth Wealth Investing", "alpha": 4.18 }
-        ],
-        "bottom": [
-          { "rank": 1, "name": "Meet Kevin", "alpha": -12.92 },
-          { "rank": 2, "name": "Mark Moss", "alpha": -11.79 }
-        ]
-      },
-      "long_term_gte_6m": {
-        "top": [
-          { "rank": 1, "name": "Tom Nash", "alpha": 362.24 },
-          { "rank": 2, "name": "Wolf of Dubai Day Trading & Investing", "alpha": 71.15 }
-        ],
-        "bottom": [
-          { "rank": 1, "name": "FX Evolution", "alpha": -12.71 },
-          { "rank": 2, "name": "Meet Kevin", "alpha": -7.53 }
-        ]
-      }
     }
   }
 }
