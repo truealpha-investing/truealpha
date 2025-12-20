@@ -15,15 +15,16 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .glow-green { box-shadow: 0 0 24px rgba(34, 197, 94, 0.18); }
+    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
   </style>
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-  <!-- NAV (NO DATABASE BUTTON ON HOMEPAGE) -->
+  <!-- NAV -->
   <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+
       <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +58,7 @@
     </h1>
 
     <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl">
-      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&P 500.
+      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&amp;P 500.
     </p>
 
     <!-- QUICK SCAN CARD -->
@@ -65,26 +66,28 @@
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
       <div class="relative glass-panel rounded-lg p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+        <div class="flex items-start justify-between gap-6 flex-col sm:flex-row">
           <div>
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Quick Scan</div>
-            <div class="text-xl sm:text-2xl font-extrabold text-white">Top & Bottom Creators (Verified)</div>
-            <div class="text-xs text-gray-400 mt-1">
-              Average Alpha vs S&amp;P 500 • <span id="thresholdTextInline">Filter: N &gt; 20</span>
-            </div>
+            <div class="text-xs font-mono text-gray-400 mb-1">Quick Scan</div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
+              Top &amp; Bottom Creators (Verified)
+            </h2>
+            <p class="text-sm text-gray-400 mt-1">
+              <span id="metricText">Average Alpha vs S&amp;P 500</span>
+              <span class="text-gray-600">•</span>
+              <span id="filterText">Filter: Verified (N &gt; 20)</span>
+            </p>
           </div>
 
-          <div class="flex gap-2 flex-wrap justify-start sm:justify-end">
-            <span class="text-[11px] font-mono text-gray-400 border border-gray-700 rounded-md px-3 py-1">
-              <span class="text-gray-500">Last Updated:</span> <span id="updatedText">—</span>
-            </span>
-            <span class="text-[11px] font-mono text-gray-400 border border-gray-700 rounded-md px-3 py-1">
-              <span class="text-gray-500">Metric:</span> <span id="metricText">Average Alpha vs S&amp;P 500</span>
-            </span>
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <div class="px-3 py-2 rounded-lg border border-gray-700 bg-gray-800/40 text-gray-300">
+              Last Updated: <span id="updatedText" class="text-white">—</span>
+            </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+
           <!-- TOP -->
           <div>
             <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
@@ -94,6 +97,7 @@
               </svg>
               Top Performers (Avg Alpha)
             </h3>
+
             <div id="topList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
@@ -108,15 +112,18 @@
               </svg>
               Underperformers
             </h3>
+
             <div id="bottomList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
           </div>
+
         </div>
 
-        <div class="mt-6 pt-5 border-t border-gray-800 flex items-center justify-between text-[11px] text-gray-500 font-mono">
-          <span>Metric: Average Alpha vs S&amp;P 500</span>
-          <span>Verified filter applied</span>
+        <div class="mt-6 text-[11px] font-mono text-gray-500">
+          <span>Metric: Avg Alpha vs S&amp;P 500</span>
+          <span class="text-gray-700">|</span>
+          <span>Auto-generated from leaderboard.json</span>
         </div>
       </div>
     </div>
@@ -133,6 +140,7 @@
       </p>
 
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+
       <form action="https://app.kit.com/forms/8848906/subscriptions"
             class="seva-form formkit-form space-y-4"
             method="post"
@@ -190,37 +198,34 @@
   <script>
     function fmtPct(n) {
       const num = Number(n);
-      if (!Number.isFinite(num)) return "—";
+      if (Number.isNaN(num)) return "—";
       const sign = num > 0 ? "+" : "";
       return `${sign}${num.toFixed(2)}%`;
     }
 
-    function barWidth(alpha, maxAbs) {
-      const a = Math.abs(Number(alpha) || 0);
-      const denom = Number(maxAbs) || 1;
-      const w = Math.round((a / denom) * 100);
-      return Math.min(100, Math.max(6, w)); // keep visible
+    function barWidthAlpha(alpha, maxAbs) {
+      const num = Math.abs(Number(alpha) || 0);
+      const denom = maxAbs || 1;
+      return Math.min(100, Math.max(6, Math.round((num / denom) * 100)));
     }
 
     function rowHTML(item, i, isTop, maxAbs) {
-      // Support multiple schemas:
-      // {creator, avgAlpha} OR {name, avg_alpha} OR {creator:..., avgAlpha:...}
-      const name = item.creator ?? item.name ?? item.Creator ?? "Unknown";
-      const alpha = item.avgAlpha ?? item.avg_alpha ?? item.alpha ?? 0;
+      const creator = item.creator ?? "—";
+      const alpha = item.avgAlpha ?? 0;
 
       const pct = fmtPct(alpha);
-      const width = barWidth(alpha, maxAbs);
+      const width = barWidthAlpha(alpha, maxAbs);
 
       const valueClass = isTop ? "text-green-400" : "text-red-400";
       const labelClass = i === 0 ? "font-semibold" : "font-medium text-gray-300";
       const barClass = isTop
-        ? ["bg-green-500","bg-green-600","bg-green-700","bg-green-800"][i] || "bg-green-700"
-        : ["bg-red-500","bg-red-600","bg-red-700","bg-red-800"][i] || "bg-red-700";
+        ? (["bg-green-500","bg-green-600","bg-green-700","bg-green-800"][i] || "bg-green-700")
+        : (["bg-red-500","bg-red-600","bg-red-700","bg-red-800"][i] || "bg-red-700");
 
       return `
         <div>
           <div class="flex justify-between text-sm ${labelClass} mb-1">
-            <span class="pr-3">${name}</span>
+            <span>${creator}</span>
             <span class="${valueClass}">${pct}</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-2">
@@ -230,67 +235,38 @@
       `;
     }
 
-    function pickArrays(data) {
-      // Your current JSON (confirmed) supports:
-      // topPerformers: [{creator, avgAlpha}], underperformers: [...]
-      // But we also allow: top / bottom
-      const top =
-        data.topPerformers ??
-        data.top_performers ??
-        data.top ??
-        [];
-
-      const bottom =
-        data.underperformers ??
-        data.under_performers ??
-        data.bottom ??
-        [];
-
-      return { top, bottom };
-    }
-
     async function loadQuickScan() {
       const topEl = document.getElementById("topList");
       const bottomEl = document.getElementById("bottomList");
 
       try {
-        // Absolute path is safest (works from / and /index.html)
         const res = await fetch("/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
         const data = await res.json();
 
-        // meta (supports multiple key styles)
-        const metric = data.metric ?? data.metricText ?? "Average Alpha vs S&P 500";
-        const updated = data.lastUpdated ?? data.last_updated ?? data.updated ?? "—";
-        const minT = data.minThreshold ?? data.min_threshold ?? data.threshold ?? 20;
+        // meta
+        const meta = data.meta || {};
+        document.getElementById("updatedText").textContent = meta.lastUpdated || "—";
+        document.getElementById("metricText").textContent = meta.metricAlpha || "Average Alpha vs S&P 500";
+        document.getElementById("filterText").textContent = meta.filter || "Filter: Verified (N > 20)";
 
-        document.getElementById("metricText").textContent = metric;
-        document.getElementById("updatedText").textContent = updated;
-        document.getElementById("thresholdTextInline").textContent = `Filter: N > ${minT}`;
+        // alpha lists (NEW STRUCTURE)
+        const top = (data.alpha && Array.isArray(data.alpha.top)) ? data.alpha.top.slice(0, 4) : [];
+        const bottom = (data.alpha && Array.isArray(data.alpha.bottom)) ? data.alpha.bottom.slice(0, 4) : [];
 
-        const { top, bottom } = pickArrays(data);
+        if (!top.length) topEl.innerHTML = `<div class="text-sm text-gray-400">No top performer data found in JSON.</div>`;
+        if (!bottom.length) bottomEl.innerHTML = `<div class="text-sm text-gray-400">No underperformer data found in JSON.</div>`;
 
-        if (!top.length) {
-          topEl.innerHTML = `<div class="text-sm text-gray-400">No top performer data found in JSON.</div>`;
-        }
-        if (!bottom.length) {
-          bottomEl.innerHTML = `<div class="text-sm text-gray-400">No underperformer data found in JSON.</div>`;
-        }
+        const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0));
+        const maxAbs = Math.max(...allAbs, 1);
 
-        const top4 = (top || []).slice(0, 4);
-        const bottom4 = (bottom || []).slice(0, 4);
-
-        const absVals = [...top4, ...bottom4].map(x => Math.abs(Number(x.avgAlpha ?? x.avg_alpha ?? x.alpha ?? 0)));
-        const maxAbs = Math.max(...absVals, 1);
-
-        if (top4.length) topEl.innerHTML = top4.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
-        if (bottom4.length) bottomEl.innerHTML = bottom4.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
+        if (top.length) topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
+        if (bottom.length) bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
 
       } catch (err) {
-        console.error("Quick scan load error:", err);
         topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
         bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+        console.error("Quick scan load error:", err);
       }
     }
 
