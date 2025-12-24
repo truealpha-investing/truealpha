@@ -22,9 +22,9 @@
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
   <!-- NAV -->
-<nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
+  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-      
+
       <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,14 +35,14 @@
         </span>
       </a>
 
-<div class="flex items-center gap-4 md:gap-8 text-sm text-gray-300 font-medium">
-  <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
-  <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
-  <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
+      <div class="flex items-center gap-4 md:gap-8 text-sm text-gray-300 font-medium">
+        <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
+        <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
+        <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
 
-  <!-- NEW: Leaderboard -->
-  <a href="/leaderboard" class="hover:text-green-400 transition">Leaderboard</a>
-</div>
+        <!-- FIXED: use trailing slash so /leaderboard/ loads leaderboard/index.html -->
+        <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
+      </div>
 
     </div>
   </nav>
@@ -242,7 +242,8 @@
       const bottomEl = document.getElementById("bottomList");
 
       try {
-        const res = await fetch("/leaderboard.json", { cache: "no-store" });
+        /* FIXED: JSON is in /leaderboard/ now */
+        const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
@@ -252,7 +253,7 @@
         document.getElementById("metricText").textContent = meta.metricAlpha || "Average Alpha vs S&P 500";
         document.getElementById("filterText").textContent = meta.filter || "Filter: Verified (N > 20)";
 
-        // alpha lists (NEW STRUCTURE)
+        // alpha lists
         const top = (data.alpha && Array.isArray(data.alpha.top)) ? data.alpha.top.slice(0, 4) : [];
         const bottom = (data.alpha && Array.isArray(data.alpha.bottom)) ? data.alpha.bottom.slice(0, 4) : [];
 
@@ -266,8 +267,8 @@
         if (bottom.length) bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
 
       } catch (err) {
-        topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
-        bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard.json</div>`;
+        topEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard/leaderboard.json</div>`;
+        bottomEl.innerHTML = `<div class="text-sm text-red-400">Failed to load /leaderboard/leaderboard.json</div>`;
         console.error("Quick scan load error:", err);
       }
     }
