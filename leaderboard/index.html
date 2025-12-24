@@ -160,7 +160,7 @@
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
         </svg>
         <span class="font-extrabold tracking-tight text-lg">
           TRUE<span class="text-green-500">ALPHA</span>
@@ -352,11 +352,10 @@
 
   <script>
     /* -------------------------
-       YOUR EXISTING DATA LOADER
+       DATA LOADER
     --------------------------*/
     const JSON_PATH = "./leaderboard.json"; // leaderboard.json in same folder as this HTML
 
-    // Force DB URL
     const NEW_DB_URL = "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=462898390#gid=462898390";
 
     const fmtPct = (n, decimals = 2) => {
@@ -416,7 +415,6 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
-        // meta
         document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "—";
         document.getElementById("filterText").textContent = data?.meta?.filter || "—";
         document.getElementById("metricAlpha").textContent = data?.meta?.metricAlpha || "—";
@@ -424,10 +422,8 @@
         document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
         document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "Mentions across verified top creators.";
 
-        // FORCE DB LINK
         setDbLinks(NEW_DB_URL);
 
-        // alpha lists
         const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "good"),
           creator: x.creator || "—",
@@ -447,7 +443,6 @@
         document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="text-sm text-gray-400">No data.</div>`;
         document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // accuracy lists
         const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "good"),
           creator: x.creator || "—",
@@ -467,11 +462,9 @@
         document.getElementById("accTop").innerHTML = accTop || `<div class="text-sm text-gray-400">No data.</div>`;
         document.getElementById("accBottom").innerHTML = accBottom || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // stocks
         const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
         document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // intervals
         const short = data?.intervals?.shortTerm || {};
         const long = data?.intervals?.longTerm || {};
 
@@ -529,7 +522,7 @@
 
   <script>
     /* -------------------------
-       GATING LOGIC
+       GATING LOGIC (FIXED)
     --------------------------*/
 
     const KIT_UID = "c5142792e3";
@@ -539,6 +532,8 @@
     const lockLayer = document.getElementById("lockLayer");
     const closeBtn = document.getElementById("closeBtn");
     const alreadyBtn = document.getElementById("alreadyBtn");
+
+    let kitEmbedLoaded = false;
 
     function openModal() {
       modalBackdrop.classList.add("open");
@@ -568,20 +563,26 @@
       document.body.classList.add("locked");
     }
 
-    // Load Kit embed script once
+    // Load Kit embed script ONCE (prevents duplicate forms)
     function loadKitEmbedOnce() {
-      // Avoid duplicates
-      const existing = Array.from(document.scripts).some(s => s.src === KIT_SCRIPT_SRC);
-      if (existing) return;
+      if (kitEmbedLoaded) return;
 
-      // Create script
+      const slot = document.getElementById("kitFormSlot");
+      if (!slot) return;
+
+      // If Kit already rendered something in the slot, don't render again
+      if (slot.children.length > 0) {
+        kitEmbedLoaded = true;
+        return;
+      }
+
+      kitEmbedLoaded = true;
+
       const s = document.createElement("script");
       s.async = true;
       s.setAttribute("data-uid", KIT_UID);
       s.src = KIT_SCRIPT_SRC;
 
-      // Put script inside the slot so it renders the form there
-      const slot = document.getElementById("kitFormSlot");
       slot.appendChild(s);
     }
 
@@ -626,18 +627,12 @@
     });
 
     alreadyBtn.addEventListener("click", () => {
-      // This is an honor-system UX shortcut for returning visitors on same device.
+      // Honor-system shortcut for returning visitors on same device.
       setUnlockedLocal(30);
       unlock();
     });
 
-    // Aggressive: any scroll attempt while locked opens modal
-    window.addEventListener("wheel", () => {
-      if (document.body.classList.contains("locked")) {
-        loadKitEmbedOnce();
-        openModal();
-      }
-    }, { passive: true });
+    // NOTE: Removed wheel/scroll trigger to prevent repeated render issues
   </script>
 
 </body>
