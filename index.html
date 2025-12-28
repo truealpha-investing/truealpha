@@ -21,7 +21,6 @@
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-  <!-- NAV -->
   <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
 
@@ -39,15 +38,12 @@
         <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
         <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
         <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
-
-        <!-- FIXED: use trailing slash so /leaderboard/ loads leaderboard/index.html -->
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
 
     </div>
   </nav>
 
-  <!-- MAIN -->
   <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 sm:py-20 text-center">
 
     <div class="mb-6 inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-semibold uppercase tracking-wider">
@@ -55,7 +51,7 @@
     </div>
 
     <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 max-w-4xl">
-      We Tracked <span class="text-green-500">+4000</span> Stock Guru Predictions. <br class="hidden sm:block" />
+      We Tracked <span class="text-green-500">+7000</span> Stock Guru Predictions. <br class="hidden sm:block" />
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">See Who Actually Makes Money.</span>
     </h1>
 
@@ -63,7 +59,6 @@
       Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&amp;P 500.
     </p>
 
-    <!-- QUICK SCAN CARD -->
     <div class="w-full max-w-4xl mb-12 relative group text-left">
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
@@ -90,7 +85,6 @@
 
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <!-- TOP -->
           <div>
             <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +99,6 @@
             </div>
           </div>
 
-          <!-- BOTTOM -->
           <div>
             <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,7 +123,6 @@
       </div>
     </div>
 
-    <!-- SUBSCRIBE CARD -->
     <div class="w-full max-w-md bg-gray-800/50 border border-gray-700 p-8 rounded-2xl shadow-xl">
       <h3 class="text-2xl font-bold text-white mb-2">Get the "Fake Guru" Audit</h3>
       <p class="text-gray-400 mb-2 text-sm">
@@ -172,7 +164,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
     <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
       <div>
@@ -197,7 +188,6 @@
     </div>
   </footer>
 
-  <!-- JSON-DRIVEN QUICK SCAN SCRIPT -->
   <script>
     function fmtPct(n) {
       const num = Number(n);
@@ -214,7 +204,8 @@
 
     function rowHTML(item, i, isTop, maxAbs) {
       const creator = item.creator ?? "—";
-      const alpha = item.avgAlpha ?? 0;
+      // UPDATED: Now looks for 'value' to match your JSON structure
+      const alpha = item.value ?? item.avgAlpha ?? 0;
 
       const pct = fmtPct(alpha);
       const width = barWidthAlpha(alpha, maxAbs);
@@ -243,14 +234,14 @@
       const bottomEl = document.getElementById("bottomList");
 
       try {
-        /* FIXED: JSON is in /leaderboard/ now */
         const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
         // meta
         const meta = data.meta || {};
-        document.getElementById("updatedText").textContent = meta.lastUpdated || "—";
+        // If meta.lastUpdated is missing, fallback to data.lastUpdated
+        document.getElementById("updatedText").textContent = meta.lastUpdated || data.lastUpdated || "—";
         document.getElementById("metricText").textContent = meta.metricAlpha || "Average Alpha vs S&P 500";
         document.getElementById("filterText").textContent = meta.filter || "Filter: Verified (N > 20)";
 
@@ -261,7 +252,8 @@
         if (!top.length) topEl.innerHTML = `<div class="text-sm text-gray-400">No top performer data found in JSON.</div>`;
         if (!bottom.length) bottomEl.innerHTML = `<div class="text-sm text-gray-400">No underperformer data found in JSON.</div>`;
 
-        const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0));
+        // Calculate Max Abs for bar widths
+        const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.value ?? x.avgAlpha) || 0));
         const maxAbs = Math.max(...allAbs, 1);
 
         if (top.length) topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
