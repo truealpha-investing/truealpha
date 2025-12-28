@@ -38,6 +38,7 @@
         <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
         <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
         <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
+
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
 
@@ -204,8 +205,7 @@
 
     function rowHTML(item, i, isTop, maxAbs) {
       const creator = item.creator ?? "—";
-      // UPDATED: Now looks for 'value' to match your JSON structure
-      const alpha = item.value ?? item.avgAlpha ?? 0;
+      const alpha = item.avgAlpha ?? 0;
 
       const pct = fmtPct(alpha);
       const width = barWidthAlpha(alpha, maxAbs);
@@ -234,14 +234,14 @@
       const bottomEl = document.getElementById("bottomList");
 
       try {
+        /* FIXED: JSON is in /leaderboard/ now */
         const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
         // meta
         const meta = data.meta || {};
-        // If meta.lastUpdated is missing, fallback to data.lastUpdated
-        document.getElementById("updatedText").textContent = meta.lastUpdated || data.lastUpdated || "—";
+        document.getElementById("updatedText").textContent = meta.lastUpdated || "—";
         document.getElementById("metricText").textContent = meta.metricAlpha || "Average Alpha vs S&P 500";
         document.getElementById("filterText").textContent = meta.filter || "Filter: Verified (N > 20)";
 
@@ -252,8 +252,7 @@
         if (!top.length) topEl.innerHTML = `<div class="text-sm text-gray-400">No top performer data found in JSON.</div>`;
         if (!bottom.length) bottomEl.innerHTML = `<div class="text-sm text-gray-400">No underperformer data found in JSON.</div>`;
 
-        // Calculate Max Abs for bar widths
-        const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.value ?? x.avgAlpha) || 0));
+        const allAbs = [...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0));
         const maxAbs = Math.max(...allAbs, 1);
 
         if (top.length) topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
