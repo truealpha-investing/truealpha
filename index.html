@@ -4,12 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>True Alpha | Stock YouTuber Audits</title>
-<!-- Reddit Pixel -->
-<script>
-!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_i6cyrt66cvmn');rdt('track', 'PageVisit');
-</script>
-<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
-<!-- End Reddit Pixel -->
+
+  <!-- Reddit Pixel -->
+  <script>
+    !function(w,d){
+      if(!w.rdt){
+        var p=w.rdt=function(){
+          p.sendEvent ? p.sendEvent.apply(p,arguments) : p.callQueue.push(arguments)
+        };
+        p.callQueue=[];
+        var t=d.createElement("script");
+        t.src="https://www.redditstatic.com/ads/pixel.js";
+        t.async=!0;
+        var s=d.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(t,s)
+      }
+    }(window,document);
+
+    // IMPORTANT: keep this Pixel ID consistent site-wide
+    rdt('init','a2_i6cyrt66cvmn');
+    rdt('track','PageVisit');
+  </script>
+  <!-- End Reddit Pixel -->
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -43,7 +60,6 @@
         <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
         <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
         <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
-
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
 
@@ -239,18 +255,15 @@
       const bottomEl = document.getElementById("bottomList");
 
       try {
-        /* FIXED: JSON is in /leaderboard/ now */
         const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
-        // meta
         const meta = data.meta || {};
         document.getElementById("updatedText").textContent = meta.lastUpdated || "—";
         document.getElementById("metricText").textContent = meta.metricAlpha || "Average Alpha vs S&P 500";
         document.getElementById("filterText").textContent = meta.filter || "Filter: Verified (N > 20)";
 
-        // alpha lists
         const top = (data.alpha && Array.isArray(data.alpha.top)) ? data.alpha.top.slice(0, 4) : [];
         const bottom = (data.alpha && Array.isArray(data.alpha.bottom)) ? data.alpha.bottom.slice(0, 4) : [];
 
@@ -272,11 +285,23 @@
 
     loadQuickScan();
   </script>
-<script>
-(function () {
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (document.body.innerText.includes("Thank you for signing up")) {
+
+  <!-- Reddit: track "Lead" on submit click (intent) + "SignUp" on success (confirmed) -->
+  <script>
+    (function () {
+      // 1) Track "Lead" when user clicks the submit button (useful for funnel debugging)
+      document.addEventListener('click', function (e) {
+        const btn = e.target.closest('button[data-element="submit"]');
+        if (!btn) return;
+
+        if (window.rdt) {
+          rdt('track', 'Lead');
+          console.log('Reddit Lead tracked');
+        }
+      });
+
+      // 2) Track "SignUp" only when the Kit form shows success
+      function fireRedditSignupOnce() {
         if (window.__redditSignupTracked) return;
         window.__redditSignupTracked = true;
 
@@ -285,15 +310,21 @@
           console.log('Reddit SignUp tracked');
         }
       }
-    });
-  });
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-})();
-</script>
+      const observer = new MutationObserver(() => {
+        // Common Kit/ConvertKit success patterns:
+        const successEl =
+          document.querySelector('.formkit-alert-success') ||
+          document.querySelector('[data-element="success"]');
+
+        if (successEl && successEl.textContent.trim().length > 0) {
+          fireRedditSignupOnce();
+        }
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 
 </body>
 </html>
