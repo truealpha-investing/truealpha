@@ -55,10 +55,23 @@
       background: rgba(10,10,10,0.92);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      overflow: hidden;
+      
+      /* --- MOBILE FIX START --- */
+      /* Prevent modal from being taller than the screen */
+      max-height: 90vh; 
+      /* Allow scrolling inside the modal if content is too tall */
+      overflow-y: auto; 
+      /* Smooth scrolling for iOS */
+      -webkit-overflow-scrolling: touch; 
+      /* --- MOBILE FIX END --- */
     }
 
     .modal-inner { padding: 18px; }
+    
+    /* Reduce padding on very small screens to save space */
+    @media (max-width: 640px) {
+      .modal-inner { padding: 16px; }
+    }
 
     .divider {
       height: 1px;
@@ -96,10 +109,8 @@
 
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <!-- LOCK click-catcher (only visible when locked) -->
   <div class="lock-layer" id="lockLayer" aria-label="Locked leaderboard"></div>
 
-  <!-- SUBSCRIBE MODAL -->
   <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Subscribe to unlock">
     <div class="modal">
       <div class="modal-inner">
@@ -116,7 +127,6 @@
         </div>
 
         <div class="mt-4">
-          <!-- Kit embed loads here -->
           <div id="kitFormSlot"></div>
         </div>
 
@@ -154,7 +164,6 @@
     </div>
   </div>
 
-  <!-- NAV -->
   <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
@@ -182,7 +191,6 @@
     </div>
   </nav>
 
-  <!-- MAIN (this gets blurred when locked) -->
   <main id="lockedContent" class="max-w-7xl mx-auto px-4 py-10">
 
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -631,8 +639,6 @@
       setUnlockedLocal(30);
       unlock();
     });
-
-    // NOTE: Removed wheel/scroll trigger to prevent repeated render issues
   </script>
 
 </body>
