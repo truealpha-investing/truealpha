@@ -272,6 +272,28 @@
 
     loadQuickScan();
   </script>
+<script>
+(function () {
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (document.body.innerText.includes("Thank you for signing up")) {
+        if (window.__redditSignupTracked) return;
+        window.__redditSignupTracked = true;
+
+        if (window.rdt) {
+          rdt('track', 'SignUp');
+          console.log('Reddit SignUp tracked');
+        }
+      }
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
 
 </body>
 </html>
