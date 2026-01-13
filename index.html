@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>True Alpha | Stock YouTuber Audits</title>
 
-  <!-- Reddit Pixel -->
+  <!-- Reddit Pixel (Base) -->
   <script>
     !function(w,d){
       if(!w.rdt){
@@ -23,6 +23,8 @@
 
     // IMPORTANT: keep this Pixel ID consistent site-wide
     rdt('init','a2_i6cyrt66cvmn');
+
+    // Track page view on load
     rdt('track','PageVisit');
   </script>
   <!-- End Reddit Pixel -->
@@ -155,6 +157,7 @@
         Subscribe to access full leaderboard.
       </p>
 
+      <!-- Kit/ConvertKit embed script -->
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 
       <form action="https://app.kit.com/forms/8848906/subscriptions"
@@ -286,43 +289,66 @@
     loadQuickScan();
   </script>
 
-  <!-- Reddit: track "Lead" on submit click (intent) + "SignUp" on success (confirmed) -->
+  <!-- Reddit Conversion Tracking: fire SignUp ONLY when Kit subscription POST succeeds -->
   <script>
     (function () {
-      // 1) Track "Lead" when user clicks the submit button (useful for funnel debugging)
-      document.addEventListener('click', function (e) {
-        const btn = e.target.closest('button[data-element="submit"]');
-        if (!btn) return;
+      // Prevent double firing
+      let tracked = false;
 
-        if (window.rdt) {
-          rdt('track', 'Lead');
-          console.log('Reddit Lead tracked');
-        }
-      });
-
-      // 2) Track "SignUp" only when the Kit form shows success
-      function fireRedditSignupOnce() {
-        if (window.__redditSignupTracked) return;
+      function trackSignup() {
+        if (tracked) return;
+        tracked = true;
         window.__redditSignupTracked = true;
 
         if (window.rdt) {
           rdt('track', 'SignUp');
-          console.log('Reddit SignUp tracked');
+          console.log('[Reddit] SignUp tracked (Kit subscription success)');
+        } else {
+          console.warn('[Reddit] rdt not available yet; SignUp not tracked');
         }
       }
 
-      const observer = new MutationObserver(() => {
-        // Common Kit/ConvertKit success patterns:
-        const successEl =
-          document.querySelector('.formkit-alert-success') ||
-          document.querySelector('[data-element="success"]');
+      // Intercept fetch() calls (Kit uses fetch)
+      const origFetch = window.fetch;
+      window.fetch = function (...args) {
+        return origFetch.apply(this, args).then((res) => {
+          try {
+            const url = (typeof args[0] === 'string')
+              ? args[0]
+              : (args[0] && args[0].url) ? args[0].url : '';
 
-        if (successEl && successEl.textContent.trim().length > 0) {
-          fireRedditSignupOnce();
-        }
-      });
+            const isKitSubscribe =
+              String(url).includes('app.kit.com/forms/') &&
+              String(url).includes('/subscriptions');
 
-      observer.observe(document.body, { childList: true, subtree: true });
+            if (isKitSubscribe && res && res.ok) {
+              trackSignup();
+            }
+          } catch (e) {
+            // no-op
+          }
+          return res;
+        });
+      };
+
+      // Also catch XHR just in case (some embeds use XHR)
+      const origOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function (method, url, ...rest) {
+        this.__isKitSubscribe =
+          String(url).includes('app.kit.com/forms/') &&
+          String(url).includes('/subscriptions');
+        return origOpen.call(this, method, url, ...rest);
+      };
+
+      const origSend = XMLHttpRequest.prototype.send;
+      XMLHttpRequest.prototype.send = function (...body) {
+        this.addEventListener('load', function () {
+          if (this.__isKitSubscribe && this.status >= 200 && this.status < 300) {
+            trackSignup();
+          }
+        });
+        return origSend.apply(this, body);
+      };
     })();
   </script>
 
