@@ -4,6 +4,7 @@
     "window": "Rolling 12 months",
     "benchmark": "S&P 500 (SPY)",
     "entryRule": "Close price on video publish date",
+    "horizonBuckets": "Short=90d, Medium=180d, Long=365d",
     "filter": "Verified (N \u2265 20)",
     "metricPrimary": "Average Alpha vs SPY",
     "metricSecondary": "Win Rate (directional)",
@@ -48,7 +49,8 @@
 
   "intervals": {
     "shortTerm": {
-      "label": "Short Term (< 6 months)",
+      "label": "Short Term (90 days)",
+      "days": 90,
       "metric": "alpha",
       "top": [
         { "rank": 1, "creator": "이효석아카데미", "n": 23, "confidence": "Medium", "alpha": 38.64 },
@@ -59,8 +61,18 @@
         { "rank": 2, "creator": "Mark Moss", "n": 20, "confidence": "Medium", "alpha": -29.37 }
       ]
     },
+
+    "mediumTerm": {
+      "label": "Medium Term (180 days)",
+      "days": 180,
+      "metric": "alpha",
+      "top": [],
+      "bottom": []
+    },
+
     "longTerm": {
-      "label": "Long Term (\u2265 6 months)",
+      "label": "Long Term (365 days)",
+      "days": 365,
       "metric": "alpha",
       "top": [
         { "rank": 1, "creator": "Tom Nash", "n": 25, "confidence": "Medium", "alpha": 201.69 },
