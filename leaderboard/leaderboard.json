@@ -1,84 +1,318 @@
 {
   "meta": {
-    "lastUpdated": "Dec 28, 2025",
-    "window": "Rolling 12 months",
+    "lastUpdated": "Jan 18, 2026",
+    "filter": "Verified (N ≥ 20)",
+    "entryPrice": "Close price on publish date",
     "benchmark": "S&P 500 (SPY)",
-    "entryRule": "Close price on video publish date",
-    "filter": "Verified (N >= 20) + Stat Sig badge (p < 0.05)",
-    "metricPrimary": "Average Alpha vs SPY",
-    "metricSecondary": "Win Rate (directional)",
+    "significanceRule": "Significant if p < 0.05",
+    "metricAlpha": "Average Alpha vs SPY (%)",
+    "metricAccuracy": "Directional Accuracy (%)",
+    "horizons": ["90D", "180D", "365D"],
     "databaseUrl": "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=1723289430#gid=1723289430"
   },
-
   "alpha": {
     "top": [
-      { "rank": 1, "creator": "Tom Nash", "n": 25, "confidence": "Medium", "avgAlpha": 114.73, "pValue": null, "statSig": null },
-      { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": 37, "confidence": "Medium", "avgAlpha": 34.14, "pValue": null, "statSig": null },
-      { "rank": 3, "creator": "Bullmarket Lifestyle by Daniel Wilhelmi", "n": 7, "confidence": "Low", "avgAlpha": 25.24, "pValue": null, "statSig": null },
-      { "rank": 4, "creator": "Alex Dito - Invertir en Valor", "n": 8, "confidence": "Low", "avgAlpha": 21.26, "pValue": null, "statSig": null }
+      {
+        "rank": 1,
+        "creator": "Tom Nash",
+        "n": 41,
+        "avgAlpha": 72.7,
+        "pValue": 0.0064,
+        "statSig": true
+      },
+      {
+        "rank": 2,
+        "creator": "Stealth Wealth Investing",
+        "n": 62,
+        "avgAlpha": 20.08,
+        "pValue": 0.114,
+        "statSig": false
+      },
+      {
+        "rank": 3,
+        "creator": "YT Finance",
+        "n": 89,
+        "avgAlpha": 19.33,
+        "pValue": 0.0522,
+        "statSig": false
+      },
+      {
+        "rank": 4,
+        "creator": "Daniel Pronk",
+        "n": 66,
+        "avgAlpha": 15.89,
+        "pValue": 0.0163,
+        "statSig": true
+      }
     ],
     "bottom": [
-      { "rank": 1, "creator": "AlexOCrypto", "n": 8, "confidence": "Low", "avgAlpha": -23.06, "pValue": null, "statSig": null },
-      { "rank": 2, "creator": "Chit Chat Stocks Podcast", "n": 3, "confidence": "Low", "avgAlpha": -25.33, "pValue": null, "statSig": null },
-      { "rank": 3, "creator": "Patrick Boyle", "n": 29, "confidence": "Medium", "avgAlpha": -37.39, "pValue": null, "statSig": null },
-      { "rank": 4, "creator": "The Prof G Pod – Scott Galloway", "n": 14, "confidence": "Low", "avgAlpha": -58.68, "pValue": null, "statSig": null }
+      {
+        "rank": 1,
+        "creator": "Patrick Boyle",
+        "n": 31,
+        "avgAlpha": -42.18,
+        "pValue": 0.0003,
+        "statSig": true
+      },
+      {
+        "rank": 2,
+        "creator": "FX Evolution",
+        "n": 21,
+        "avgAlpha": -21.8,
+        "pValue": 0.0029,
+        "statSig": true
+      },
+      {
+        "rank": 3,
+        "creator": "Mark Moss",
+        "n": 55,
+        "avgAlpha": -18.74,
+        "pValue": 0.0004,
+        "statSig": true
+      },
+      {
+        "rank": 4,
+        "creator": "Click Capital",
+        "n": 115,
+        "avgAlpha": -17.93,
+        "pValue": 0.0,
+        "statSig": true
+      }
     ]
   },
-
   "accuracy": {
     "top": [
-      { "rank": 1, "creator": "Stealth Wealth Investing", "n": 54, "confidence": "High", "winRate": 70.37, "pValue": null, "statSig": null },
-      { "rank": 2, "creator": "이효석아카데미", "n": 23, "confidence": "Medium", "winRate": 65.22, "pValue": null, "statSig": null },
-      { "rank": 3, "creator": "Wolf of Dubai Day Trading & Investing", "n": 37, "confidence": "Medium", "winRate": 59.46, "pValue": null, "statSig": null },
-      { "rank": 4, "creator": "The Patient Investor", "n": 68, "confidence": "High", "winRate": 55.88, "pValue": null, "statSig": null }
+      {
+        "rank": 1,
+        "creator": "Stealth Wealth Investing",
+        "n": 62,
+        "accuracy": 66.13,
+        "pValue": 0.114,
+        "statSig": false
+      },
+      {
+        "rank": 2,
+        "creator": "이효석아카데미",
+        "n": 25,
+        "accuracy": 64.0,
+        "pValue": 0.6258,
+        "statSig": false
+      },
+      {
+        "rank": 3,
+        "creator": "Tom Nash",
+        "n": 41,
+        "accuracy": 58.54,
+        "pValue": 0.0064,
+        "statSig": true
+      },
+      {
+        "rank": 4,
+        "creator": "Mr. FIRED Up Wealth",
+        "n": 92,
+        "accuracy": 56.52,
+        "pValue": 0.0843,
+        "statSig": false
+      }
     ],
     "bottom": [
-      { "rank": 1, "creator": "Patrick Boyle", "n": 29, "confidence": "Medium", "winRate": 17.24, "pValue": null, "statSig": null },
-      { "rank": 2, "creator": "세상학개론", "n": 35, "confidence": "Medium", "winRate": 20.00, "pValue": null, "statSig": null },
-      { "rank": 3, "creator": "Beavis Wealth", "n": 42, "confidence": "Medium", "winRate": 21.43, "pValue": null, "statSig": null },
-      { "rank": 4, "creator": "FX Evolution", "n": 21, "confidence": "Medium", "winRate": 23.81, "pValue": null, "statSig": null }
+      {
+        "rank": 1,
+        "creator": "OneOption",
+        "n": 20,
+        "accuracy": 20.0,
+        "pValue": 0.0011,
+        "statSig": true
+      },
+      {
+        "rank": 2,
+        "creator": "Chicken Genius Singapore",
+        "n": 36,
+        "accuracy": 27.78,
+        "pValue": 0.0473,
+        "statSig": true
+      },
+      {
+        "rank": 3,
+        "creator": "ClearValue Tax",
+        "n": 66,
+        "accuracy": 27.27,
+        "pValue": 0.2133,
+        "statSig": false
+      },
+      {
+        "rank": 4,
+        "creator": "세상학개론",
+        "n": 41,
+        "accuracy": 24.39,
+        "pValue": 0.0913,
+        "statSig": false
+      }
     ]
   },
-
   "stocksRecommended": {
-    "note": "Mentions across verified creators (N >= 20).",
+    "note": "Most common assets mentioned by verified creators.",
     "items": [
-      { "ticker": "PLTR", "mentions": 14 },
-      { "ticker": "TSLA", "mentions": 11 },
-      { "ticker": "NVDA", "mentions": 9 },
-      { "ticker": "SPY", "mentions": 8 },
-      { "ticker": "BTC", "mentions": 7 }
+      { "ticker": "SPY", "mentions": 10 },
+      { "ticker": "AIQ", "mentions": 9 },
+      { "ticker": "TSLA", "mentions": 7 },
+      { "ticker": "NVDA", "mentions": 7 },
+      { "ticker": "BTC", "mentions": 6 },
+      { "ticker": "PLTR", "mentions": 5 },
+      { "ticker": "QQQ", "mentions": 4 },
+      { "ticker": "AMZN", "mentions": 4 }
     ]
   },
-
   "intervals": {
-    "short": {
-      "label": "Short (90d)",
+    "d90": {
+      "label": "90D (≈ 3 months)",
+      "metric": "alpha",
       "top": [
-        { "rank": 1, "creator": "이효석아카데미", "n": null, "confidence": null, "alpha": 38.64, "pValue": null, "statSig": null },
-        { "rank": 2, "creator": "Stealth Wealth Investing", "n": null, "confidence": null, "alpha": 7.23, "pValue": null, "statSig": null }
+        {
+          "rank": 1,
+          "creator": "이효석아카데미",
+          "alpha": 16.55,
+          "n": 25,
+          "pValue": 0.6258,
+          "statSig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": 64.03,
+          "n": 4,
+          "pValue": 0.9226,
+          "statSig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Pi-Fi",
+          "alpha": -23.71,
+          "n": 16,
+          "pValue": 0.0015,
+          "statSig": true
+        },
+        {
+          "rank": 4,
+          "creator": "Investing Simplified - Professor G",
+          "alpha": 10.66,
+          "n": 16,
+          "pValue": 0.2608,
+          "statSig": false
+        }
       ],
       "bottom": [
-        { "rank": 1, "creator": "Patrick Boyle", "n": null, "confidence": null, "alpha": -44.24, "pValue": null, "statSig": null },
-        { "rank": 2, "creator": "Mark Moss", "n": null, "confidence": null, "alpha": -29.37, "pValue": null, "statSig": null }
+        {
+          "rank": 1,
+          "creator": "Patrick Boyle",
+          "alpha": -49.43,
+          "n": 31,
+          "pValue": 0.0003,
+          "statSig": true
+        },
+        {
+          "rank": 2,
+          "creator": "ClearValue Tax",
+          "alpha": -27.27,
+          "n": 66,
+          "pValue": 0.2133,
+          "statSig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Meet Kevin",
+          "alpha": -28.86,
+          "n": 32,
+          "pValue": 0.2177,
+          "statSig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Mark Moss",
+          "alpha": -26.59,
+          "n": 55,
+          "pValue": 0.0004,
+          "statSig": true
+        }
       ]
     },
-
-    "medium": {
-      "label": "Medium (180d)",
+    "d180": {
+      "label": "180D (≈ 6 months)",
+      "metric": "alpha",
+      "note": "Coming soon (needs 180D tracking column).",
       "top": [],
       "bottom": []
     },
-
-    "long": {
-      "label": "Long (365d)",
+    "d365": {
+      "label": "365D (≈ 12 months)",
+      "metric": "alpha",
       "top": [
-        { "rank": 1, "creator": "Tom Nash", "n": null, "confidence": null, "alpha": 201.69, "pValue": null, "statSig": null },
-        { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "n": null, "confidence": null, "alpha": 63.36, "pValue": null, "statSig": null }
+        {
+          "rank": 1,
+          "creator": "Tom Nash",
+          "alpha": 116.83,
+          "n": 41,
+          "pValue": 0.0064,
+          "statSig": true
+        },
+        {
+          "rank": 2,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 119.78,
+          "n": 8,
+          "pValue": 0.07,
+          "statSig": false
+        },
+        {
+          "rank": 3,
+          "creator": "YT Finance",
+          "alpha": 43.65,
+          "n": 89,
+          "pValue": 0.0522,
+          "statSig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Wolf of Dubai Day Trading & Investing",
+          "alpha": 63.36,
+          "n": 69,
+          "pValue": 0.0818,
+          "statSig": false
+        }
       ],
       "bottom": [
-        { "rank": 1, "creator": "세상학개론", "n": null, "confidence": null, "alpha": -45.17, "pValue": null, "statSig": null },
-        { "rank": 2, "creator": "FX Evolution", "n": null, "confidence": null, "alpha": -32.90, "pValue": null, "statSig": null }
+        {
+          "rank": 1,
+          "creator": "The Prof G Pod – Scott Galloway",
+          "alpha": -101.5,
+          "n": 16,
+          "pValue": 0.0265,
+          "statSig": true
+        },
+        {
+          "rank": 2,
+          "creator": "StockCharts TV",
+          "alpha": -35.87,
+          "n": 13,
+          "pValue": 0.0582,
+          "statSig": false
+        },
+        {
+          "rank": 3,
+          "creator": "OneOption",
+          "alpha": -36.9,
+          "n": 20,
+          "pValue": 0.0011,
+          "statSig": true
+        },
+        {
+          "rank": 4,
+          "creator": "세상학개론",
+          "alpha": -37.7,
+          "n": 41,
+          "pValue": 0.0913,
+          "statSig": false
+        }
       ]
     }
   }
