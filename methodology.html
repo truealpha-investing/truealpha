@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Methodology | True Alpha</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.18); }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
@@ -37,6 +36,7 @@
   </nav>
 
   <main class="flex-grow max-w-3xl mx-auto px-4 py-12 sm:py-20">
+
     <a href="index.html" class="inline-flex items-center text-sm text-green-500 hover:text-green-400 mb-8 transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -60,16 +60,16 @@
         <h3 class="text-2xl font-bold text-white mb-2">1) What counts as a prediction</h3>
         <div class="text-gray-400 leading-relaxed space-y-3">
           <p>
-            Predictions are extracted from YouTube video transcripts using automated parsing and language models.
-            A transcript mention is only logged as a prediction when:
+            Predictions are extracted from YouTube transcripts using automated parsing and language models.
+            A transcript mention is logged as a prediction only when it contains:
           </p>
           <ul class="list-disc pl-5 space-y-2">
-            <li>A ticker/asset is mentioned <span class="text-gray-200">(e.g., TSLA, NVDA, BTC)</span></li>
-            <li>A directional claim is present <span class="text-gray-200">(up/down/outperform/underperform)</span></li>
-            <li>A timeframe is stated or mapped into a horizon bucket</li>
+            <li>A ticker/asset reference <span class="text-gray-200">(e.g., TSLA, NVDA, BTC)</span></li>
+            <li>A directional claim <span class="text-gray-200">(bullish/bearish, up/down, outperform/underperform)</span></li>
+            <li>A timeframe (explicit) or enough context to map into a standard horizon</li>
           </ul>
           <p class="text-sm text-gray-500">
-            Casual mentions without an implied outcome are excluded where possible, but transcript-based extraction can still contain errors.
+            Transcript extraction and interpretation can be imperfect. We prioritize consistent rules over perfect parsing.
           </p>
         </div>
       </section>
@@ -77,33 +77,39 @@
       <section class="glass-panel rounded-2xl p-6">
         <h3 class="text-2xl font-bold text-white mb-2">2) Entry price rule</h3>
         <p class="text-gray-400 leading-relaxed">
-          To keep the rule simple and repeatable, we log the entry price as the
+          We log the entry price as the
           <span class="text-green-400 font-semibold">close price on the video publish date</span>.
         </p>
         <p class="text-sm text-gray-500 mt-3">
-          This is a modeling assumption and may differ from a viewer’s real execution price.
+          This is a modeling assumption for repeatability. A viewer’s real execution price may differ.
         </p>
       </section>
 
       <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">3) Horizons</h3>
+        <h3 class="text-2xl font-bold text-white mb-2">3) Time horizons (90 / 180 / 365)</h3>
         <p class="text-gray-400 leading-relaxed mb-3">
-          Each prediction is evaluated at the end of its stated time horizon. Internally, horizons are bucketed as:
+          Every prediction is evaluated at a fixed horizon so results are comparable across creators.
+          If a creator gives an explicit timeline, we map it into the nearest bucket:
         </p>
         <ul class="list-disc pl-5 space-y-2 text-gray-400">
-          <li><span class="text-gray-200 font-semibold">Short</span>: &lt; 6 months</li>
-          <li><span class="text-gray-200 font-semibold">Long</span>: &ge; 6 months</li>
+          <li><span class="text-gray-200 font-semibold">Short</span>: 90 days</li>
+          <li><span class="text-gray-200 font-semibold">Medium</span>: 180 days</li>
+          <li><span class="text-gray-200 font-semibold">Long</span>: 365 days</li>
         </ul>
-        <p class="text-sm text-gray-500 mt-3">
-          If a creator states a specific target date, we use that date. If the timeframe is vague, we map it to a bucket.
-        </p>
+        <div class="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+          <div class="text-sm text-gray-300">Example mapping:</div>
+          <div class="text-sm text-gray-400 mt-2">
+            “Over the next few months” → <span class="text-gray-200 font-semibold">90d</span><br />
+            “Over the next 6 months” → <span class="text-gray-200 font-semibold">180d</span><br />
+            “Over the next year” → <span class="text-gray-200 font-semibold">365d</span>
+          </div>
+        </div>
       </section>
 
       <section class="glass-panel rounded-2xl p-6">
         <h3 class="text-2xl font-bold text-white mb-2">4) Benchmarking (Alpha vs SPY)</h3>
         <p class="text-gray-400 leading-relaxed">
-          Raw returns are compared against the S&amp;P 500 using SPY over the same horizon.
-          Alpha is calculated as:
+          Raw returns are compared against SPY over the same horizon. Alpha is:
         </p>
         <div class="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700 mono text-sm text-green-400">
           Alpha = (Asset Return %) - (SPY Return %)
@@ -116,36 +122,19 @@
       <section class="glass-panel rounded-2xl p-6">
         <h3 class="text-2xl font-bold text-white mb-2">5) Leaderboard metrics</h3>
         <ul class="list-disc pl-5 space-y-2 text-gray-400">
-          <li><span class="text-gray-200 font-semibold">Average Alpha</span>: average alpha across scorable predictions in the window.</li>
-          <li><span class="text-gray-200 font-semibold">Win Rate (directional)</span>: % of predictions where the direction was correct.</li>
+          <li><span class="text-gray-200 font-semibold">Average Alpha</span>: average alpha across scorable predictions in the rolling window.</li>
+          <li><span class="text-gray-200 font-semibold">Win Rate</span>: % of predictions where the direction was correct.</li>
           <li><span class="text-gray-200 font-semibold">Sample size (N)</span>: number of scorable predictions included.</li>
         </ul>
         <p class="text-sm text-gray-500 mt-3">
-          For public views marked “Verified”, we require <span class="text-gray-200 font-semibold">N &ge; 20</span>.
+          For public “Verified” views we require <span class="text-gray-200 font-semibold">N ≥ 20</span>.
         </p>
       </section>
 
       <section class="glass-panel rounded-2xl p-6">
         <h3 class="text-2xl font-bold text-white mb-2">6) Limitations</h3>
         <ul class="list-disc pl-5 space-y-2 text-gray-400">
-          <li>Transcript extraction and interpretation can be imperfect.</li>
-          <li>Creators may change views over time; rolling windows reflect changes.</li>
-          <li>This tracking does not represent a creator’s full portfolio.</li>
+          <li>Transcript extraction can miss nuance or sarcasm.</li>
+          <li>Creators may change views; the rolling window reflects updates over time.</li>
+          <li>This does not represent a creator’s full portfolio or risk management.</li>
         </ul>
-      </section>
-
-      <div class="text-xs text-gray-500">
-        Correction requests: contact the project via your site contact / newsletter reply.
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="border-t border-gray-800 bg-gray-900 py-10 mt-12">
-    <div class="max-w-5xl mx-auto px-4 text-xs text-gray-500">
-      Not financial advice. For entertainment &amp; data purposes only.
-    </div>
-  </footer>
-
-</body>
-</html>
