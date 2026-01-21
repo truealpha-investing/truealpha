@@ -1,632 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leaderboard | True Alpha</title>
+{
+  "meta": {
+    "lastUpdated": "Jan 2026",
+    "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
+    "metricAlpha": "Alpha vs S&P 500 (365D hold)",
+    "metricAccuracy": "Accuracy (directional win rate)",
+    "entry": "Close price on publish date",
+    "significanceRule": "Significant if p < 0.05",
+    "databaseUrl": "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=1723289430#gid=1723289430"
+  },
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  "alpha": {
+    "top": [
+      { "rank": 1, "creator": "Tom Nash", "n": 41, "avgAlpha": 72.70, "pValue": 0.0064, "sig": true },
+      { "rank": 2, "creator": "Stealth Wealth Investing", "n": 62, "avgAlpha": 20.08, "pValue": 0.1140, "sig": false },
+      { "rank": 3, "creator": "YT Finance", "n": 89, "avgAlpha": 19.33, "pValue": 0.0522, "sig": false },
+      { "rank": 4, "creator": "Daniel Pronk", "n": 66, "avgAlpha": 15.89, "pValue": 0.0163, "sig": true }
+    ],
+    "bottom": [
+      { "rank": 1, "creator": "The Prof G Pod – Scott Galloway", "n": 16, "avgAlpha": -51.72, "pValue": 0.0265, "sig": true },
+      { "rank": 2, "creator": "Patrick Boyle", "n": 31, "avgAlpha": -42.18, "pValue": 0.0003, "sig": true },
+      { "rank": 3, "creator": "OneOption", "n": 20, "avgAlpha": -22.24, "pValue": 0.0011, "sig": true },
+      { "rank": 4, "creator": "FX Evolution", "n": 21, "avgAlpha": -21.80, "pValue": 0.0029, "sig": true }
+    ]
+  },
 
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .glass {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
+  "accuracy": {
+    "top": [
+      { "rank": 1, "creator": "Stealth Wealth Investing", "n": 62, "winRate": 66.13, "pValue": 0.1140, "sig": false },
+      { "rank": 2, "creator": "Tom Nash", "n": 41, "winRate": 58.54, "pValue": 0.0064, "sig": true },
+      { "rank": 3, "creator": "Mr. FIRED Up Wealth", "n": 92, "winRate": 56.52, "pValue": 0.0843, "sig": false },
+      { "rank": 4, "creator": "YT Finance", "n": 89, "winRate": 50.56, "pValue": 0.0522, "sig": false }
+    ],
+    "bottom": [
+      { "rank": 1, "creator": "Patrick Boyle", "n": 31, "winRate": 16.13, "pValue": 0.0003, "sig": true },
+      { "rank": 2, "creator": "Beavis Wealth", "n": 43, "winRate": 20.93, "pValue": 0.0000, "sig": true },
+      { "rank": 3, "creator": "세상학개론", "n": 41, "winRate": 24.39, "pValue": 0.0913, "sig": false },
+      { "rank": 4, "creator": "Everything Money", "n": 87, "winRate": 29.89, "pValue": 0.0004, "sig": true }
+    ]
+  },
+
+  "stocksRecommended": {
+    "note": "Mentions across creators in this snapshot (Recommended Assets column).",
+    "items": [
+      { "ticker": "PLTR", "mentions": 12 },
+      { "ticker": "AIQ", "mentions": 10 },
+      { "ticker": "SPY", "mentions": 9 },
+      { "ticker": "NVDA", "mentions": 8 },
+      { "ticker": "TSLA", "mentions": 7 },
+      { "ticker": "BTC", "mentions": 6 },
+      { "ticker": "QQQ", "mentions": 6 },
+      { "ticker": "AMD", "mentions": 5 }
+    ]
+  },
+
+  "horizons": {
+    "bucketOrder": [90, 180, 365],
+    "note": "90D uses Short Term Alpha; 180D uses Avg Alpha (placeholder); 365D uses Long Term Alpha."
+  },
+
+  "intervals": {
+    "d90": {
+      "label": "90D (short)",
+      "metric": "alpha",
+      "top": [
+        { "rank": 1, "creator": "Chit Chat Stocks Podcast", "alpha": 64.03, "pValue": 0.9226, "sig": false },
+        { "rank": 2, "creator": "Bullmarket Lifestyle by Daniel Wilhelmi", "alpha": 25.24, "pValue": 0.0700, "sig": false },
+        { "rank": 3, "creator": "이효석아카데미", "alpha": 16.55, "pValue": 0.6258, "sig": false },
+        { "rank": 4, "creator": "Tom Nash", "alpha": -12.41, "pValue": 0.0064, "sig": true }
+      ],
+      "bottom": [
+        { "rank": 1, "creator": "Patrick Boyle", "alpha": -49.43, "pValue": 0.0003, "sig": true },
+        { "rank": 2, "creator": "Meet Kevin", "alpha": -28.86, "pValue": 0.2177, "sig": false },
+        { "rank": 3, "creator": "ClearValue Tax", "alpha": -27.27, "pValue": 0.2133, "sig": false },
+        { "rank": 4, "creator": "Mark Moss", "alpha": -26.59, "pValue": 0.0004, "sig": true }
+      ]
+    },
+
+    "d180": {
+      "label": "180D (mid) — placeholder",
+      "metric": "alpha",
+      "top": [
+        { "rank": 1, "creator": "Tom Nash", "alpha": 72.70, "pValue": 0.0064, "sig": true },
+        { "rank": 2, "creator": "Bullmarket Lifestyle by Daniel Wilhelmi", "alpha": 37.06, "pValue": 0.0700, "sig": false },
+        { "rank": 3, "creator": "Stealth Wealth Investing", "alpha": 20.08, "pValue": 0.1140, "sig": false },
+        { "rank": 4, "creator": "YT Finance", "alpha": 19.33, "pValue": 0.0522, "sig": false }
+      ],
+      "bottom": [
+        { "rank": 1, "creator": "The Prof G Pod – Scott Galloway", "alpha": -51.72, "pValue": 0.0265, "sig": true },
+        { "rank": 2, "creator": "Patrick Boyle", "alpha": -42.18, "pValue": 0.0003, "sig": true },
+        { "rank": 3, "creator": "OneOption", "alpha": -22.24, "pValue": 0.0011, "sig": true },
+        { "rank": 4, "creator": "FX Evolution", "alpha": -21.80, "pValue": 0.0029, "sig": true }
+      ]
+    },
+
+    "d365": {
+      "label": "365D (long)",
+      "metric": "alpha",
+      "top": [
+        { "rank": 1, "creator": "Tom Nash", "alpha": 116.83, "pValue": 0.0064, "sig": true },
+        { "rank": 2, "creator": "Bullmarket Lifestyle by Daniel Wilhelmi", "alpha": 119.78, "pValue": 0.0700, "sig": false },
+        { "rank": 3, "creator": "YT Finance", "alpha": 43.65, "pValue": 0.0522, "sig": false },
+        { "rank": 4, "creator": "Stealth Wealth Investing", "alpha": 25.76, "pValue": 0.1140, "sig": false }
+      ],
+      "bottom": [
+        { "rank": 1, "creator": "The Prof G Pod – Scott Galloway", "alpha": -101.50, "pValue": 0.0265, "sig": true },
+        { "rank": 2, "creator": "StockCharts TV", "alpha": -35.87, "pValue": 0.0582, "sig": false },
+        { "rank": 3, "creator": "FX Evolution", "alpha": -32.90, "pValue": 0.0029, "sig": true },
+        { "rank": 4, "creator": "Stock Moe", "alpha": -28.04, "pValue": 0.1625, "sig": false }
+      ]
     }
-    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-
-    /* -------------------------
-       LOCKING / GATING STYLES
-    --------------------------*/
-    .locked main#lockedContent {
-      filter: blur(10px);
-      transform: scale(1.01);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .lock-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      background: rgba(0,0,0,0.35);
-      display: none;
-      cursor: pointer;
-    }
-    .locked .lock-layer { display: block; }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0,0,0,0.70);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-    .modal-backdrop.open { display: flex; }
-
-    .modal {
-      width: min(620px, 100%);
-      border-radius: 18px;
-      background: rgba(10,10,10,0.92);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      max-height: 90vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .modal-inner { padding: 18px; }
-    @media (max-width: 640px) { .modal-inner { padding: 16px; } }
-
-    .divider { height: 1px; background: rgba(255,255,255,0.10); }
-
-    .formkit-form, .seva-form {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
-    }
-    .formkit-form input[type="email"], .seva-form input[type="email"] {
-      width: 100% !important;
-      padding: 12px 12px !important;
-      border-radius: 12px !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      background: rgba(255,255,255,0.04) !important;
-      color: #e8eaed !important;
-      outline: none !important;
-    }
-    .formkit-form button, .seva-form button {
-      width: 100% !important;
-      padding: 12px 12px !important;
-      border-radius: 12px !important;
-      border: none !important;
-      font-weight: 800 !important;
-      cursor: pointer !important;
-    }
-  </style>
-</head>
-
-<body class="bg-gray-950 text-gray-100 min-h-screen">
-
-  <div class="lock-layer" id="lockLayer" aria-label="Locked leaderboard"></div>
-
-  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Subscribe to unlock">
-    <div class="modal">
-      <div class="modal-inner">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <div class="text-xl sm:text-2xl font-extrabold">Unlock the full leaderboard</div>
-            <div class="text-sm text-gray-300 mt-2 leading-relaxed">
-              Subscribe to get weekly ranking updates, changes over time, and new creators added.
-            </div>
-          </div>
-          <button id="closeBtn" class="text-gray-400 hover:text-gray-200 text-sm font-semibold">
-            Close
-          </button>
-        </div>
-
-        <div class="mt-4">
-          <div id="kitFormSlot"></div>
-        </div>
-
-        <div class="mt-4 text-xs text-gray-400">
-          No spam. Unsubscribe anytime.
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="modal-inner">
-        <div class="text-sm font-bold">Already subscribed?</div>
-        <div class="text-sm text-gray-300 mt-2 leading-relaxed">
-          If you’ve subscribed before on this device, click below to unlock.
-          If not, just enter your email in the form above (Kit will dedupe duplicates).
-        </div>
-
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button id="alreadyBtn"
-            class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-800 hover:bg-gray-700 transition border border-gray-700">
-            Unlock on this device →
-          </button>
-
-          <a href="https://truealpha-investing.kit.com/c5142792e3"
-             target="_blank"
-             class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-            Open subscribe form →
-          </a>
-        </div>
-
-        <div class="mt-3 text-[11px] text-gray-500">
-          Note: this is a lightweight “email gate” for growth—not a secure login system.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-      <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
-        </svg>
-        <span class="font-extrabold tracking-tight text-lg">
-          TRUE<span class="text-green-500">ALPHA</span>
-        </span>
-      </a>
-
-      <div class="hidden md:flex items-center gap-6 text-sm text-gray-300">
-        <a href="/methodology.html" class="hover:text-green-400 transition">Methodology</a>
-        <a href="/faq.html" class="hover:text-green-400 transition">FAQ</a>
-        <a href="/blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
-      </div>
-
-      <a id="dbBtnTop"
-         href="#"
-         target="_blank"
-         class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-        View Full Database <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </nav>
-
-  <main id="lockedContent" class="max-w-7xl mx-auto px-4 py-10">
-
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Leaderboard</h1>
-        <p class="mt-2 text-gray-400 max-w-2xl">
-          A neutral scoreboard for creator predictions —
-          <span class="text-green-400 font-semibold">alpha</span>,
-          <span class="text-green-400 font-semibold">accuracy</span>,
-          and how outcomes change by time horizon.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-2 justify-start lg:justify-end">
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Last Updated:</span> <span id="lastUpdated">—</span>
-        </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Filter:</span> <span id="filterText">—</span>
-        </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Entry:</span> <span id="entryText">—</span>
-        </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Sig:</span> <span id="sigText">—</span>
-        </div>
-      </div>
-    </div>
-
-    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between">
-          <div>
-            <h2 class="font-bold text-lg">Top + Bottom by Alpha</h2>
-            <p class="text-xs text-gray-400 mt-1" id="alphaSub">—</p>
-          </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Avg Alpha</div>
-        </div>
-
-        <div class="mt-5">
-          <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-          <div id="alphaTop" class="mt-3 space-y-2"></div>
-        </div>
-
-        <div class="mt-6">
-          <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-          <div id="alphaBottom" class="mt-3 space-y-2"></div>
-        </div>
-      </div>
-
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between">
-          <div>
-            <h2 class="font-bold text-lg">Top + Bottom by Accuracy</h2>
-            <p class="text-xs text-gray-400 mt-1" id="accuracySub">—</p>
-          </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Accuracy</div>
-        </div>
-
-        <div class="mt-5">
-          <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-          <div id="accTop" class="mt-3 space-y-2"></div>
-        </div>
-
-        <div class="mt-6">
-          <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-          <div id="accBottom" class="mt-3 space-y-2"></div>
-        </div>
-      </div>
-
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <h2 class="font-bold text-lg">Commonly Mentioned Assets</h2>
-            <p class="text-xs text-gray-400 mt-1" id="stocksSub">—</p>
-          </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Mentions</div>
-        </div>
-
-        <div id="stocksList" class="mt-4 space-y-2"></div>
-
-        <a id="dbBtnCard"
-           href="#"
-           target="_blank"
-           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          View Full Database <span aria-hidden="true">→</span>
-        </a>
-
-        <div class="mt-3 text-[11px] text-gray-500">
-          Powered by the public Google Sheet database.
-        </div>
-      </div>
-
-    </section>
-
-    <section class="mt-6 glass soft-shadow rounded-2xl p-5">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h2 class="font-bold text-lg">Alpha by Time Horizon</h2>
-          <p class="text-xs text-gray-400 mt-1" id="intervalSub">90D vs 180D vs 365D</p>
-        </div>
-        <div class="text-[11px] text-gray-400 uppercase tracking-wider">90 / 180 / 365</div>
-      </div>
-
-      <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
-
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="label90">90D</div>
-            <div class="text-xs text-gray-400">alpha</div>
-          </div>
-          <div class="mt-4 grid grid-cols-2 gap-4">
-            <div>
-              <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-              <div id="top90" class="mt-3 space-y-2"></div>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-              <div id="bot90" class="mt-3 space-y-2"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="label180">180D</div>
-            <div class="text-xs text-gray-400">alpha</div>
-          </div>
-
-          <div id="note180" class="mt-3 text-xs text-gray-400">
-            —
-          </div>
-
-          <div class="mt-4 grid grid-cols-2 gap-4">
-            <div>
-              <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-              <div id="top180" class="mt-3 space-y-2"></div>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-              <div id="bot180" class="mt-3 space-y-2"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="label365">365D</div>
-            <div class="text-xs text-gray-400">alpha</div>
-          </div>
-          <div class="mt-4 grid grid-cols-2 gap-4">
-            <div>
-              <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-              <div id="top365" class="mt-3 space-y-2"></div>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-              <div id="bot365" class="mt-3 space-y-2"></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="mt-4 flex items-center justify-between text-[11px] text-gray-500">
-        <span>Alpha = Stock return − SPY return (same horizon). Significance uses p-value.</span>
-        <a id="dbLinkBottom"
-           href="#"
-           target="_blank"
-           class="text-green-400 hover:text-green-300 font-semibold">
-          Open Full Database →
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="border-t border-gray-800/70 bg-gray-950 py-10 mt-10">
-    <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-      <div>
-        <div class="font-semibold text-gray-300">True Alpha Research</div>
-        <div class="text-xs mt-1">Not financial advice. For entertainment & data purposes only.</div>
-      </div>
-      <div class="text-xs">
-        <a href="https://x.com/TruealphaInvest" target="_blank" class="hover:text-green-400">X / Twitter</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const JSON_PATH = "./leaderboard.json";
-
-    const fmtPct = (n, decimals = 2) => {
-      const num = Number(n);
-      if (!Number.isFinite(num)) return "—";
-      const sign = num > 0 ? "+" : "";
-      return `${sign}${num.toFixed(decimals)}%`;
-    };
-
-    const fmtRate = (n) => {
-      const num = Number(n);
-      if (!Number.isFinite(num)) return "—";
-      return `${num.toFixed(2)}%`;
-    };
-
-    const fmtP = (p) => {
-      const num = Number(p);
-      if (!Number.isFinite(num)) return "—";
-      return num < 0.001 ? "< 0.001" : num.toFixed(3);
-    };
-
-    function pillRank(rank, kind) {
-      const base = "w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold";
-      if (kind === "good") return `<div class="${base} bg-green-500/15 text-green-300 border border-green-400/20">${rank}</div>`;
-      if (kind === "bad") return `<div class="${base} bg-red-500/15 text-red-300 border border-red-400/20">${rank}</div>`;
-      return `<div class="${base} bg-gray-500/15 text-gray-200 border border-gray-400/20">${rank}</div>`;
-    }
-
-    function sigBadge(statSig, pValue) {
-      if (statSig === true) {
-        return `<span title="p=${fmtP(pValue)}" class="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-extrabold bg-green-500/15 text-green-300 border border-green-400/20">SIG</span>`;
-      }
-      if (statSig === false) {
-        return `<span title="p=${fmtP(pValue)}" class="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-extrabold bg-gray-500/15 text-gray-200 border border-gray-400/20">NOT SIG</span>`;
-      }
-      return "";
-    }
-
-    function rowCreator({ rank, creator, valueText, valueClass, subText, statSig, pValue }) {
-      return `
-        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
-          <div class="flex items-center gap-3 min-w-0">
-            ${rank}
-            <div class="min-w-0">
-              <div class="text-sm font-semibold text-gray-100 truncate">
-                ${creator}
-                ${sigBadge(statSig, pValue)}
-              </div>
-              <div class="text-[11px] text-gray-400">${subText}</div>
-            </div>
-          </div>
-          <div class="text-sm font-extrabold ${valueClass} whitespace-nowrap">${valueText}</div>
-        </div>
-      `;
-    }
-
-    function rowTicker({ ticker, mentions }) {
-      return `
-        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
-          <div class="text-sm font-extrabold tracking-wide">${ticker}</div>
-          <div class="text-xs text-gray-400">${mentions} mentions</div>
-        </div>
-      `;
-    }
-
-    function setDbLinks(url) {
-      ["dbBtnTop", "dbBtnCard", "dbLinkBottom"].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.href = url;
-      });
-    }
-
-    async function initLeaderboard() {
-      try {
-        const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-
-        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "—";
-        document.getElementById("filterText").textContent = data?.meta?.filter || "—";
-        document.getElementById("entryText").textContent = data?.meta?.entryPrice || "—";
-        document.getElementById("sigText").textContent = data?.meta?.significanceRule || "—";
-
-        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "—";
-        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
-        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "—";
-
-        setDbLinks(data?.meta?.databaseUrl || "#");
-
-        const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-green-300",
-          subText: typeof x.n === "number" ? `n=${x.n}` : "",
-          statSig: x.statSig,
-          pValue: x.pValue
-        })).join("");
-
-        const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-red-300",
-          subText: typeof x.n === "number" ? `n=${x.n}` : "",
-          statSig: x.statSig,
-          pValue: x.pValue
-        })).join("");
-
-        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
-          valueText: fmtRate(x.accuracy),
-          valueClass: "text-green-300",
-          subText: typeof x.n === "number" ? `n=${x.n}` : "",
-          statSig: x.statSig,
-          pValue: x.pValue
-        })).join("");
-
-        const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
-          valueText: fmtRate(x.accuracy),
-          valueClass: "text-red-300",
-          subText: typeof x.n === "number" ? `n=${x.n}` : "",
-          statSig: x.statSig,
-          pValue: x.pValue
-        })).join("");
-
-        document.getElementById("accTop").innerHTML = accTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("accBottom").innerHTML = accBottom || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
-        document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        // Horizons
-        const d90 = data?.intervals?.d90 || {};
-        const d180 = data?.intervals?.d180 || {};
-        const d365 = data?.intervals?.d365 || {};
-
-        document.getElementById("label90").textContent = d90.label || "90D";
-        document.getElementById("label180").textContent = d180.label || "180D";
-        document.getElementById("label365").textContent = d365.label || "365D";
-
-        document.getElementById("note180").textContent = d180.note || "—";
-
-        const fillH = (arr, elId, kind) => {
-          const html = (arr || []).slice(0, 4).map(x => rowCreator({
-            rank: pillRank(x.rank ?? "", kind),
-            creator: x.creator || "—",
-            valueText: fmtPct(x.alpha),
-            valueClass: kind === "good" ? "text-green-300" : "text-red-300",
-            subText: typeof x.n === "number" ? `n=${x.n}` : "",
-            statSig: x.statSig,
-            pValue: x.pValue
-          })).join("");
-          document.getElementById(elId).innerHTML = html || `<div class="text-sm text-gray-400">—</div>`;
-        };
-
-        fillH(d90.top, "top90", "good");
-        fillH(d90.bottom, "bot90", "bad");
-        fillH(d180.top, "top180", "good");
-        fillH(d180.bottom, "bot180", "bad");
-        fillH(d365.top, "top365", "good");
-        fillH(d365.bottom, "bot365", "bad");
-
-      } catch (e) {
-        console.error(e);
-        ["alphaTop","alphaBottom","accTop","accBottom","stocksList","top90","bot90","top180","bot180","top365","bot365"].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
-        });
-      }
-    }
-
-    initLeaderboard();
-  </script>
-
-  <script>
-    /* -------------------------
-       GATING LOGIC
-    --------------------------*/
-    const KIT_UID = "c5142792e3";
-    const KIT_SCRIPT_SRC = `https://truealpha-investing.kit.com/${KIT_UID}/index.js`;
-
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const lockLayer = document.getElementById("lockLayer");
-    const closeBtn = document.getElementById("closeBtn");
-    const alreadyBtn = document.getElementById("alreadyBtn");
-
-    let kitEmbedLoaded = false;
-
-    function openModal() { modalBackdrop.classList.add("open"); }
-    function closeModal() { modalBackdrop.classList.remove("open"); }
-
-    function setUnlockedLocal(days = 30) {
-      const until = Date.now() + days * 24 * 60 * 60 * 1000;
-      localStorage.setItem("ta_leaderboard_unlocked_until", String(until));
-    }
-
-    function isUnlockedLocal() {
-      const v = localStorage.getItem("ta_leaderboard_unlocked_until");
-      if (!v) return false;
-      const until = Number(v);
-      return Number.isFinite(until) && until > Date.now();
-    }
-
-    function unlock() {
-      document.body.classList.remove("locked");
-      closeModal();
-    }
-
-    function lock() { document.body.classList.add("locked"); }
-
-    function loadKitEmbedOnce() {
-      if (kitEmbedLoaded) return;
-      const slot = document.getElementById("kitFormSlot");
-      if (!slot) return;
-      if (slot.children.length > 0) { kitEmbedLoaded = true; return; }
-
-      kitEmbedLoaded = true;
-      const s = document.createElement("script");
-      s.async = true;
-      s.setAttribute("data-uid", KIT_UID);
-      s.src = KIT_SCRIPT_SRC;
-      slot.appendChild(s);
-    }
-
-    (function initGate() {
-      const params = new URLSearchParams(location.search);
-
-      if (params.get("subscribed") === "true") {
-        setUnlockedLocal(30);
-        unlock();
-        params.delete("subscribed");
-        const newUrl = location.pathname + (params.toString() ? `?${params.toString()}` : "");
-        history.replaceState({}, "", newUrl);
-        return;
-      }
-
-      if (isUnlockedLocal()) { unlock(); return; }
-
-      lock();
-      loadKitEmbedOnce();
-      setTimeout(openModal, 450);
-    })();
-
-    lockLayer.addEventListener("click", () => { loadKitEmbedOnce(); openModal(); });
-    closeBtn.addEventListener("click", closeModal);
-    modalBackdrop.addEventListener("click", (e) => { if (e.target === modalBackdrop) closeModal(); });
-
-    alreadyBtn.addEventListener("click", () => {
-      setUnlockedLocal(30);
-      unlock();
-    });
-  </script>
-
-</body>
-</html>
+  }
+}
