@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Methodology | True Alpha</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -11,32 +11,32 @@
     .glass-panel {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
 
-  <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
+  <nav class="w-full border-b border-gray-800/70 bg-gray-950/80 sticky top-0 z-50 backdrop-blur">
     <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="flex items-center gap-2 decoration-0">
+      <a href="index.html" class="flex items-center gap-2 decoration-0 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
+        <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
       </a>
 
       <div class="text-xs text-gray-500 font-mono hidden sm:block">
-        EVALUATION RULES
+        ENGINE: TRANSCRIPTS → SIGNALS → SCOREBOARD
       </div>
     </div>
   </nav>
 
   <main class="flex-grow max-w-3xl mx-auto px-4 py-12 sm:py-20">
-    <a href="index.html" class="inline-flex items-center text-sm text-green-500 hover:text-green-400 mb-8 transition">
+
+    <a href="index.html" class="inline-flex items-center text-sm text-green-400 hover:text-green-300 mb-8 transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
       </svg>
@@ -48,112 +48,62 @@
     </h1>
 
     <p class="text-lg text-gray-400 mb-10 border-b border-gray-800 pb-8">
-      True Alpha tracks publicly stated creator predictions over time and compares outcomes to the S&amp;P 500 (SPY).
-      This page documents the rules used to log and evaluate predictions.
-      <span class="text-gray-200">Not financial advice.</span>
+      True Alpha is a scoreboard for finance creator predictions — built to answer:
+      <span class="text-gray-200 font-semibold">who is actually beating the market, and is it statistically meaningful?</span>
     </p>
 
     <div class="space-y-10">
 
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">1) What counts as a prediction</h3>
-        <div class="text-gray-400 leading-relaxed space-y-3">
-          <p>
-            Predictions are extracted from YouTube video transcripts using automated parsing and language models.
-            A transcript mention is logged as a prediction when:
-          </p>
-          <ul class="list-disc pl-5 space-y-2">
-            <li>A ticker/asset is mentioned <span class="text-gray-200">(e.g., TSLA, NVDA, BTC)</span></li>
-            <li>A directional claim is present <span class="text-gray-200">(up/down/outperform/underperform)</span></li>
-            <li>A timeframe is stated or can be mapped into a standard bucket</li>
-          </ul>
-          <p class="text-sm text-gray-500">
-            Transcript-based extraction may contain errors. We continuously improve filtering and parsing rules.
-          </p>
-        </div>
-      </section>
-
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">2) Entry price rule</h3>
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold mb-2">1) Data Collection</h3>
         <p class="text-gray-400 leading-relaxed">
-          We log the entry price as the
-          <span class="text-green-400 font-semibold">close price on the video publish date</span>.
+          We pull predictions from creator videos using transcripts. An AI model extracts:
+          ticker symbols, direction (bullish/bearish), confidence, and a target horizon when available.
         </p>
-        <p class="text-sm text-gray-500 mt-3">
-          This is a modeling assumption and may differ from a viewer’s real execution price.
-        </p>
-      </section>
-
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">3) Horizon buckets (90 / 180 / 365)</h3>
-        <p class="text-gray-400 leading-relaxed mb-3">
-          Each prediction is evaluated at the end of its stated timeframe. If the creator is vague (e.g., “over the next few months”),
-          we map it into one of these standardized horizons:
-        </p>
-
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="p-4 rounded-xl bg-gray-800/40 border border-gray-700">
-            <div class="text-xs text-gray-400 uppercase tracking-wider">Short</div>
-            <div class="text-lg font-extrabold text-white mt-1">90 days</div>
-          </div>
-          <div class="p-4 rounded-xl bg-gray-800/40 border border-gray-700">
-            <div class="text-xs text-gray-400 uppercase tracking-wider">Medium</div>
-            <div class="text-lg font-extrabold text-white mt-1">180 days</div>
-          </div>
-          <div class="p-4 rounded-xl bg-gray-800/40 border border-gray-700">
-            <div class="text-xs text-gray-400 uppercase tracking-wider">Long</div>
-            <div class="text-lg font-extrabold text-white mt-1">365 days</div>
-          </div>
+        <div class="mt-4 text-xs text-gray-500">
+          Important: transcripts and AI extraction can be imperfect. We treat this as a best-effort data engine, not a brokerage ledger.
         </div>
-
-        <p class="text-sm text-gray-500 mt-4">
-          If a creator states a specific date, we use that date. Otherwise we map to the nearest bucket.
-        </p>
-      </section>
-
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">4) Benchmarking (Alpha vs SPY)</h3>
-        <p class="text-gray-400 leading-relaxed">
-          We compare the asset’s return to SPY over the same horizon. Alpha is:
-        </p>
-        <div class="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700 mono text-sm text-green-400">
-          Alpha = (Asset Return %) - (SPY Return %)
-        </div>
-      </section>
-
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">5) Leaderboard metrics</h3>
-        <ul class="list-disc pl-5 space-y-2 text-gray-400">
-          <li><span class="text-gray-200 font-semibold">Average Alpha</span>: average alpha across scorable predictions.</li>
-          <li><span class="text-gray-200 font-semibold">Win Rate (directional)</span>: % of predictions where direction was correct.</li>
-          <li><span class="text-gray-200 font-semibold">Sample size (N)</span>: number of scorable predictions included.</li>
-        </ul>
-        <p class="text-sm text-gray-500 mt-3">
-          For public views marked “Verified”, we require <span class="text-gray-200 font-semibold">N &ge; 20</span>.
-        </p>
-      </section>
-
-      <section class="glass-panel rounded-2xl p-6">
-        <h3 class="text-2xl font-bold text-white mb-2">6) Limitations</h3>
-        <ul class="list-disc pl-5 space-y-2 text-gray-400">
-          <li>Transcript extraction and interpretation can be imperfect.</li>
-          <li>Creators may change views over time; results update as new videos are added.</li>
-          <li>This dataset does not represent any creator’s full portfolio or intent.</li>
-        </ul>
-      </section>
-
-      <div class="text-xs text-gray-500">
-        Not financial advice. For entertainment &amp; data purposes only.
       </div>
 
-    </div>
-  </main>
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold mb-2">2) Entry Price (Your Rule)</h3>
+        <p class="text-gray-400 leading-relaxed">
+          <span class="text-gray-200 font-semibold">Entry price</span> is the
+          <span class="text-green-400 font-semibold">close price on the publish date</span>.
+          This is the simplest, most repeatable assumption across creators and time zones.
+        </p>
+      </div>
 
-  <footer class="border-t border-gray-800 bg-gray-900 py-10 mt-12">
-    <div class="max-w-5xl mx-auto px-4 text-xs text-gray-500">
-      True Alpha Research.
-    </div>
-  </footer>
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold mb-2">3) Evaluation Horizon</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Each prediction is evaluated using a <span class="text-gray-200 font-semibold">365-day window</span> by default
+          (publish-date close → same date next year).
+        </p>
+        <div class="mt-4 text-xs text-gray-500">
+          The leaderboard also breaks out shorter windows (90/180 days) where available.
+        </div>
+      </div>
 
-</body>
-</html>
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold mb-2">4) Alpha (What “True Alpha” Means)</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Returns are meaningless without a benchmark. We compute Alpha as:
+          <span class="text-gray-200 font-semibold">Stock Return − S&P 500 Return</span>
+          over the same horizon.
+        </p>
+        <div class="mt-4 p-4 bg-gray-900/60 rounded-xl border border-gray-800 font-mono text-sm text-green-400">
+          Alpha = (Stock % Return) − (S&P 500 % Return)
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold mb-2">5) Accuracy</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Accuracy is directional: if a creator is bullish and the asset is up over the evaluation window, that’s a “win.”
+          If they’re bearish and it’s down, that’s also a “win.”
+        </p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold
