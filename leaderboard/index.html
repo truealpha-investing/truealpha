@@ -16,51 +16,9 @@
       backdrop-filter: blur(12px);
     }
     .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-
-    .locked main#lockedContent {
-      filter: blur(10px);
-      transform: scale(1.01);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .lock-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      background: rgba(0,0,0,0.35);
-      display: none;
-      cursor: pointer;
-    }
-    .locked .lock-layer { display: block; }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0,0,0,0.70);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-    .modal-backdrop.open { display: flex; }
-
-    .modal {
-      width: min(620px, 100%);
-      border-radius: 18px;
-      background: rgba(10,10,10,0.92);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      max-height: 90vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .modal-inner { padding: 18px; }
-    @media (max-width: 640px) { .modal-inner { padding: 16px; } }
-
     .divider { height: 1px; background: rgba(255,255,255,0.10); }
 
+    /* Kit embed cosmetic resets */
     .formkit-form, .seva-form {
       background: transparent !important;
       border: none !important;
@@ -91,56 +49,6 @@
 
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <div class="lock-layer" id="lockLayer" aria-label="Locked leaderboard"></div>
-
-  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Subscribe to unlock">
-    <div class="modal">
-      <div class="modal-inner">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <div class="text-xl sm:text-2xl font-extrabold">Unlock the full leaderboard</div>
-            <div class="text-sm text-gray-300 mt-2 leading-relaxed">
-              Subscribe to get weekly ranking updates, changes over time, and new creators added.
-            </div>
-          </div>
-          <button id="closeBtn" class="text-gray-400 hover:text-gray-200 text-sm font-semibold">Close</button>
-        </div>
-
-        <div class="mt-4">
-          <div id="kitFormSlot"></div>
-        </div>
-
-        <div class="mt-4 text-xs text-gray-400">No spam. Unsubscribe anytime.</div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="modal-inner">
-        <div class="text-sm font-bold">Already subscribed?</div>
-        <div class="text-sm text-gray-300 mt-2 leading-relaxed">
-          If you’ve subscribed before on this device, click below to unlock.
-        </div>
-
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button id="alreadyBtn"
-            class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-800 hover:bg-gray-700 transition border border-gray-700">
-            Unlock on this device →
-          </button>
-
-          <a href="https://truealpha-investing.kit.com/c5142792e3"
-             target="_blank"
-             class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-            Open subscribe form →
-          </a>
-        </div>
-
-        <div class="mt-3 text-[11px] text-gray-500">
-          Note: this is a lightweight “email gate” for growth—not a secure login system.
-        </div>
-      </div>
-    </div>
-  </div>
-
   <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
@@ -157,26 +65,56 @@
         <a href="/blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
       </div>
 
-      <a id="dbBtnTop"
-         href="#"
-         target="_blank"
-         class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-        View Full Database <span aria-hidden="true">→</span>
-      </a>
+      <div class="flex items-center gap-2">
+        <a href="#subscribe"
+           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Get weekly changes <span aria-hidden="true">→</span>
+        </a>
+
+        <a id="dbBtnTop"
+           href="#"
+           target="_blank"
+           class="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          Open dataset <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </nav>
 
-  <main id="lockedContent" class="max-w-7xl mx-auto px-4 py-10">
+  <main id="content" class="max-w-7xl mx-auto px-4 py-10">
 
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-      <div>
+      <div class="max-w-3xl">
         <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Leaderboard</h1>
-        <p class="mt-2 text-gray-400 max-w-2xl">
+        <p class="mt-2 text-gray-400">
           A neutral scoreboard for creator predictions —
           <span class="text-green-400 font-semibold">alpha</span>,
           <span class="text-green-400 font-semibold">accuracy</span>,
           and how results change by time horizon.
         </p>
+
+        <!-- Soft subscribe (no gate) -->
+        <section id="subscribe" class="mt-5 glass soft-shadow rounded-2xl p-5">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <div class="text-base sm:text-lg font-extrabold">Get weekly leaderboard changes</div>
+              <div class="text-xs text-gray-400 mt-1 leading-relaxed">
+                New creators, rank movers, and what changed since last week. No spam.
+              </div>
+            </div>
+            <div class="text-[11px] text-gray-500 uppercase tracking-wider">
+              Free email
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div id="kitFormInline"></div>
+          </div>
+
+          <div class="mt-3 text-[11px] text-gray-500">
+            You can unsubscribe anytime.
+          </div>
+        </section>
       </div>
 
       <div class="flex flex-wrap gap-2 justify-start lg:justify-end">
@@ -251,11 +189,11 @@
         <a id="dbBtnCard"
            href="#"
            target="_blank"
-           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          View Full Database <span aria-hidden="true">→</span>
+           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          Open dataset <span aria-hidden="true">↗</span>
         </a>
 
-        <div class="mt-3 text-[11px] text-gray-500">Powered by the public Google Sheet database.</div>
+        <div class="mt-3 text-[11px] text-gray-500">Powered by the public dataset.</div>
       </div>
 
     </section>
@@ -322,7 +260,7 @@
            href="#"
            target="_blank"
            class="text-green-400 hover:text-green-300 font-semibold">
-          Open Full Database →
+          Open dataset →
         </a>
       </div>
     </section>
@@ -335,13 +273,16 @@
         <div class="font-semibold text-gray-300">True Alpha Research</div>
         <div class="text-xs mt-1">Not financial advice. For entertainment & data purposes only.</div>
       </div>
-      <div class="text-xs">
+      <div class="text-xs flex items-center gap-4">
         <a href="https://x.com/TruealphaInvest" target="_blank" class="hover:text-green-400">X / Twitter</a>
       </div>
     </div>
   </footer>
 
   <script>
+    // ==========================
+    // Data rendering
+    // ==========================
     const JSON_PATH = "./leaderboard.json";
 
     // Robust parser: handles 58.54 OR "58.54%" OR "0.64%"
@@ -353,7 +294,6 @@
       const s = x.trim();
       if (!s) return NaN;
 
-      // If it's like "0.64%" -> 0.64
       if (s.endsWith("%")) {
         const n = Number(s.replace("%", "").trim());
         return Number.isFinite(n) ? n : NaN;
@@ -379,7 +319,6 @@
     function fmtP(pValue) {
       const p = toNumber(pValue);
       if (!Number.isFinite(p)) return "";
-      // p stored as decimal (0.0064). show as p=0.0064
       return `p=${p.toFixed(4)}`;
     }
 
@@ -422,7 +361,7 @@
     function setDbLinks(url) {
       ["dbBtnTop", "dbBtnCard", "dbLinkBottom"].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.href = url;
+        if (el) el.href = url || "#";
       });
     }
 
@@ -532,71 +471,25 @@
   </script>
 
   <script>
+    // ==========================
+    // Kit embed (no gating)
+    // ==========================
     const KIT_UID = "c5142792e3";
     const KIT_SCRIPT_SRC = `https://truealpha-investing.kit.com/${KIT_UID}/index.js`;
 
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const lockLayer = document.getElementById("lockLayer");
-    const closeBtn = document.getElementById("closeBtn");
-    const alreadyBtn = document.getElementById("alreadyBtn");
-
-    let kitEmbedLoaded = false;
-
-    function openModal() { modalBackdrop.classList.add("open"); }
-    function closeModal() { modalBackdrop.classList.remove("open"); }
-
-    function setUnlockedLocal(days = 30) {
-      const until = Date.now() + days * 24 * 60 * 60 * 1000;
-      localStorage.setItem("ta_leaderboard_unlocked_until", String(until));
-    }
-
-    function isUnlockedLocal() {
-      const v = localStorage.getItem("ta_leaderboard_unlocked_until");
-      if (!v) return false;
-      const until = Number(v);
-      return Number.isFinite(until) && until > Date.now();
-    }
-
-    function unlock() { document.body.classList.remove("locked"); closeModal(); }
-    function lock() { document.body.classList.add("locked"); }
-
-    function loadKitEmbedOnce() {
-      if (kitEmbedLoaded) return;
-      const slot = document.getElementById("kitFormSlot");
+    (function loadKitEmbed() {
+      const slot = document.getElementById("kitFormInline");
       if (!slot) return;
-      if (slot.children.length > 0) { kitEmbedLoaded = true; return; }
-      kitEmbedLoaded = true;
+
+      // Avoid double-inject
+      if (slot.children.length > 0) return;
 
       const s = document.createElement("script");
       s.async = true;
       s.setAttribute("data-uid", KIT_UID);
       s.src = KIT_SCRIPT_SRC;
       slot.appendChild(s);
-    }
-
-    (function initGate() {
-      const params = new URLSearchParams(location.search);
-
-      if (params.get("subscribed") === "true") {
-        setUnlockedLocal(30);
-        unlock();
-        params.delete("subscribed");
-        const newUrl = location.pathname + (params.toString() ? `?${params.toString()}` : "");
-        history.replaceState({}, "", newUrl);
-        return;
-      }
-
-      if (isUnlockedLocal()) { unlock(); return; }
-
-      lock();
-      loadKitEmbedOnce();
-      setTimeout(openModal, 450);
     })();
-
-    lockLayer.addEventListener("click", () => { loadKitEmbedOnce(); openModal(); });
-    closeBtn.addEventListener("click", closeModal);
-    modalBackdrop.addEventListener("click", (e) => { if (e.target === modalBackdrop) closeModal(); });
-    alreadyBtn.addEventListener("click", () => { setUnlockedLocal(30); unlock(); });
   </script>
 
 </body>
