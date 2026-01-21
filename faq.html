@@ -14,12 +14,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         /* Accordion Styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
@@ -28,7 +24,7 @@
         <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
                 </svg>
                 <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
             </a>
@@ -39,7 +35,7 @@
     </nav>
 
     <main class="flex-grow max-w-3xl mx-auto px-4 py-12 sm:py-20">
-        
+
         <a href="index.html" class="inline-flex items-center text-sm text-green-500 hover:text-green-400 mb-8 transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -55,7 +51,7 @@
         </p>
 
         <div class="space-y-4">
-            
+
             <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
                 <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
                     <span>How do you determine the timeframe for each prediction?</span>
@@ -78,7 +74,31 @@
                 </summary>
                 <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
                     <p>It can, which is why we display two metrics: <strong>Average Alpha</strong> and <strong>Win Rate</strong>.</p>
-                    <p class="mt-2">A creator might have a high "Average Alpha" because of one 500% gain, even if they were wrong 9 times out of 10. By looking at the Win Rate (Accuracy %), you can see if a creator is consistent or just lucky. Our "True Alpha Score" balances these factors to reward consistency over lottery tickets.</p>
+                    <p class="mt-2">A creator might have a high "Average Alpha" because of one 500% gain, even if they were wrong 9 times out of 10. By looking at the Win Rate (Accuracy %), you can see if a creator is consistent or just lucky.</p>
+                </div>
+            </details>
+
+            <!-- ✅ NEW FAQ: SIGNIFICANCE / "SKILL VS LUCK" (Simple, no p-value mention) -->
+            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
+                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
+                    <span>How do you know if a creator is actually skilled vs just lucky?</span>
+                    <span class="transition group-open:rotate-180">
+                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </summary>
+                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
+                    <p>We run a simple <strong>"skill vs luck" check</strong> on every creator.</p>
+                    <p class="mt-2">
+                        If a creator only has a few predictions (or one big winner), their results can look amazing by chance.
+                        So we ask: <strong>"Is their performance strong enough — across enough predictions — that it’s unlikely to be random?"</strong>
+                    </p>
+                    <p class="mt-2">
+                        When the data clears that bar, we mark the creator as <strong>Statistically Significant</strong>.
+                        If it doesn’t, we label it <strong>Not Significant</strong> — meaning: <em>interesting, but not proven yet</em>.
+                    </p>
+                    <p class="mt-2 text-gray-500 text-sm">
+                        Think of it like flipping a coin: getting heads 3 times in a row doesn’t prove the coin is special — but getting heads 70 out of 100 flips might.
+                    </p>
                 </div>
             </details>
 
@@ -113,7 +133,7 @@
 
     <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
         <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-            
+
             <div>
                 <a href="methodology.html" class="hover:text-green-500 transition">
                     <h4 class="font-bold text-white mb-4">The Methodology &rarr;</h4>
