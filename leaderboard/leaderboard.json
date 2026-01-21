@@ -1,48 +1,47 @@
 {
   "meta": {
-    "lastUpdated": "Jan 18, 2026",
-    "filter": "Verified (N ≥ 20)",
-    "entryPrice": "Close price on publish date",
+    "lastUpdated": "Jan 2026",
+    "window": "Rolling 12 months",
     "benchmark": "S&P 500 (SPY)",
-    "significanceRule": "Significant if p < 0.05",
-    "metricAlpha": "Average Alpha vs SPY (%)",
-    "metricAccuracy": "Directional Accuracy (%)",
-    "horizons": ["90D", "180D", "365D"],
-    "databaseUrl": "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/edit?gid=1723289430#gid=1723289430"
+    "entryRule": "Close price on video publish date",
+    "filter": "Verified (N >= 20) + Stat Sig badge (p < 0.05)",
+    "metricPrimary": "Average Alpha vs SPY",
+    "metricSecondary": "Win Rate (directional)"
   },
+
   "alpha": {
     "top": [
       {
         "rank": 1,
         "creator": "Tom Nash",
         "n": 41,
-        "avgAlpha": 72.7,
-        "pValue": 0.0064,
-        "statSig": true
+        "confidence": "Medium",
+        "avgAlpha": 72.70,
+        "pValue": 0.0064
       },
       {
         "rank": 2,
-        "creator": "Stealth Wealth Investing",
-        "n": 62,
-        "avgAlpha": 20.08,
-        "pValue": 0.114,
-        "statSig": false
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 8,
+        "confidence": "Low",
+        "avgAlpha": 37.06,
+        "pValue": 0.07
       },
       {
         "rank": 3,
-        "creator": "YT Finance",
-        "n": 89,
-        "avgAlpha": 19.33,
-        "pValue": 0.0522,
-        "statSig": false
+        "creator": "Stealth Wealth Investing",
+        "n": 62,
+        "confidence": "High",
+        "avgAlpha": 20.08,
+        "pValue": 0.114
       },
       {
         "rank": 4,
-        "creator": "Daniel Pronk",
-        "n": 66,
-        "avgAlpha": 15.89,
-        "pValue": 0.0163,
-        "statSig": true
+        "creator": "YT Finance",
+        "n": 89,
+        "confidence": "High",
+        "avgAlpha": 19.33,
+        "pValue": 0.0522
       }
     ],
     "bottom": [
@@ -50,268 +49,143 @@
         "rank": 1,
         "creator": "Patrick Boyle",
         "n": 31,
+        "confidence": "Medium",
         "avgAlpha": -42.18,
-        "pValue": 0.0003,
-        "statSig": true
+        "pValue": 0.0003
       },
       {
         "rank": 2,
-        "creator": "FX Evolution",
-        "n": 21,
-        "avgAlpha": -21.8,
-        "pValue": 0.0029,
-        "statSig": true
-      },
-      {
-        "rank": 3,
-        "creator": "Mark Moss",
-        "n": 55,
-        "avgAlpha": -18.74,
-        "pValue": 0.0004,
-        "statSig": true
-      },
-      {
-        "rank": 4,
-        "creator": "Click Capital",
-        "n": 115,
-        "avgAlpha": -17.93,
-        "pValue": 0.0,
-        "statSig": true
+        "creator": "The Prof G Pod – Scott Galloway",
+        "n": 16,
+        "confidence": "Low",
+        "avgAlpha": -51.72,
+        "pValue": 0.0265
       }
     ]
   },
+
   "accuracy": {
     "top": [
       {
         "rank": 1,
         "creator": "Stealth Wealth Investing",
         "n": 62,
-        "accuracy": 66.13,
-        "pValue": 0.114,
-        "statSig": false
+        "confidence": "High",
+        "winRate": 66.13,
+        "pValue": 0.114
       },
       {
         "rank": 2,
         "creator": "이효석아카데미",
         "n": 25,
-        "accuracy": 64.0,
-        "pValue": 0.6258,
-        "statSig": false
+        "confidence": "Medium",
+        "winRate": 64.00,
+        "pValue": 0.6258
       },
       {
         "rank": 3,
-        "creator": "Tom Nash",
-        "n": 41,
-        "accuracy": 58.54,
-        "pValue": 0.0064,
-        "statSig": true
-      },
-      {
-        "rank": 4,
-        "creator": "Mr. FIRED Up Wealth",
-        "n": 92,
-        "accuracy": 56.52,
-        "pValue": 0.0843,
-        "statSig": false
+        "creator": "The Patient Investor",
+        "n": 70,
+        "confidence": "High",
+        "winRate": 54.29,
+        "pValue": 0.2041
       }
     ],
     "bottom": [
       {
         "rank": 1,
-        "creator": "OneOption",
-        "n": 20,
-        "accuracy": 20.0,
-        "pValue": 0.0011,
-        "statSig": true
+        "creator": "Patrick Boyle",
+        "n": 31,
+        "confidence": "Medium",
+        "winRate": 16.13,
+        "pValue": 0.0003
       },
       {
         "rank": 2,
-        "creator": "Chicken Genius Singapore",
-        "n": 36,
-        "accuracy": 27.78,
-        "pValue": 0.0473,
-        "statSig": true
-      },
-      {
-        "rank": 3,
-        "creator": "ClearValue Tax",
-        "n": 66,
-        "accuracy": 27.27,
-        "pValue": 0.2133,
-        "statSig": false
-      },
-      {
-        "rank": 4,
         "creator": "세상학개론",
         "n": 41,
-        "accuracy": 24.39,
-        "pValue": 0.0913,
-        "statSig": false
+        "confidence": "Medium",
+        "winRate": 24.39,
+        "pValue": 0.0913
       }
     ]
   },
-  "stocksRecommended": {
-    "note": "Most common assets mentioned by verified creators.",
-    "items": [
-      { "ticker": "SPY", "mentions": 10 },
-      { "ticker": "AIQ", "mentions": 9 },
-      { "ticker": "TSLA", "mentions": 7 },
-      { "ticker": "NVDA", "mentions": 7 },
-      { "ticker": "BTC", "mentions": 6 },
-      { "ticker": "PLTR", "mentions": 5 },
-      { "ticker": "QQQ", "mentions": 4 },
-      { "ticker": "AMZN", "mentions": 4 }
-    ]
-  },
+
   "intervals": {
-    "d90": {
-      "label": "90D (≈ 3 months)",
-      "metric": "alpha",
+    "short": {
+      "label": "Short (90d)",
       "top": [
         {
           "rank": 1,
           "creator": "이효석아카데미",
-          "alpha": 16.55,
           "n": 25,
-          "pValue": 0.6258,
-          "statSig": false
+          "confidence": "Medium",
+          "alpha": 16.55,
+          "pValue": 0.6258
         },
         {
           "rank": 2,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": 64.03,
-          "n": 4,
-          "pValue": 0.9226,
-          "statSig": false
-        },
-        {
-          "rank": 3,
-          "creator": "Pi-Fi",
-          "alpha": -23.71,
-          "n": 16,
-          "pValue": 0.0015,
-          "statSig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Investing Simplified - Professor G",
-          "alpha": 10.66,
-          "n": 16,
-          "pValue": 0.2608,
-          "statSig": false
+          "creator": "Stealth Wealth Investing",
+          "n": 62,
+          "confidence": "High",
+          "alpha": 6.18,
+          "pValue": 0.114
         }
       ],
       "bottom": [
         {
           "rank": 1,
           "creator": "Patrick Boyle",
-          "alpha": -49.43,
           "n": 31,
-          "pValue": 0.0003,
-          "statSig": true
-        },
-        {
-          "rank": 2,
-          "creator": "ClearValue Tax",
-          "alpha": -27.27,
-          "n": 66,
-          "pValue": 0.2133,
-          "statSig": false
-        },
-        {
-          "rank": 3,
-          "creator": "Meet Kevin",
-          "alpha": -28.86,
-          "n": 32,
-          "pValue": 0.2177,
-          "statSig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Mark Moss",
-          "alpha": -26.59,
-          "n": 55,
-          "pValue": 0.0004,
-          "statSig": true
+          "confidence": "Medium",
+          "alpha": -49.43,
+          "pValue": 0.0003
         }
       ]
     },
-    "d180": {
-      "label": "180D (≈ 6 months)",
-      "metric": "alpha",
-      "note": "Coming soon (needs 180D tracking column).",
+
+    "medium": {
+      "label": "Medium (180d)",
       "top": [],
       "bottom": []
     },
-    "d365": {
-      "label": "365D (≈ 12 months)",
-      "metric": "alpha",
+
+    "long": {
+      "label": "Long (365d)",
       "top": [
         {
           "rank": 1,
           "creator": "Tom Nash",
-          "alpha": 116.83,
           "n": 41,
-          "pValue": 0.0064,
-          "statSig": true
+          "confidence": "Medium",
+          "alpha": 116.83,
+          "pValue": 0.0064
         },
         {
           "rank": 2,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 119.78,
           "n": 8,
-          "pValue": 0.07,
-          "statSig": false
-        },
-        {
-          "rank": 3,
-          "creator": "YT Finance",
-          "alpha": 43.65,
-          "n": 89,
-          "pValue": 0.0522,
-          "statSig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Wolf of Dubai Day Trading & Investing",
-          "alpha": 63.36,
-          "n": 69,
-          "pValue": 0.0818,
-          "statSig": false
+          "confidence": "Low",
+          "alpha": 119.78,
+          "pValue": 0.07
         }
       ],
       "bottom": [
         {
           "rank": 1,
-          "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -101.5,
-          "n": 16,
-          "pValue": 0.0265,
-          "statSig": true
+          "creator": "세상학개론",
+          "n": 41,
+          "confidence": "Medium",
+          "alpha": -37.70,
+          "pValue": 0.0913
         },
         {
           "rank": 2,
-          "creator": "StockCharts TV",
-          "alpha": -35.87,
-          "n": 13,
-          "pValue": 0.0582,
-          "statSig": false
-        },
-        {
-          "rank": 3,
-          "creator": "OneOption",
-          "alpha": -36.9,
-          "n": 20,
-          "pValue": 0.0011,
-          "statSig": true
-        },
-        {
-          "rank": 4,
-          "creator": "세상학개론",
-          "alpha": -37.7,
-          "n": 41,
-          "pValue": 0.0913,
-          "statSig": false
+          "creator": "FX Evolution",
+          "n": 21,
+          "confidence": "Medium",
+          "alpha": -32.90,
+          "pValue": 0.0029
         }
       ]
     }
