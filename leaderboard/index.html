@@ -16,64 +16,47 @@
       backdrop-filter: blur(12px);
     }
     .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+    .divider { height: 1px; background: rgba(255,255,255,0.10); }
 
-    /* ===== Kit CRO overrides (UID-specific) ===== */
-    .formkit-form[data-uid="c5142792e3"] [data-element="header"],
-    .formkit-form[data-uid="c5142792e3"] [data-element="subheader"],
-    .formkit-form[data-uid="c5142792e3"] .formkit-powered-by-convertkit-container,
-    .formkit-form[data-uid="c5142792e3"] .formkit-background,
-    .formkit-form[data-uid="c5142792e3"] [data-style="card"] > .formkit-column:first-child {
-      display: none !important;
+    /* Pro lock */
+    .pro-wrap { position: relative; }
+    .pro-locked {
+      filter: blur(10px);
+      opacity: 0.65;
+      pointer-events: none;
+      user-select: none;
     }
-    .formkit-form[data-uid="c5142792e3"] {
-      max-width: 100% !important;
-      background: transparent !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      overflow: visible !important;
+    .pro-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(34,197,94,0.20);
+      backdrop-filter: blur(6px);
     }
-    .formkit-form[data-uid="c5142792e3"] .formkit-column {
-      padding: 0 !important;
-      background: transparent !important;
+    .pro-overlay-card {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(17,24,39,0.70);
+      padding: 18px;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.55);
     }
-    .formkit-form[data-uid="c5142792e3"] .formkit-fields {
-      display: flex !important;
-      gap: 10px !important;
-      align-items: center !important;
-      flex-wrap: wrap !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] input[name="email_address"] {
-      flex: 1 1 260px !important;
-      margin: 0 !important;
-      padding: 12px 14px !important;
-      border-radius: 12px !important;
-      background: rgba(17,24,39,0.85) !important;
-      border: 1px solid rgba(255,255,255,0.14) !important;
-      color: #fff !important;
-      outline: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] input[name="fields[first_name]"],
-    .formkit-form[data-uid="c5142792e3"] input[aria-label*="YouTuber"] {
-      display: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-submit {
-      flex: 0 0 auto !important;
-      margin: 0 !important;
-      border-radius: 12px !important;
-      background: rgb(34 197 94) !important;
-      color: #061018 !important;
-      font-weight: 900 !important;
-      border: 1px solid rgba(34,197,94,0.25) !important;
-      cursor: pointer !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-submit > span {
-      padding: 12px 16px !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-guarantee {
-      display: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-field {
-      margin: 0 !important;
+
+    /* Toggle */
+    .toggle-pill {
+      background: rgba(31,41,55,0.9);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 9999px;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
   </style>
 </head>
@@ -97,15 +80,21 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <a href="#pro"
-           class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Unlock Pro →
+        <a id="navUpgradeBtn"
+           href="#pro"
+           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Upgrade to Pro <span aria-hidden="true">→</span>
         </a>
+
+        <button id="alreadyProBtn"
+           class="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          Already Pro? Unlock <span aria-hidden="true">↗</span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 py-10">
+  <main id="content" class="max-w-7xl mx-auto px-4 py-10">
 
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
       <div class="max-w-3xl">
@@ -117,74 +106,62 @@
           and how results change by time horizon.
         </p>
 
-        <!-- success banner -->
-        <div id="subSuccess" class="hidden mt-5 glass soft-shadow rounded-2xl p-4 border border-green-400/20">
-          <div class="text-sm font-extrabold text-green-300">✅ You’re subscribed.</div>
-          <div class="text-xs text-gray-400 mt-1">Next: watch for weekly leaderboard changes in your inbox.</div>
-        </div>
-
-        <!-- PRO primary -->
+        <!-- PRO (Primary paid conversion) -->
         <section id="pro" class="mt-5 glass soft-shadow rounded-2xl p-5">
-          <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <div class="text-base sm:text-lg font-extrabold">Unlock Pro: decision-grade breakdowns</div>
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro</div>
+              <div class="text-base sm:text-lg font-extrabold mt-1">
+                Unlock Pro: decision-grade breakdowns
+              </div>
               <div class="text-xs text-gray-400 mt-1 leading-relaxed">
-                Pro adds year-by-year alpha (2023–2025), consistency (e.g., 3/4 years beat S&amp;P),
-                bullish vs bearish accuracy, deeper significance filters, and “best/worst calls” exploration.
+                Year-by-year alpha (2023–2025+), consistency (years beating S&amp;P), bull vs bear accuracy, and best/worst picks.
+              </div>
+
+              <ul class="mt-4 space-y-2 text-sm text-gray-200">
+                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Year-by-year alpha</b> + “Beat S&amp;P?” boolean per year</span></li>
+                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Consistency score</b> + streak view (“3/4 years beat S&amp;P”)</span></li>
+                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Bull vs Bear accuracy</b> (not just a lucky regime)</span></li>
+                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Signal filters</b>: Verified (N≥20), significance, 90/180/365</span></li>
+                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Best/Worst picks</b> + outlier-adjusted view</span></li>
+              </ul>
+            </div>
+
+            <div class="md:text-right">
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pricing</div>
+
+              <div class="mt-2 inline-flex items-center justify-end">
+                <div class="toggle-pill">
+                  <button id="lbMonthlyBtn" class="px-4 py-2 text-sm font-extrabold rounded-full bg-green-600 text-white transition">
+                    Monthly
+                  </button>
+                  <button id="lbAnnualBtn" class="px-4 py-2 text-sm font-extrabold rounded-full text-gray-300 hover:text-white transition relative">
+                    Annual
+                    <span class="absolute -top-2 -right-3 text-[10px] px-2 py-0.5 rounded-full bg-green-500 text-black font-extrabold">
+                      SAVE 35%
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="lbPriceText" class="mt-4 text-3xl font-extrabold text-white">
+                $19<span class="text-sm font-medium text-gray-400">/mo</span>
+              </div>
+              <div id="lbSubText" class="text-xs text-gray-400 mt-1">
+                Cancel anytime.
+              </div>
+
+              <a id="lbCheckoutBtn"
+                 href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
+                 target="_blank"
+                 class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30 w-full md:w-auto">
+                Unlock Pro <span aria-hidden="true">→</span>
+              </a>
+
+              <div class="mt-2 text-[11px] text-gray-500">
+                Tip: After Stripe, you can redirect to <span class="text-gray-300">/leaderboard/?pro=1</span> to auto-unlock.
               </div>
             </div>
-            <div class="text-[11px] text-gray-500 uppercase tracking-wider">Pro</div>
-          </div>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            <!-- Stripe not ready: send to waitlist form section -->
-            <a href="#waitlist"
-               onclick="trackProClick();"
-               class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-              Join Pro waitlist →
-            </a>
-
-            <a href="#content"
-               class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-              View public summary ↓
-            </a>
-          </div>
-
-          <div class="mt-3 text-[11px] text-gray-500">
-            Pro checkout (Stripe) is coming soon. Join the waitlist to get first access.
-          </div>
-        </section>
-
-        <!-- Waitlist (secondary email) -->
-        <section id="waitlist" class="mt-5 glass soft-shadow rounded-2xl p-5">
-          <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
-            <div>
-              <div class="text-base sm:text-lg font-extrabold">Get weekly leaderboard changes (free)</div>
-              <div class="text-xs text-gray-400 mt-1 leading-relaxed">
-                Rank movers, new creators, and what changed since last week.
-              </div>
-            </div>
-            <div class="text-[11px] text-gray-500 uppercase tracking-wider">Free email</div>
-          </div>
-
-          <div class="mt-4">
-            <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-            <form action="https://app.kit.com/forms/8848906/subscriptions"
-                  class="seva-form formkit-form"
-                  method="post"
-                  data-sv-form="8848906"
-                  data-uid="c5142792e3"
-                  data-format="inline"
-                  data-version="6"
-                  data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://truealphadata.com/leaderboard?subscribed=true&quot;}}}">
-              <div data-style="card">
-                <div data-element="column" class="formkit-column"></div>
-              </div>
-            </form>
-
-            <p class="mt-3 text-[11px] text-gray-500">
-              1 email/week. No spam. Unsubscribe anytime.
-            </p>
           </div>
         </section>
       </div>
@@ -205,8 +182,130 @@
       </div>
     </div>
 
-    <!-- Public summary -->
-    <section id="content" class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- PRO-ONLY SECTION (Blurred) -->
+    <section class="mt-8">
+      <div class="pro-wrap glass soft-shadow rounded-2xl p-5">
+
+        <div id="proContent" class="pro-locked">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h2 class="font-extrabold text-xl">Pro Panel: Consistency + Year-by-Year</h2>
+              <p class="text-xs text-gray-400 mt-1">
+                Year-by-year alpha (2023–2025+), “Beat S&amp;P?” flags, and consistency score.
+              </p>
+            </div>
+            <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro only</div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="glass rounded-2xl p-4">
+              <div class="text-xs text-gray-400 uppercase tracking-wider">Consistency</div>
+              <div class="mt-2 text-3xl font-extrabold text-white">3/4</div>
+              <div class="text-xs text-gray-400 mt-1">Years beat S&amp;P (example)</div>
+            </div>
+
+            <div class="glass rounded-2xl p-4">
+              <div class="text-xs text-gray-400 uppercase tracking-wider">Bull vs Bear</div>
+              <div class="mt-2 text-3xl font-extrabold text-white">+12%</div>
+              <div class="text-xs text-gray-400 mt-1">Avg alpha in both regimes (example)</div>
+            </div>
+
+            <div class="glass rounded-2xl p-4">
+              <div class="text-xs text-gray-400 uppercase tracking-wider">Outlier-adjusted</div>
+              <div class="mt-2 text-3xl font-extrabold text-white">Stable</div>
+              <div class="text-xs text-gray-400 mt-1">Reduces 1 lucky 500% pick skew</div>
+            </div>
+          </div>
+
+          <div class="mt-5 glass rounded-2xl p-4 overflow-x-auto">
+            <div class="text-xs text-gray-400 uppercase tracking-wider mb-3">Year-by-year table (example layout)</div>
+            <table class="min-w-[780px] w-full text-sm">
+              <thead class="text-gray-400">
+                <tr>
+                  <th class="text-left py-2 pr-3">Creator</th>
+                  <th class="text-left py-2 pr-3">Years Beat S&amp;P</th>
+                  <th class="text-left py-2 pr-3">2023 Alpha</th>
+                  <th class="text-left py-2 pr-3">2024 Alpha</th>
+                  <th class="text-left py-2 pr-3">2025 Alpha</th>
+                  <th class="text-left py-2 pr-3">Consistency</th>
+                  <th class="text-left py-2 pr-3">Best / Worst</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-200">
+                <tr class="border-t border-gray-800/60">
+                  <td class="py-3 pr-3 font-semibold">Tom Nash</td>
+                  <td class="py-3 pr-3">3/4</td>
+                  <td class="py-3 pr-3">+28.6%</td>
+                  <td class="py-3 pr-3">+12.1%</td>
+                  <td class="py-3 pr-3">—</td>
+                  <td class="py-3 pr-3">High</td>
+                  <td class="py-3 pr-3">+120% / -18%</td>
+                </tr>
+                <tr class="border-t border-gray-800/60">
+                  <td class="py-3 pr-3 font-semibold">Stealth Wealth</td>
+                  <td class="py-3 pr-3">2/3</td>
+                  <td class="py-3 pr-3">—</td>
+                  <td class="py-3 pr-3">+18.0%</td>
+                  <td class="py-3 pr-3">—</td>
+                  <td class="py-3 pr-3">Med</td>
+                  <td class="py-3 pr-3">+55% / -9%</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="mt-3 text-[11px] text-gray-500">
+              This section will be populated from your year columns as you farm more historical data.
+            </div>
+          </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="proOverlay" class="pro-overlay">
+          <div class="pro-overlay-card">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-[11px] text-gray-400 uppercase tracking-wider">Locked</div>
+                <div class="text-lg font-extrabold mt-1">Pro-only panels (Consistency + Year-by-year)</div>
+                <div class="text-xs text-gray-400 mt-1">
+                  This is where people decide who’s “actually good” vs “one lucky year”.
+                </div>
+              </div>
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro</div>
+            </div>
+
+            <div class="mt-4 flex flex-col sm:flex-row gap-3">
+              <a id="proMonthlyLink"
+                 href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
+                 target="_blank"
+                 class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition">
+                Unlock Monthly ($19) →
+              </a>
+
+              <a id="proAnnualLink"
+                 href="https://buy.stripe.com/test_8x24gz1TL2vi7Ht0U7cfK01"
+                 target="_blank"
+                 class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+                Unlock Annual (Save 35%) →
+              </a>
+            </div>
+
+            <div class="mt-3 flex items-center justify-between gap-3">
+              <button id="unlockLocalBtn"
+                class="text-xs font-extrabold text-gray-200 hover:text-white underline">
+                I already purchased — unlock
+              </button>
+
+              <div class="text-[11px] text-gray-500">
+                (Temporary) Uses localStorage until member auth exists.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FREE SECTIONS (Your original content) -->
+    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
 
       <div class="glass soft-shadow rounded-2xl p-5">
         <div class="flex items-start justify-between">
@@ -353,26 +452,98 @@
   </footer>
 
   <script>
-    // Show success message if redirected with subscribed=true
-    (function () {
+    // ===== Stripe links =====
+    const STRIPE_MONTHLY = "https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00";
+    const STRIPE_ANNUAL  = "https://buy.stripe.com/test_00w9AT41Tfi41j5eKXcfK02";
+
+    // ===== Pro unlock (temporary localStorage gate) =====
+    const PRO_KEY = "ta_pro";
+    const proContent = document.getElementById("proContent");
+    const proOverlay = document.getElementById("proOverlay");
+    const unlockLocalBtn = document.getElementById("unlockLocalBtn");
+    const alreadyProBtn = document.getElementById("alreadyProBtn");
+
+    function isPro() {
+      return localStorage.getItem(PRO_KEY) === "1";
+    }
+
+    function setPro(v) {
+      localStorage.setItem(PRO_KEY, v ? "1" : "0");
+      renderPro();
+    }
+
+    function renderPro() {
+      const unlocked = isPro();
+      if (unlocked) {
+        proContent.classList.remove("pro-locked");
+        proOverlay.style.display = "none";
+        alreadyProBtn.textContent = "Pro Unlocked ✓";
+      } else {
+        proContent.classList.add("pro-locked");
+        proOverlay.style.display = "flex";
+        alreadyProBtn.textContent = "Already Pro? Unlock ↗";
+      }
+      alreadyProBtn.classList.remove("hidden");
+    }
+
+    // Auto-unlock if URL contains ?pro=1 (use Stripe “after payment redirect” to this)
+    (function autoUnlockFromQuery() {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("subscribed") === "true") {
-        const el = document.getElementById("subSuccess");
-        if (el) el.classList.remove("hidden");
+      if (params.get("pro") === "1") {
+        setPro(true);
+        // Clean URL
+        params.delete("pro");
+        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+        window.history.replaceState({}, "", newUrl);
       }
     })();
 
-    // Track "Pro" clicks (placeholder until Stripe exists)
-    function trackProClick() {
-      try {
-        if (window.rdt) rdt('track', 'Lead'); // optional: counts as high-intent
-      } catch(e) {}
+    unlockLocalBtn.addEventListener("click", () => setPro(true));
+    alreadyProBtn.addEventListener("click", () => setPro(true));
+
+    // ===== Leaderboard pricing toggle =====
+    const lbMonthlyBtn  = document.getElementById("lbMonthlyBtn");
+    const lbAnnualBtn   = document.getElementById("lbAnnualBtn");
+    const lbPriceText   = document.getElementById("lbPriceText");
+    const lbSubText     = document.getElementById("lbSubText");
+    const lbCheckoutBtn = document.getElementById("lbCheckoutBtn");
+
+    function setLBMonthly() {
+      lbMonthlyBtn.classList.add("bg-green-600","text-white");
+      lbMonthlyBtn.classList.remove("text-gray-300");
+      lbAnnualBtn.classList.remove("bg-green-600","text-white");
+      lbAnnualBtn.classList.add("text-gray-300");
+
+      lbPriceText.innerHTML = `$19<span class="text-sm font-medium text-gray-400">/mo</span>`;
+      lbSubText.textContent = "Cancel anytime.";
+      lbCheckoutBtn.href = STRIPE_MONTHLY;
     }
+
+    function setLBAnnual() {
+      lbAnnualBtn.classList.add("bg-green-600","text-white");
+      lbAnnualBtn.classList.remove("text-gray-300");
+      lbMonthlyBtn.classList.remove("bg-green-600","text-white");
+      lbMonthlyBtn.classList.add("text-gray-300");
+
+      lbPriceText.innerHTML = `$149<span class="text-sm font-medium text-gray-400">/yr</span>`;
+      lbSubText.textContent = "Save 35%. Equivalent to $12.42/mo.";
+      lbCheckoutBtn.href = STRIPE_ANNUAL;
+    }
+
+    lbMonthlyBtn.addEventListener("click", setLBMonthly);
+    lbAnnualBtn.addEventListener("click", setLBAnnual);
+
+    // Make sure pro overlay links use your Stripe links
+    document.getElementById("proMonthlyLink").href = STRIPE_MONTHLY;
+    document.getElementById("proAnnualLink").href  = STRIPE_ANNUAL;
+
+    // Initial render
+    renderPro();
   </script>
 
   <script>
     // ==========================
-    // Data rendering (unchanged)
+    // Data rendering (your original)
     // ==========================
     const JSON_PATH = "./leaderboard.json";
 
@@ -513,7 +684,6 @@
         const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
         document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
 
-        // 90 / 180 / 365
         const d90 = data?.intervals?.d90 || {};
         const d180 = data?.intervals?.d180 || {};
         const d365 = data?.intervals?.d365 || {};
