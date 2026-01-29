@@ -5,17 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>True Alpha | Stock YouTuber Audits</title>
 
-  <!-- =========================
-       CONFIG (EDIT THESE)
-  ========================== -->
-  <script>
-    // 1) Paste your Stripe Payment Link URL here once you create it
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
-
-    // 2) Where Pro members land after paying (you will create this later)
-    const PRO_PAGE_URL = "/pro.html";
-  </script>
-
   <!-- Reddit Pixel (Base) -->
   <script>
     !function(w,d){
@@ -47,8 +36,67 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.20); }
+
+    /* ===== Kit CRO overrides (UID-specific) ===== */
+    .formkit-form[data-uid="c5142792e3"] [data-element="header"],
+    .formkit-form[data-uid="c5142792e3"] [data-element="subheader"],
+    .formkit-form[data-uid="c5142792e3"] .formkit-powered-by-convertkit-container,
+    .formkit-form[data-uid="c5142792e3"] .formkit-background,
+    .formkit-form[data-uid="c5142792e3"] [data-style="card"] > .formkit-column:first-child {
+      display: none !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] {
+      max-width: 100% !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-column {
+      padding: 0 !important;
+      background: transparent !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-fields {
+      display: flex !important;
+      gap: 10px !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] input[name="email_address"] {
+      flex: 1 1 260px !important;
+      margin: 0 !important;
+      padding: 12px 14px !important;
+      border-radius: 12px !important;
+      background: rgba(17,24,39,0.85) !important;
+      border: 1px solid rgba(255,255,255,0.14) !important;
+      color: #fff !important;
+      outline: none !important;
+    }
+    /* Hide optional field */
+    .formkit-form[data-uid="c5142792e3"] input[name="fields[first_name]"],
+    .formkit-form[data-uid="c5142792e3"] input[aria-label*="YouTuber"] {
+      display: none !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-submit {
+      flex: 0 0 auto !important;
+      margin: 0 !important;
+      border-radius: 12px !important;
+      background: rgb(34 197 94) !important;
+      color: #061018 !important;
+      font-weight: 900 !important;
+      border: 1px solid rgba(34,197,94,0.25) !important;
+      cursor: pointer !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-submit > span {
+      padding: 12px 16px !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-guarantee {
+      display: none !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-field {
+      margin: 0 !important;
+    }
   </style>
 </head>
 
@@ -60,7 +108,7 @@
       <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
         <span class="font-extrabold tracking-tight text-lg">
           TRUE<span class="text-green-500">ALPHA</span>
@@ -74,13 +122,12 @@
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
 
+      <!-- Sticky CTA -->
       <div class="flex items-center gap-2">
-        <a href="/leaderboard/" class="hidden sm:inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-          View leaderboard
+        <a href="#subscribe"
+           class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Get the weekly audit →
         </a>
-        <button id="proBtnNav" class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Upgrade to Pro →
-        </button>
       </div>
 
     </div>
@@ -93,16 +140,18 @@
     </div>
 
     <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 max-w-4xl">
-      We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions. <br class="hidden sm:block" />
+      We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions.
+      <br class="hidden sm:block" />
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">See Who Actually Makes Money.</span>
     </h1>
 
     <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl">
-      Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&amp;P 500.
+      We audit YouTube transcripts, track entry prices, and benchmark results against the S&amp;P 500.
+      Get one weekly email with the biggest movers + worst calls.
     </p>
 
-    <!-- Quick Scan -->
-    <div class="w-full max-w-4xl mb-10 relative group text-left">
+    <!-- Proof block -->
+    <div class="w-full max-w-4xl mb-12 relative group text-left">
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
       <div class="relative glass-panel rounded-lg p-6 sm:p-8">
@@ -127,6 +176,7 @@
         </div>
 
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+
           <div>
             <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,6 +185,7 @@
               </svg>
               Top Performers (Avg Alpha)
             </h3>
+
             <div id="topList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
@@ -148,10 +199,12 @@
               </svg>
               Underperformers
             </h3>
+
             <div id="bottomList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
           </div>
+
         </div>
 
         <div class="mt-6 text-[11px] font-mono text-gray-500">
@@ -159,120 +212,41 @@
           <span class="text-gray-700">|</span>
           <span>Auto-generated from leaderboard.json</span>
         </div>
-
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-            Open full leaderboard →
-          </a>
-          <button id="proBtnQuick" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-            Unlock Pro signals →
-          </button>
-        </div>
       </div>
     </div>
 
-    <!-- NEW: Free vs Pro (key section) -->
-    <section class="w-full max-w-4xl mb-12 text-left">
-      <div class="glass-panel soft-shadow rounded-2xl p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-          <div>
-            <div class="text-xs font-mono text-gray-400 mb-1">How it works</div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold">Free vs Pro</h2>
-            <p class="text-gray-400 mt-2 max-w-2xl">
-              Free helps you discover who looks legit. Pro turns creator performance into decision-grade signals.
-            </p>
-          </div>
-          <div class="text-[11px] text-gray-500 uppercase tracking-wider">
-            Rule: If you could trade on it → Pro
-          </div>
+    <!-- Primary CTA: email -->
+    <section id="subscribe" class="w-full max-w-2xl glass-panel rounded-2xl p-6 sm:p-8 text-left">
+      <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
+        <div>
+          <h3 class="text-2xl font-extrabold text-white">Get the weekly “Fake Guru” audit</h3>
+          <p class="text-gray-400 mt-1 text-sm">
+            One email/week: biggest rank movers, worst calls, and who’s consistently beating the S&amp;P 500.
+          </p>
         </div>
-
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <div class="text-sm font-extrabold text-gray-100">Free</div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-300">
-              <li>• Avg Alpha vs S&amp;P (lifetime)</li>
-              <li>• Overall accuracy + horizon splits</li>
-              <li>• Confidence labels (Sig / Not Sig / More data)</li>
-              <li>• Best/Worst call (ticker only)</li>
-            </ul>
-          </div>
-
-          <div class="rounded-2xl border border-green-400/20 bg-green-500/10 p-5">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-extrabold text-green-200">Pro (Decision-Grade)</div>
-              <span class="text-[10px] px-2 py-1 rounded-full bg-green-500/15 border border-green-400/20 text-green-200 font-bold">Unlocked</span>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-100">
-              <li>• Year-by-year alpha (2023–2025)</li>
-              <li>• Consistency (e.g., 3/4 years beat S&amp;P)</li>
-              <li>• Bullish vs Bearish accuracy</li>
-              <li>• Full best/worst % returns (no cherry-picking)</li>
-              <li>• Filter &amp; sort by signal quality</li>
-            </ul>
-
-            <div class="mt-5 flex flex-col sm:flex-row gap-3">
-              <button id="proBtnCompare" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-                Upgrade to Pro →
-              </button>
-              <a href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-                Preview leaderboard →
-              </a>
-            </div>
-            <div class="mt-3 text-[11px] text-green-200/80">
-              Pro is designed for signal quality — not hype.
-            </div>
-          </div>
-        </div>
+        <div class="text-[11px] text-gray-500 uppercase tracking-wider">Free</div>
       </div>
-    </section>
-
-    <!-- Email capture (still free) -->
-    <div class="w-full max-w-md bg-gray-800/50 border border-gray-700 p-8 rounded-2xl shadow-xl">
-      <h3 class="text-2xl font-bold text-white mb-2">Get the “Fake Guru” Audit</h3>
-      <p class="text-gray-400 mb-2 text-sm">
-        One email a week exposing the worst predictions — plus rank movers and new creators.
-      </p>
-
-      <p class="mb-6 font-bold text-lg text-green-400 uppercase tracking-wide">
-        Free weekly audits (Pro unlocks signals).
-      </p>
-
-      <!-- Kit/ConvertKit embed script -->
-      <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-
-      <form action="https://app.kit.com/forms/8848906/subscriptions"
-            class="seva-form formkit-form space-y-4"
-            method="post"
-            data-sv-form="8848906"
-            data-uid="c5142792e3"
-            data-format="inline"
-            data-version="5">
-
-        <input type="email" name="email_address" placeholder="Enter your email" required
-              class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition">
-
-        <input type="text" name="fields[first_name]" placeholder="Which YouTuber Should We Audit Next? (Optional)"
-              class="formkit-input w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm">
-
-        <button data-element="submit"
-                class="formkit-submit w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
-          Subscribe Free
-        </button>
-
-        <ul class="formkit-alert formkit-alert-error text-red-400 text-sm mt-2" data-element="errors" data-group="alert"></ul>
-      </form>
 
       <div class="mt-5">
-        <button id="proBtnEmail" class="w-full px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white font-extrabold rounded-lg transition border border-gray-700">
-          Or unlock Pro signals →
-        </button>
-      </div>
+        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+        <form action="https://app.kit.com/forms/8848906/subscriptions"
+              class="seva-form formkit-form"
+              method="post"
+              data-sv-form="8848906"
+              data-uid="c5142792e3"
+              data-format="inline"
+              data-version="6"
+              data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://truealphadata.com/leaderboard?subscribed=true&quot;}}}">
+          <div data-style="card">
+            <div data-element="column" class="formkit-column"></div>
+          </div>
+        </form>
 
-      <p class="mt-4 text-xs text-gray-500">
-        100% Free. No spam. Unsubscribe anytime.
-      </p>
-    </div>
+        <p class="mt-3 text-[11px] text-gray-500">
+          1 email/week. No spam. Unsubscribe anytime.
+        </p>
+      </div>
+    </section>
 
   </main>
 
@@ -300,84 +274,6 @@
     </div>
   </footer>
 
-  <!-- Pro modal -->
-  <div id="proModal" class="fixed inset-0 hidden items-center justify-center p-4 z-[999]">
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative w-full max-w-lg rounded-2xl border border-white/10 bg-gray-950 p-6">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <div class="text-xs font-mono text-gray-400">TrueAlpha Pro</div>
-          <div class="text-2xl font-extrabold mt-1">Unlock decision-grade signals</div>
-          <div class="text-sm text-gray-400 mt-2">
-            Year-by-year alpha, consistency, bullish vs bearish skill, and full best/worst returns.
-          </div>
-        </div>
-        <button id="proClose" class="rounded-xl px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10">
-          ✕
-        </button>
-      </div>
-
-      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-          <div class="font-extrabold text-gray-100">Best for</div>
-          <div class="text-gray-400 mt-1">Serious users who want consistency, not hype.</div>
-        </div>
-        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-          <div class="font-extrabold text-gray-100">Includes</div>
-          <div class="text-gray-400 mt-1">Year-by-year alpha, filters, signal breakdowns.</div>
-        </div>
-      </div>
-
-      <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a id="proPayLink" href="#" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Upgrade via Stripe →
-        </a>
-        <a id="proLearnLink" href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-          Preview leaderboard →
-        </a>
-      </div>
-
-      <div class="mt-3 text-[11px] text-gray-500">
-        You’ll be redirected after purchase. (Pro page can be a simple landing for now.)
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Wire up Pro CTAs (single source of truth)
-    (function () {
-      const modal = document.getElementById("proModal");
-      const closeBtn = document.getElementById("proClose");
-      const payLink = document.getElementById("proPayLink");
-
-      function openPro() {
-        if (!modal) return;
-        payLink.href = STRIPE_PAYMENT_LINK;
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-      }
-
-      function closePro() {
-        if (!modal) return;
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-      }
-
-      ["proBtnNav","proBtnQuick","proBtnCompare","proBtnEmail"].forEach(id => {
-        const btn = document.getElementById(id);
-        if (btn) btn.addEventListener("click", openPro);
-      });
-
-      if (closeBtn) closeBtn.addEventListener("click", closePro);
-      if (modal) modal.addEventListener("click", (e) => {
-        if (e.target === modal || e.target?.classList?.contains("bg-black/70")) closePro();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closePro();
-      });
-    })();
-  </script>
-
   <script>
     function fmtPct(n) {
       const num = Number(n);
@@ -385,13 +281,11 @@
       const sign = num > 0 ? "+" : "";
       return `${sign}${num.toFixed(2)}%`;
     }
-
     function barWidthAlpha(alpha, maxAbs) {
       const num = Math.abs(Number(alpha) || 0);
       const denom = maxAbs || 1;
       return Math.min(100, Math.max(6, Math.round((num / denom) * 100)));
     }
-
     function rowHTML(item, i, isTop, maxAbs) {
       const creator = item.creator ?? "—";
       const alpha = item.avgAlpha ?? 0;
@@ -450,11 +344,10 @@
         console.error("Quick scan load error:", err);
       }
     }
-
     loadQuickScan();
   </script>
 
-  <!-- Reddit Conversion Tracking: fire SignUp ONLY when Kit subscription POST succeeds -->
+  <!-- Reddit Conversion Tracking: fire SignUp when Kit subscription POST succeeds -->
   <script>
     (function () {
       let tracked = false;
@@ -482,9 +375,7 @@
               String(url).includes('app.kit.com/forms/') &&
               String(url).includes('/subscriptions');
 
-            if (isKitSubscribe && res && res.ok) {
-              trackSignup();
-            }
+            if (isKitSubscribe && res && res.ok) trackSignup();
           } catch (e) {}
           return res;
         });
