@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>True Alpha | Stock YouTuber Audits</title>
 
+  <!-- =========================
+       CONFIG (EDIT THESE)
+  ========================== -->
+  <script>
+    // 1) Paste your Stripe Payment Link URL here once you create it
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
+
+    // 2) Where Pro members land after paying (you will create this later)
+    const PRO_PAGE_URL = "/pro.html";
+  </script>
+
   <!-- Reddit Pixel (Base) -->
   <script>
     !function(w,d){
@@ -21,10 +32,7 @@
       }
     }(window,document);
 
-    // IMPORTANT: keep this Pixel ID consistent site-wide
     rdt('init','a2_i6cyrt66cvmn');
-
-    // Track page view on load
     rdt('track','PageVisit');
   </script>
   <!-- End Reddit Pixel -->
@@ -40,6 +48,7 @@
       border: 1px solid rgba(255, 255, 255, 0.10);
     }
     .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
   </style>
 </head>
 
@@ -51,7 +60,7 @@
       <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
         <span class="font-extrabold tracking-tight text-lg">
           TRUE<span class="text-green-500">ALPHA</span>
@@ -63,6 +72,15 @@
         <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
         <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="/leaderboard/" class="hidden sm:inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          View leaderboard
+        </a>
+        <button id="proBtnNav" class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Upgrade to Pro →
+        </button>
       </div>
 
     </div>
@@ -83,7 +101,8 @@
       Most financial YouTubers are entertainers, not investors. We use AI to audit their transcripts, track their entry prices, and benchmark them against the S&amp;P 500.
     </p>
 
-    <div class="w-full max-w-4xl mb-12 relative group text-left">
+    <!-- Quick Scan -->
+    <div class="w-full max-w-4xl mb-10 relative group text-left">
       <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
       <div class="relative glass-panel rounded-lg p-6 sm:p-8">
@@ -108,7 +127,6 @@
         </div>
 
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-
           <div>
             <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,7 +135,6 @@
               </svg>
               Top Performers (Avg Alpha)
             </h3>
-
             <div id="topList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
@@ -131,12 +148,10 @@
               </svg>
               Underperformers
             </h3>
-
             <div id="bottomList" class="space-y-4">
               <div class="text-sm text-gray-400">Loading…</div>
             </div>
           </div>
-
         </div>
 
         <div class="mt-6 text-[11px] font-mono text-gray-500">
@@ -144,17 +159,83 @@
           <span class="text-gray-700">|</span>
           <span>Auto-generated from leaderboard.json</span>
         </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+            Open full leaderboard →
+          </a>
+          <button id="proBtnQuick" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+            Unlock Pro signals →
+          </button>
+        </div>
       </div>
     </div>
 
+    <!-- NEW: Free vs Pro (key section) -->
+    <section class="w-full max-w-4xl mb-12 text-left">
+      <div class="glass-panel soft-shadow rounded-2xl p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <div class="text-xs font-mono text-gray-400 mb-1">How it works</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold">Free vs Pro</h2>
+            <p class="text-gray-400 mt-2 max-w-2xl">
+              Free helps you discover who looks legit. Pro turns creator performance into decision-grade signals.
+            </p>
+          </div>
+          <div class="text-[11px] text-gray-500 uppercase tracking-wider">
+            Rule: If you could trade on it → Pro
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-sm font-extrabold text-gray-100">Free</div>
+            <ul class="mt-3 space-y-2 text-sm text-gray-300">
+              <li>• Avg Alpha vs S&amp;P (lifetime)</li>
+              <li>• Overall accuracy + horizon splits</li>
+              <li>• Confidence labels (Sig / Not Sig / More data)</li>
+              <li>• Best/Worst call (ticker only)</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-green-400/20 bg-green-500/10 p-5">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-extrabold text-green-200">Pro (Decision-Grade)</div>
+              <span class="text-[10px] px-2 py-1 rounded-full bg-green-500/15 border border-green-400/20 text-green-200 font-bold">Unlocked</span>
+            </div>
+            <ul class="mt-3 space-y-2 text-sm text-gray-100">
+              <li>• Year-by-year alpha (2023–2025)</li>
+              <li>• Consistency (e.g., 3/4 years beat S&amp;P)</li>
+              <li>• Bullish vs Bearish accuracy</li>
+              <li>• Full best/worst % returns (no cherry-picking)</li>
+              <li>• Filter &amp; sort by signal quality</li>
+            </ul>
+
+            <div class="mt-5 flex flex-col sm:flex-row gap-3">
+              <button id="proBtnCompare" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+                Upgrade to Pro →
+              </button>
+              <a href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+                Preview leaderboard →
+              </a>
+            </div>
+            <div class="mt-3 text-[11px] text-green-200/80">
+              Pro is designed for signal quality — not hype.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email capture (still free) -->
     <div class="w-full max-w-md bg-gray-800/50 border border-gray-700 p-8 rounded-2xl shadow-xl">
-      <h3 class="text-2xl font-bold text-white mb-2">Get the "Fake Guru" Audit</h3>
+      <h3 class="text-2xl font-bold text-white mb-2">Get the “Fake Guru” Audit</h3>
       <p class="text-gray-400 mb-2 text-sm">
-        Don't get dumped on. We send one email a week exposing the worst predictions.
+        One email a week exposing the worst predictions — plus rank movers and new creators.
       </p>
 
       <p class="mb-6 font-bold text-lg text-green-400 uppercase tracking-wide">
-        Subscribe to access full leaderboard.
+        Free weekly audits (Pro unlocks signals).
       </p>
 
       <!-- Kit/ConvertKit embed script -->
@@ -176,11 +257,17 @@
 
         <button data-element="submit"
                 class="formkit-submit w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition transform hover:scale-[1.02] shadow-lg glow-green">
-          Subscribe Now
+          Subscribe Free
         </button>
 
         <ul class="formkit-alert formkit-alert-error text-red-400 text-sm mt-2" data-element="errors" data-group="alert"></ul>
       </form>
+
+      <div class="mt-5">
+        <button id="proBtnEmail" class="w-full px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white font-extrabold rounded-lg transition border border-gray-700">
+          Or unlock Pro signals →
+        </button>
+      </div>
 
       <p class="mt-4 text-xs text-gray-500">
         100% Free. No spam. Unsubscribe anytime.
@@ -212,6 +299,84 @@
       </div>
     </div>
   </footer>
+
+  <!-- Pro modal -->
+  <div id="proModal" class="fixed inset-0 hidden items-center justify-center p-4 z-[999]">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative w-full max-w-lg rounded-2xl border border-white/10 bg-gray-950 p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-gray-400">TrueAlpha Pro</div>
+          <div class="text-2xl font-extrabold mt-1">Unlock decision-grade signals</div>
+          <div class="text-sm text-gray-400 mt-2">
+            Year-by-year alpha, consistency, bullish vs bearish skill, and full best/worst returns.
+          </div>
+        </div>
+        <button id="proClose" class="rounded-xl px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10">
+          ✕
+        </button>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
+          <div class="font-extrabold text-gray-100">Best for</div>
+          <div class="text-gray-400 mt-1">Serious users who want consistency, not hype.</div>
+        </div>
+        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
+          <div class="font-extrabold text-gray-100">Includes</div>
+          <div class="text-gray-400 mt-1">Year-by-year alpha, filters, signal breakdowns.</div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a id="proPayLink" href="#" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Upgrade via Stripe →
+        </a>
+        <a id="proLearnLink" href="/leaderboard/" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          Preview leaderboard →
+        </a>
+      </div>
+
+      <div class="mt-3 text-[11px] text-gray-500">
+        You’ll be redirected after purchase. (Pro page can be a simple landing for now.)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Wire up Pro CTAs (single source of truth)
+    (function () {
+      const modal = document.getElementById("proModal");
+      const closeBtn = document.getElementById("proClose");
+      const payLink = document.getElementById("proPayLink");
+
+      function openPro() {
+        if (!modal) return;
+        payLink.href = STRIPE_PAYMENT_LINK;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closePro() {
+        if (!modal) return;
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      ["proBtnNav","proBtnQuick","proBtnCompare","proBtnEmail"].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener("click", openPro);
+      });
+
+      if (closeBtn) closeBtn.addEventListener("click", closePro);
+      if (modal) modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target?.classList?.contains("bg-black/70")) closePro();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePro();
+      });
+    })();
+  </script>
 
   <script>
     function fmtPct(n) {
@@ -292,7 +457,6 @@
   <!-- Reddit Conversion Tracking: fire SignUp ONLY when Kit subscription POST succeeds -->
   <script>
     (function () {
-      // Prevent double firing
       let tracked = false;
 
       function trackSignup() {
@@ -303,12 +467,9 @@
         if (window.rdt) {
           rdt('track', 'SignUp');
           console.log('[Reddit] SignUp tracked (Kit subscription success)');
-        } else {
-          console.warn('[Reddit] rdt not available yet; SignUp not tracked');
         }
       }
 
-      // Intercept fetch() calls (Kit uses fetch)
       const origFetch = window.fetch;
       window.fetch = function (...args) {
         return origFetch.apply(this, args).then((res) => {
@@ -324,14 +485,11 @@
             if (isKitSubscribe && res && res.ok) {
               trackSignup();
             }
-          } catch (e) {
-            // no-op
-          }
+          } catch (e) {}
           return res;
         });
       };
 
-      // Also catch XHR just in case (some embeds use XHR)
       const origOpen = XMLHttpRequest.prototype.open;
       XMLHttpRequest.prototype.open = function (method, url, ...rest) {
         this.__isKitSubscribe =
