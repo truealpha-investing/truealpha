@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>True Alpha | Stock YouTuber Audits & Leaderboard</title>
+  <title>True Alpha | Stock YouTuber Audits</title>
 
   <script>
     !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js";t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
@@ -12,201 +12,196 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
     .glass-panel {
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .glow-green { box-shadow: 0 20px 50px rgba(34, 197, 94, 0.15); }
+    .glow-green { box-shadow: 0 0 22px rgba(34, 197, 94, 0.22); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(34,197,94,0.25);
+      background: rgba(34,197,94,0.10);
+      color: rgba(74,222,128,1);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
     .formkit-form, .seva-form { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; }
   </style>
 </head>
 
-<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col selection:bg-green-500/30">
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-  <nav class="sticky top-0 z-50 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 group">
-        <div class="p-1.5 bg-green-500 rounded-lg group-hover:rotate-12 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-        </div>
-        <span class="font-black tracking-tighter text-xl uppercase">
-          True<span class="text-green-500">Alpha</span>
+  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="font-extrabold tracking-tight text-lg uppercase">
+          TRUE<span class="text-green-500">ALPHA</span>
         </span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
-        <a href="methodology.html" class="hover:text-white transition">Methodology</a>
-        <a href="/leaderboard/" class="text-green-500 hover:text-green-400 transition">Leaderboard</a>
-        <a href="blog.html" class="hover:text-white transition">Weekly Insights</a>
+      <div class="flex items-center gap-4 md:gap-8 text-sm text-gray-300 font-medium">
+        <a href="methodology.html" class="hover:text-green-400 transition">Methodology</a>
+        <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
+        <a href="blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
+        <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
     </div>
   </nav>
 
   <main class="flex-grow">
-    <section class="relative pt-24 pb-16 overflow-hidden">
-      <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-black tracking-[0.2em] uppercase mb-8">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+    <section class="pt-20 pb-12 text-center px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6">
+          <span class="pill">AS SEEN ON r/STOCKMARKET</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+          We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions.
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mt-2">
+            See Who Actually Makes Money.
           </span>
-          As seen on r/Stockmarket — Auditing 10,000+ Predictions
-        </div>
-        
-        <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
-          Most YouTubers <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Are Not Investors.</span>
         </h1>
-        
-        <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-          We audit transcripts, track every entry, and benchmark creator performance against the S&P 500. See who actually makes money.
+        <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+          Most financial YouTubers are entertainers, not investors. We audit transcripts, track entries, and benchmark every call vs the S&P 500.
         </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a href="#pro" class="w-full sm:w-auto px-12 py-5 bg-green-600 hover:bg-green-500 text-white font-black rounded-2xl transition-all shadow-[0_20px_40px_-10px_rgba(34,197,94,0.4)] hover:scale-[1.03] uppercase tracking-tight">
-            Get Pro Access
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a href="#pro" class="w-full sm:w-auto px-10 py-4 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-2xl transition shadow-lg glow-green">
+            Unlock Pro Leaderboard
           </a>
-          <a href="#freeEmail" class="text-gray-400 hover:text-white font-bold transition flex items-center gap-2 group">
-            Join Free Newsletter <span class="group-hover:translate-x-1 transition-transform">→</span>
+          <a href="#freeEmail" class="text-gray-400 hover:text-white font-semibold flex items-center gap-2">
+            Join Free Email →
           </a>
         </div>
       </div>
     </section>
 
-    <section class="py-20 bg-gray-900/40 border-y border-white/5">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <section class="py-16 bg-gray-950/30 border-y border-gray-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div class="text-center md:text-left">
-            <h2 class="text-3xl font-black tracking-tight text-white italic underline decoration-green-500 decoration-4 underline-offset-8">Market Transparency</h2>
-            <p class="text-gray-500 mt-4 font-medium uppercase text-xs tracking-widest">Live Performance: Verified Creators (N ≥ 20)</p>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">Top & Bottom Creators (Verified)</h2>
+            <p class="text-sm text-gray-400 mt-1">
+              <span id="metricText">Average Alpha vs S&P 500</span> • <span id="filterText">Filter: Verified (N > 20)</span>
+            </p>
           </div>
-          <div class="text-[11px] font-mono text-gray-400 bg-gray-950 px-5 py-2.5 rounded-xl border border-white/10 self-center md:self-end">
-            LAST SYNC: <span id="updatedText" class="text-green-500">—</span>
+          <div class="px-4 py-2 rounded-lg border border-gray-700 bg-gray-800/40 text-[11px] font-mono text-gray-300 self-center">
+            Last Updated: <span id="updatedText" class="text-white">—</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-          <div class="glass-panel rounded-[32px] p-8 glow-green">
-            <h3 class="flex items-center gap-2 text-green-400 text-xs font-black tracking-[0.2em] uppercase mb-10">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-              Top Alpha Generation
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="glass-panel rounded-2xl p-8">
+            <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-8 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+              Top Performers (Avg Alpha)
             </h3>
-            <div id="topList" class="space-y-8">
-              <div class="text-sm text-gray-500 font-mono animate-pulse">Initializing Data Stream...</div>
+            <div id="topList" class="space-y-6">
+              <div class="text-sm text-gray-400">Loading…</div>
             </div>
           </div>
 
-          <div class="glass-panel rounded-[32px] p-8">
-            <h3 class="flex items-center gap-2 text-red-500 text-xs font-black tracking-[0.2em] uppercase mb-10">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" /></svg>
-              Performance Laggards
+          <div class="glass-panel rounded-2xl p-8">
+            <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-8 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+              Underperformers
             </h3>
-            <div id="bottomList" class="space-y-8">
-              <div class="text-sm text-gray-500 font-mono animate-pulse">Initializing Data Stream...</div>
+            <div id="bottomList" class="space-y-6">
+              <div class="text-sm text-gray-400">Loading…</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="pro" class="py-32 max-w-5xl mx-auto px-6">
-      <div class="glass-panel rounded-[48px] overflow-hidden border-white/10 soft-shadow bg-gradient-to-br from-white/[0.02] to-transparent">
+    <section id="pro" class="py-24 max-w-5xl mx-auto px-4">
+      <div class="glass-panel rounded-[32px] overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-5">
-          <div class="md:col-span-3 p-10 md:p-16 border-b md:border-b-0 md:border-r border-white/5">
-            <h2 class="text-4xl font-black mb-8">TrueAlpha <span class="text-green-500">Pro</span></h2>
-            <ul class="space-y-6">
-              <li class="flex items-start gap-4">
-                <div class="mt-1 bg-green-500/20 p-1 rounded">
-                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <div>
-                    <p class="font-bold text-gray-100">Historical Alpha Generation</p>
-                    <p class="text-sm text-gray-400 mt-1">Year-by-year performance breakdown vs the S&P 500.</p>
-                </div>
+          <div class="md:col-span-3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-gray-800">
+            <div class="text-xs font-mono text-gray-400 mb-2 uppercase">Upgrade</div>
+            <h2 class="text-3xl font-extrabold mb-6">TrueAlpha <span class="text-green-400">Pro</span></h2>
+            <ul class="space-y-4 text-sm text-gray-200">
+              <li class="flex gap-3">
+                <span class="text-green-400 font-bold">✓</span>
+                <span><b>Year-by-year alpha (2023–2025+)</b> + “Beat S&P?” per year</span>
               </li>
-              <li class="flex items-start gap-4">
-                <div class="mt-1 bg-green-500/20 p-1 rounded">
-                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <div>
-                    <p class="font-bold text-gray-100">Bull vs Bear Accuracy</p>
-                    <p class="text-sm text-gray-400 mt-1">Identify who only performs well in a lucky market.</p>
-                </div>
+              <li class="flex gap-3">
+                <span class="text-green-400 font-bold">✓</span>
+                <span><b>Consistency score</b> (e.g., “3/4 years beat S&P”) + streaks</span>
               </li>
-              <li class="flex items-start gap-4">
-                <div class="mt-1 bg-green-500/20 p-1 rounded">
-                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <div>
-                    <p class="font-bold text-gray-100">Advanced Signal Filters</p>
-                    <p class="text-sm text-gray-400 mt-1">Sort by confidence (p-value), streaks, and outlier-adjusted views.</p>
-                </div>
+              <li class="flex gap-3">
+                <span class="text-green-400 font-bold">✓</span>
+                <span><b>Bull vs Bear accuracy</b> (not just a lucky market)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-green-400 font-bold">✓</span>
+                <span><b>Signal filters</b>: Verified (N≥20), significance badge, 90/180/365 horizons</span>
               </li>
             </ul>
           </div>
-          
-          <div class="md:col-span-2 p-10 md:p-16 bg-white/[0.02] flex flex-col justify-center text-center">
-            <div id="hpPriceText" class="text-6xl font-black mb-2 text-white">$19</div>
-            <p id="hpSubText" class="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-black mb-10">Billed Monthly</p>
+          <div class="md:col-span-2 p-8 md:p-12 bg-white/[0.02] flex flex-col justify-center text-center">
+            <div id="hpPriceText" class="text-5xl font-extrabold text-white mb-2">$19</div>
+            <p id="hpSubText" class="text-sm text-gray-400 mb-8 font-medium">Cancel anytime. Instant access.</p>
             
-            <div class="flex justify-center mb-10">
-                <div class="inline-flex bg-gray-950 p-1.5 rounded-2xl border border-white/10">
-                    <button id="hpMonthlyBtn" class="px-6 py-2.5 text-[10px] font-black uppercase rounded-xl bg-green-600 text-white shadow-lg transition-all">Monthly</button>
-                    <button id="hpAnnualBtn" class="px-6 py-2.5 text-[10px] font-black uppercase text-gray-500 hover:text-white transition-all relative">
-                        Annual
-                        <span class="absolute -top-3 -right-2 bg-green-500 text-[8px] text-gray-950 px-1.5 py-0.5 rounded font-black">-35%</span>
-                    </button>
-                </div>
+            <div class="flex justify-center mb-8">
+              <div class="inline-flex bg-gray-800 p-1 rounded-full">
+                <button id="hpMonthlyBtn" class="px-4 py-2 text-xs font-extrabold rounded-full bg-green-600 text-white transition">Monthly</button>
+                <button id="hpAnnualBtn" class="px-4 py-2 text-xs font-extrabold rounded-full text-gray-400 hover:text-white transition relative">
+                  Annual <span class="ml-1 text-[10px] text-green-500">-35%</span>
+                </button>
+              </div>
             </div>
 
-            <a id="hpCheckoutBtn" href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00" target="_blank" class="w-full py-5 bg-white text-gray-950 font-black rounded-2xl hover:bg-green-500 hover:text-white transition-all uppercase tracking-tighter text-sm shadow-xl">
-                Unlock Instantly
+            <a id="hpCheckoutBtn" href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00" target="_blank" class="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl transition shadow-lg glow-green">
+              Unlock Pro — $19/mo
             </a>
-            <p class="mt-4 text-[10px] text-gray-600 font-medium">No commitment. Cancel anytime.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="freeEmail" class="py-24 bg-gray-900/20 border-t border-white/5">
-      <div class="max-w-xl mx-auto px-6 text-center">
-        <h3 class="text-2xl font-black mb-4">Not ready for Pro?</h3>
-        <p class="text-gray-400 mb-10">Get weekly rank movers and new creator audits delivered to your inbox for free.</p>
+    <section id="freeEmail" class="py-20 border-t border-gray-800">
+      <div class="max-w-xl mx-auto px-4 text-center">
+        <h3 class="text-xl font-extrabold mb-2">Not ready? Get weekly changes (free)</h3>
+        <p class="text-sm text-gray-400 mb-8">New creators, rank movers, what changed since last week. No spam.</p>
         
         <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
         <form action="https://app.kit.com/forms/8848906/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8848906" data-uid="c5142792e3" data-format="inline">
-          <div class="flex flex-col gap-3">
-            <input type="email" name="email_address" placeholder="Enter your email" required class="w-full px-6 py-4 bg-gray-950 border border-white/10 rounded-2xl text-white focus:border-green-500 focus:outline-none transition-all">
-            <button data-element="submit" class="w-full px-6 py-4 bg-gray-800 hover:bg-gray-700 text-white font-black rounded-2xl transition-all uppercase tracking-widest text-xs">Join Free Newsletter</button>
+          <div class="space-y-3">
+            <input type="email" name="email_address" placeholder="Email Address" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-green-500 transition">
+            <input type="text" name="fields[first_name]" placeholder="Which YouTuber Should We Audit Next? (Optional)" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-green-500 transition text-sm">
+            <button data-element="submit" class="w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white font-extrabold rounded-xl transition">Join Free Email</button>
           </div>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-white/5 bg-gray-950 py-16">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+  <footer class="border-t border-gray-800 bg-gray-900 py-16">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
       <div>
-        <h4 class="font-black text-white text-lg mb-6 uppercase tracking-tight">The Mission</h4>
-        <p class="text-gray-500 leading-relaxed text-sm max-w-sm">
-          Retail investors lose billions following unverified advice. We bring institutional-grade accountability to the creator economy. If they sell opinions, we audit the results.
+        <h4 class="font-bold text-white mb-4">The Mission</h4>
+        <p class="text-gray-500 leading-relaxed">
+          Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
         </p>
       </div>
-      <div class="md:text-right flex flex-col md:items-end">
-        <h4 class="font-black text-white text-lg mb-6 uppercase tracking-tight">Connect</h4>
-        <div class="space-y-3 text-sm font-bold">
-          <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-500">Twitter / X</a>
-          <a href="mailto:hello@truealphadata.com" class="block text-gray-500 hover:text-green-500">hello@truealphadata.com</a>
-        </div>
-        <p class="text-[10px] text-gray-700 mt-10 font-bold uppercase tracking-[0.2em]">
-          &copy; 2026 True Alpha Research. <br/>Not financial advice. Data for entertainment purposes.
-        </p>
+      <div class="md:text-right">
+        <h4 class="font-bold text-white mb-4">Connect</h4>
+        <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
+        <a href="mailto:hello@truealphadata.com" class="block text-gray-500 hover:text-green-400 mb-2">hello@truealphadata.com</a>
+        <p class="text-gray-600 mt-6 text-xs">&copy; 2026 True Alpha Research. <br>Not financial advice. Data for entertainment purposes.</p>
       </div>
     </div>
   </footer>
@@ -224,73 +219,59 @@
     function setHPMonthly() {
       hpMonthlyBtn.classList.add("bg-green-600","text-white");
       hpAnnualBtn.classList.remove("bg-green-600","text-white");
-      hpAnnualBtn.classList.add("text-gray-500");
+      hpAnnualBtn.classList.add("text-gray-400");
       hpPriceText.innerHTML = `$19`;
-      hpSubText.textContent = "Billed Monthly";
+      hpSubText.textContent = "Cancel anytime. Instant access.";
       hpCheckoutBtn.href = STRIPE_MONTHLY;
+      hpCheckoutBtn.textContent = "Unlock Pro — $19/mo";
     }
 
     function setHPAnnual() {
       hpAnnualBtn.classList.add("bg-green-600","text-white");
-      hpAnnualBtn.classList.remove("text-gray-500");
       hpMonthlyBtn.classList.remove("bg-green-600","text-white");
-      hpMonthlyBtn.classList.add("text-gray-500");
+      hpMonthlyBtn.classList.add("text-gray-400");
       hpPriceText.innerHTML = `$149`;
-      hpSubText.textContent = "Billed Annually (Save 35%)";
+      hpSubText.textContent = "Save 35%. Equivalent to $12.42/month.";
       hpCheckoutBtn.href = STRIPE_ANNUAL;
+      hpCheckoutBtn.textContent = "Go Pro — Save 35%";
     }
 
     hpMonthlyBtn.addEventListener("click", setHPMonthly);
     hpAnnualBtn.addEventListener("click", setHPAnnual);
-  </script>
 
-  <script>
-    function fmtPct(n) {
-      const num = Number(n);
-      return (num > 0 ? "+" : "") + num.toFixed(2) + "%";
-    }
+    function fmtPct(n) { const num = Number(n); return (num > 0 ? "+" : "") + num.toFixed(2) + "%"; }
 
     function rowHTML(item, i, isTop, maxAbs) {
       const alpha = item.avgAlpha ?? 0;
-      const width = Math.min(100, Math.max(10, Math.round((Math.abs(alpha) / maxAbs) * 100)));
-      const colorClass = isTop ? "bg-green-500" : "bg-red-500";
-      const textColor = isTop ? "text-green-400" : "text-red-400";
-
+      const width = Math.min(100, Math.max(6, Math.round((Math.abs(alpha) / maxAbs) * 100)));
+      const barClass = isTop ? "bg-green-500" : "bg-red-500";
+      const valClass = isTop ? "text-green-400" : "text-red-400";
       return `
-        <div class="group">
-          <div class="flex justify-between items-end mb-3">
-            <span class="text-sm font-black text-white uppercase tracking-tight group-hover:text-green-400 transition-colors">${item.creator}</span>
-            <span class="text-sm font-mono font-bold ${textColor}">${fmtPct(alpha)}</span>
+        <div>
+          <div class="flex justify-between text-sm font-semibold mb-1">
+            <span>${item.creator}</span>
+            <span class="${valClass}">${fmtPct(alpha)}</span>
           </div>
-          <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-            <div class="${colorClass} h-full transition-all duration-1000" style="width: ${width}%"></div>
+          <div class="w-full bg-gray-800 rounded-full h-2">
+            <div class="${barClass} h-2 rounded-full" style="width:${width}%"></div>
           </div>
         </div>
       `;
     }
 
     async function loadQuickScan() {
-      const topEl = document.getElementById("topList");
-      const bottomEl = document.getElementById("bottomList");
-
       try {
         const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
         const data = await res.json();
-        
         document.getElementById("updatedText").textContent = data.meta?.lastUpdated || "Jan 2026";
-        
         const top = data.alpha?.top?.slice(0, 4) || [];
         const bottom = data.alpha?.bottom?.slice(0, 4) || [];
         const maxAbs = Math.max(...[...top, ...bottom].map(x => Math.abs(x.avgAlpha)), 1);
-
-        topEl.innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
-        bottomEl.innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
-      } catch (err) {
-        console.error("Fetch error", err);
-      }
+        document.getElementById("topList").innerHTML = top.map((r, i) => rowHTML(r, i, true, maxAbs)).join("");
+        document.getElementById("bottomList").innerHTML = bottom.map((r, i) => rowHTML(r, i, false, maxAbs)).join("");
+      } catch (err) { console.error(err); }
     }
     loadQuickScan();
   </script>
-
 </body>
 </html>
