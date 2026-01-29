@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard | True Alpha</title>
 
+  <!-- =========================
+       CONFIG (EDIT THESE)
+  ========================== -->
+  <script>
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
+    const PRO_PAGE_URL = "/pro.html";
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -17,6 +25,27 @@
     }
     .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
     .divider { height: 1px; background: rgba(255,255,255,0.10); }
+
+    /* Locked blur */
+    .locked {
+      position: relative;
+      overflow: hidden;
+    }
+    .locked .locked-content {
+      filter: blur(10px);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+    }
+    .locked .locked-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.85));
+    }
 
     /* Kit embed cosmetic resets */
     .formkit-form, .seva-form {
@@ -67,9 +96,14 @@
 
       <div class="flex items-center gap-2">
         <a href="#subscribe"
-           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Get weekly changes <span aria-hidden="true">→</span>
+           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          Free weekly changes <span aria-hidden="true">→</span>
         </a>
+
+        <button id="proBtnTop"
+           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Upgrade to Pro <span aria-hidden="true">↗</span>
+        </button>
 
         <a id="dbBtnTop"
            href="#"
@@ -93,6 +127,29 @@
           and how results change by time horizon.
         </p>
 
+        <!-- NEW: Pro banner -->
+        <section class="mt-5 glass soft-shadow rounded-2xl p-5">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+            <div>
+              <div class="text-sm font-extrabold text-green-200">🔒 TrueAlpha Pro (Decision-Grade)</div>
+              <div class="text-xs text-gray-400 mt-1 leading-relaxed">
+                Unlock year-by-year alpha (2023–2025), consistency (e.g., 3/4 years beat S&amp;P),
+                bullish vs bearish accuracy, and full best/worst returns (no cherry-picking).
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <button id="proBtnBanner"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition border border-green-400/30 shadow-lg shadow-green-600/20">
+                Upgrade to Pro →
+              </button>
+              <a href="/index.html"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+                Learn more
+              </a>
+            </div>
+          </div>
+        </section>
+
         <!-- Soft subscribe (no gate) -->
         <section id="subscribe" class="mt-5 glass soft-shadow rounded-2xl p-5">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
@@ -112,7 +169,7 @@
           </div>
 
           <div class="mt-3 text-[11px] text-gray-500">
-            You can unsubscribe anytime.
+            Pro is separate from the free newsletter.
           </div>
         </section>
       </div>
@@ -198,6 +255,63 @@
 
     </section>
 
+    <!-- NEW: Pro preview (locked) -->
+    <section class="mt-6 glass soft-shadow rounded-2xl p-5">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h2 class="font-bold text-lg">Pro Signals (Preview)</h2>
+          <p class="text-xs text-gray-400 mt-1">
+            Year-by-year alpha, consistency, directional skill, and full best/worst returns.
+          </p>
+        </div>
+        <button id="proBtnPreview" class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition border border-green-400/30 shadow-lg shadow-green-600/20">
+          Unlock Pro →
+        </button>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 locked rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div class="locked-content grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+            <div class="text-xs text-gray-400">Consistency</div>
+            <div class="mt-2 text-xl font-extrabold">3 / 4 Years</div>
+            <div class="mt-2 text-xs text-gray-400">Beat S&amp;P in most years (sample gated)</div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+            <div class="text-xs text-gray-400">Directional Skill</div>
+            <div class="mt-2 text-xl font-extrabold">Bull 81% • Bear 62%</div>
+            <div class="mt-2 text-xs text-gray-400">Split accuracy by bullish vs bearish calls</div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+            <div class="text-xs text-gray-400">Full Transparency</div>
+            <div class="mt-2 text-xl font-extrabold">Best +519% / Worst −214%</div>
+            <div class="mt-2 text-xs text-gray-400">No cherry-picking (risk included)</div>
+          </div>
+        </div>
+
+        <div class="locked-overlay">
+          <div class="text-center max-w-md">
+            <div class="text-sm font-extrabold text-green-200">🔒 Locked in Free</div>
+            <div class="mt-2 text-gray-200 font-extrabold text-xl">Unlock decision-grade metrics</div>
+            <div class="mt-2 text-sm text-gray-400">
+              Pro shows year-by-year alpha (2023–2025) + consistency, so you can tell skill vs luck.
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2 justify-center">
+              <button id="proBtnOverlay" class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition border border-green-400/30 shadow-lg shadow-green-600/20">
+                Upgrade to Pro →
+              </button>
+              <a href="/index.html" class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+                What’s included?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 text-[11px] text-gray-500">
+        Pro preview is illustrative. Your real Pro metrics will populate as you backfill more years.
+      </div>
+    </section>
+
     <section class="mt-6 glass soft-shadow rounded-2xl p-5">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
@@ -279,26 +393,88 @@
     </div>
   </footer>
 
+  <!-- Pro modal -->
+  <div id="proModal" class="fixed inset-0 hidden items-center justify-center p-4 z-[999]">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative w-full max-w-lg rounded-2xl border border-white/10 bg-gray-950 p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-gray-400">TrueAlpha Pro</div>
+          <div class="text-2xl font-extrabold mt-1">Unlock decision-grade signals</div>
+          <div class="text-sm text-gray-400 mt-2">
+            Year-by-year alpha, consistency, bullish vs bearish skill, and full best/worst returns.
+          </div>
+        </div>
+        <button id="proClose" class="rounded-xl px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10">
+          ✕
+        </button>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a id="proPayLink" href="#" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Upgrade via Stripe →
+        </a>
+        <a href="/index.html" class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+          What’s included?
+        </a>
+      </div>
+
+      <div class="mt-3 text-[11px] text-gray-500">
+        Keep it simple for MVP: Stripe Link → /pro.html.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================
+    // Pro CTA wiring
+    // ==========================
+    (function () {
+      const modal = document.getElementById("proModal");
+      const closeBtn = document.getElementById("proClose");
+      const payLink = document.getElementById("proPayLink");
+
+      function openPro() {
+        payLink.href = STRIPE_PAYMENT_LINK;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+      function closePro() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      ["proBtnTop","proBtnBanner","proBtnPreview","proBtnOverlay"].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener("click", openPro);
+      });
+
+      if (closeBtn) closeBtn.addEventListener("click", closePro);
+      if (modal) modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target?.classList?.contains("bg-black/70")) closePro();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePro();
+      });
+    })();
+  </script>
+
   <script>
     // ==========================
     // Data rendering
     // ==========================
     const JSON_PATH = "./leaderboard.json";
 
-    // Robust parser: handles 58.54 OR "58.54%" OR "0.64%"
     function toNumber(x) {
       if (x === null || x === undefined) return NaN;
       if (typeof x === "number") return x;
       if (typeof x !== "string") return Number(x);
-
       const s = x.trim();
       if (!s) return NaN;
-
       if (s.endsWith("%")) {
         const n = Number(s.replace("%", "").trim());
         return Number.isFinite(n) ? n : NaN;
       }
-
       const n = Number(s);
       return Number.isFinite(n) ? n : NaN;
     }
@@ -368,129 +544,4 @@
     async function initLeaderboard() {
       try {
         const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-
-        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "—";
-        document.getElementById("filterText").textContent = data?.meta?.filter || "—";
-        document.getElementById("entryRule").textContent = data?.meta?.entry || "—";
-        document.getElementById("sigRule").textContent = data?.meta?.significanceRule || "—";
-
-        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "—";
-        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
-        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "—";
-
-        setDbLinks(data?.meta?.databaseUrl || "#");
-
-        const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-green-300",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-        })).join("");
-
-        const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-red-300",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-        })).join("");
-
-        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
-          valueText: fmtRate(x.winRate),
-          valueClass: "text-green-300",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-        })).join("");
-
-        const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
-          valueText: fmtRate(x.winRate),
-          valueClass: "text-red-300",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-        })).join("");
-
-        document.getElementById("accTop").innerHTML = accTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("accBottom").innerHTML = accBottom || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
-        document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
-
-        // 90 / 180 / 365
-        const d90 = data?.intervals?.d90 || {};
-        const d180 = data?.intervals?.d180 || {};
-        const d365 = data?.intervals?.d365 || {};
-
-        document.getElementById("d90Label").textContent = d90.label || "90D";
-        document.getElementById("d180Label").textContent = d180.label || "180D";
-        document.getElementById("d365Label").textContent = d365.label || "365D";
-
-        const renderTopBottom = (block, topId, bottomId) => {
-          const top = (block.top || []).slice(0, 3).map(x => rowCreator({
-            rank: pillRank(x.rank ?? "", "good"),
-            creator: x.creator || "—",
-            valueText: fmtPct(x.alpha),
-            valueClass: "text-green-300",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-          })).join("");
-
-          const bottom = (block.bottom || []).slice(0, 3).map(x => rowCreator({
-            rank: pillRank(x.rank ?? "", "bad"),
-            creator: x.creator || "—",
-            valueText: fmtPct(x.alpha),
-            valueClass: "text-red-300",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
-          })).join("");
-
-          document.getElementById(topId).innerHTML = top || `<div class="text-sm text-gray-400">No data.</div>`;
-          document.getElementById(bottomId).innerHTML = bottom || `<div class="text-sm text-gray-400">No data.</div>`;
-        };
-
-        renderTopBottom(d90, "d90Top", "d90Bottom");
-        renderTopBottom(d180, "d180Top", "d180Bottom");
-        renderTopBottom(d365, "d365Top", "d365Bottom");
-
-      } catch (e) {
-        console.error(e);
-        const ids = ["alphaTop","alphaBottom","accTop","accBottom","stocksList","d90Top","d90Bottom","d180Top","d180Bottom","d365Top","d365Bottom"];
-        ids.forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
-        });
-      }
-    }
-
-    initLeaderboard();
-  </script>
-
-  <script>
-    // ==========================
-    // Kit embed (no gating)
-    // ==========================
-    const KIT_UID = "c5142792e3";
-    const KIT_SCRIPT_SRC = `https://truealpha-investing.kit.com/${KIT_UID}/index.js`;
-
-    (function loadKitEmbed() {
-      const slot = document.getElementById("kitFormInline");
-      if (!slot) return;
-
-      // Avoid double-inject
-      if (slot.children.length > 0) return;
-
-      const s = document.createElement("script");
-      s.async = true;
-      s.setAttribute("data-uid", KIT_UID);
-      s.src = KIT_SCRIPT_SRC;
-      slot.appendChild(s);
-    })();
-  </script>
-
-</body>
-</html>
+        if (!res.ok) throw new Error(`HTTP ${res.status
