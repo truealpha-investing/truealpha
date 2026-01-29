@@ -16,50 +16,76 @@
       backdrop-filter: blur(12px);
     }
     .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-    .divider { height: 1px; background: rgba(255,255,255,0.10); }
 
-    .formkit-form, .seva-form {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
+    /* ===== Kit CRO overrides (UID-specific) ===== */
+    .formkit-form[data-uid="c5142792e3"] [data-element="header"],
+    .formkit-form[data-uid="c5142792e3"] [data-element="subheader"],
+    .formkit-form[data-uid="c5142792e3"] .formkit-powered-by-convertkit-container,
+    .formkit-form[data-uid="c5142792e3"] .formkit-background,
+    .formkit-form[data-uid="c5142792e3"] [data-style="card"] > .formkit-column:first-child {
+      display: none !important;
     }
-    .formkit-form input[type="email"], .seva-form input[type="email"] {
-      width: 100% !important;
-      padding: 12px 12px !important;
+    .formkit-form[data-uid="c5142792e3"] {
+      max-width: 100% !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-column {
+      padding: 0 !important;
+      background: transparent !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-fields {
+      display: flex !important;
+      gap: 10px !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] input[name="email_address"] {
+      flex: 1 1 260px !important;
+      margin: 0 !important;
+      padding: 12px 14px !important;
       border-radius: 12px !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      background: rgba(255,255,255,0.04) !important;
-      color: #e8eaed !important;
+      background: rgba(17,24,39,0.85) !important;
+      border: 1px solid rgba(255,255,255,0.14) !important;
+      color: #fff !important;
       outline: none !important;
     }
-    .formkit-form button, .seva-form button {
-      width: 100% !important;
-      padding: 12px 12px !important;
+    .formkit-form[data-uid="c5142792e3"] input[name="fields[first_name]"],
+    .formkit-form[data-uid="c5142792e3"] input[aria-label*="YouTuber"] {
+      display: none !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-submit {
+      flex: 0 0 auto !important;
+      margin: 0 !important;
       border-radius: 12px !important;
-      border: none !important;
-      font-weight: 800 !important;
+      background: rgb(34 197 94) !important;
+      color: #061018 !important;
+      font-weight: 900 !important;
+      border: 1px solid rgba(34,197,94,0.25) !important;
       cursor: pointer !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-submit > span {
+      padding: 12px 16px !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-guarantee {
+      display: none !important;
+    }
+    .formkit-form[data-uid="c5142792e3"] .formkit-field {
+      margin: 0 !important;
     }
   </style>
 </head>
 
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <!-- ====== CONFIG (swap these when ready) ====== -->
-  <script>
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
-    const PRO_LEADERBOARD_URL = "/pro.html";
-  </script>
-
   <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
         <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
       </a>
@@ -71,21 +97,15 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <a href="#subscribe"
-           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Get weekly changes <span aria-hidden="true">→</span>
-        </a>
-
-        <a id="upgradeBtnTop"
-           href="#"
-           class="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-          Upgrade to Pro <span aria-hidden="true">↗</span>
+        <a href="#pro"
+           class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+          Unlock Pro →
         </a>
       </div>
     </div>
   </nav>
 
-  <main id="content" class="max-w-7xl mx-auto px-4 py-10">
+  <main class="max-w-7xl mx-auto px-4 py-10">
 
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
       <div class="max-w-3xl">
@@ -97,59 +117,74 @@
           and how results change by time horizon.
         </p>
 
-        <!-- ===== NEW: Pro callout ===== -->
-        <section class="mt-5 glass soft-shadow rounded-2xl p-5">
-          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <!-- success banner -->
+        <div id="subSuccess" class="hidden mt-5 glass soft-shadow rounded-2xl p-4 border border-green-400/20">
+          <div class="text-sm font-extrabold text-green-300">✅ You’re subscribed.</div>
+          <div class="text-xs text-gray-400 mt-1">Next: watch for weekly leaderboard changes in your inbox.</div>
+        </div>
+
+        <!-- PRO primary -->
+        <section id="pro" class="mt-5 glass soft-shadow rounded-2xl p-5">
+          <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
             <div>
               <div class="text-base sm:text-lg font-extrabold">Unlock Pro: decision-grade breakdowns</div>
               <div class="text-xs text-gray-400 mt-1 leading-relaxed">
-                Pro adds year-by-year alpha (2023–2025), consistency (e.g. 3/4 years beat S&amp;P),
-                bullish vs bearish accuracy, and full best/worst % returns.
+                Pro adds year-by-year alpha (2023–2025), consistency (e.g., 3/4 years beat S&amp;P),
+                bullish vs bearish accuracy, deeper significance filters, and “best/worst calls” exploration.
               </div>
             </div>
-            <div class="text-[11px] text-gray-500 uppercase tracking-wider">
-              Pro
-            </div>
+            <div class="text-[11px] text-gray-500 uppercase tracking-wider">Pro</div>
           </div>
 
-          <div class="mt-4 flex flex-col sm:flex-row gap-3">
-            <a id="upgradeBtnCard"
-               href="#"
-               class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-              Upgrade to Pro →
+          <div class="mt-4 flex flex-wrap gap-2">
+            <!-- Stripe not ready: send to waitlist form section -->
+            <a href="#waitlist"
+               onclick="trackProClick();"
+               class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
+              Join Pro waitlist →
             </a>
-            <a id="proLink"
-               href="#"
-               class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-              Already Pro? Open Pro →
+
+            <a href="#content"
+               class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+              View public summary ↓
             </a>
           </div>
 
           <div class="mt-3 text-[11px] text-gray-500">
-            Free users can browse the public summary below. Pro unlocks consistency + deeper signal filters.
+            Pro checkout (Stripe) is coming soon. Join the waitlist to get first access.
           </div>
         </section>
 
-        <!-- Soft subscribe (no gate) -->
-        <section id="subscribe" class="mt-5 glass soft-shadow rounded-2xl p-5">
-          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <!-- Waitlist (secondary email) -->
+        <section id="waitlist" class="mt-5 glass soft-shadow rounded-2xl p-5">
+          <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
             <div>
               <div class="text-base sm:text-lg font-extrabold">Get weekly leaderboard changes (free)</div>
               <div class="text-xs text-gray-400 mt-1 leading-relaxed">
-                New creators, rank movers, and what changed since last week. No spam.
+                Rank movers, new creators, and what changed since last week.
               </div>
             </div>
-            <div class="text-[11px] text-gray-500 uppercase tracking-wider">
-              Free email
-            </div>
+            <div class="text-[11px] text-gray-500 uppercase tracking-wider">Free email</div>
           </div>
 
           <div class="mt-4">
-            <div id="kitFormInline"></div>
-          </div>
+            <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+            <form action="https://app.kit.com/forms/8848906/subscriptions"
+                  class="seva-form formkit-form"
+                  method="post"
+                  data-sv-form="8848906"
+                  data-uid="c5142792e3"
+                  data-format="inline"
+                  data-version="6"
+                  data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://truealphadata.com/leaderboard?subscribed=true&quot;}}}">
+              <div data-style="card">
+                <div data-element="column" class="formkit-column"></div>
+              </div>
+            </form>
 
-          <div class="mt-3 text-[11px] text-gray-500">
-            You can unsubscribe anytime.
+            <p class="mt-3 text-[11px] text-gray-500">
+              1 email/week. No spam. Unsubscribe anytime.
+            </p>
           </div>
         </section>
       </div>
@@ -170,7 +205,8 @@
       </div>
     </div>
 
-    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Public summary -->
+    <section id="content" class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
 
       <div class="glass soft-shadow rounded-2xl p-5">
         <div class="flex items-start justify-between">
@@ -227,7 +263,7 @@
            href="#"
            target="_blank"
            class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-          Open public dataset <span aria-hidden="true">↗</span>
+          Open dataset <span aria-hidden="true">↗</span>
         </a>
 
         <div class="mt-3 text-[11px] text-gray-500">Powered by the public dataset.</div>
@@ -292,12 +328,12 @@
       </div>
 
       <div class="mt-4 flex items-center justify-between text-[11px] text-gray-500">
-        <span>Alpha = Stock return − S&amp;P 500 return (same horizon).</span>
+        <span>Alpha = Stock return − S&amp;P 500 return (same horizon). Sig uses p-value.</span>
         <a id="dbLinkBottom"
            href="#"
            target="_blank"
            class="text-green-400 hover:text-green-300 font-semibold">
-          Open public dataset →
+          Open dataset →
         </a>
       </div>
     </section>
@@ -317,20 +353,26 @@
   </footer>
 
   <script>
-    // Wire Pro links
+    // Show success message if redirected with subscribed=true
     (function () {
-      const ids = ["upgradeBtnTop", "upgradeBtnCard"];
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.href = STRIPE_PAYMENT_LINK;
-      });
-
-      const proLink = document.getElementById("proLink");
-      if (proLink) proLink.href = PRO_LEADERBOARD_URL;
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("subscribed") === "true") {
+        const el = document.getElementById("subSuccess");
+        if (el) el.classList.remove("hidden");
+      }
     })();
 
+    // Track "Pro" clicks (placeholder until Stripe exists)
+    function trackProClick() {
+      try {
+        if (window.rdt) rdt('track', 'Lead'); // optional: counts as high-intent
+      } catch(e) {}
+    }
+  </script>
+
+  <script>
     // ==========================
-    // Data rendering
+    // Data rendering (unchanged)
     // ==========================
     const JSON_PATH = "./leaderboard.json";
 
@@ -471,6 +513,7 @@
         const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
         document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
 
+        // 90 / 180 / 365
         const d90 = data?.intervals?.d90 || {};
         const d180 = data?.intervals?.d180 || {};
         const d365 = data?.intervals?.d365 || {};
@@ -515,26 +558,6 @@
     }
 
     initLeaderboard();
-  </script>
-
-  <script>
-    // ==========================
-    // Kit embed (no gating)
-    // ==========================
-    const KIT_UID = "c5142792e3";
-    const KIT_SCRIPT_SRC = `https://truealpha-investing.kit.com/${KIT_UID}/index.js`;
-
-    (function loadKitEmbed() {
-      const slot = document.getElementById("kitFormInline");
-      if (!slot) return;
-      if (slot.children.length > 0) return;
-
-      const s = document.createElement("script");
-      s.async = true;
-      s.setAttribute("data-uid", KIT_UID);
-      s.src = KIT_SCRIPT_SRC;
-      slot.appendChild(s);
-    })();
   </script>
 
 </body>
