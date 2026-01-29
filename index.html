@@ -36,67 +36,8 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.20); }
-
-    /* ===== Kit CRO overrides (UID-specific) ===== */
-    .formkit-form[data-uid="c5142792e3"] [data-element="header"],
-    .formkit-form[data-uid="c5142792e3"] [data-element="subheader"],
-    .formkit-form[data-uid="c5142792e3"] .formkit-powered-by-convertkit-container,
-    .formkit-form[data-uid="c5142792e3"] .formkit-background,
-    .formkit-form[data-uid="c5142792e3"] [data-style="card"] > .formkit-column:first-child {
-      display: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] {
-      max-width: 100% !important;
-      background: transparent !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      overflow: visible !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-column {
-      padding: 0 !important;
-      background: transparent !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-fields {
-      display: flex !important;
-      gap: 10px !important;
-      align-items: center !important;
-      flex-wrap: wrap !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] input[name="email_address"] {
-      flex: 1 1 260px !important;
-      margin: 0 !important;
-      padding: 12px 14px !important;
-      border-radius: 12px !important;
-      background: rgba(17,24,39,0.85) !important;
-      border: 1px solid rgba(255,255,255,0.14) !important;
-      color: #fff !important;
-      outline: none !important;
-    }
-    /* Hide optional field */
-    .formkit-form[data-uid="c5142792e3"] input[name="fields[first_name]"],
-    .formkit-form[data-uid="c5142792e3"] input[aria-label*="YouTuber"] {
-      display: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-submit {
-      flex: 0 0 auto !important;
-      margin: 0 !important;
-      border-radius: 12px !important;
-      background: rgb(34 197 94) !important;
-      color: #061018 !important;
-      font-weight: 900 !important;
-      border: 1px solid rgba(34,197,94,0.25) !important;
-      cursor: pointer !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-submit > span {
-      padding: 12px 16px !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-guarantee {
-      display: none !important;
-    }
-    .formkit-form[data-uid="c5142792e3"] .formkit-field {
-      margin: 0 !important;
-    }
+    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
   </style>
 </head>
 
@@ -122,132 +63,186 @@
         <a href="/leaderboard/" class="hover:text-green-400 transition">Leaderboard</a>
       </div>
 
-      <!-- Sticky CTA -->
-      <div class="flex items-center gap-2">
-        <a href="#subscribe"
-           class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Get the weekly audit →
-        </a>
-      </div>
-
     </div>
   </nav>
 
-  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 sm:py-20 text-center">
+  <main class="flex-grow px-4 py-12 sm:py-20">
+    <div class="max-w-6xl mx-auto text-center">
 
-    <div class="mb-6 inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-semibold uppercase tracking-wider">
-      As seen on r/StockMarket
-    </div>
+      <div class="mb-6 inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-semibold uppercase tracking-wider">
+        As seen on r/StockMarket
+      </div>
 
-    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 max-w-4xl">
-      We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions.
-      <br class="hidden sm:block" />
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">See Who Actually Makes Money.</span>
-    </h1>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 max-w-5xl mx-auto">
+        We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions.
+        <br class="hidden sm:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">See Who Actually Makes Money.</span>
+      </h1>
 
-    <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl">
-      We audit YouTube transcripts, track entry prices, and benchmark results against the S&amp;P 500.
-      Get one weekly email with the biggest movers + worst calls.
-    </p>
+      <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        We use AI to audit creator transcripts, track entry prices, and benchmark picks against the S&amp;P 500 — so you don’t have to guess who’s legit.
+      </p>
 
-    <!-- Proof block -->
-    <div class="w-full max-w-4xl mb-12 relative group text-left">
-      <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-
-      <div class="relative glass-panel rounded-lg p-6 sm:p-8">
-        <div class="flex items-start justify-between gap-6 flex-col sm:flex-row">
+      <!-- PRIMARY CRO MODULE: PRO TOGGLE -->
+      <section class="max-w-xl mx-auto glass-panel soft-shadow rounded-2xl p-6 sm:p-7 text-left">
+        <div class="flex items-start justify-between gap-4">
           <div>
-            <div class="text-xs font-mono text-gray-400 mb-1">Quick Scan</div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
-              Top &amp; Bottom Creators (Verified)
-            </h2>
-            <p class="text-sm text-gray-400 mt-1">
-              <span id="metricText">Average Alpha vs S&amp;P 500</span>
-              <span class="text-gray-600">•</span>
-              <span id="filterText">Filter: Verified (N &gt; 20)</span>
+            <div class="text-xs font-mono text-gray-400">Pro</div>
+            <h2 class="text-2xl font-extrabold mt-1">Decision-grade breakdowns</h2>
+            <p class="text-sm text-gray-400 mt-2">
+              Go beyond “who’s up” — see <span class="text-green-400 font-semibold">consistency</span>, <span class="text-green-400 font-semibold">year-by-year</span> results, and <span class="text-green-400 font-semibold">signal strength</span>.
             </p>
           </div>
+          <div class="text-[11px] uppercase tracking-wider text-gray-400">Best value: annual</div>
+        </div>
 
-          <div class="flex items-center gap-3 text-xs font-mono">
-            <div class="px-3 py-2 rounded-lg border border-gray-700 bg-gray-800/40 text-gray-300">
-              Last Updated: <span id="updatedText" class="text-white">—</span>
-            </div>
+        <!-- Pro feature bullets -->
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li class="flex gap-2"><span class="text-green-400">✓</span> Year-by-year alpha (2023–2025) + “years beat S&amp;P”</li>
+          <li class="flex gap-2"><span class="text-green-400">✓</span> Consistency score + outlier-resistant stats (skill vs luck)</li>
+          <li class="flex gap-2"><span class="text-green-400">✓</span> Bullish vs bearish accuracy + best/worst calls per creator</li>
+          <li class="flex gap-2"><span class="text-green-400">✓</span> Pro filters: minimum sample size, significance, horizon, style</li>
+        </ul>
+
+        <!-- Toggle -->
+        <div class="mt-5 flex items-center justify-between gap-4">
+          <div class="inline-flex items-center bg-gray-800 rounded-full p-1">
+            <button id="hpMonthlyBtn"
+              class="px-4 py-2 text-sm font-extrabold rounded-full bg-green-600 text-white transition">
+              Monthly
+            </button>
+            <button id="hpAnnualBtn"
+              class="px-4 py-2 text-sm font-extrabold rounded-full text-gray-300 hover:text-white transition relative">
+              Annual
+              <span class="absolute -top-2 -right-3 text-[10px] px-2 py-0.5 rounded-full bg-green-500 text-black font-extrabold">
+                SAVE 35%
+              </span>
+            </button>
+          </div>
+
+          <div class="text-right">
+            <div id="hpPrice" class="text-2xl font-extrabold">$19<span class="text-sm text-gray-400">/mo</span></div>
+            <div id="hpPriceSub" class="text-xs text-gray-500">Cancel anytime.</div>
           </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- CTA -->
+        <a id="hpCheckoutBtn"
+           href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
+           target="_blank"
+           class="mt-5 block w-full px-6 py-4 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl transition transform hover:scale-[1.01] shadow-lg glow-green text-center">
+          Start Pro — $19/mo
+        </a>
 
-          <div>
-            <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-              Top Performers (Avg Alpha)
-            </h3>
-
-            <div id="topList" class="space-y-4">
-              <div class="text-sm text-gray-400">Loading…</div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-              </svg>
-              Underperformers
-            </h3>
-
-            <div id="bottomList" class="space-y-4">
-              <div class="text-sm text-gray-400">Loading…</div>
-            </div>
-          </div>
-
+        <div class="mt-3 text-xs text-gray-500 text-center">
+          Not financial advice. Purely audited public data.
         </div>
+      </section>
 
-        <div class="mt-6 text-[11px] font-mono text-gray-500">
-          <span>Metric: Avg Alpha vs S&amp;P 500</span>
-          <span class="text-gray-700">|</span>
-          <span>Auto-generated from leaderboard.json</span>
+      <!-- QUICK SCAN (kept) -->
+      <div class="w-full max-w-4xl mx-auto mt-12 relative group text-left">
+        <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+
+        <div class="relative glass-panel rounded-lg p-6 sm:p-8">
+          <div class="flex items-start justify-between gap-6 flex-col sm:flex-row">
+            <div>
+              <div class="text-xs font-mono text-gray-400 mb-1">Quick Scan</div>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                Top &amp; Bottom Creators (Verified)
+              </h2>
+              <p class="text-sm text-gray-400 mt-1">
+                <span id="metricText">Average Alpha vs S&amp;P 500</span>
+                <span class="text-gray-600">•</span>
+                <span id="filterText">Filter: Verified (N &gt; 20)</span>
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 text-xs font-mono">
+              <div class="px-3 py-2 rounded-lg border border-gray-700 bg-gray-800/40 text-gray-300">
+                Last Updated: <span id="updatedText" class="text-white">—</span>
+              </div>
+              <a href="/leaderboard/"
+                 class="px-3 py-2 rounded-lg border border-gray-700 bg-gray-900 hover:bg-gray-800 text-gray-200 font-semibold transition">
+                Open Leaderboard →
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+                Top Performers (Avg Alpha)
+              </h3>
+              <div id="topList" class="space-y-4">
+                <div class="text-sm text-gray-400">Loading…</div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-4 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                </svg>
+                Underperformers
+              </h3>
+              <div id="bottomList" class="space-y-4">
+                <div class="text-sm text-gray-400">Loading…</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 text-[11px] font-mono text-gray-500">
+            <span>Metric: Avg Alpha vs S&amp;P 500</span>
+            <span class="text-gray-700">|</span>
+            <span>Auto-generated from leaderboard.json</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Primary CTA: email -->
-    <section id="subscribe" class="w-full max-w-2xl glass-panel rounded-2xl p-6 sm:p-8 text-left">
-      <div class="flex items-start justify-between gap-4 flex-col sm:flex-row">
-        <div>
-          <h3 class="text-2xl font-extrabold text-white">Get the weekly “Fake Guru” audit</h3>
-          <p class="text-gray-400 mt-1 text-sm">
-            One email/week: biggest rank movers, worst calls, and who’s consistently beating the S&amp;P 500.
-          </p>
+      <!-- NEWSLETTER FALLBACK (secondary) -->
+      <section class="max-w-xl mx-auto mt-10 glass-panel rounded-2xl p-6 sm:p-7 text-left">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-xs font-mono text-gray-400">Free</div>
+            <h3 class="text-xl font-extrabold mt-1">Get weekly leaderboard changes</h3>
+            <p class="text-sm text-gray-400 mt-2">New creators, rank movers, and what changed since last week.</p>
+          </div>
+          <div class="text-[11px] uppercase tracking-wider text-gray-400">Free email</div>
         </div>
-        <div class="text-[11px] text-gray-500 uppercase tracking-wider">Free</div>
-      </div>
 
-      <div class="mt-5">
+        <!-- Kit/ConvertKit embed script -->
         <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
         <form action="https://app.kit.com/forms/8848906/subscriptions"
-              class="seva-form formkit-form"
+              class="seva-form formkit-form mt-4 space-y-3"
               method="post"
               data-sv-form="8848906"
               data-uid="c5142792e3"
               data-format="inline"
-              data-version="6"
-              data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://truealphadata.com/leaderboard?subscribed=true&quot;}}}">
-          <div data-style="card">
-            <div data-element="column" class="formkit-column"></div>
-          </div>
+              data-version="6">
+
+          <input type="email" name="email_address" placeholder="Email address" required
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition">
+
+          <input type="text" name="fields[first_name]" placeholder="Which YouTuber should we audit next? (Optional)"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition text-sm">
+
+          <button data-element="submit"
+                  class="w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white font-extrabold rounded-lg transition">
+            Subscribe (Free)
+          </button>
+
+          <ul class="formkit-alert formkit-alert-error text-red-400 text-sm mt-2" data-element="errors" data-group="alert"></ul>
         </form>
 
-        <p class="mt-3 text-[11px] text-gray-500">
-          1 email/week. No spam. Unsubscribe anytime.
-        </p>
-      </div>
-    </section>
+        <p class="mt-3 text-xs text-gray-500">No spam. Unsubscribe anytime.</p>
+      </section>
 
+    </div>
   </main>
 
   <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
@@ -275,21 +270,23 @@
   </footer>
 
   <script>
+    // ======== Quick Scan ========
     function fmtPct(n) {
       const num = Number(n);
       if (Number.isNaN(num)) return "—";
       const sign = num > 0 ? "+" : "";
       return `${sign}${num.toFixed(2)}%`;
     }
+
     function barWidthAlpha(alpha, maxAbs) {
       const num = Math.abs(Number(alpha) || 0);
       const denom = maxAbs || 1;
       return Math.min(100, Math.max(6, Math.round((num / denom) * 100)));
     }
+
     function rowHTML(item, i, isTop, maxAbs) {
       const creator = item.creator ?? "—";
       const alpha = item.avgAlpha ?? 0;
-
       const pct = fmtPct(alpha);
       const width = barWidthAlpha(alpha, maxAbs);
 
@@ -345,60 +342,43 @@
       }
     }
     loadQuickScan();
-  </script>
 
-  <!-- Reddit Conversion Tracking: fire SignUp when Kit subscription POST succeeds -->
-  <script>
-    (function () {
-      let tracked = false;
+    // ======== Homepage Pro Toggle ========
+    const hpMonthlyBtn = document.getElementById("hpMonthlyBtn");
+    const hpAnnualBtn = document.getElementById("hpAnnualBtn");
+    const hpPrice = document.getElementById("hpPrice");
+    const hpPriceSub = document.getElementById("hpPriceSub");
+    const hpCheckoutBtn = document.getElementById("hpCheckoutBtn");
 
-      function trackSignup() {
-        if (tracked) return;
-        tracked = true;
-        window.__redditSignupTracked = true;
+    const MONTHLY_LINK = "https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00";
+    const ANNUAL_LINK = "https://buy.stripe.com/test_8x24gz1TL2vi7Ht0U7cfK01";
 
-        if (window.rdt) {
-          rdt('track', 'SignUp');
-          console.log('[Reddit] SignUp tracked (Kit subscription success)');
-        }
-      }
+    function setHpMonthly() {
+      hpMonthlyBtn.classList.add("bg-green-600","text-white");
+      hpMonthlyBtn.classList.remove("text-gray-300");
+      hpAnnualBtn.classList.remove("bg-green-600","text-white");
+      hpAnnualBtn.classList.add("text-gray-300");
 
-      const origFetch = window.fetch;
-      window.fetch = function (...args) {
-        return origFetch.apply(this, args).then((res) => {
-          try {
-            const url = (typeof args[0] === 'string')
-              ? args[0]
-              : (args[0] && args[0].url) ? args[0].url : '';
+      hpPrice.innerHTML = `$19<span class="text-sm text-gray-400">/mo</span>`;
+      hpPriceSub.textContent = "Cancel anytime.";
+      hpCheckoutBtn.href = MONTHLY_LINK;
+      hpCheckoutBtn.textContent = "Start Pro — $19/mo";
+    }
 
-            const isKitSubscribe =
-              String(url).includes('app.kit.com/forms/') &&
-              String(url).includes('/subscriptions');
+    function setHpAnnual() {
+      hpAnnualBtn.classList.add("bg-green-600","text-white");
+      hpAnnualBtn.classList.remove("text-gray-300");
+      hpMonthlyBtn.classList.remove("bg-green-600","text-white");
+      hpMonthlyBtn.classList.add("text-gray-300");
 
-            if (isKitSubscribe && res && res.ok) trackSignup();
-          } catch (e) {}
-          return res;
-        });
-      };
+      hpPrice.innerHTML = `$149<span class="text-sm text-gray-400">/yr</span>`;
+      hpPriceSub.textContent = "Save 35% (equiv. $12.42/mo).";
+      hpCheckoutBtn.href = ANNUAL_LINK;
+      hpCheckoutBtn.textContent = "Go Pro — Save 35%";
+    }
 
-      const origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function (method, url, ...rest) {
-        this.__isKitSubscribe =
-          String(url).includes('app.kit.com/forms/') &&
-          String(url).includes('/subscriptions');
-        return origOpen.call(this, method, url, ...rest);
-      };
-
-      const origSend = XMLHttpRequest.prototype.send;
-      XMLHttpRequest.prototype.send = function (...body) {
-        this.addEventListener('load', function () {
-          if (this.__isKitSubscribe && this.status >= 200 && this.status < 300) {
-            trackSignup();
-          }
-        });
-        return origSend.apply(this, body);
-      };
-    })();
+    hpMonthlyBtn.addEventListener("click", setHpMonthly);
+    hpAnnualBtn.addEventListener("click", setHpAnnual);
   </script>
 
 </body>
