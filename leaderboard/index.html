@@ -7,34 +7,40 @@
 
   <!-- Supabase JS (v2) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    // ✅ DO NOT name this "supabase" (that breaks the library)
-    const supabaseClient = window.supabase.createClient(
-      "https://pepajrlrnaquyuaitlnb.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlcGFqcmxybmFxdXl1YWl0bG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MzIxNTEsImV4cCI6MjA4NTMwODE1MX0.bd3yyV_yiRlu3PFcxc-CZjb_ooa5ze-x4TurOtOXQLg",
-      {
-        auth: {
-          persistSession: true,
-          detectSessionInUrl: true,
-          autoRefreshToken: true
-        }
-      }
-    );
+<script>
+  // ✅ Don't overwrite the global "supabase" object
+  const sb = window.supabase.createClient(
+    "https://pepajrlrnaquyuaitlnb.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlcGFqcmxybmFxdXl1YWl0bG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MzIxNTEsImV4cCI6MjA4NTMwODE1MX0.bd3yyV_yiRlu3PFcxc-CZjb_ooa5ze-x4TurOtOXQLg"
+  );
 
-    async function requireAuth() {
-      // If user just clicked a magic link, Supabase can detect session in URL automatically,
-      // but we still check session after load.
-      const { data, error } = await supabaseClient.auth.getSession();
-      if (error) console.warn("getSession error:", error);
+  async function ensureProfileRow(user) {
+    const payload = { id: user.id, email: user.email || null };
+    const { error } = await sb.from("profiles").upsert(payload, { onConflict: "id" });
+    if (error) console.warn("ensureProfileRow error:", error.message);
+  }
 
-      if (!data || !data.session) {
-        window.location.href = "/login.html";
-      }
+  async function checkAuth() {
+    const { data, error } = await sb.auth.getSession();
+    if (error) console.warn("getSession error:", error.message);
+
+    if (!data.session) {
+      // from /leaderboard/ go back to root login.html
+      window.location.href = "/login.html";
+      return;
     }
 
-    // Run auth check ASAP
-    requireAuth();
-  </script>
+    // Optional: remove the #access_token hash from URL after session is set
+    if (window.location.hash && window.location.hash.includes("access_token")) {
+      history.replaceState({}, document.title, window.location.pathname + window.location.search);
+    }
+
+    await ensureProfileRow(data.session.user);
+  }
+
+  checkAuth();
+</script>
+
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
