@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = supabase.createClient(
+    "https://pepajrlrnaquyuaitlnb.supabase.co",
+    "PASTE_YOUR_ANON_PUBLIC_KEY_HERE"
+  );
+
+  async function checkAuth() {
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) {
+      window.location.href = "/login.html";
+    }
+  }
+
+  checkAuth();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard | True Alpha</title>
