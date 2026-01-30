@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabase = supabase.createClient(
-    "https://pepajrlrnaquyuaitlnb.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlcGFqcmxybmFxdXl1YWl0bG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MzIxNTEsImV4cCI6MjA4NTMwODE1MX0.bd3yyV_yiRlu3PFcxc-CZjb_ooa5ze-x4TurOtOXQLg"
-  );
-
-  async function checkAuth() {
-    const { data } = await supabase.auth.getSession();
-    if (!data.session) {
-      window.location.href = "/login.html";
-    }
-  }
-
-  checkAuth();
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard | True Alpha</title>
+
+  <!-- Supabase JS (v2) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // ✅ DO NOT name this "supabase" (that breaks the library)
+    const supabaseClient = window.supabase.createClient(
+      "https://pepajrlrnaquyuaitlnb.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlcGFqcmxybmFxdXl1YWl0bG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MzIxNTEsImV4cCI6MjA4NTMwODE1MX0.bd3yyV_yiRlu3PFcxc-CZjb_ooa5ze-x4TurOtOXQLg",
+      {
+        auth: {
+          persistSession: true,
+          detectSessionInUrl: true,
+          autoRefreshToken: true
+        }
+      }
+    );
+
+    async function requireAuth() {
+      // If user just clicked a magic link, Supabase can detect session in URL automatically,
+      // but we still check session after load.
+      const { data, error } = await supabaseClient.auth.getSession();
+      if (error) console.warn("getSession error:", error);
+
+      if (!data || !data.session) {
+        window.location.href = "/login.html";
+      }
+    }
+
+    // Run auth check ASAP
+    requireAuth();
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -84,7 +99,7 @@
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
         </svg>
         <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
       </a>
@@ -110,6 +125,7 @@
     </div>
   </nav>
 
+  <!-- Everything below here is unchanged from your file -->
   <main id="content" class="max-w-7xl mx-auto px-4 py-10">
 
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -320,7 +336,7 @@
       </div>
     </section>
 
-    <!-- FREE SECTIONS (Your original content) -->
+    <!-- FREE SECTIONS -->
     <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
 
       <div class="glass soft-shadow rounded-2xl p-5">
@@ -502,12 +518,10 @@
       alreadyProBtn.classList.remove("hidden");
     }
 
-    // Auto-unlock if URL contains ?pro=1 (use Stripe “after payment redirect” to this)
     (function autoUnlockFromQuery() {
       const params = new URLSearchParams(window.location.search);
       if (params.get("pro") === "1") {
         setPro(true);
-        // Clean URL
         params.delete("pro");
         const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
         window.history.replaceState({}, "", newUrl);
@@ -517,7 +531,6 @@
     unlockLocalBtn.addEventListener("click", () => setPro(true));
     alreadyProBtn.addEventListener("click", () => setPro(true));
 
-    // ===== Leaderboard pricing toggle =====
     const lbMonthlyBtn  = document.getElementById("lbMonthlyBtn");
     const lbAnnualBtn   = document.getElementById("lbAnnualBtn");
     const lbPriceText   = document.getElementById("lbPriceText");
@@ -549,18 +562,13 @@
     lbMonthlyBtn.addEventListener("click", setLBMonthly);
     lbAnnualBtn.addEventListener("click", setLBAnnual);
 
-    // Make sure pro overlay links use your Stripe links
     document.getElementById("proMonthlyLink").href = STRIPE_MONTHLY;
     document.getElementById("proAnnualLink").href  = STRIPE_ANNUAL;
 
-    // Initial render
     renderPro();
   </script>
 
   <script>
-    // ==========================
-    // Data rendering (your original)
-    // ==========================
     const JSON_PATH = "./leaderboard.json";
 
     function toNumber(x) {
