@@ -1,69 +1,554 @@
 {
-  "lastUpdated": "Dec 2025",
-  "minThreshold": 20,
+  "meta": {
+    "lastUpdated": "Feb 2026",
+    "generatedAt": "2026-02-05T07:25:19.387Z",
+    "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
+    "metricAlpha": "Alpha vs S&P 500",
+    "metricAccuracy": "Accuracy (directional win rate)",
+    "entry": "Close price on next trading day after publish",
+    "significanceRule": "Significant if p < 0.05",
+    "totalCreatorsTracked": 75,
+    "totalVerifiedCreators": 46,
+    "totalPredictions": 3029
+  },
   "alpha": {
     "top": [
-      { "rank": 1, "creator": "Tom Nash", "value": 159.27, "n": 11 },
-      { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "value": 42.97, "n": 35 },
-      { "rank": 3, "creator": "Stealth Wealth Investing", "value": 21.48, "n": 54 },
-      { "rank": 4, "creator": "Daniel Pronk", "value": 20.37, "n": 65 }
+      {
+        "rank": 1,
+        "creator": "Tom Nash",
+        "n": 43,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": 68.35
+      },
+      {
+        "rank": 2,
+        "creator": "YT Finance",
+        "n": 92,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": 18.25
+      },
+      {
+        "rank": 3,
+        "creator": "Stealth Wealth Investing",
+        "n": 70,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": 17.12
+      },
+      {
+        "rank": 4,
+        "creator": "Daniel Pronk",
+        "n": 66,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": 17.01
+      }
     ],
     "bottom": [
-      { "rank": 1, "creator": "Meet Kevin", "value": -11.45, "n": 31 },
-      { "rank": 2, "creator": "Mark Moss", "value": -10.82, "n": 28 },
-      { "rank": 3, "creator": "FX Evolution", "value": -10.61, "n": 21 },
-      { "rank": 4, "creator": "Patrick Boyle", "value": -9.04, "n": 33 }
+      {
+        "rank": 1,
+        "creator": "Patrick Boyle",
+        "n": 37,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": -38.32
+      },
+      {
+        "rank": 2,
+        "creator": "OneOption",
+        "n": 20,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": -21.41
+      },
+      {
+        "rank": 3,
+        "creator": "FX Evolution",
+        "n": 21,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": -20.41
+      },
+      {
+        "rank": 4,
+        "creator": "Click Capital",
+        "n": 115,
+        "pValue": 1,
+        "sig": false,
+        "avgAlpha": -16.89
+      }
     ]
   },
   "accuracy": {
     "top": [
-      { "rank": 1, "creator": "Stealth Wealth Investing", "value": 70.37, "n": 54 },
-      { "rank": 2, "creator": "Wolf of Dubai Day Trading & Investing", "value": 66.71, "n": 35 },
-      { "rank": 3, "creator": "Tom Nash", "value": 63.64, "n": 11 },
-      { "rank": 4, "creator": "Daniel Pronk", "value": 55.38, "n": 65 }
-    ],
-    "bottom": [
-      { "rank": 1, "creator": "Meet Kevin", "value": 35.48, "n": 31 },
-      { "rank": 2, "creator": "Patrick Boyle", "value": 39.39, "n": 33 },
-      { "rank": 3, "creator": "FX Evolution", "value": 38.10, "n": 21 },
-      { "rank": 4, "creator": "Mark Moss", "value": 39.29, "n": 28 }
-    ]
-  },
-  "recommendedStocks": {
-    "title": "Most Recommended by Top Creators",
-    "items": [
-      { "ticker": "PLTR", "mentions": 14 },
-      { "ticker": "TSLA", "mentions": 11 },
-      { "ticker": "NVDA", "mentions": 9 },
-      { "ticker": "SPY", "mentions": 8 },
-      { "ticker": "BTC", "mentions": 7 }
-    ]
-  },
-  "intervalPerformance": {
-    "title": "Creator Performance by Time Interval",
-    "intervals": [
       {
-        "label": "Short Term (< 6 months)",
-        "top": [
-          { "creator": "Tom Nash", "value": -9.86 },
-          { "creator": "Stealth Wealth Investing", "value": 4.18 }
-        ],
-        "bottom": [
-          { "creator": "Meet Kevin", "value": -12.92 },
-          { "creator": "Mark Moss", "value": -11.79 }
-        ]
+        "rank": 1,
+        "creator": "Jose Najarro Stocks",
+        "n": 22,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 77.27
       },
       {
-        "label": "Long Term (≥ 6 months)",
-        "top": [
-          { "creator": "Tom Nash", "value": 362.24 },
-          { "creator": "Wolf of Dubai Day Trading & Investing", "value": 71.15 }
-        ],
-        "bottom": [
-          { "creator": "FX Evolution", "value": -12.71 },
-          { "creator": "Meet Kevin", "value": -7.53 }
-        ]
+        "rank": 2,
+        "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+        "n": 42,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 64.29
+      },
+      {
+        "rank": 3,
+        "creator": "Stealth Wealth Investing",
+        "n": 70,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 64.29
+      },
+      {
+        "rank": 4,
+        "creator": "Tom Nash",
+        "n": 43,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 55.81
+      }
+    ],
+    "bottom": [
+      {
+        "rank": 1,
+        "creator": "OneOption",
+        "n": 20,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 20
+      },
+      {
+        "rank": 2,
+        "creator": "Beavis Wealth",
+        "n": 42,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 21.43
+      },
+      {
+        "rank": 3,
+        "creator": "The Matt Kohrs Show",
+        "n": 119,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 22.69
+      },
+      {
+        "rank": 4,
+        "creator": "Will Trades",
+        "n": 21,
+        "pValue": 1,
+        "sig": false,
+        "winRate": 23.81
       }
     ]
+  },
+  "intervals": {
+    "d90": {
+      "label": "90D (short)",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Fundstrat",
+          "alpha": 12.34,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Will Trades",
+          "alpha": 3.36,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 3.12,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 2.78,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "ClearValue Tax",
+          "alpha": -34.59,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Meet Kevin",
+          "alpha": -29.33,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Joseph Carlson After Hours",
+          "alpha": -21.58,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Tom Nash",
+          "alpha": -17.49,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    },
+    "d180": {
+      "label": "180D (mid)",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Tom Nash",
+          "alpha": 68.35,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "YT Finance",
+          "alpha": 18.25,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 17.12,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Daniel Pronk",
+          "alpha": 17.01,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "Patrick Boyle",
+          "alpha": -38.32,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "OneOption",
+          "alpha": -21.41,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "FX Evolution",
+          "alpha": -20.41,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Click Capital",
+          "alpha": -16.89,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    },
+    "d365": {
+      "label": "365D (long)",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Tom Nash",
+          "alpha": 335.63,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "YT Finance",
+          "alpha": 132.85,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 118.98,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Long Term Mindset",
+          "alpha": 55.28,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -26.14,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Andrei Jikh",
+          "alpha": -20.09,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Joseph Carlson After Hours",
+          "alpha": -12.2,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Everything Money",
+          "alpha": -8.39,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    }
+  },
+  "yearly": {
+    "2023": {
+      "label": "2023",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 17.14,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Sasha Yanshin",
+          "alpha": 12.56,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Ticker Symbol: YOU",
+          "alpha": 9.94,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Mr. FIRED Up Wealth",
+          "alpha": 9.69,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "Adam Khoo",
+          "alpha": -29.83,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "OneOption",
+          "alpha": -20.89,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Tom Nash",
+          "alpha": -15.85,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Mark Moss",
+          "alpha": -12,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    },
+    "2024": {
+      "label": "2024",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Tom Nash",
+          "alpha": 267.3,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "YT Finance",
+          "alpha": 55.95,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Long Term Mindset",
+          "alpha": 52.59,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Daniel Pronk",
+          "alpha": 21.56,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "Patrick Boyle",
+          "alpha": -21.38,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Sasha Yanshin",
+          "alpha": -14.05,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "미과장",
+          "alpha": -9.54,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Everything Money",
+          "alpha": -7.2,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    },
+    "2025": {
+      "label": "2025",
+      "metric": "alpha",
+      "top": [
+        {
+          "rank": 1,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 16.84,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+          "alpha": 16.49,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Ticker Symbol: YOU",
+          "alpha": 10.49,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 8.18,
+          "pValue": 1,
+          "sig": false
+        }
+      ],
+      "bottom": [
+        {
+          "rank": 1,
+          "creator": "Patrick Boyle",
+          "alpha": -74.83,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 2,
+          "creator": "Common Sense Investing",
+          "alpha": -42.73,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "OneOption",
+          "alpha": -25.4,
+          "pValue": 1,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "FX Evolution",
+          "alpha": -25.09,
+          "pValue": 1,
+          "sig": false
+        }
+      ]
+    }
+  },
+  "stocksRecommended": {
+    "note": "Ticker mentions across verified creators' Recommended Assets.",
+    "items": []
+  },
+  "horizons": {
+    "bucketOrder": [
+      90,
+      180,
+      365
+    ],
+    "note": "90D uses Short Term Alpha; 180D uses Avg Alpha; 365D uses Long Term Alpha."
   }
 }
