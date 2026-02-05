@@ -12,15 +12,19 @@ import sys
 # ==========================================
 SHEET_KEY = "1VOSiF48EhsFYupdIHfA48CgEtdE5x9HaQXhr4BskGeU" 
 QUEUE_TAB_NAME = "Ingest_Queue"
-CREDENTIALS_FILE = "service_account.json"
-
+# Credentials loaded from Colab Secrets — never store keys in code or files
+from google.colab import userdata
+CREDENTIALS_JSON = userdata.get('GOOGLE')
 print("--- SCRIPT STARTED (yt-dlp Version + Korean Support) ---")
 
 # 1. LOAD CREDENTIALS
-try:
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
-    client = gspread.authorize(creds)
+    try:
+        import json
+        creds_dict = json.loads(CREDENTIALS_JSON)
+        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+        client = gspread.authorize(creds)
+        print("-> Credentials Loaded Successfully.")
     print("-> Credentials Loaded Successfully.")
 except Exception as e:
     print(f"CRITICAL ERROR: Could not load '{CREDENTIALS_FILE}'.")
@@ -153,4 +157,5 @@ def run_sync():
     input("Press Enter to close...")
 
 if __name__ == "__main__":
+
     run_sync()
