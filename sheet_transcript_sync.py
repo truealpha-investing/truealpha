@@ -18,21 +18,16 @@ CREDENTIALS_JSON = userdata.get('GOOGLE')
 print("--- SCRIPT STARTED (yt-dlp Version + Korean Support) ---")
 
 # 1. LOAD CREDENTIALS
-    try:
-        import json
-        creds_dict = json.loads(CREDENTIALS_JSON)
-        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-        client = gspread.authorize(creds)
-        print("-> Credentials Loaded Successfully.")
+try:
+    creds_dict = json.loads(CREDENTIALS_JSON)
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    client = gspread.authorize(creds)
     print("-> Credentials Loaded Successfully.")
 except Exception as e:
-    print(f"CRITICAL ERROR: Could not load '{CREDENTIALS_FILE}'.")
+    print(f"CRITICAL ERROR: Could not load credentials.")
     print(f"Details: {e}")
-    input("Press Enter to exit...")
     exit()
-
-# 2. HELPER FUNCTION (Uses yt-dlp via Python)
 def get_transcript_text(video_id):
     url = f"https://www.youtube.com/watch?v={video_id}"
     
@@ -157,5 +152,5 @@ def run_sync():
     input("Press Enter to close...")
 
 if __name__ == "__main__":
-
     run_sync()
+    
