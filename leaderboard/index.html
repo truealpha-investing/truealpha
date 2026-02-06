@@ -3,577 +3,948 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leaderboard | True Alpha</title>
+  <title>Creator Leaderboard | True Alpha — Stock YouTuber Performance Rankings</title>
 
-  <!-- Supabase JS (v2) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // ✅ Don't overwrite the global "supabase" object
-  const sb = window.supabase.createClient(
-    "https://pepajrlrnaquyuaitlnb.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlcGFqcmxybmFxdXl1YWl0bG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MzIxNTEsImV4cCI6MjA4NTMwODE1MX0.bd3yyV_yiRlu3PFcxc-CZjb_ooa5ze-x4TurOtOXQLg"
-  );
+  <!-- SEO Meta -->
+  <meta name="description" content="Live leaderboard ranking 80+ financial YouTubers by alpha vs the S&P 500 and directional accuracy. Updated weekly with verified predictions." />
+  <meta name="keywords" content="stock guru accuracy, youtuber stock picks, finance youtuber rankings, finfluencer tracker, stock prediction tracker" />
+  <link rel="canonical" href="https://truealphadata.com/leaderboard/" />
 
-  async function ensureProfileRow(user) {
-    const payload = { id: user.id, email: user.email || null };
-    const { error } = await sb.from("profiles").upsert(payload, { onConflict: "id" });
-    if (error) console.warn("ensureProfileRow error:", error.message);
-  }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/leaderboard/" />
+  <meta property="og:title" content="Creator Leaderboard | True Alpha — Stock YouTuber Performance Rankings" />
+  <meta property="og:description" content="Live leaderboard ranking 80+ financial YouTubers by alpha vs the S&P 500 and directional accuracy. Updated weekly with verified predictions." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
 
-  async function checkAuth() {
-    const { data, error } = await sb.auth.getSession();
-    if (error) console.warn("getSession error:", error.message);
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="Creator Leaderboard | True Alpha — Stock YouTuber Performance Rankings" />
+  <meta name="twitter:description" content="Live leaderboard ranking 80+ financial YouTubers by alpha vs the S&P 500 and directional accuracy. Updated weekly with verified predictions." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
 
-    if (!data.session) {
-      // from /leaderboard/ go back to root login.html
-      window.location.href = "/login.html";
-      return;
-    }
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-46BNDCWHMT');
+  </script>
 
-    // Optional: remove the #access_token hash from URL after session is set
-    if (window.location.hash && window.location.hash.includes("access_token")) {
-      history.replaceState({}, document.title, window.location.pathname + window.location.search);
-    }
-
-    await ensureProfileRow(data.session.user);
-  }
-
-  checkAuth();
-</script>
-
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .glass {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
+    /* ======================================
+       CSS Custom Properties
+       ====================================== */
+    :root {
+      --color-bg: #0a0f0a;
+      --color-bg-secondary: #0d1410;
+      --color-surface: rgba(255, 255, 255, 0.04);
+      --color-surface-hover: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-text-primary: #f0f0f0;
+      --color-text-secondary: #9ca3af;
+      --color-text-muted: #6b7280;
+      --color-text-faint: #4b5563;
+      --color-green-500: #22c55e;
+      --color-green-400: #4ade80;
+      --color-green-300: #86efac;
+      --color-green-600: #16a34a;
+      --color-green-glow: rgba(34, 197, 94, 0.22);
+      --color-green-bg: rgba(34, 197, 94, 0.10);
+      --color-green-border: rgba(34, 197, 94, 0.25);
+      --color-red-300: #fca5a5;
+      --color-red-400: #f87171;
+      --color-red-500: #ef4444;
+      --color-red-bg: rgba(239, 68, 68, 0.10);
+      --color-red-border: rgba(248, 113, 113, 0.20);
+      --color-gray-bg: rgba(107, 114, 128, 0.10);
+      --color-gray-border: rgba(156, 163, 175, 0.20);
+      --color-grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
     }
-    .soft-shadow { box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-    .divider { height: 1px; background: rgba(255,255,255,0.10); }
 
-    /* Pro lock */
-    .pro-wrap { position: relative; }
-    .pro-locked {
-      filter: blur(10px);
-      opacity: 0.65;
-      pointer-events: none;
-      user-select: none;
+    /* ======================================
+       Reset & Base
+       ====================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .pro-overlay {
-      position: absolute;
-      inset: 0;
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ======================================
+       Navigation
+       ====================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(10, 15, 10, 0.85);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-brand:hover { opacity: 0.9; }
+
+    .nav-brand svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-green-500);
+    }
+
+    .nav-brand-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-text .accent { color: var(--color-green-500); }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--color-green-400); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      transition: background 0.2s;
+      box-shadow: 0 0 16px var(--color-green-glow);
+    }
+
+    .nav-cta:hover { background: var(--color-green-500); }
+
+    /* ======================================
+       Layout
+       ====================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 16px;
+      width: 100%;
+    }
+
+    /* ======================================
+       Page Header
+       ====================================== */
+    .page-header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .page-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .page-header-subtitle {
+      margin-top: 8px;
+      color: var(--color-text-secondary);
+      font-size: 15px;
+    }
+
+    .page-header-subtitle .hl {
+      color: var(--color-green-400);
+      font-weight: 600;
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-start;
+    }
+
+    @media (min-width: 1024px) {
+      .meta-pills { justify-content: flex-end; }
+    }
+
+    .meta-pill {
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      backdrop-filter: blur(12px);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+
+    .meta-pill .label { color: var(--color-text-muted); }
+    .meta-pill .value { color: var(--color-text-primary); }
+
+    /* ======================================
+       Glass Panels
+       ====================================== */
+    .glass {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .panel-subtitle {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .panel-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-label.green { color: var(--color-green-400); }
+    .section-label.red { color: var(--color-red-400); }
+
+    /* ======================================
+       Leaderboard Rows (used by JS)
+       ====================================== */
+    .lb-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      transition: background 0.15s;
+    }
+
+    .lb-row:hover {
+      background: var(--color-surface-hover);
+    }
+
+    .lb-row-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .lb-row-info {
+      min-width: 0;
+    }
+
+    .lb-row-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .lb-row-sub {
+      font-size: 11px;
+      color: var(--color-text-muted);
+    }
+
+    .lb-row-value {
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .lb-row-value.green { color: var(--color-green-300); }
+    .lb-row-value.red { color: var(--color-red-300); }
+
+    /* Rank pills */
+    .rank-pill {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 18px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(34,197,94,0.20);
-      backdrop-filter: blur(6px);
-    }
-    .pro-overlay-card {
-      width: 100%;
-      max-width: 560px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(17,24,39,0.70);
-      padding: 18px;
-      box-shadow: 0 12px 60px rgba(0,0,0,0.55);
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
-    /* Toggle */
-    .toggle-pill {
-      background: rgba(31,41,55,0.9);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 9999px;
-      padding: 4px;
+    .rank-pill.good {
+      background: var(--color-green-bg);
+      color: var(--color-green-300);
+      border: 1px solid var(--color-green-border);
+    }
+
+    .rank-pill.bad {
+      background: var(--color-red-bg);
+      color: var(--color-red-300);
+      border: 1px solid var(--color-red-border);
+    }
+
+    .rank-pill.neutral {
+      background: var(--color-gray-bg);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-gray-border);
+    }
+
+    /* Sig pill */
+    .sig-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      margin-left: 8px;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--color-green-bg);
+      color: var(--color-green-300);
+      border: 1px solid var(--color-green-border);
+    }
+
+    /* Ticker row */
+    .ticker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      transition: background 0.15s;
+    }
+
+    .ticker-row:hover {
+      background: var(--color-surface-hover);
+    }
+
+    .ticker-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .ticker-mentions {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .no-data {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .error-data {
+      font-size: 14px;
+      color: var(--color-red-300);
+    }
+
+    /* ======================================
+       Grid Layouts
+       ====================================== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1024px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .section-gap {
+      margin-top: 24px;
+    }
+
+    .list-gap > * + * {
+      margin-top: 4px;
+    }
+
+    .inner-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .inner-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ======================================
+       Horizon Section
+       ====================================== */
+    .horizon-section {
+      margin-top: 24px;
+    }
+
+    .horizon-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .horizon-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .horizon-footer {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--color-text-faint);
+    }
+
+    .horizon-footer a {
+      color: var(--color-green-400);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .horizon-footer a:hover { color: var(--color-green-300); }
+
+    .inner-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+    }
+
+    .inner-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .inner-panel-label {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    /* ======================================
+       Dataset Button
+       ====================================== */
+    .btn-dataset {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-dataset:hover {
+      background: var(--color-surface-hover);
+      border-color: var(--color-green-border);
+    }
+
+    .dataset-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--color-text-faint);
+    }
+
+    /* ======================================
+       Email CTA Section
+       ====================================== */
+    .email-cta {
+      margin-top: 20px;
+    }
+
+    .email-cta-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .email-cta-sub {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .email-cta input[type="email"],
+    .email-cta input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+    }
+
+    .email-cta input:focus {
+      border-color: var(--color-green-500);
+    }
+
+    .email-cta button[data-element="submit"] {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 0 12px var(--color-green-glow);
+    }
+
+    .email-cta button[data-element="submit"]:hover {
+      background: var(--color-green-500);
+    }
+
+    /* Kit embed resets */
+    .formkit-form, .seva-form {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* ======================================
+       Footer
+       ====================================== */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+      padding: 40px 0;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      font-size: 14px;
+      color: var(--color-text-faint);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-green-400);
+    }
+
+    /* ======================================
+       Responsive
+       ====================================== */
+    @media (max-width: 640px) {
+      .glass { padding: 16px; }
+      .main-content { padding: 24px 12px; }
     }
   </style>
 </head>
 
-<body class="bg-gray-950 text-gray-100 min-h-screen">
+<body>
 
-  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-      <a href="/index.html" class="flex items-center gap-2 hover:opacity-90 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span class="font-extrabold tracking-tight text-lg">TRUE<span class="text-green-500">ALPHA</span></span>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
       </a>
 
-      <div class="hidden md:flex items-center gap-6 text-sm text-gray-300">
-        <a href="/methodology.html" class="hover:text-green-400 transition">Methodology</a>
-        <a href="/faq.html" class="hover:text-green-400 transition">FAQ</a>
-        <a href="/blog.html" class="hover:text-green-400 transition">Weekly Insights</a>
+      <div class="nav-links">
+        <a href="/methodology.html">Methodology</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/blog.html">Weekly Insights</a>
       </div>
 
-      <div class="flex items-center gap-2">
-        <a id="navUpgradeBtn"
-           href="#pro"
-           class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30">
-          Upgrade to Pro <span aria-hidden="true">→</span>
-        </a>
-
-        <button id="alreadyProBtn"
-           class="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-bold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-          Already Pro? Unlock <span aria-hidden="true">↗</span>
-        </button>
-      </div>
+      <a href="#emailCta" class="nav-cta">Get Free Report <span aria-hidden="true">→</span></a>
     </div>
   </nav>
 
-  <!-- Everything below here is unchanged from your file -->
-  <main id="content" class="max-w-7xl mx-auto px-4 py-10">
+  <!-- ============ MAIN ============ -->
+  <main class="main-content">
 
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Leaderboard</h1>
-        <p class="mt-2 text-gray-400">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div style="max-width:720px">
+        <h1>Leaderboard</h1>
+        <p class="page-header-subtitle">
           A neutral scoreboard for creator predictions —
-          <span class="text-green-400 font-semibold">alpha</span>,
-          <span class="text-green-400 font-semibold">accuracy</span>,
+          <span class="hl">alpha</span>,
+          <span class="hl">accuracy</span>,
           and how results change by time horizon.
         </p>
 
-        <!-- PRO (Primary paid conversion) -->
-        <section id="pro" class="mt-5 glass soft-shadow rounded-2xl p-5">
-          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <!-- Email CTA (replaces Pro section) -->
+        <section id="emailCta" class="glass email-cta" style="margin-top:20px">
+          <div class="email-cta-title">Get the Guru Report Card</div>
+          <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
+
+          <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+
+          <form action="https://app.kit.com/forms/8848906/subscriptions"
+                class="seva-form formkit-form"
+                method="post"
+                data-sv-form="8848906"
+                data-uid="c5142792e3"
+                data-format="inline">
             <div>
-              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro</div>
-              <div class="text-base sm:text-lg font-extrabold mt-1">
-                Unlock Pro: decision-grade breakdowns
-              </div>
-              <div class="text-xs text-gray-400 mt-1 leading-relaxed">
-                Year-by-year alpha (2023–2025+), consistency (years beating S&amp;P), bull vs bear accuracy, and best/worst picks.
-              </div>
+              <input type="email"
+                     name="email_address"
+                     placeholder="Email Address"
+                     required />
 
-              <ul class="mt-4 space-y-2 text-sm text-gray-200">
-                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Year-by-year alpha</b> + “Beat S&amp;P?” boolean per year</span></li>
-                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Consistency score</b> + streak view (“3/4 years beat S&amp;P”)</span></li>
-                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Bull vs Bear accuracy</b> (not just a lucky regime)</span></li>
-                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Signal filters</b>: Verified (N≥20), significance, 90/180/365</span></li>
-                <li class="flex gap-2"><span class="text-green-400">✓</span><span><b>Best/Worst picks</b> + outlier-adjusted view</span></li>
-              </ul>
+              <button data-element="submit">
+                Join Free Email
+              </button>
             </div>
-
-            <div class="md:text-right">
-              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pricing</div>
-
-              <div class="mt-2 inline-flex items-center justify-end">
-                <div class="toggle-pill">
-                  <button id="lbMonthlyBtn" class="px-4 py-2 text-sm font-extrabold rounded-full bg-green-600 text-white transition">
-                    Monthly
-                  </button>
-                  <button id="lbAnnualBtn" class="px-4 py-2 text-sm font-extrabold rounded-full text-gray-300 hover:text-white transition relative">
-                    Annual
-                    <span class="absolute -top-2 -right-3 text-[10px] px-2 py-0.5 rounded-full bg-green-500 text-black font-extrabold">
-                      SAVE 35%
-                    </span>
-                  </button>
-                </div>
-              </div>
-
-              <div id="lbPriceText" class="mt-4 text-3xl font-extrabold text-white">
-                $19<span class="text-sm font-medium text-gray-400">/mo</span>
-              </div>
-              <div id="lbSubText" class="text-xs text-gray-400 mt-1">
-                Cancel anytime.
-              </div>
-
-              <a id="lbCheckoutBtn"
-                 href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
-                 target="_blank"
-                 class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition shadow-lg shadow-green-600/20 border border-green-400/30 w-full md:w-auto">
-                Unlock Pro <span aria-hidden="true">→</span>
-              </a>
-
-              <div class="mt-2 text-[11px] text-gray-500">
-                Tip: After Stripe, you can redirect to <span class="text-gray-300">/leaderboard/?pro=1</span> to auto-unlock.
-              </div>
-            </div>
-          </div>
+          </form>
         </section>
       </div>
 
-      <div class="flex flex-wrap gap-2 justify-start lg:justify-end">
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Last Updated:</span> <span id="lastUpdated">—</span>
+      <div class="meta-pills">
+        <div class="meta-pill">
+          <span class="label">Last Updated:</span> <span class="value" id="lastUpdated">—</span>
         </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Filter:</span> <span id="filterText">—</span>
+        <div class="meta-pill">
+          <span class="label">Filter:</span> <span class="value" id="filterText">—</span>
         </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Entry:</span> <span id="entryRule">—</span>
+        <div class="meta-pill">
+          <span class="label">Entry:</span> <span class="value" id="entryRule">—</span>
         </div>
-        <div class="glass rounded-xl px-3 py-2 text-xs text-gray-300">
-          <span class="text-gray-400">Sig:</span> <span id="sigRule">—</span>
+        <div class="meta-pill">
+          <span class="label">Sig:</span> <span class="value" id="sigRule">—</span>
         </div>
       </div>
     </div>
 
-    <!-- PRO-ONLY SECTION (Blurred) -->
-    <section class="mt-8">
-      <div class="pro-wrap glass soft-shadow rounded-2xl p-5">
+    <!-- Alpha / Accuracy / Stocks Grid -->
+    <section class="grid-3">
 
-        <div id="proContent" class="pro-locked">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h2 class="font-extrabold text-xl">Pro Panel: Consistency + Year-by-Year</h2>
-              <p class="text-xs text-gray-400 mt-1">
-                Year-by-year alpha (2023–2025+), “Beat S&amp;P?” flags, and consistency score.
-              </p>
-            </div>
-            <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro only</div>
-          </div>
-
-          <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div class="glass rounded-2xl p-4">
-              <div class="text-xs text-gray-400 uppercase tracking-wider">Consistency</div>
-              <div class="mt-2 text-3xl font-extrabold text-white">3/4</div>
-              <div class="text-xs text-gray-400 mt-1">Years beat S&amp;P (example)</div>
-            </div>
-
-            <div class="glass rounded-2xl p-4">
-              <div class="text-xs text-gray-400 uppercase tracking-wider">Bull vs Bear</div>
-              <div class="mt-2 text-3xl font-extrabold text-white">+12%</div>
-              <div class="text-xs text-gray-400 mt-1">Avg alpha in both regimes (example)</div>
-            </div>
-
-            <div class="glass rounded-2xl p-4">
-              <div class="text-xs text-gray-400 uppercase tracking-wider">Outlier-adjusted</div>
-              <div class="mt-2 text-3xl font-extrabold text-white">Stable</div>
-              <div class="text-xs text-gray-400 mt-1">Reduces 1 lucky 500% pick skew</div>
-            </div>
-          </div>
-
-          <div class="mt-5 glass rounded-2xl p-4 overflow-x-auto">
-            <div class="text-xs text-gray-400 uppercase tracking-wider mb-3">Year-by-year table (example layout)</div>
-            <table class="min-w-[780px] w-full text-sm">
-              <thead class="text-gray-400">
-                <tr>
-                  <th class="text-left py-2 pr-3">Creator</th>
-                  <th class="text-left py-2 pr-3">Years Beat S&amp;P</th>
-                  <th class="text-left py-2 pr-3">2023 Alpha</th>
-                  <th class="text-left py-2 pr-3">2024 Alpha</th>
-                  <th class="text-left py-2 pr-3">2025 Alpha</th>
-                  <th class="text-left py-2 pr-3">Consistency</th>
-                  <th class="text-left py-2 pr-3">Best / Worst</th>
-                </tr>
-              </thead>
-              <tbody class="text-gray-200">
-                <tr class="border-t border-gray-800/60">
-                  <td class="py-3 pr-3 font-semibold">Tom Nash</td>
-                  <td class="py-3 pr-3">3/4</td>
-                  <td class="py-3 pr-3">+28.6%</td>
-                  <td class="py-3 pr-3">+12.1%</td>
-                  <td class="py-3 pr-3">—</td>
-                  <td class="py-3 pr-3">High</td>
-                  <td class="py-3 pr-3">+120% / -18%</td>
-                </tr>
-                <tr class="border-t border-gray-800/60">
-                  <td class="py-3 pr-3 font-semibold">Stealth Wealth</td>
-                  <td class="py-3 pr-3">2/3</td>
-                  <td class="py-3 pr-3">—</td>
-                  <td class="py-3 pr-3">+18.0%</td>
-                  <td class="py-3 pr-3">—</td>
-                  <td class="py-3 pr-3">Med</td>
-                  <td class="py-3 pr-3">+55% / -9%</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="mt-3 text-[11px] text-gray-500">
-              This section will be populated from your year columns as you farm more historical data.
-            </div>
-          </div>
-        </div>
-
-        <!-- Overlay -->
-        <div id="proOverlay" class="pro-overlay">
-          <div class="pro-overlay-card">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="text-[11px] text-gray-400 uppercase tracking-wider">Locked</div>
-                <div class="text-lg font-extrabold mt-1">Pro-only panels (Consistency + Year-by-year)</div>
-                <div class="text-xs text-gray-400 mt-1">
-                  This is where people decide who’s “actually good” vs “one lucky year”.
-                </div>
-              </div>
-              <div class="text-[11px] text-gray-400 uppercase tracking-wider">Pro</div>
-            </div>
-
-            <div class="mt-4 flex flex-col sm:flex-row gap-3">
-              <a id="proMonthlyLink"
-                 href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
-                 target="_blank"
-                 class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-green-600 hover:bg-green-500 transition">
-                Unlock Monthly ($19) →
-              </a>
-
-              <a id="proAnnualLink"
-                 href="https://buy.stripe.com/test_8x24gz1TL2vi7Ht0U7cfK01"
-                 target="_blank"
-                 class="w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
-                Unlock Annual (Save 35%) →
-              </a>
-            </div>
-
-            <div class="mt-3 flex items-center justify-between gap-3">
-              <button id="unlockLocalBtn"
-                class="text-xs font-extrabold text-gray-200 hover:text-white underline">
-                I already purchased — unlock
-              </button>
-
-              <div class="text-[11px] text-gray-500">
-                (Temporary) Uses localStorage until member auth exists.
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FREE SECTIONS -->
-    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between">
+      <!-- Alpha Panel -->
+      <div class="glass">
+        <div class="panel-header">
           <div>
-            <h2 class="font-bold text-lg">Top + Bottom by Alpha</h2>
-            <p class="text-xs text-gray-400 mt-1" id="alphaSub">—</p>
+            <h2 class="panel-title">Top + Bottom by Alpha</h2>
+            <p class="panel-subtitle" id="alphaSub">—</p>
           </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Avg Alpha</div>
+          <div class="panel-badge">Avg Alpha</div>
         </div>
 
-        <div class="mt-5">
-          <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-          <div id="alphaTop" class="mt-3 space-y-2"></div>
+        <div style="margin-top:20px">
+          <div class="section-label green">TOP</div>
+          <div id="alphaTop" class="list-gap" style="margin-top:12px"></div>
         </div>
 
-        <div class="mt-6">
-          <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-          <div id="alphaBottom" class="mt-3 space-y-2"></div>
+        <div style="margin-top:24px">
+          <div class="section-label red">BOTTOM</div>
+          <div id="alphaBottom" class="list-gap" style="margin-top:12px"></div>
         </div>
       </div>
 
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between">
+      <!-- Accuracy Panel -->
+      <div class="glass">
+        <div class="panel-header">
           <div>
-            <h2 class="font-bold text-lg">Top + Bottom by Accuracy</h2>
-            <p class="text-xs text-gray-400 mt-1" id="accuracySub">—</p>
+            <h2 class="panel-title">Top + Bottom by Accuracy</h2>
+            <p class="panel-subtitle" id="accuracySub">—</p>
           </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Accuracy</div>
+          <div class="panel-badge">Accuracy</div>
         </div>
 
-        <div class="mt-5">
-          <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-          <div id="accTop" class="mt-3 space-y-2"></div>
+        <div style="margin-top:20px">
+          <div class="section-label green">TOP</div>
+          <div id="accTop" class="list-gap" style="margin-top:12px"></div>
         </div>
 
-        <div class="mt-6">
-          <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-          <div id="accBottom" class="mt-3 space-y-2"></div>
+        <div style="margin-top:24px">
+          <div class="section-label red">BOTTOM</div>
+          <div id="accBottom" class="list-gap" style="margin-top:12px"></div>
         </div>
       </div>
 
-      <div class="glass soft-shadow rounded-2xl p-5">
-        <div class="flex items-start justify-between gap-4">
+      <!-- Stocks Panel -->
+      <div class="glass">
+        <div class="panel-header">
           <div>
-            <h2 class="font-bold text-lg">Commonly Mentioned Assets</h2>
-            <p class="text-xs text-gray-400 mt-1" id="stocksSub">—</p>
+            <h2 class="panel-title">Commonly Mentioned Assets</h2>
+            <p class="panel-subtitle" id="stocksSub">—</p>
           </div>
-          <div class="text-[11px] text-gray-400 uppercase tracking-wider">Mentions</div>
+          <div class="panel-badge">Mentions</div>
         </div>
 
-        <div id="stocksList" class="mt-4 space-y-2"></div>
+        <div id="stocksList" class="list-gap" style="margin-top:16px"></div>
 
         <a id="dbBtnCard"
            href="#"
            target="_blank"
-           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-extrabold text-sm bg-gray-900 hover:bg-gray-800 transition border border-gray-700">
+           class="btn-dataset">
           Open dataset <span aria-hidden="true">↗</span>
         </a>
 
-        <div class="mt-3 text-[11px] text-gray-500">Powered by the public dataset.</div>
+        <div class="dataset-note">Powered by the public dataset.</div>
       </div>
 
     </section>
 
-    <section class="mt-6 glass soft-shadow rounded-2xl p-5">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <!-- Alpha by Time Horizon -->
+    <section class="horizon-section glass">
+      <div class="horizon-header">
         <div>
-          <h2 class="font-bold text-lg">Alpha by Time Horizon</h2>
-          <p class="text-xs text-gray-400 mt-1">90D vs 180D vs 365D</p>
+          <h2 class="panel-title">Alpha by Time Horizon</h2>
+          <p class="panel-subtitle">90D vs 180D vs 365D</p>
         </div>
-        <div class="text-[11px] text-gray-400 uppercase tracking-wider">90 / 180 / 365</div>
+        <div class="panel-badge">90 / 180 / 365</div>
       </div>
 
-      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="d90Label">90D</div>
-            <div class="text-xs text-gray-400">alpha</div>
+      <div class="inner-grid-3">
+        <!-- 90D -->
+        <div class="inner-panel">
+          <div class="inner-panel-header">
+            <div class="inner-panel-label" id="d90Label">90D</div>
+            <div class="panel-badge">alpha</div>
           </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-            <div id="d90Top" class="mt-3 space-y-2"></div>
+          <div style="margin-top:16px">
+            <div class="section-label green">TOP</div>
+            <div id="d90Top" class="list-gap" style="margin-top:12px"></div>
           </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-            <div id="d90Bottom" class="mt-3 space-y-2"></div>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="d180Label">180D</div>
-            <div class="text-xs text-gray-400">alpha</div>
-          </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-            <div id="d180Top" class="mt-3 space-y-2"></div>
-          </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-            <div id="d180Bottom" class="mt-3 space-y-2"></div>
+          <div style="margin-top:16px">
+            <div class="section-label red">BOTTOM</div>
+            <div id="d90Bottom" class="list-gap" style="margin-top:12px"></div>
           </div>
         </div>
 
-        <div class="glass rounded-2xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="font-bold" id="d365Label">365D</div>
-            <div class="text-xs text-gray-400">alpha</div>
+        <!-- 180D -->
+        <div class="inner-panel">
+          <div class="inner-panel-header">
+            <div class="inner-panel-label" id="d180Label">180D</div>
+            <div class="panel-badge">alpha</div>
           </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-green-400 tracking-wider">TOP</div>
-            <div id="d365Top" class="mt-3 space-y-2"></div>
+          <div style="margin-top:16px">
+            <div class="section-label green">TOP</div>
+            <div id="d180Top" class="list-gap" style="margin-top:12px"></div>
           </div>
-          <div class="mt-4">
-            <div class="text-xs font-bold text-red-400 tracking-wider">BOTTOM</div>
-            <div id="d365Bottom" class="mt-3 space-y-2"></div>
+          <div style="margin-top:16px">
+            <div class="section-label red">BOTTOM</div>
+            <div id="d180Bottom" class="list-gap" style="margin-top:12px"></div>
+          </div>
+        </div>
+
+        <!-- 365D -->
+        <div class="inner-panel">
+          <div class="inner-panel-header">
+            <div class="inner-panel-label" id="d365Label">365D</div>
+            <div class="panel-badge">alpha</div>
+          </div>
+          <div style="margin-top:16px">
+            <div class="section-label green">TOP</div>
+            <div id="d365Top" class="list-gap" style="margin-top:12px"></div>
+          </div>
+          <div style="margin-top:16px">
+            <div class="section-label red">BOTTOM</div>
+            <div id="d365Bottom" class="list-gap" style="margin-top:12px"></div>
           </div>
         </div>
       </div>
 
-      <div class="mt-4 flex items-center justify-between text-[11px] text-gray-500">
+      <div class="horizon-footer">
         <span>Alpha = Stock return − S&amp;P 500 return (same horizon). Sig uses p-value.</span>
-        <a id="dbLinkBottom"
-           href="#"
-           target="_blank"
-           class="text-green-400 hover:text-green-300 font-semibold">
-          Open dataset →
-        </a>
+        <a id="dbLinkBottom" href="#" target="_blank">Open dataset →</a>
       </div>
     </section>
 
   </main>
 
-  <footer class="border-t border-gray-800/70 bg-gray-950 py-10 mt-10">
-    <div class="max-w-7xl mx-auto px-4 text-sm text-gray-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
       <div>
-        <div class="font-semibold text-gray-300">True Alpha Research</div>
-        <div class="text-xs mt-1">Not financial advice. For entertainment & data purposes only.</div>
+        <div class="footer-brand">True Alpha Research</div>
+        <div class="footer-legal">Not financial advice. For entertainment &amp; data purposes only.</div>
       </div>
-      <div class="text-xs flex items-center gap-4">
-        <a href="https://x.com/TruealphaInvest" target="_blank" class="hover:text-green-400">X / Twitter</a>
+      <div class="footer-links">
+        <a href="https://x.com/TruealphaInvest" target="_blank">X / Twitter</a>
+        <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank">Reddit</a>
+        <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
       </div>
     </div>
   </footer>
 
-  <script>
-    // ===== Stripe links =====
-    const STRIPE_MONTHLY = "https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00";
-    const STRIPE_ANNUAL  = "https://buy.stripe.com/test_00w9AT41Tfi41j5eKXcfK02";
-
-    // ===== Pro unlock (temporary localStorage gate) =====
-    const PRO_KEY = "ta_pro";
-    const proContent = document.getElementById("proContent");
-    const proOverlay = document.getElementById("proOverlay");
-    const unlockLocalBtn = document.getElementById("unlockLocalBtn");
-    const alreadyProBtn = document.getElementById("alreadyProBtn");
-
-    function isPro() {
-      return localStorage.getItem(PRO_KEY) === "1";
-    }
-
-    function setPro(v) {
-      localStorage.setItem(PRO_KEY, v ? "1" : "0");
-      renderPro();
-    }
-
-    function renderPro() {
-      const unlocked = isPro();
-      if (unlocked) {
-        proContent.classList.remove("pro-locked");
-        proOverlay.style.display = "none";
-        alreadyProBtn.textContent = "Pro Unlocked ✓";
-      } else {
-        proContent.classList.add("pro-locked");
-        proOverlay.style.display = "flex";
-        alreadyProBtn.textContent = "Already Pro? Unlock ↗";
-      }
-      alreadyProBtn.classList.remove("hidden");
-    }
-
-    (function autoUnlockFromQuery() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("pro") === "1") {
-        setPro(true);
-        params.delete("pro");
-        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
-        window.history.replaceState({}, "", newUrl);
-      }
-    })();
-
-    unlockLocalBtn.addEventListener("click", () => setPro(true));
-    alreadyProBtn.addEventListener("click", () => setPro(true));
-
-    const lbMonthlyBtn  = document.getElementById("lbMonthlyBtn");
-    const lbAnnualBtn   = document.getElementById("lbAnnualBtn");
-    const lbPriceText   = document.getElementById("lbPriceText");
-    const lbSubText     = document.getElementById("lbSubText");
-    const lbCheckoutBtn = document.getElementById("lbCheckoutBtn");
-
-    function setLBMonthly() {
-      lbMonthlyBtn.classList.add("bg-green-600","text-white");
-      lbMonthlyBtn.classList.remove("text-gray-300");
-      lbAnnualBtn.classList.remove("bg-green-600","text-white");
-      lbAnnualBtn.classList.add("text-gray-300");
-
-      lbPriceText.innerHTML = `$19<span class="text-sm font-medium text-gray-400">/mo</span>`;
-      lbSubText.textContent = "Cancel anytime.";
-      lbCheckoutBtn.href = STRIPE_MONTHLY;
-    }
-
-    function setLBAnnual() {
-      lbAnnualBtn.classList.add("bg-green-600","text-white");
-      lbAnnualBtn.classList.remove("text-gray-300");
-      lbMonthlyBtn.classList.remove("bg-green-600","text-white");
-      lbMonthlyBtn.classList.add("text-gray-300");
-
-      lbPriceText.innerHTML = `$149<span class="text-sm font-medium text-gray-400">/yr</span>`;
-      lbSubText.textContent = "Save 35%. Equivalent to $12.42/mo.";
-      lbCheckoutBtn.href = STRIPE_ANNUAL;
-    }
-
-    lbMonthlyBtn.addEventListener("click", setLBMonthly);
-    lbAnnualBtn.addEventListener("click", setLBAnnual);
-
-    document.getElementById("proMonthlyLink").href = STRIPE_MONTHLY;
-    document.getElementById("proAnnualLink").href  = STRIPE_ANNUAL;
-
-    renderPro();
-  </script>
-
+  <!-- ============ LEADERBOARD DATA SCRIPT ============ -->
   <script>
     const JSON_PATH = "./leaderboard.json";
 
@@ -596,14 +967,14 @@
 
     const fmtPct = (n, decimals = 2) => {
       const num = toNumber(n);
-      if (!Number.isFinite(num)) return "—";
+      if (!Number.isFinite(num)) return "\u2014";
       const sign = num > 0 ? "+" : "";
       return `${sign}${num.toFixed(decimals)}%`;
     };
 
     const fmtRate = (n) => {
       const num = toNumber(n);
-      if (!Number.isFinite(num)) return "—";
+      if (!Number.isFinite(num)) return "\u2014";
       return `${num.toFixed(2)}%`;
     };
 
@@ -614,37 +985,36 @@
     }
 
     function pillRank(rank, kind) {
-      const base = "w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold";
-      if (kind === "good") return `<div class="${base} bg-green-500/15 text-green-300 border border-green-400/20">${rank}</div>`;
-      if (kind === "bad") return `<div class="${base} bg-red-500/15 text-red-300 border border-red-400/20">${rank}</div>`;
-      return `<div class="${base} bg-gray-500/15 text-gray-200 border border-gray-400/20">${rank}</div>`;
+      if (kind === "good") return `<div class="rank-pill good">${rank}</div>`;
+      if (kind === "bad") return `<div class="rank-pill bad">${rank}</div>`;
+      return `<div class="rank-pill neutral">${rank}</div>`;
     }
 
     function sigPill(sig) {
       if (!sig) return "";
-      return `<span class="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-extrabold bg-green-500/15 text-green-300 border border-green-400/20">Sig</span>`;
+      return `<span class="sig-pill">Sig</span>`;
     }
 
     function rowCreator({ rank, creator, valueText, valueClass, subText }) {
       return `
-        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
-          <div class="flex items-center gap-3 min-w-0">
+        <div class="lb-row">
+          <div class="lb-row-left">
             ${rank}
-            <div class="min-w-0">
-              <div class="text-sm font-semibold text-gray-100 truncate">${creator}</div>
-              <div class="text-[11px] text-gray-400">${subText}</div>
+            <div class="lb-row-info">
+              <div class="lb-row-name">${creator}</div>
+              <div class="lb-row-sub">${subText}</div>
             </div>
           </div>
-          <div class="text-sm font-extrabold ${valueClass} whitespace-nowrap">${valueText}</div>
+          <div class="lb-row-value ${valueClass}">${valueText}</div>
         </div>
       `;
     }
 
     function rowTicker({ ticker, mentions }) {
       return `
-        <div class="flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-white/0 hover:bg-white/5 transition">
-          <div class="text-sm font-extrabold tracking-wide">${ticker}</div>
-          <div class="text-xs text-gray-400">${mentions} mentions</div>
+        <div class="ticker-row">
+          <div class="ticker-name">${ticker}</div>
+          <div class="ticker-mentions">${mentions} mentions</div>
         </div>
       `;
     }
@@ -662,57 +1032,57 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
-        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "—";
-        document.getElementById("filterText").textContent = data?.meta?.filter || "—";
-        document.getElementById("entryRule").textContent = data?.meta?.entry || "—";
-        document.getElementById("sigRule").textContent = data?.meta?.significanceRule || "—";
+        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "\u2014";
+        document.getElementById("filterText").textContent = data?.meta?.filter || "\u2014";
+        document.getElementById("entryRule").textContent = data?.meta?.entry || "\u2014";
+        document.getElementById("sigRule").textContent = data?.meta?.significanceRule || "\u2014";
 
-        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "—";
-        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "—";
-        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "—";
+        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "\u2014";
+        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "\u2014";
+        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "\u2014";
 
         setDbLinks(data?.meta?.databaseUrl || "#");
 
         const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
+          creator: x.creator || "\u2014",
           valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-green-300",
+          valueClass: "green",
           subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
         })).join("");
 
         const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
+          creator: x.creator || "\u2014",
           valueText: fmtPct(x.avgAlpha),
-          valueClass: "text-red-300",
+          valueClass: "red",
           subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
         })).join("");
 
-        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="no-data">No data.</div>`;
+        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="no-data">No data.</div>`;
 
         const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "—",
+          creator: x.creator || "\u2014",
           valueText: fmtRate(x.winRate),
-          valueClass: "text-green-300",
+          valueClass: "green",
           subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
         })).join("");
 
         const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
           rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "—",
+          creator: x.creator || "\u2014",
           valueText: fmtRate(x.winRate),
-          valueClass: "text-red-300",
+          valueClass: "red",
           subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
         })).join("");
 
-        document.getElementById("accTop").innerHTML = accTop || `<div class="text-sm text-gray-400">No data.</div>`;
-        document.getElementById("accBottom").innerHTML = accBottom || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
+        document.getElementById("accBottom").innerHTML = accBottom || `<div class="no-data">No data.</div>`;
 
         const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
-        document.getElementById("stocksList").innerHTML = stocks || `<div class="text-sm text-gray-400">No data.</div>`;
+        document.getElementById("stocksList").innerHTML = stocks || `<div class="no-data">No data.</div>`;
 
         const d90 = data?.intervals?.d90 || {};
         const d180 = data?.intervals?.d180 || {};
@@ -725,22 +1095,22 @@
         const renderTopBottom = (block, topId, bottomId) => {
           const top = (block.top || []).slice(0, 3).map(x => rowCreator({
             rank: pillRank(x.rank ?? "", "good"),
-            creator: x.creator || "—",
+            creator: x.creator || "\u2014",
             valueText: fmtPct(x.alpha),
-            valueClass: "text-green-300",
+            valueClass: "green",
             subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
           })).join("");
 
           const bottom = (block.bottom || []).slice(0, 3).map(x => rowCreator({
             rank: pillRank(x.rank ?? "", "bad"),
-            creator: x.creator || "—",
+            creator: x.creator || "\u2014",
             valueText: fmtPct(x.alpha),
-            valueClass: "text-red-300",
+            valueClass: "red",
             subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
           })).join("");
 
-          document.getElementById(topId).innerHTML = top || `<div class="text-sm text-gray-400">No data.</div>`;
-          document.getElementById(bottomId).innerHTML = bottom || `<div class="text-sm text-gray-400">No data.</div>`;
+          document.getElementById(topId).innerHTML = top || `<div class="no-data">No data.</div>`;
+          document.getElementById(bottomId).innerHTML = bottom || `<div class="no-data">No data.</div>`;
         };
 
         renderTopBottom(d90, "d90Top", "d90Bottom");
@@ -752,7 +1122,7 @@
         const ids = ["alphaTop","alphaBottom","accTop","accBottom","stocksList","d90Top","d90Bottom","d180Top","d180Bottom","d365Top","d365Bottom"];
         ids.forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
+          if (el) el.innerHTML = `<div class="error-data">Failed to load leaderboard.json</div>`;
         });
       }
     }
