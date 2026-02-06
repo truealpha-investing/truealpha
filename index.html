@@ -3,7 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>True Alpha | Stock YouTuber Audits</title>
+  <title>True Alpha | We Tracked 10,000+ Stock Guru Predictions — See Who Actually Makes Money</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="We tracked 10,000+ financial YouTuber stock predictions and benchmarked every call against the S&P 500. See which stock gurus actually beat the market." />
+  <meta name="keywords" content="stock guru accuracy, youtuber stock picks, finance youtuber rankings, finfluencer tracker, stock prediction tracker" />
+  <link rel="canonical" href="https://truealphadata.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/" />
+  <meta property="og:title" content="True Alpha | We Tracked 10,000+ Stock Guru Predictions — See Who Actually Makes Money" />
+  <meta property="og:description" content="We tracked 10,000+ financial YouTuber stock predictions and benchmarked every call against the S&P 500. See which stock gurus actually beat the market." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="True Alpha | We Tracked 10,000+ Stock Guru Predictions — See Who Actually Makes Money" />
+  <meta name="twitter:description" content="We tracked 10,000+ financial YouTuber stock predictions and benchmarked every call against the S&P 500. See which stock gurus actually beat the market." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-46BNDCWHMT');
+  </script>
 
   <!-- Reddit Pixel (Base) -->
   <script>
@@ -13,39 +41,673 @@
   </script>
   <!-- End Reddit Pixel -->
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ======================================
+       CSS Custom Properties
+       ====================================== */
+    :root {
+      --color-bg: #0a0f0a;
+      --color-bg-secondary: #0d1410;
+      --color-surface: rgba(255, 255, 255, 0.035);
+      --color-surface-hover: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-subtle: rgba(255, 255, 255, 0.04);
+      --color-text-primary: #f0f0f0;
+      --color-text-secondary: #9ca3af;
+      --color-text-muted: #6b7280;
+      --color-text-faint: #4b5563;
+      --color-green-500: #22c55e;
+      --color-green-400: #4ade80;
+      --color-green-600: #16a34a;
+      --color-green-glow: rgba(34, 197, 94, 0.22);
+      --color-green-bg: rgba(34, 197, 94, 0.10);
+      --color-green-border: rgba(34, 197, 94, 0.25);
+      --color-red-400: #f87171;
+      --color-red-500: #ef4444;
+      --color-gradient-start: #4ade80;
+      --color-gradient-end: #059669;
+      --color-grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+    }
+
+    /* ======================================
+       Reset & Base
+       ====================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      /* Subtle CSS grid background */
+      background-image:
+        linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.035);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .glow-green { box-shadow: 0 0 22px rgba(34, 197, 94, 0.22); }
+    img { max-width: 100%; }
+
+    /* ======================================
+       Fade-in Animations
+       ====================================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-delay-0   { animation-delay: 0s; }
+    .fade-delay-1   { animation-delay: 0.1s; }
+    .fade-delay-2   { animation-delay: 0.2s; }
+    .fade-delay-35  { animation-delay: 0.35s; }
+    .fade-delay-5   { animation-delay: 0.5s; }
+
+    /* ======================================
+       Layout Utilities
+       ====================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .container-narrow {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .container-md {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .text-center { text-align: center; }
+
+    /* ======================================
+       Navigation
+       ====================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(10, 15, 10, 0.85);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-brand:hover { opacity: 0.9; }
+
+    .nav-brand svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-green-500);
+    }
+
+    .nav-brand-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-text .accent { color: var(--color-green-500); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .nav-links a {
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-green-400);
+    }
+
+    /* ======================================
+       Hero Section
+       ====================================== */
+    .hero {
+      padding: 80px 16px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial glow behind hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+    }
 
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 10px;
-      border-radius: 9999px;
-      border: 1px solid rgba(34,197,94,0.25);
-      background: rgba(34,197,94,0.10);
-      color: rgba(74,222,128,1);
-      font-size: 12px;
-      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-green-border);
+      background: var(--color-green-bg);
+      color: var(--color-green-400);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .accent {
+      color: var(--color-green-500);
+    }
+
+    .hero h1 .gradient-text {
+      display: block;
+      background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-bottom: 32px;
+      font-family: var(--font-mono);
+    }
+
+    /* ======================================
+       Social Proof Strip
+       ====================================== */
+    .stats-strip {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-green-400);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* ======================================
+       CTA Buttons
+       ====================================== */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 22px var(--color-green-glow);
+      ring: 1px solid rgba(34, 197, 94, 0.2);
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-green-500);
+    }
+
+    .link-secondary {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .link-secondary:hover {
+      color: var(--color-green-400);
+    }
+
+    /* ======================================
+       QuickScan Section
+       ====================================== */
+    .quickscan {
+      padding: 64px 0;
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .quickscan-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .quickscan-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .quickscan-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .quickscan-header p {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+    }
+
+    .quickscan-timestamp {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: rgba(10, 15, 10, 0.4);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .quickscan-timestamp .value {
+      color: var(--color-text-primary);
+    }
+
+    .quickscan-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .quickscan-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .glass-panel {
+      background: var(--color-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+    }
+
+    .panel-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-title.green { color: var(--color-green-400); }
+    .panel-title.red   { color: var(--color-red-400); }
+
+    .panel-title svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .leaderboard-row {
+      margin-bottom: 20px;
+    }
+
+    .leaderboard-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .leaderboard-row-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .leaderboard-row-header .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+    }
+
+    .leaderboard-row-header .value {
+      white-space: nowrap;
+    }
+
+    .leaderboard-row-header .value.green { color: var(--color-green-400); }
+    .leaderboard-row-header .value.red   { color: var(--color-red-400); }
+
+    .bar-track {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-full);
+      height: 8px;
+    }
+
+    .bar-fill {
+      height: 8px;
+      border-radius: var(--radius-full);
+      transition: width 0.6s ease-out;
+    }
+
+    .bar-fill.green { background: var(--color-green-500); }
+    .bar-fill.red   { background: var(--color-red-500); }
+
+    .quickscan-link {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .quickscan-link a {
+      color: var(--color-green-400);
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .quickscan-link a:hover {
+      color: var(--color-green-500);
+    }
+
+    /* Fallback state */
+    .fallback-message {
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    .fallback-message .loading-text {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .fallback-message a {
+      color: var(--color-green-400);
+      font-weight: 600;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .fallback-message a:hover {
+      color: var(--color-green-500);
+    }
+
+    /* ======================================
+       How It Works Section
+       ====================================== */
+    .how-it-works {
+      padding: 80px 0;
+    }
+
+    .how-it-works h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .step-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .step-card:hover {
+      border-color: var(--color-green-border);
+      background: var(--color-surface-hover);
+    }
+
+    .step-number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-green-500);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-text-primary);
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ======================================
+       Email Section
+       ====================================== */
+    .email-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .email-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.5rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .email-section .subtext {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .email-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .email-form-wrap input[type="email"],
+    .email-form-wrap input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .email-form-wrap input:focus {
+      border-color: var(--color-green-500);
+    }
+
+    .email-form-wrap button[data-element="submit"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 0 16px var(--color-green-glow);
+    }
+
+    .email-form-wrap button[data-element="submit"]:hover {
+      background: var(--color-green-500);
+    }
+
+    .email-proof {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 16px;
     }
 
     /* Kit embed resets */
@@ -57,335 +719,406 @@
       margin: 0 !important;
       max-width: 100% !important;
     }
+
+    /* ======================================
+       Footer
+       ====================================== */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .footer h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer .mission-text {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-connect {
+      text-align: left;
+    }
+
+    @media (min-width: 768px) {
+      .footer-connect {
+        text-align: right;
+      }
+    }
+
+    .footer-connect a {
+      display: block;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-connect a:hover {
+      color: var(--color-green-400);
+    }
+
+    .footer-legal {
+      color: var(--color-text-faint);
+      margin-top: 24px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ======================================
+       Responsive tweaks
+       ====================================== */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 48px 16px 32px;
+      }
+
+      .stats-strip {
+        gap: 24px;
+      }
+
+      .stat-number {
+        font-size: 22px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 13px;
+      }
+
+      .glass-panel {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+<body>
 
-  <nav class="sticky top-0 z-50 border-b border-gray-800/70 bg-gray-950/80 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2 hover:opacity-90 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span class="font-extrabold tracking-tight text-lg uppercase">
-          TRUE<span class="text-green-500">ALPHA</span>
-        </span>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
       </a>
 
-      <div class="flex items-center gap-4 md:gap-7 text-sm text-gray-300 font-semibold">
-        <a href="methodology.html" class="hover:text-green-300 transition">Methodology</a>
-        <a href="faq.html" class="hover:text-green-300 transition">FAQ</a>
-        <a href="blog.html" class="hover:text-green-300 transition">Weekly Insights</a>
-        <a href="/leaderboard/" class="hover:text-green-300 transition">Leaderboard</a>
+      <div class="nav-links">
+        <a href="methodology.html">Methodology</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Weekly Insights</a>
+        <a href="/leaderboard/">Leaderboard</a>
       </div>
     </div>
   </nav>
 
-  <main class="flex-grow">
-    <!-- HERO -->
-    <section class="pt-16 pb-10 text-center px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="mb-6">
+  <main style="flex-grow:1">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="fade-in-up fade-delay-0">
           <span class="pill">AS SEEN ON r/STOCKMARKET</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
-          We Tracked <span class="text-green-500">+10,000</span> Stock Guru Predictions.
-          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mt-2">
-            See Who Actually Makes Money.
-          </span>
+        <h1 class="fade-in-up fade-delay-1">
+          We Tracked <span class="accent">10,000+</span> Stock Guru Predictions.
+          <span class="gradient-text">See Who Actually Makes Money.</span>
         </h1>
 
-        <p class="text-lg sm:text-xl text-gray-400 mb-4 max-w-2xl mx-auto">
-          Most financial YouTubers are entertainers, not investors. We audit transcripts, track entries, and benchmark every call vs the S&P 500.
+        <p class="hero-subtitle fade-in-up fade-delay-2">
+          Most financial YouTubers are entertainers, not investors. We audit transcripts, track entries, and benchmark every call vs the S&amp;P 500.
         </p>
 
-        <p class="text-xs text-gray-500 mb-8">
-          Built from public transcripts • Benchmarked vs S&amp;P 500 • Updated weekly
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#pro"
-             class="w-full sm:w-auto px-10 py-4 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-2xl transition shadow-lg glow-green ring-1 ring-green-500/20">
-            Unlock Pro Leaderboard
-          </a>
-
-          <a href="#freeEmail"
-             class="w-full sm:w-auto px-6 py-3 rounded-2xl border border-gray-700/70 hover:border-gray-500 text-gray-300 hover:text-white font-bold transition">
-            Join Free Email →
-          </a>
+        <div class="stats-strip fade-in-up fade-delay-35">
+          <div class="stat-item">
+            <div class="stat-number" id="statPredictions">10,000+</div>
+            <div class="stat-label">Predictions Tracked</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="statCreators">50+</div>
+            <div class="stat-label">Creators Audited</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Weekly</div>
+            <div class="stat-label">Update Frequency</div>
+          </div>
         </div>
+
+        <div class="cta-group fade-in-up fade-delay-5">
+          <a href="#freeEmail" class="btn-primary">Get the Free Weekly Report →</a>
+          <a href="/leaderboard/" class="link-secondary">View the Leaderboard →</a>
+        </div>
+
       </div>
     </section>
 
-    <!-- QUICKSCAN -->
-    <section class="py-16 bg-gray-950/30 border-y border-gray-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-          <div class="text-center md:text-left">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">Top &amp; Bottom Creators (Verified)</h2>
-            <p class="text-sm text-gray-400 mt-1">
-              <span id="metricText">Average Alpha vs S&amp;P 500</span> • <span id="filterText">Filter: Verified (N &gt; 20)</span>
+    <!-- ============ QUICKSCAN ============ -->
+    <section class="quickscan">
+      <div class="container">
+        <div class="quickscan-header">
+          <div class="text-center" style="text-align:left">
+            <h2>Top &amp; Bottom Creators (Verified)</h2>
+            <p>
+              <span id="metricText">Average Alpha vs S&amp;P 500</span> · <span id="filterText">Filter: Verified (N &gt; 20)</span>
             </p>
           </div>
 
-          <div class="px-4 py-2 rounded-full border border-gray-700/70 bg-gray-900/40 text-[11px] font-mono text-gray-300 self-center">
-            Last Updated: <span id="updatedText" class="text-white">—</span>
+          <div class="quickscan-timestamp">
+            Last Updated: <span id="updatedText" class="value">—</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="glass-panel rounded-2xl p-8">
-            <h3 class="text-green-400 font-bold uppercase tracking-wider text-xs mb-8 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="quickscan-grid">
+          <div class="glass-panel">
+            <h3 class="panel-title green">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
               </svg>
               Top Performers (Avg Alpha)
             </h3>
-            <div id="topList" class="space-y-6">
-              <div class="text-sm text-gray-400">Loading…</div>
+            <div id="topList">
+              <div style="font-size:14px;color:var(--color-text-secondary)">Loading…</div>
             </div>
           </div>
 
-          <div class="glass-panel rounded-2xl p-8">
-            <h3 class="text-red-400 font-bold uppercase tracking-wider text-xs mb-8 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-panel">
+            <h3 class="panel-title red">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
               </svg>
               Underperformers
             </h3>
-            <div id="bottomList" class="space-y-6">
-              <div class="text-sm text-gray-400">Loading…</div>
+            <div id="bottomList">
+              <div style="font-size:14px;color:var(--color-text-secondary)">Loading…</div>
             </div>
+          </div>
+        </div>
+
+        <div class="quickscan-link">
+          <a href="/leaderboard/">View full leaderboard with 50+ creators →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Collect Transcripts</h3>
+            <p>We pull public video transcripts from financial YouTubers and extract every stock pick, price target, and time horizon.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Track Performance</h3>
+            <p>Each prediction is matched to real market data and tracked over 90, 180, and 365-day horizons against actual returns.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Benchmark vs S&amp;P 500</h3>
+            <p>We calculate alpha — how much each creator beat or trailed the market. No cherry-picking. Every call counted.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRO PRICING -->
-    <section id="pro" class="py-24 max-w-5xl mx-auto px-4">
-      <div class="glass-panel rounded-[32px] overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-5">
-          <div class="md:col-span-3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-gray-800">
-            <div class="text-xs font-mono text-gray-400 mb-2 uppercase">Upgrade</div>
-            <h2 class="text-3xl font-extrabold mb-6">TrueAlpha <span class="text-green-400">Pro</span></h2>
-            <ul class="space-y-4 text-sm text-gray-200">
-              <li class="flex gap-3">
-                <span class="text-green-400 font-bold">✓</span>
-                <span><b>Year-by-year alpha (2023–2025+)</b> + “Beat S&amp;P?” per year</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-green-400 font-bold">✓</span>
-                <span><b>Consistency score</b> (e.g., “3/4 years beat S&amp;P”) + streaks</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-green-400 font-bold">✓</span>
-                <span><b>Bull vs Bear accuracy</b> (not just a lucky market)</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-green-400 font-bold">✓</span>
-                <span><b>Signal filters</b>: Verified (N≥20), significance badge, 90/180/365 horizons</span>
-              </li>
-            </ul>
-          </div>
+    <!-- ============ EMAIL SIGNUP ============ -->
+    <section id="freeEmail" class="email-section">
+      <div class="container-narrow text-center">
+        <h3>The Guru Report Card</h3>
+        <p class="subtext">Free weekly email: who's beating the market, who's not, and which new creators we're tracking. No spam, no fluff.</p>
 
-          <div class="md:col-span-2 p-8 md:p-12 bg-white/[0.02] flex flex-col justify-center text-center">
-            <div id="hpPriceText" class="text-5xl font-extrabold text-white mb-2">$19</div>
-            <p id="hpSubText" class="text-sm text-gray-400 mb-8 font-medium">Cancel anytime. Instant access.</p>
+        <div class="email-form-wrap">
+          <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
 
-            <div class="flex justify-center mb-8">
-              <div class="inline-flex bg-gray-800 p-1 rounded-full ring-1 ring-white/5">
-                <button id="hpMonthlyBtn"
-                        class="px-4 py-2 text-xs font-extrabold rounded-full bg-green-600 text-white transition">
-                  Monthly
-                </button>
-                <button id="hpAnnualBtn"
-                        class="px-4 py-2 text-xs font-extrabold rounded-full text-gray-400 hover:text-white transition relative">
-                  Annual <span class="ml-1 text-[10px] text-green-500">-35%</span>
-                </button>
-              </div>
+          <form action="https://app.kit.com/forms/8848906/subscriptions"
+                class="seva-form formkit-form"
+                method="post"
+                data-sv-form="8848906"
+                data-uid="c5142792e3"
+                data-format="inline">
+            <div>
+              <input type="email"
+                     name="email_address"
+                     placeholder="Email Address"
+                     required />
+
+              <input type="text"
+                     name="fields[first_name]"
+                     placeholder="Which YouTuber Should We Audit Next? (Optional)" />
+
+              <button data-element="submit">
+                Join Free Email
+              </button>
             </div>
+          </form>
 
-            <a id="hpCheckoutBtn"
-               href="https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00"
-               target="_blank"
-               class="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl transition shadow-lg glow-green ring-1 ring-green-500/20">
-              Unlock Pro — $19/mo
-            </a>
-
-            <div class="mt-3 text-[11px] text-gray-500">
-              Secure checkout via Stripe. Cancel anytime.
-            </div>
-          </div>
+          <p class="email-proof">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
         </div>
       </div>
     </section>
 
-    <!-- FREE EMAIL -->
-    <section id="freeEmail" class="py-20 border-t border-gray-800">
-      <div class="max-w-xl mx-auto px-4 text-center">
-        <h3 class="text-xl font-extrabold mb-2">Not ready? Get weekly changes (free)</h3>
-        <p class="text-sm text-gray-400 mb-8">New creators, rank movers, what changed since last week. No spam.</p>
-
-        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-
-        <form action="https://app.kit.com/forms/8848906/subscriptions"
-              class="seva-form formkit-form"
-              method="post"
-              data-sv-form="8848906"
-              data-uid="c5142792e3"
-              data-format="inline">
-          <div class="space-y-3 text-left">
-            <input type="email"
-                   name="email_address"
-                   placeholder="Email Address"
-                   required
-                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-green-500 transition" />
-
-            <input type="text"
-                   name="fields[first_name]"
-                   placeholder="Which YouTuber Should We Audit Next? (Optional)"
-                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-green-500 transition text-sm" />
-
-            <button data-element="submit"
-                    class="w-full px-4 py-3 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl transition shadow-lg ring-1 ring-green-500/20">
-              Join Free Email
-            </button>
-          </div>
-        </form>
-
-        <p class="mt-4 text-xs text-gray-500">
-          100% free. Unsubscribe anytime.
-        </p>
-      </div>
-    </section>
   </main>
 
-  <footer class="border-t border-gray-800 bg-gray-900 py-16">
-    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
-      <div>
-        <h4 class="font-bold text-white mb-4">The Mission</h4>
-        <p class="text-gray-500 leading-relaxed">
-          Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
-        </p>
-      </div>
-      <div class="md:text-right">
-        <h4 class="font-bold text-white mb-4">Connect</h4>
-        <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
-        <a href="mailto:hello@truealphadata.com" class="block text-gray-500 hover:text-green-400 mb-2">hello@truealphadata.com</a>
-        <p class="text-gray-600 mt-6 text-xs">&copy; 2026 True Alpha Research. <br>Not financial advice. Data for entertainment purposes.</p>
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>The Mission</h4>
+          <p class="mission-text">
+            Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
+          </p>
+        </div>
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <a href="https://x.com/TruealphaInvest" target="_blank">Twitter / X</a>
+          <a href="https://www.reddit.com/user/TruealphaInvest" target="_blank">Reddit</a>
+          <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
+          <p class="footer-legal">&copy; 2026 True Alpha Research.<br>Not financial advice. Data for entertainment purposes.</p>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- ============ SCRIPTS ============ -->
   <script>
     // ======================================
-    // Stripe toggle
+    // Social Proof Stats (Dynamic)
     // ======================================
-    const STRIPE_MONTHLY = "https://buy.stripe.com/test_aFa6oH1TL8TGe5RcCPcfK00";
-    // NOTE: replace with your real annual link (you pasted a different one earlier)
-    const STRIPE_ANNUAL  = "https://buy.stripe.com/test_8x24gz1TL2vi7Ht0U7cfK01";
-
-    const hpMonthlyBtn = document.getElementById("hpMonthlyBtn");
-    const hpAnnualBtn = document.getElementById("hpAnnualBtn");
-    const hpPriceText = document.getElementById("hpPriceText");
-    const hpSubText = document.getElementById("hpSubText");
-    const hpCheckoutBtn = document.getElementById("hpCheckoutBtn");
-
-    function setHPMonthly() {
-      hpMonthlyBtn.classList.add("bg-green-600","text-white");
-      hpMonthlyBtn.classList.remove("text-gray-400");
-
-      hpAnnualBtn.classList.remove("bg-green-600","text-white");
-      hpAnnualBtn.classList.add("text-gray-400");
-
-      hpPriceText.textContent = "$19";
-      hpSubText.textContent = "Cancel anytime. Instant access.";
-      hpCheckoutBtn.href = STRIPE_MONTHLY;
-      hpCheckoutBtn.textContent = "Unlock Pro — $19/mo";
-    }
-
-    function setHPAnnual() {
-      hpAnnualBtn.classList.add("bg-green-600","text-white");
-      hpAnnualBtn.classList.remove("text-gray-400");
-
-      hpMonthlyBtn.classList.remove("bg-green-600","text-white");
-      hpMonthlyBtn.classList.add("text-gray-400");
-
-      hpPriceText.textContent = "$149";
-      hpSubText.textContent = "Save 35%. Equivalent to $12.42/month.";
-      hpCheckoutBtn.href = STRIPE_ANNUAL;
-      hpCheckoutBtn.textContent = "Go Pro — Save 35%";
-    }
-
-    hpMonthlyBtn.addEventListener("click", (e) => { e.preventDefault(); setHPMonthly(); });
-    hpAnnualBtn.addEventListener("click", (e) => { e.preventDefault(); setHPAnnual(); });
-
-    // ======================================
-    // QuickScan loader
-    // ======================================
-    function fmtPct(n) {
-      const num = Number(n);
-      if (!Number.isFinite(num)) return "—";
-      const sign = num > 0 ? "+" : "";
-      return `${sign}${num.toFixed(2)}%`;
-    }
-
-    function rowHTML(item, isTop, maxAbs) {
-      const creator = item.creator ?? "—";
-      const alpha = Number(item.avgAlpha ?? 0);
-
-      const width = Math.min(100, Math.max(6, Math.round((Math.abs(alpha) / (maxAbs || 1)) * 100)));
-      const barClass = isTop ? "bg-green-500" : "bg-red-500";
-      const valClass = isTop ? "text-green-400" : "text-red-400";
-
-      return `
-        <div>
-          <div class="flex justify-between text-sm font-semibold mb-1">
-            <span class="truncate pr-3">${creator}</span>
-            <span class="${valClass} whitespace-nowrap">${fmtPct(alpha)}</span>
-          </div>
-          <div class="w-full bg-gray-800 rounded-full h-2">
-            <div class="${barClass} h-2 rounded-full" style="width:${width}%"></div>
-          </div>
-        </div>
-      `;
-    }
-
-    async function loadQuickScan() {
-      const topEl = document.getElementById("topList");
-      const bottomEl = document.getElementById("bottomList");
-
+    async function loadStats() {
       try {
-        const res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        document.getElementById("updatedText").textContent = data?.meta?.lastUpdated || "—";
-        document.getElementById("metricText").textContent = data?.meta?.metricAlpha || "Average Alpha vs S&P 500";
-        document.getElementById("filterText").textContent = data?.meta?.filter || "Filter: Verified (N > 20)";
+        // Count unique creators across alpha top + bottom
+        const creators = new Set();
+        const allEntries = [
+          ...(data?.alpha?.top || []),
+          ...(data?.alpha?.bottom || [])
+        ];
+        let totalPredictions = 0;
+        allEntries.forEach(entry => {
+          creators.add(entry.creator);
+          totalPredictions += Number(entry.n) || 0;
+        });
 
-        const top = data?.alpha?.top?.slice(0, 4) || [];
-        const bottom = data?.alpha?.bottom?.slice(0, 4) || [];
+        // Also check accuracy lists for more creators/predictions
+        const accEntries = [
+          ...(data?.accuracy?.top || []),
+          ...(data?.accuracy?.bottom || [])
+        ];
+        accEntries.forEach(entry => {
+          if (!creators.has(entry.creator)) {
+            creators.add(entry.creator);
+            totalPredictions += Number(entry.n) || 0;
+          }
+        });
 
-        const maxAbs = Math.max(...[...top, ...bottom].map(x => Math.abs(Number(x.avgAlpha) || 0)), 1);
-
-        topEl.innerHTML = top.length
-          ? top.map(r => rowHTML(r, true, maxAbs)).join("")
-          : `<div class="text-sm text-gray-400">No top performer data.</div>`;
-
-        bottomEl.innerHTML = bottom.length
-          ? bottom.map(r => rowHTML(r, false, maxAbs)).join("")
-          : `<div class="text-sm text-gray-400">No underperformer data.</div>`;
-
-      } catch (err) {
-        console.error("QuickScan error:", err);
-        topEl.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
-        bottomEl.innerHTML = `<div class="text-sm text-red-300">Failed to load leaderboard.json</div>`;
+        if (totalPredictions > 0) {
+          document.getElementById('statPredictions').textContent = totalPredictions.toLocaleString() + '+';
+        }
+        if (creators.size > 0) {
+          document.getElementById('statCreators').textContent = creators.size + '+';
+        }
+      } catch (e) {
+        // Keep static fallback values (10,000+ and 50+)
       }
     }
 
+    // ======================================
+    // QuickScan Leaderboard
+    // ======================================
+    function fmtPct(n) {
+      var num = Number(n);
+      if (!Number.isFinite(num)) return '—';
+      var sign = num > 0 ? '+' : '';
+      return sign + num.toFixed(2) + '%';
+    }
+
+    function rowHTML(item, isTop, maxAbs) {
+      var creator = item.creator || '—';
+      var alpha = Number(item.avgAlpha || 0);
+      var width = Math.min(100, Math.max(6, Math.round((Math.abs(alpha) / (maxAbs || 1)) * 100)));
+      var colorClass = isTop ? 'green' : 'red';
+
+      return '<div class="leaderboard-row">' +
+        '<div class="leaderboard-row-header">' +
+          '<span class="name">' + creator + '</span>' +
+          '<span class="value ' + colorClass + '">' + fmtPct(alpha) + '</span>' +
+        '</div>' +
+        '<div class="bar-track">' +
+          '<div class="bar-fill ' + colorClass + '" style="width:' + width + '%"></div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    async function loadQuickScan() {
+      var topEl = document.getElementById('topList');
+      var bottomEl = document.getElementById('bottomList');
+
+      try {
+        var res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var data = await res.json();
+
+        document.getElementById('updatedText').textContent = data?.meta?.lastUpdated || '—';
+        document.getElementById('metricText').textContent = data?.meta?.metricAlpha || 'Average Alpha vs S&P 500';
+        document.getElementById('filterText').textContent = data?.meta?.filter || 'Filter: Verified (N > 20)';
+
+        var top = (data?.alpha?.top || []).slice(0, 4);
+        var bottom = (data?.alpha?.bottom || []).slice(0, 4);
+
+        var maxAbs = Math.max.apply(null, top.concat(bottom).map(function(x) { return Math.abs(Number(x.avgAlpha) || 0); }).concat([1]));
+
+        topEl.innerHTML = top.length
+          ? top.map(function(r) { return rowHTML(r, true, maxAbs); }).join('')
+          : '<div style="font-size:14px;color:var(--color-text-secondary)">No top performer data.</div>';
+
+        bottomEl.innerHTML = bottom.length
+          ? bottom.map(function(r) { return rowHTML(r, false, maxAbs); }).join('')
+          : '<div style="font-size:14px;color:var(--color-text-secondary)">No underperformer data.</div>';
+
+      } catch (err) {
+        console.error('QuickScan error:', err);
+        var fallback = '<div class="fallback-message">' +
+          '<div class="loading-text">Live data loading…</div>' +
+          '<a href="/leaderboard/">View the full leaderboard →</a>' +
+        '</div>';
+        topEl.innerHTML = fallback;
+        bottomEl.innerHTML = fallback;
+      }
+    }
+
+    // Initialize
+    loadStats();
     loadQuickScan();
   </script>
 
