@@ -852,11 +852,11 @@
 
         <div class="stats-strip fade-in-up fade-delay-35">
           <div class="stat-item">
-            <div class="stat-number" id="statPredictions">10,000+</div>
+            <div class="stat-number">10,000+</div>
             <div class="stat-label">Predictions Tracked</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number" id="statCreators">50+</div>
+            <div class="stat-number">80+</div>
             <div class="stat-label">Creators Audited</div>
           </div>
           <div class="stat-item">
@@ -999,7 +999,7 @@
         <div class="footer-connect">
           <h4>Connect</h4>
           <a href="https://x.com/TruealphaInvest" target="_blank">Twitter / X</a>
-          <a href="https://www.reddit.com/user/TruealphaInvest" target="_blank">Reddit</a>
+          <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank">Reddit</a>
           <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
           <p class="footer-legal">&copy; 2026 True Alpha Research.<br>Not financial advice. Data for entertainment purposes.</p>
         </div>
@@ -1009,50 +1009,6 @@
 
   <!-- ============ SCRIPTS ============ -->
   <script>
-    // ======================================
-    // Social Proof Stats (Dynamic)
-    // ======================================
-    async function loadStats() {
-      try {
-        const res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
-
-        // Count unique creators across alpha top + bottom
-        const creators = new Set();
-        const allEntries = [
-          ...(data?.alpha?.top || []),
-          ...(data?.alpha?.bottom || [])
-        ];
-        let totalPredictions = 0;
-        allEntries.forEach(entry => {
-          creators.add(entry.creator);
-          totalPredictions += Number(entry.n) || 0;
-        });
-
-        // Also check accuracy lists for more creators/predictions
-        const accEntries = [
-          ...(data?.accuracy?.top || []),
-          ...(data?.accuracy?.bottom || [])
-        ];
-        accEntries.forEach(entry => {
-          if (!creators.has(entry.creator)) {
-            creators.add(entry.creator);
-            totalPredictions += Number(entry.n) || 0;
-          }
-        });
-
-        if (totalPredictions > 0) {
-          document.getElementById('statPredictions').textContent = totalPredictions.toLocaleString() + '+';
-        }
-        if (creators.size > 0) {
-          document.getElementById('statCreators').textContent = creators.size + '+';
-        }
-      } catch (e) {
-        // Keep static fallback values (10,000+ and 50+)
-      }
-    }
-
     // ======================================
     // QuickScan Leaderboard
     // ======================================
@@ -1118,7 +1074,6 @@
     }
 
     // Initialize
-    loadStats();
     loadQuickScan();
   </script>
 
