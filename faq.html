@@ -1,173 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ | True Alpha</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* Accordion Styles */
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | True Alpha — Common Questions About Our Stock Guru Audits</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Frequently asked questions about how True Alpha tracks financial YouTuber stock predictions, calculates alpha, and determines statistical significance." />
+  <link rel="canonical" href="https://truealphadata.com/faq.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/faq.html" />
+  <meta property="og:title" content="FAQ | True Alpha — Common Questions About Our Stock Guru Audits" />
+  <meta property="og:description" content="Frequently asked questions about how True Alpha tracks financial YouTuber stock predictions, calculates alpha, and determines statistical significance." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="FAQ | True Alpha — Common Questions About Our Stock Guru Audits" />
+  <meta name="twitter:description" content="Frequently asked questions about how True Alpha tracks financial YouTuber stock predictions, calculates alpha, and determines statistical significance." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-46BNDCWHMT');
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #0a0f0d;
+      --bg-secondary: #0d1410;
+      --bg-card: rgba(20, 32, 26, 0.6);
+      --border: rgba(34, 197, 94, 0.1);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --green-500: #22c55e;
+      --green-400: #4ade80;
+      --green-600: #16a34a;
+      --green-glow: rgba(34, 197, 94, 0.22);
+      --text-primary: #f0f0f0;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --text-faint: #4b5563;
+      --grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-md: 12px;
+      --radius-xl: 24px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10,15,10,0.85); backdrop-filter: blur(16px); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .nav-brand:hover { opacity: 0.9; }
+    .nav-brand svg { width: 24px; height: 24px; color: var(--green-500); }
+    .nav-brand-text { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; }
+    .nav-brand-text .accent { color: var(--green-500); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-400); }
+
+    /* Content */
+    .content { flex-grow: 1; max-width: 768px; margin: 0 auto; padding: 48px 16px 64px; width: 100%; }
+    .back-link { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--green-400); margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--green-500); }
+    .back-link svg { width: 16px; height: 16px; }
+    .page-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .page-intro { font-size: 17px; color: var(--text-secondary); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border-subtle); line-height: 1.65; }
+
+    /* Accordion */
+    .faq-list > * + * { margin-top: 12px; }
+    details { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; transition: background 0.2s; }
+    details[open] { background: rgba(20, 32, 26, 0.85); }
+    details > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.4; }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary:hover { color: var(--green-400); }
+    details > summary .chevron { transition: transform 0.2s; flex-shrink: 0; width: 20px; height: 20px; color: var(--text-muted); }
+    details[open] > summary .chevron { transform: rotate(180deg); }
+    .faq-answer { margin-top: 16px; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+    .faq-answer p + p { margin-top: 8px; }
+    .faq-answer strong { color: var(--text-primary); font-weight: 600; }
+    .faq-answer em { color: var(--text-muted); }
+    .faq-answer .aside { margin-top: 8px; font-size: 13px; color: var(--text-muted); }
+
+    /* Email CTA */
+    .email-section { padding: 64px 0; border-top: 1px solid var(--border-subtle); }
+    .email-section-inner { max-width: 600px; margin: 0 auto; padding: 0 16px; text-align: center; }
+    .email-section h3 { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 700; margin-bottom: 8px; }
+    .email-section .subtext { font-size: 14px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.6; }
+    .email-form { max-width: 440px; margin: 0 auto; }
+    .email-form input[type="email"] { width: 100%; padding: 12px 16px; background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+    .email-form input:focus { border-color: var(--green-500); }
+    .email-form button[data-element="submit"] { width: 100%; padding: 12px; background: var(--green-600); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 15px; border-radius: var(--radius-md); border: none; cursor: pointer; transition: background 0.2s; box-shadow: 0 0 16px var(--green-glow); }
+    .email-form button[data-element="submit"]:hover { background: var(--green-500); }
+    .email-proof { font-size: 12px; color: var(--text-muted); margin-top: 14px; }
+    .formkit-form, .seva-form { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border-subtle); background: var(--bg-primary); padding: 64px 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 16px; display: grid; grid-template-columns: 1fr; gap: 48px; font-size: 14px; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+    .footer .mission-text { color: var(--text-muted); line-height: 1.7; }
+    .footer-connect { text-align: left; }
+    @media (min-width: 768px) { .footer-connect { text-align: right; } }
+    .footer-connect a { display: block; color: var(--text-muted); margin-bottom: 8px; transition: color 0.2s; }
+    .footer-connect a:hover { color: var(--green-400); }
+    .footer-legal { color: var(--text-faint); margin-top: 24px; font-size: 12px; line-height: 1.6; }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+      details { padding: 20px; }
+      details > summary { font-size: 15px; }
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+<body>
 
-    <nav class="w-full border-b border-gray-800 bg-gray-900/90 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 decoration-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z" />
-                </svg>
-                <span class="font-bold text-xl tracking-tight text-white">TRUE<span class="text-green-500">ALPHA</span></span>
-            </a>
-            <div class="text-xs text-gray-500 font-mono hidden sm:block">
-                DATABASE: 3000+ PREDICTIONS
-            </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="/methodology.html">Methodology</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/blog.html">Weekly Insights</a>
+        <a href="/leaderboard/">Leaderboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+    <a href="/index.html" class="back-link">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+      Back to Home
+    </a>
+
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    <p class="page-intro">Common questions about our data, our math, and our mission.</p>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>
+          <span>How do you determine the timeframe for each prediction?</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" /></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>To ensure objectivity, we use <strong>Fixed Time Intervals</strong>. Since creators rarely issue clear "Sell" alerts, we track the performance of every "Buy" call at 1-month, 3-month, and 12-month benchmarks.</p>
+          <p>This prevents "cherry-picking" where a creator might claim victory on a stock that spiked for one day but then crashed. We measure the sustained value of the advice.</p>
         </div>
-    </nav>
+      </details>
 
-    <main class="flex-grow max-w-3xl mx-auto px-4 py-12 sm:py-20">
-
-        <a href="index.html" class="inline-flex items-center text-sm text-green-500 hover:text-green-400 mb-8 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-        </a>
-
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
-            Frequently Asked Questions
-        </h1>
-        <p class="text-lg text-gray-400 mb-12 border-b border-gray-800 pb-8">
-            Common questions about our data, our math, and our mission.
-        </p>
-
-        <div class="space-y-4">
-
-            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
-                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
-                    <span>How do you determine the timeframe for each prediction?</span>
-                    <span class="transition group-open:rotate-180">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
-                    <p>To ensure objectivity, we use <strong>Fixed Time Intervals</strong>. Since creators rarely issue clear "Sell" alerts, we track the performance of every "Buy" call at 1-month, 3-month, and 12-month benchmarks.</p>
-                    <p class="mt-2">This prevents "cherry-picking" where a creator might claim victory on a stock that spiked for one day but then crashed. We measure the sustained value of the advice.</p>
-                </div>
-            </details>
-
-            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
-                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
-                    <span>Does one lucky "home run" skew a creator's rating?</span>
-                    <span class="transition group-open:rotate-180">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
-                    <p>It can, which is why we display two metrics: <strong>Average Alpha</strong> and <strong>Win Rate</strong>.</p>
-                    <p class="mt-2">A creator might have a high "Average Alpha" because of one 500% gain, even if they were wrong 9 times out of 10. By looking at the Win Rate (Accuracy %), you can see if a creator is consistent or just lucky.</p>
-                </div>
-            </details>
-
-            <!-- ✅ NEW FAQ: SIGNIFICANCE / "SKILL VS LUCK" (Simple, no p-value mention) -->
-            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
-                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
-                    <span>How do you know if a creator is actually skilled vs just lucky?</span>
-                    <span class="transition group-open:rotate-180">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
-                    <p>We run a simple <strong>"skill vs luck" check</strong> on every creator.</p>
-                    <p class="mt-2">
-                        If a creator only has a few predictions (or one big winner), their results can look amazing by chance.
-                        So we ask: <strong>"Is their performance strong enough — across enough predictions — that it’s unlikely to be random?"</strong>
-                    </p>
-                    <p class="mt-2">
-                        When the data clears that bar, we mark the creator as <strong>Statistically Significant</strong>.
-                        If it doesn’t, we label it <strong>Not Significant</strong> — meaning: <em>interesting, but not proven yet</em>.
-                    </p>
-                    <p class="mt-2 text-gray-500 text-sm">
-                        Think of it like flipping a coin: getting heads 3 times in a row doesn’t prove the coin is special — but getting heads 70 out of 100 flips might.
-                    </p>
-                </div>
-            </details>
-
-            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
-                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
-                    <span>Do you weight long-term calls differently than short-term trades?</span>
-                    <span class="transition group-open:rotate-180">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
-                    <p>Currently, <strong>all calls are weighted equally</strong> in the aggregate score. We believe a 10% profit is a 10% profit, regardless of how long it took.</p>
-                    <p class="mt-2">However, we tag predictions as "Short Term" or "Long Term" in the database so you can filter the leaderboard based on your own investing style.</p>
-                </div>
-            </details>
-
-            <details class="group glass-panel rounded-lg p-6 open:bg-gray-800/50 transition duration-300">
-                <summary class="flex justify-between items-center font-bold cursor-pointer text-lg hover:text-green-400 transition">
-                    <span>Is the creator performance data a normal bell curve?</span>
-                    <span class="transition group-open:rotate-180">
-                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                </summary>
-                <div class="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
-                    <p>No, the data is <strong>skewed negative</strong>. The majority of creators cluster slightly to the left of zero (underperforming the S&P 500).</p>
-                    <p class="mt-2">However, there is a "fat tail" to the right side of the distribution. A small percentage of creators generate massive alpha that defies the statistical probability of a normal distribution. These are the "Diamonds in the Rough" our platform is designed to find.</p>
-                </div>
-            </details>
-
+      <details>
+        <summary>
+          <span>Does one lucky "home run" skew a creator's rating?</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" /></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>It can, which is why we display two metrics: <strong>Average Alpha</strong> and <strong>Win Rate</strong>.</p>
+          <p>A creator might have a high "Average Alpha" because of one 500% gain, even if they were wrong 9 times out of 10. By looking at the Win Rate (Accuracy %), you can see if a creator is consistent or just lucky.</p>
         </div>
-    </main>
+      </details>
 
-    <footer class="border-t border-gray-800 bg-gray-900 py-12 mt-12">
-        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-
-            <div>
-                <a href="methodology.html" class="hover:text-green-500 transition">
-                    <h4 class="font-bold text-white mb-4">The Methodology &rarr;</h4>
-                </a>
-                <p class="text-gray-500 mb-2">1. We scrape video transcripts daily.</p>
-                <p class="text-gray-500 mb-2">2. We log "Buy/Sell" calls vs the Next Day Open price.</p>
-                <p class="text-gray-500 mb-4">3. We calculate Alpha vs SPY over fixed timeframes.</p>
-                <a href="methodology.html" class="text-green-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">
-                    Read Full Process
-                </a>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-white mb-4">The Mission</h4>
-                <p class="text-gray-500 mb-4">
-                    Retail investors lose billions following bad advice. True Alpha exists to bring institutional-grade accountability to the creator economy.
-                </p>
-                <span class="text-green-400 text-xs font-bold uppercase tracking-widest">
-                    You are reading the FAQ
-                </span>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-white mb-4">Connect</h4>
-                <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Reddit Profile</a>
-                <a href="https://x.com/TruealphaInvest" target="_blank" class="block text-gray-500 hover:text-green-400 mb-2">Twitter / X</a>
-                <p class="text-gray-600 mt-4 text-xs">
-                    &copy; 2025 True Alpha Research. <br>
-                    Not financial advice. For entertainment & data purposes only.
-                </p>
-            </div>
-
+      <details>
+        <summary>
+          <span>How do you know if a creator is actually skilled vs just lucky?</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" /></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>We run a simple <strong>"skill vs luck" check</strong> on every creator.</p>
+          <p>If a creator only has a few predictions (or one big winner), their results can look amazing by chance. So we ask: <strong>"Is their performance strong enough — across enough predictions — that it's unlikely to be random?"</strong></p>
+          <p>When the data clears that bar, we mark the creator as <strong>Statistically Significant</strong>. If it doesn't, we label it <strong>Not Significant</strong> — meaning: <em>interesting, but not proven yet</em>.</p>
+          <p class="aside">Think of it like flipping a coin: getting heads 3 times in a row doesn't prove the coin is special — but getting heads 70 out of 100 flips might.</p>
         </div>
-    </footer>
+      </details>
+
+      <details>
+        <summary>
+          <span>Do you weight long-term calls differently than short-term trades?</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" /></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Currently, <strong>all calls are weighted equally</strong> in the aggregate score. We believe a 10% profit is a 10% profit, regardless of how long it took.</p>
+          <p>However, we tag predictions as "Short Term" or "Long Term" in the database so you can filter the leaderboard based on your own investing style.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Is the creator performance data a normal bell curve?</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" /></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>No, the data is <strong>skewed negative</strong>. The majority of creators cluster slightly to the left of zero (underperforming the S&amp;P 500).</p>
+          <p>However, there is a "fat tail" to the right side of the distribution. A small percentage of creators generate massive alpha that defies the statistical probability of a normal distribution. These are the "Diamonds in the Rough" our platform is designed to find.</p>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+  <section class="email-section">
+    <div class="email-section-inner">
+      <h3>The Guru Report Card</h3>
+      <p class="subtext">Free weekly email: who's beating the market, who's not, and which new creators we're tracking.</p>
+      <div class="email-form">
+        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+        <form action="https://app.kit.com/forms/8848906/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8848906" data-uid="c5142792e3" data-format="inline">
+          <div>
+            <input type="email" name="email_address" placeholder="Email Address" required />
+            <button data-element="submit">Join Free Email</button>
+          </div>
+        </form>
+        <p class="email-proof">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>The Mission</h4>
+        <p class="mission-text">Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.</p>
+      </div>
+      <div class="footer-connect">
+        <h4>Connect</h4>
+        <a href="https://x.com/TruealphaInvest" target="_blank">Twitter / X</a>
+        <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank">Reddit</a>
+        <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
+        <p class="footer-legal">&copy; 2026 True Alpha Research.<br>Not financial advice. Data for entertainment purposes.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
