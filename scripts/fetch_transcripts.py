@@ -42,6 +42,7 @@ def open_sheet(client):
     sheet_key = os.environ.get("SHEET_KEY")
     if not sheet_key:
         sys.exit("SHEET_KEY environment variable is not set")
+    log.info("SHEET_KEY length: %d, starts with: %s", len(sheet_key), sheet_key[:4])
 
     spreadsheet = client.open_by_key(sheet_key)
     return spreadsheet.worksheet(WORKSHEET_NAME)
