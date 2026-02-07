@@ -28,15 +28,21 @@ def get_gspread_client():
     if not creds_json:
         sys.exit("GOOGLE_CREDENTIALS environment variable is not set")
 
-    creds_dict = json.loads(creds_json)
+    log.info("CREDS length: %d, first char: %s, last char: %s", len(creds_json), creds_json[0], creds_json[-1])
+
+    try:
+        creds_dict = json.loads(creds_json)
+        log.info("JSON parsed OK. Project: %s, Client email: %s", creds_dict.get("project_id"), creds_dict.get("client_email"))
+    except Exception as e:
+        log.error("JSON parse failed: %s", e)
+        sys.exit(1)
+
     scope = [
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive",
     ]
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     return gspread.authorize(credentials)
-
-
 def open_sheet(client):
     """Open the Google Sheet and return the Ingest_Queue worksheet."""
     sheet_key = os.environ.get("SHEET_KEY")
