@@ -43,9 +43,11 @@ def get_gspread_client():
     ]
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     return gspread.authorize(credentials)
+
+
 def open_sheet(client):
     """Open the Google Sheet and return the Ingest_Queue worksheet."""
-    sheet_key = os.environ.get("SHEET_KEY")
+    sheet_key = os.environ.get("SHEET_KEY", "").strip()
     if not sheet_key:
         sys.exit("SHEET_KEY environment variable is not set")
     log.info("SHEET_KEY length: %d, starts with: %s", len(sheet_key), sheet_key[:4])
@@ -78,7 +80,6 @@ def fetch_transcript(video_url):
             log.error("yt-dlp failed for %s: %s", video_url, result.stderr)
             return None
 
-        # Look for the downloaded subtitle file
         srt_path = None
         for fname in os.listdir(tmpdir):
             if fname.endswith(".srt"):
@@ -98,7 +99,6 @@ def _clean_srt(srt_text):
     lines = []
     for line in srt_text.splitlines():
         line = line.strip()
-        # Skip blank lines, numeric indices, and timestamp lines
         if not line:
             continue
         if line.isdigit():
@@ -114,7 +114,6 @@ def process_pending_rows(worksheet):
     all_records = worksheet.get_all_records()
     headers = worksheet.row_values(1)
 
-    # Determine column indices (1-based for gspread)
     try:
         status_col = headers.index("Status") + 1
         url_col = headers.index("URL") + 1
@@ -132,7 +131,7 @@ def process_pending_rows(worksheet):
         if status not in PENDING_STATUSES:
             continue
 
-        row_num = idx + 2  # +1 for header, +1 for 1-based indexing
+        row_num = idx + 2
         video_url = str(record.get("URL", "")).strip()
         if not video_url:
             log.warning("Row %d: no URL found, skipping", row_num)
@@ -147,7 +146,6 @@ def process_pending_rows(worksheet):
             transcript = None
 
         if transcript:
-            # Truncate if needed (Google Sheets cell limit is 50 000 chars)
             if len(transcript) > 50000:
                 transcript = transcript[:50000]
             worksheet.update_cell(row_num, transcript_col, transcript)
