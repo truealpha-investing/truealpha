@@ -287,6 +287,8 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .panel-title {
@@ -297,7 +299,8 @@
 
     .panel-subtitle {
       font-size: 12px;
-      color: var(--color-text-muted);
+      color: #888;
+      font-weight: 400;
       margin-top: 4px;
     }
 
@@ -350,7 +353,7 @@
 
     .lb-row-name {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--color-text-primary);
       overflow: hidden;
       text-overflow: ellipsis;
@@ -364,7 +367,7 @@
 
     .lb-row-value {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       white-space: nowrap;
     }
 
@@ -425,10 +428,28 @@
       padding: 8px 12px;
       border-radius: var(--radius-md);
       transition: background 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticker-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--bar-width, 0%);
+      background: rgba(34, 197, 94, 0.15);
+      border-radius: var(--radius-md);
+      pointer-events: none;
     }
 
     .ticker-row:hover {
       background: var(--color-surface-hover);
+    }
+
+    .ticker-name, .ticker-mentions {
+      position: relative;
     }
 
     .ticker-name {
@@ -1041,9 +1062,9 @@
       `;
     }
 
-    function rowTicker({ ticker, mentions }) {
+    function rowTicker({ ticker, mentions, barWidth }) {
       return `
-        <div class="ticker-row">
+        <div class="ticker-row" style="--bar-width: ${barWidth}%">
           <div class="ticker-name">${ticker}</div>
           <div class="ticker-mentions">${mentions} mentions</div>
         </div>
@@ -1112,7 +1133,12 @@
         document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
         document.getElementById("accBottom").innerHTML = accBottom || `<div class="no-data">No data.</div>`;
 
-        const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
+        const stockItems = (data?.stocksRecommended?.items || []).slice(0, 8);
+        const maxMentions = Math.max(...stockItems.map(s => s.mentions || 0), 1);
+        const stocks = stockItems.map(s => rowTicker({
+          ...s,
+          barWidth: ((s.mentions || 0) / maxMentions * 100).toFixed(1)
+        })).join("");
         document.getElementById("stocksList").innerHTML = stocks || `<div class="no-data">No data.</div>`;
 
         const d90 = data?.intervals?.d90 || {};
