@@ -793,6 +793,59 @@
     }
 
     /* ======================================
+       Share Buttons
+       ====================================== */
+    .share-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: none;
+      color: var(--color-text-faint);
+      cursor: pointer;
+      transition: color 0.2s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .share-icon:hover {
+      color: var(--color-green-400);
+    }
+
+    .share-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .btn-share {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-share:hover {
+      border-color: var(--color-green-border);
+      color: var(--color-green-400);
+    }
+
+    .btn-share svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ======================================
        Responsive
        ====================================== */
     @media (max-width: 768px) {
@@ -881,6 +934,10 @@
         <div class="meta-pill">
           <span class="label">Sig:</span> <span class="value" id="sigRule">—</span>
         </div>
+        <button class="btn-share" onclick="shareLeaderboard()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share Leaderboard
+        </button>
       </div>
     </div>
 
@@ -1117,7 +1174,26 @@
       return `<span class="sig-pill" data-tooltip="Statistically significant (p < 0.05). This result is unlikely due to random chance.">Sig</span>`;
     }
 
-    function rowCreator({ rank, creator, valueText, valueClass, subText }) {
+    const SHARE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
+
+    function escAttr(s) {
+      return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function shareOnX(btn) {
+      var text = btn.getAttribute('data-share-text');
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+    }
+
+    function shareLeaderboard() {
+      var text = 'Check out @TruealphaInvest\'s creator leaderboard \u2014 see which YouTube finance creators actually beat the S&P 500.\n\nhttps://truealphadata.com/leaderboard/';
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+    }
+
+    function rowCreator({ rank, creator, valueText, valueClass, subText, shareText }) {
+      const shareBtn = shareText
+        ? `<button class="share-icon" onclick="shareOnX(this)" data-share-text="${escAttr(shareText)}" title="Share on X">${SHARE_SVG}</button>`
+        : '';
       return `
         <div class="lb-row">
           <div class="lb-row-left">
@@ -1126,6 +1202,7 @@
               <div class="lb-row-name">${creator}</div>
               <div class="lb-row-sub">${subText}</div>
             </div>
+            ${shareBtn}
           </div>
           <div class="lb-row-value ${valueClass}">${valueText}</div>
         </div>
@@ -1170,7 +1247,8 @@
           creator: x.creator || "\u2014",
           valueText: fmtPct(x.avgAlpha),
           valueClass: "green",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
         })).join("");
 
         const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
@@ -1178,7 +1256,8 @@
           creator: x.creator || "\u2014",
           valueText: fmtPct(x.avgAlpha),
           valueClass: "red",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
         })).join("");
 
         document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="no-data">No data.</div>`;
@@ -1189,7 +1268,8 @@
           creator: x.creator || "\u2014",
           valueText: fmtRate(x.winRate),
           valueClass: "green",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
         })).join("");
 
         const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
@@ -1197,7 +1277,8 @@
           creator: x.creator || "\u2014",
           valueText: fmtRate(x.winRate),
           valueClass: "red",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
         })).join("");
 
         document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
@@ -1219,13 +1300,14 @@
         document.getElementById("d180Label").textContent = d180.label || "180D";
         document.getElementById("d365Label").textContent = d365.label || "365D";
 
-        const renderTopBottom = (block, topId, bottomId) => {
+        const renderTopBottom = (block, topId, bottomId, horizonLabel) => {
           const top = (block.top || []).slice(0, 3).map(x => rowCreator({
             rank: pillRank(x.rank ?? "", "good"),
             creator: x.creator || "\u2014",
             valueText: fmtPct(x.alpha),
             valueClass: "green",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+            shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
           })).join("");
 
           const bottom = (block.bottom || []).slice(0, 3).map(x => rowCreator({
@@ -1233,16 +1315,17 @@
             creator: x.creator || "\u2014",
             valueText: fmtPct(x.alpha),
             valueClass: "red",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim()
+            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+            shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
           })).join("");
 
           document.getElementById(topId).innerHTML = top || `<div class="no-data">No data.</div>`;
           document.getElementById(bottomId).innerHTML = bottom || `<div class="no-data">No data.</div>`;
         };
 
-        renderTopBottom(d90, "d90Top", "d90Bottom");
-        renderTopBottom(d180, "d180Top", "d180Bottom");
-        renderTopBottom(d365, "d365Top", "d365Bottom");
+        renderTopBottom(d90, "d90Top", "d90Bottom", d90.label || "90D");
+        renderTopBottom(d180, "d180Top", "d180Bottom", d180.label || "180D");
+        renderTopBottom(d365, "d365Top", "d365Bottom", d365.label || "365D");
 
       } catch (e) {
         console.error(e);
