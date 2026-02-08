@@ -222,10 +222,16 @@
       font-size: 14px;
       font-weight: 600;
       color: var(--color-text-secondary);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+
+    .nav-links::-webkit-scrollbar { display: none; }
 
     .nav-links a {
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -785,27 +791,26 @@
     /* ======================================
        Responsive tweaks
        ====================================== */
+    @media (max-width: 768px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+    }
+
     @media (max-width: 640px) {
-      .hero {
-        padding: 48px 16px 32px;
-      }
+      .hero { padding: 48px 16px 32px; }
+      .stats-strip { gap: 24px; }
+      .stat-number { font-size: 22px; }
+      .glass-panel { padding: 24px; }
+      .nav-links a,
+      .btn-primary,
+      .link-secondary { min-height: 44px; display: inline-flex; align-items: center; }
+    }
 
-      .stats-strip {
-        gap: 24px;
-      }
-
-      .stat-number {
-        font-size: 22px;
-      }
-
-      .nav-links {
-        gap: 16px;
-        font-size: 13px;
-      }
-
-      .glass-panel {
-        padding: 24px;
-      }
+    @media (max-width: 480px) {
+      .glass-panel h3 { font-size: 16px; }
+      .glass-panel { padding: 20px; }
+      .leaderboard-row { padding: 8px; }
+      .leaderboard-row .name { font-size: 13px; }
+      .leaderboard-row .value { font-size: 13px; }
     }
   </style>
 </head>

@@ -156,17 +156,18 @@
     .nav-brand-text .accent { color: var(--color-green-500); }
 
     .nav-links {
-      display: none;
+      display: flex;
       align-items: center;
       gap: 24px;
       font-size: 14px;
       font-weight: 600;
       color: var(--color-text-secondary);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
 
-    @media (min-width: 768px) {
-      .nav-links { display: flex; }
-    }
+    .nav-links::-webkit-scrollbar { display: none; }
 
     .nav-links a { transition: color 0.2s; }
     .nav-links a:hover { color: var(--color-green-400); }
@@ -483,6 +484,12 @@
       margin-top: 32px;
     }
 
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (min-width: 1024px) {
       .grid-3 {
         grid-template-columns: repeat(3, 1fr);
@@ -788,9 +795,36 @@
     /* ======================================
        Responsive
        ====================================== */
+    @media (max-width: 768px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+      .nav-links a { white-space: nowrap; }
+      .nav-cta { padding: 10px 14px; font-size: 13px; }
+      .page-header { gap: 16px; }
+      .email-cta-fields { flex-direction: column; }
+      .email-cta input[type="email"],
+      .email-cta input[type="text"] { width: 100%; }
+      .email-cta button[data-element="submit"] { width: 100%; }
+    }
+
     @media (max-width: 640px) {
       .glass { padding: 16px; }
       .main-content { padding: 24px 12px; }
+      .lb-row { padding: 8px 8px; min-height: 44px; }
+      .nav-links a,
+      .nav-cta,
+      .btn-dataset { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .panel-title { font-size: 16px; }
+      .panel-subtitle { font-size: 11px; }
+      .inner-panel-label { font-size: 14px; }
+      .glass { padding: 14px; }
+      .inner-panel { padding: 12px; }
+      .lb-row-name { font-size: 13px; }
+      .lb-row-value { font-size: 13px; }
+      .rank-pill { width: 24px; height: 24px; font-size: 11px; }
+      .meta-pill { font-size: 10px; padding: 6px 10px; }
     }
   </style>
 </head>
