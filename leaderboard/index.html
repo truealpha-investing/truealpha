@@ -793,6 +793,60 @@
     }
 
     /* ======================================
+       Claim Banner
+       ====================================== */
+    .claim-banner {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .claim-banner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .claim-banner-text {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .claim-banner-text strong {
+      color: var(--color-text-primary);
+    }
+
+    .claim-banner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-green-border);
+      border-radius: var(--radius-md);
+      color: var(--color-green-400);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .claim-banner-link:hover {
+      background: var(--color-green-bg);
+      color: var(--color-green-300);
+    }
+
+    /* ======================================
        Share Buttons
        ====================================== */
     .share-icon {
@@ -1104,6 +1158,16 @@
           </div>
         </form>
       </div>
+    </section>
+
+    <!-- Creator Claim Banner -->
+    <section class="claim-banner">
+      <div class="claim-banner-text">
+        <strong>Are you a creator on this list?</strong> Claim your profile to add your bio, links, and respond to your data.
+      </div>
+      <a href="mailto:hello@truealphadata.com?subject=Creator%20Profile%20Claim&body=Hi%20TrueAlpha%2C%0A%0AI'd%20like%20to%20claim%20my%20creator%20profile.%0A%0ACreator%20name%3A%20%0AChannel%20URL%3A%20" class="claim-banner-link">
+        Claim Profile <span aria-hidden="true">&rarr;</span>
+      </a>
     </section>
 
   </main>
