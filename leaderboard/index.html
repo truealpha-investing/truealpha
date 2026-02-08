@@ -584,27 +584,52 @@
     /* ======================================
        Email CTA Section
        ====================================== */
-    .email-cta {
-      margin-top: 20px;
+    .email-cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .email-cta-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+    }
+
+    .email-cta-text {
+      flex-shrink: 0;
     }
 
     .email-cta-title {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 4px;
     }
 
     .email-cta-sub {
       font-size: 13px;
       color: var(--color-text-secondary);
-      line-height: 1.6;
-      margin-bottom: 20px;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    .email-cta-form {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .email-cta-fields {
+      display: flex;
+      gap: 8px;
     }
 
     .email-cta input[type="email"],
     .email-cta input[type="text"] {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
       padding: 10px 14px;
       background: var(--color-bg);
       border: 1px solid var(--color-border);
@@ -614,7 +639,6 @@
       font-size: 13px;
       outline: none;
       transition: border-color 0.2s;
-      margin-bottom: 10px;
     }
 
     .email-cta input:focus {
@@ -622,8 +646,7 @@
     }
 
     .email-cta button[data-element="submit"] {
-      width: 100%;
-      padding: 10px 14px;
+      padding: 10px 20px;
       background: var(--color-green-600);
       color: #fff;
       font-family: var(--font-display);
@@ -634,6 +657,7 @@
       cursor: pointer;
       transition: background 0.2s;
       box-shadow: 0 0 12px var(--color-green-glow);
+      white-space: nowrap;
     }
 
     .email-cta button[data-element="submit"]:hover {
@@ -751,31 +775,6 @@
           and how results change by time horizon.
         </p>
 
-        <!-- Email CTA (replaces Pro section) -->
-        <section id="emailCta" class="glass email-cta" style="margin-top:20px">
-          <div class="email-cta-title">Get the Guru Report Card</div>
-          <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
-
-          <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-
-          <form action="https://app.kit.com/forms/8848906/subscriptions"
-                class="seva-form formkit-form"
-                method="post"
-                data-sv-form="8848906"
-                data-uid="c5142792e3"
-                data-format="inline">
-            <div>
-              <input type="email"
-                     name="email_address"
-                     placeholder="Email Address"
-                     required />
-
-              <button data-element="submit">
-                Join Free Email
-              </button>
-            </div>
-          </form>
-        </section>
       </div>
 
       <div class="meta-pills">
@@ -926,6 +925,36 @@
       <div class="horizon-footer">
         <span>Alpha = Stock return − S&amp;P 500 return (same horizon). Sig uses p-value.</span>
         <a id="dbLinkBottom" href="#" target="_blank">Open dataset →</a>
+      </div>
+    </section>
+
+    <!-- Email CTA -->
+    <section id="emailCta" class="glass email-cta" style="margin-top:24px">
+      <div class="email-cta-inner">
+        <div class="email-cta-text">
+          <div class="email-cta-title">Get the Guru Report Card</div>
+          <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
+        </div>
+
+        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+
+        <form action="https://app.kit.com/forms/8848906/subscriptions"
+              class="seva-form formkit-form email-cta-form"
+              method="post"
+              data-sv-form="8848906"
+              data-uid="c5142792e3"
+              data-format="inline">
+          <div class="email-cta-fields">
+            <input type="email"
+                   name="email_address"
+                   placeholder="Email Address"
+                   required />
+
+            <button data-element="submit">
+              Join Free Email
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
