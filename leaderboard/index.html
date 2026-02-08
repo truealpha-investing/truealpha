@@ -751,6 +751,41 @@
     }
 
     /* ======================================
+       Tooltips (reusable via data-tooltip)
+       ====================================== */
+    [data-tooltip] {
+      position: relative;
+      cursor: help;
+    }
+
+    [data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      padding: 8px 12px;
+      border-radius: 6px;
+      max-width: 250px;
+      width: max-content;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-tooltip]:hover::after {
+      opacity: 1;
+    }
+
+    /* ======================================
        Responsive
        ====================================== */
     @media (max-width: 640px) {
@@ -821,10 +856,10 @@
       <div class="glass">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">Top + Bottom by Alpha</h2>
+            <h2 class="panel-title" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Top + Bottom by Alpha</h2>
             <p class="panel-subtitle" id="alphaSub">—</p>
           </div>
-          <div class="panel-badge">Avg Alpha</div>
+          <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Avg Alpha</div>
         </div>
 
         <div style="margin-top:20px">
@@ -842,10 +877,10 @@
       <div class="glass">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">Top + Bottom by Accuracy</h2>
+            <h2 class="panel-title" data-tooltip="Directional win rate: % of picks where the stock moved in the predicted direction.">Top + Bottom by Accuracy</h2>
             <p class="panel-subtitle" id="accuracySub">—</p>
           </div>
-          <div class="panel-badge">Accuracy</div>
+          <div class="panel-badge" data-tooltip="Directional win rate: % of picks where the stock moved in the predicted direction.">Accuracy</div>
         </div>
 
         <div style="margin-top:20px">
@@ -887,7 +922,7 @@
     <section class="horizon-section glass">
       <div class="horizon-header">
         <div>
-          <h2 class="panel-title">Alpha by Time Horizon</h2>
+          <h2 class="panel-title" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Alpha by Time Horizon</h2>
           <p class="panel-subtitle">90D vs 180D vs 365D</p>
         </div>
         <div class="panel-badge">90 / 180 / 365</div>
@@ -898,7 +933,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d90Label">90D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -914,7 +949,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d180Label">180D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -930,7 +965,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d365Label">365D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -1033,7 +1068,7 @@
     function fmtP(pValue) {
       const p = toNumber(pValue);
       if (!Number.isFinite(p)) return "";
-      return `p=${p.toFixed(4)}`;
+      return `<span data-tooltip="P-value: probability this result is due to chance. Lower = stronger evidence. Below 0.05 = significant.">p=${p.toFixed(4)}</span>`;
     }
 
     function pillRank(rank, kind) {
@@ -1044,7 +1079,7 @@
 
     function sigPill(sig) {
       if (!sig) return "";
-      return `<span class="sig-pill">Sig</span>`;
+      return `<span class="sig-pill" data-tooltip="Statistically significant (p < 0.05). This result is unlikely due to random chance.">Sig</span>`;
     }
 
     function rowCreator({ rank, creator, valueText, valueClass, subText }) {
