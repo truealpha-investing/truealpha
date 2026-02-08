@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Picks | True Alpha — Recent Stock Picks from Tracked Creators</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Browse recent stock picks from tracked YouTube finance creators. See entry prices, returns, and whether each pick beat the S&P 500." />
+  <link rel="canonical" href="https://truealphadata.com/picks.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/picks.html" />
+  <meta property="og:title" content="Top Picks | True Alpha — Recent Stock Picks from Tracked Creators" />
+  <meta property="og:description" content="Browse recent stock picks from tracked YouTube finance creators. See entry prices, returns, and whether each pick beat the S&P 500." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="Top Picks | True Alpha — Recent Stock Picks from Tracked Creators" />
+  <meta name="twitter:description" content="Browse recent stock picks from tracked YouTube finance creators. See entry prices, returns, and whether each pick beat the S&P 500." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-46BNDCWHMT');
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #0a0f0d;
+      --bg-secondary: #0d1410;
+      --bg-card: rgba(20, 32, 26, 0.6);
+      --border: rgba(34, 197, 94, 0.1);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --green-500: #22c55e;
+      --green-400: #4ade80;
+      --green-300: #86efac;
+      --green-600: #16a34a;
+      --green-glow: rgba(34, 197, 94, 0.22);
+      --green-bg: rgba(34, 197, 94, 0.10);
+      --green-border: rgba(34, 197, 94, 0.25);
+      --red-400: #f87171;
+      --red-300: #fca5a5;
+      --red-bg: rgba(239, 68, 68, 0.10);
+      --red-border: rgba(248, 113, 113, 0.20);
+      --text-primary: #f0f0f0;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --text-faint: #4b5563;
+      --grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10,15,10,0.85); backdrop-filter: blur(16px); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .nav-brand:hover { opacity: 0.9; }
+    .nav-brand svg { width: 24px; height: 24px; color: var(--green-500); }
+    .nav-brand-text { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; }
+    .nav-brand-text .accent { color: var(--green-500); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 600; color: var(--text-secondary); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--green-400); }
+
+    /* Content */
+    .content { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 48px 16px 64px; width: 100%; }
+    .back-link { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--green-400); margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--green-500); }
+    .back-link svg { width: 16px; height: 16px; }
+    .page-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .page-intro { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+
+    /* Glass cards */
+    .glass-card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; }
+
+    /* Filter bar */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .filter-group { display: flex; flex-direction: column; gap: 4px; }
+    .filter-group label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .filter-select, .filter-input {
+      padding: 10px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .filter-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+      min-width: 160px;
+    }
+    .filter-input { min-width: 140px; }
+    .filter-select:focus, .filter-input:focus { border-color: var(--green-500); }
+
+    .filter-pills { display: flex; gap: 4px; }
+    .filter-pill {
+      padding: 10px 16px;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-pill:hover { border-color: var(--green-border); color: var(--text-primary); }
+    .filter-pill.active { background: var(--green-bg); border-color: var(--green-border); color: var(--green-400); }
+
+    /* Pick cards */
+    .picks-feed { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+    .pick-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      transition: border-color 0.2s;
+    }
+    .pick-card:hover { border-color: var(--green-border); }
+
+    .pick-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .pick-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .pick-ticker { font-family: var(--font-mono); font-size: 16px; font-weight: 700; letter-spacing: 0.04em; }
+    .pick-direction {
+      display: inline-flex;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .pick-direction.buy { background: var(--green-bg); color: var(--green-300); border: 1px solid var(--green-border); }
+    .pick-direction.sell { background: var(--red-bg); color: var(--red-300); border: 1px solid var(--red-border); }
+    .pick-creator { font-size: 14px; font-weight: 500; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pick-meta { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+    .pick-meta span { white-space: nowrap; }
+
+    .pick-result { text-align: right; flex-shrink: 0; }
+    .pick-return { font-family: var(--font-mono); font-size: 20px; font-weight: 700; }
+    .pick-return.positive { color: var(--green-300); }
+    .pick-return.negative { color: var(--red-300); }
+    .pick-prices { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono); }
+    .pick-duration { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+
+    /* Stats row */
+    .stats-row { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+    .stat-card {
+      flex: 1;
+      min-width: 120px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-value { font-family: var(--font-mono); font-size: 24px; font-weight: 700; }
+    .stat-value.green { color: var(--green-300); }
+    .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* Empty state */
+    .empty-state { text-align: center; padding: 64px 16px; }
+    .empty-state svg { width: 48px; height: 48px; color: var(--text-faint); margin-bottom: 16px; }
+    .empty-state p { color: var(--text-muted); font-size: 15px; margin-bottom: 8px; }
+    .empty-state .sub { font-size: 13px; color: var(--text-faint); }
+
+    /* Result count */
+    .result-count { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border-subtle); background: var(--bg-primary); padding: 64px 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 16px; display: grid; grid-template-columns: 1fr; gap: 48px; font-size: 14px; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+    .footer .mission-text { color: var(--text-muted); line-height: 1.7; }
+    .footer-connect { text-align: left; }
+    @media (min-width: 768px) { .footer-connect { text-align: right; } }
+    .footer-connect a { display: block; color: var(--text-muted); margin-bottom: 8px; transition: color 0.2s; }
+    .footer-connect a:hover { color: var(--green-400); }
+    .footer-legal { color: var(--text-faint); margin-top: 24px; font-size: 12px; line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+    }
+    @media (max-width: 640px) {
+      .glass-card { padding: 16px; }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .filter-select, .filter-input { min-width: 0; width: 100%; }
+      .pick-card { grid-template-columns: 1fr; }
+      .pick-result { text-align: left; }
+      .stat-card { min-width: 0; }
+      .nav-links a,
+      .back-link,
+      .filter-pill,
+      .filter-select,
+      .filter-input { min-height: 44px; }
+      .nav-links a,
+      .back-link { display: inline-flex; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .page-title { font-size: 1.5rem; }
+      .page-intro { font-size: 13px; }
+      .glass-card { padding: 14px; }
+      .pick-ticker { font-size: 14px; }
+      .pick-return { font-size: 18px; }
+      .pick-creator { font-size: 13px; }
+      .pick-card { padding: 16px; }
+      .stat-value { font-size: 20px; }
+      .stat-card { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="/methodology.html">Methodology</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/blog.html">Weekly Insights</a>
+        <a href="/leaderboard/">Leaderboard</a>
+        <a href="/compare.html">Compare</a>
+        <a href="/picks.html">Top Picks</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+    <a href="/index.html" class="back-link">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+      Back to Home
+    </a>
+
+    <h1 class="page-title">Top Picks</h1>
+    <p class="page-intro">Recent stock picks from tracked creators with real performance data.</p>
+
+    <!-- Filter bar -->
+    <div class="glass-card">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Creator</label>
+          <select class="filter-select" id="creatorFilter">
+            <option value="">All Creators</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Ticker</label>
+          <input type="text" class="filter-input" id="tickerSearch" placeholder="e.g. TSLA, NVDA" />
+        </div>
+
+        <div class="filter-group">
+          <label>Outcome</label>
+          <div class="filter-pills">
+            <button class="filter-pill active" data-outcome="all">All</button>
+            <button class="filter-pill" data-outcome="winners">Winners</button>
+            <button class="filter-pill" data-outcome="losers">Losers</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Sort</label>
+          <select class="filter-select" id="sortSelect">
+            <option value="recent">Most Recent</option>
+            <option value="highest">Highest Return</option>
+            <option value="lowest">Lowest Return</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats summary -->
+    <div class="stats-row" id="statsRow" style="display:none">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Picks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green" id="statWinRate">0%</div>
+        <div class="stat-label">Win Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statAvgReturn">0%</div>
+        <div class="stat-label">Avg Return</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statCreators">0</div>
+        <div class="stat-label">Creators</div>
+      </div>
+    </div>
+
+    <!-- Result count -->
+    <div class="result-count" id="resultCount" style="display:none"></div>
+
+    <!-- Pick cards feed -->
+    <div class="picks-feed" id="picksFeed"></div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p>Pick-level data is coming soon.</p>
+      <p class="sub">Individual stock picks with entry prices, returns, and durations will appear here once the data pipeline publishes pick-level JSON. Currently, only aggregate creator statistics are available.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>The Mission</h4>
+        <p class="mission-text">Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.</p>
+      </div>
+      <div class="footer-connect">
+        <h4>Connect</h4>
+        <a href="https://x.com/TruealphaInvest" target="_blank">Twitter / X</a>
+        <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank">Reddit</a>
+        <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
+        <p class="footer-legal">&copy; 2026 True Alpha Research.<br>Not financial advice. Data for entertainment purposes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+     * DATA SOURCE NOTE:
+     * -----------------
+     * Neither dashboard.json nor leaderboard/leaderboard.json contain pick-level
+     * data. They only have aggregate creator statistics (avgAlpha, winRate, n, etc.).
+     *
+     * This page is structured to consume a picks.json file with the schema below.
+     * When the data pipeline is extended to publish individual picks, place the
+     * file at /picks.json and this page will render automatically.
+     *
+     * Expected picks.json schema:
+     * {
+     *   "picks": [
+     *     {
+     *       "creator": "Tom Nash",
+     *       "ticker": "NVDA",
+     *       "direction": "buy",          // "buy" | "sell"
+     *       "pickDate": "2025-11-15",
+     *       "entryPrice": 142.50,
+     *       "currentPrice": 178.30,
+     *       "returnPct": 25.12,
+     *       "durationDays": 84
+     *     }
+     *   ]
+     * }
+     */
+
+    const PICKS_PATH = '/picks.json';
+    let allPicks = [];
+    let activeOutcome = 'all';
+
+    function daysSinceLabel(days) {
+      if (days < 1) return 'Today';
+      if (days === 1) return '1 day';
+      if (days < 30) return days + ' days';
+      if (days < 60) return '1 month';
+      const months = Math.floor(days / 30);
+      if (months < 12) return months + ' months';
+      const years = Math.floor(days / 365);
+      return years === 1 ? '1 year' : years + ' years';
+    }
+
+    function renderPickCard(pick) {
+      const returnPct = pick.returnPct ?? 0;
+      const sign = returnPct > 0 ? '+' : '';
+      const cls = returnPct >= 0 ? 'positive' : 'negative';
+      const dirCls = (pick.direction || 'buy').toLowerCase() === 'sell' ? 'sell' : 'buy';
+      const dirLabel = dirCls === 'sell' ? 'Sell' : 'Buy';
+      const entry = pick.entryPrice != null ? '$' + pick.entryPrice.toFixed(2) : '\u2014';
+      const current = pick.currentPrice != null ? '$' + pick.currentPrice.toFixed(2) : '\u2014';
+      const duration = pick.durationDays != null ? daysSinceLabel(pick.durationDays) : '\u2014';
+
+      return `
+        <div class="pick-card">
+          <div class="pick-main">
+            <div class="pick-top">
+              <span class="pick-ticker">${pick.ticker || '\u2014'}</span>
+              <span class="pick-direction ${dirCls}">${dirLabel}</span>
+            </div>
+            <div class="pick-creator">${pick.creator || '\u2014'}</div>
+            <div class="pick-meta">
+              <span>${pick.pickDate || '\u2014'}</span>
+              <span>${entry} \u2192 ${current}</span>
+              <span>Held ${duration}</span>
+            </div>
+          </div>
+          <div class="pick-result">
+            <div class="pick-return ${cls}">${sign}${returnPct.toFixed(2)}%</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function getFilteredPicks() {
+      let picks = [...allPicks];
+
+      const creatorVal = document.getElementById('creatorFilter').value;
+      if (creatorVal) picks = picks.filter(p => p.creator === creatorVal);
+
+      const tickerVal = document.getElementById('tickerSearch').value.trim().toUpperCase();
+      if (tickerVal) picks = picks.filter(p => (p.ticker || '').toUpperCase().includes(tickerVal));
+
+      if (activeOutcome === 'winners') picks = picks.filter(p => (p.returnPct ?? 0) > 0);
+      else if (activeOutcome === 'losers') picks = picks.filter(p => (p.returnPct ?? 0) <= 0);
+
+      const sort = document.getElementById('sortSelect').value;
+      if (sort === 'highest') picks.sort((a, b) => (b.returnPct ?? 0) - (a.returnPct ?? 0));
+      else if (sort === 'lowest') picks.sort((a, b) => (a.returnPct ?? 0) - (b.returnPct ?? 0));
+      else picks.sort((a, b) => (b.pickDate || '').localeCompare(a.pickDate || ''));
+
+      return picks;
+    }
+
+    function renderPicks() {
+      const picks = getFilteredPicks();
+      const feed = document.getElementById('picksFeed');
+      const empty = document.getElementById('emptyState');
+      const statsRow = document.getElementById('statsRow');
+      const countEl = document.getElementById('resultCount');
+
+      if (allPicks.length === 0) {
+        feed.innerHTML = '';
+        empty.style.display = '';
+        statsRow.style.display = 'none';
+        countEl.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      statsRow.style.display = 'flex';
+      countEl.style.display = '';
+
+      // Stats
+      const winners = allPicks.filter(p => (p.returnPct ?? 0) > 0).length;
+      const avgRet = allPicks.reduce((s, p) => s + (p.returnPct ?? 0), 0) / (allPicks.length || 1);
+      const creators = new Set(allPicks.map(p => p.creator)).size;
+      document.getElementById('statTotal').textContent = allPicks.length;
+      document.getElementById('statWinRate').textContent = ((winners / allPicks.length) * 100).toFixed(1) + '%';
+      const avgRetEl = document.getElementById('statAvgReturn');
+      avgRetEl.textContent = (avgRet > 0 ? '+' : '') + avgRet.toFixed(2) + '%';
+      avgRetEl.className = 'stat-value ' + (avgRet >= 0 ? 'green' : '');
+      document.getElementById('statCreators').textContent = creators;
+
+      // Filtered results
+      countEl.textContent = picks.length + ' of ' + allPicks.length + ' picks shown';
+      feed.innerHTML = picks.length > 0
+        ? picks.map(renderPickCard).join('')
+        : '<div style="text-align:center;padding:32px;color:var(--text-muted)">No picks match your filters.</div>';
+    }
+
+    function populateCreatorFilter() {
+      const select = document.getElementById('creatorFilter');
+      const creators = [...new Set(allPicks.map(p => p.creator))].sort();
+      select.innerHTML = '<option value="">All Creators</option>' +
+        creators.map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+
+    // Outcome filter pills
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeOutcome = btn.dataset.outcome;
+        renderPicks();
+      });
+    });
+
+    // Other filters
+    document.getElementById('creatorFilter').addEventListener('change', renderPicks);
+    document.getElementById('tickerSearch').addEventListener('input', renderPicks);
+    document.getElementById('sortSelect').addEventListener('change', renderPicks);
+
+    async function init() {
+      try {
+        const res = await fetch(PICKS_PATH, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        allPicks = data.picks || [];
+        populateCreatorFilter();
+        renderPicks();
+      } catch (e) {
+        // picks.json does not exist yet — show empty state
+        console.info('picks.json not available:', e.message);
+        renderPicks();
+      }
+    }
+
+    init();
+  </script>
+
+</body>
+</html>

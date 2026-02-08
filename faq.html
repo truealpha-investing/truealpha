@@ -84,8 +84,9 @@
     .nav-brand svg { width: 24px; height: 24px; color: var(--green-500); }
     .nav-brand-text { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; }
     .nav-brand-text .accent { color: var(--green-500); }
-    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
-    .nav-links a { transition: color 0.2s; }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 600; color: var(--text-secondary); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { transition: color 0.2s; white-space: nowrap; }
     .nav-links a:hover { color: var(--green-400); }
 
     /* Content */
@@ -136,10 +137,21 @@
     .footer-connect a:hover { color: var(--green-400); }
     .footer-legal { color: var(--text-faint); margin-top: 24px; font-size: 12px; line-height: 1.6; }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .nav-links { gap: 16px; font-size: 13px; }
+    }
+    @media (max-width: 640px) {
       details { padding: 20px; }
-      details > summary { font-size: 15px; }
+      details > summary { font-size: 15px; min-height: 44px; }
+      .nav-links a,
+      .back-link { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .page-title { font-size: 1.5rem; }
+      .page-intro { font-size: 15px; }
+      details > summary { font-size: 14px; }
+      .faq-answer { font-size: 13px; }
+      details { padding: 16px; }
     }
   </style>
 </head>
