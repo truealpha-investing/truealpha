@@ -77,7 +77,7 @@
     },
 
     "d180": {
-      "label": "180D (mid) — placeholder",
+      "label": "180D (mid)",
       "metric": "alpha",
       "top": [
         { "rank": 1, "creator": "Tom Nash", "alpha": 72.70, "pValue": 0.0064, "sig": true },

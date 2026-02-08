@@ -478,14 +478,14 @@
 
     .inner-grid-3 {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
       margin-top: 20px;
     }
 
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
       .inner-grid-3 {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
@@ -494,6 +494,7 @@
        ====================================== */
     .horizon-section {
       margin-top: 24px;
+      overflow: hidden;
     }
 
     .horizon-header {
@@ -534,6 +535,7 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
       padding: 16px;
+      min-width: 0;
     }
 
     .inner-panel-header {
