@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare Creators | True Alpha — Side-by-Side Stock Guru Performance</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Compare the stock picking performance of financial YouTubers side by side. See alpha, accuracy, and returns across time horizons." />
+  <link rel="canonical" href="https://truealphadata.com/compare.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/compare.html" />
+  <meta property="og:title" content="Compare Creators | True Alpha — Side-by-Side Stock Guru Performance" />
+  <meta property="og:description" content="Compare the stock picking performance of financial YouTubers side by side. See alpha, accuracy, and returns across time horizons." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="Compare Creators | True Alpha — Side-by-Side Stock Guru Performance" />
+  <meta name="twitter:description" content="Compare the stock picking performance of financial YouTubers side by side. See alpha, accuracy, and returns across time horizons." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-46BNDCWHMT');
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0f0d;
+      --bg-secondary: #0d1410;
+      --bg-card: rgba(20, 32, 26, 0.6);
+      --border: rgba(34, 197, 94, 0.1);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --green-500: #22c55e;
+      --green-400: #4ade80;
+      --green-600: #16a34a;
+      --green-glow: rgba(34, 197, 94, 0.22);
+      --green-bg: rgba(34, 197, 94, 0.10);
+      --green-border: rgba(34, 197, 94, 0.25);
+      --red-400: #f87171;
+      --text-primary: #f0f0f0;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --text-faint: #4b5563;
+      --grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10,15,10,0.85); backdrop-filter: blur(16px); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .nav-brand:hover { opacity: 0.9; }
+    .nav-brand svg { width: 24px; height: 24px; color: var(--green-500); }
+    .nav-brand-text { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; }
+    .nav-brand-text .accent { color: var(--green-500); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-400); }
+
+    /* Content */
+    .content { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 48px 16px 64px; width: 100%; }
+    .back-link { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--green-400); margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--green-500); }
+    .back-link svg { width: 16px; height: 16px; }
+    .page-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .page-intro { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+
+    /* Glass cards */
+    .glass-card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; }
+
+    /* Controls */
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .control-group { display: flex; flex-direction: column; gap: 4px; }
+    .control-group label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .creator-select {
+      padding: 10px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+      min-width: 200px;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    .creator-select:focus { border-color: var(--green-500); }
+
+    .period-select {
+      padding: 10px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    .period-select:focus { border-color: var(--green-500); }
+
+    .checkbox-group { display: flex; align-items: center; gap: 8px; padding: 10px 0; }
+    .checkbox-group input[type="checkbox"] { accent-color: var(--green-500); width: 16px; height: 16px; }
+    .checkbox-group label { font-size: 13px; color: var(--text-secondary); cursor: pointer; }
+
+    .btn { padding: 10px 20px; border-radius: var(--radius-md); border: none; cursor: pointer; font-family: var(--font-display); font-weight: 700; font-size: 13px; transition: background 0.2s, border-color 0.2s; }
+    .btn-primary { background: var(--green-600); color: #fff; box-shadow: 0 0 12px var(--green-glow); }
+    .btn-primary:hover { background: var(--green-500); }
+    .btn-secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+    .btn-secondary:hover { border-color: var(--green-border); color: var(--text-primary); }
+    .btn-remove { background: transparent; color: var(--text-faint); border: 1px solid var(--border-subtle); padding: 10px 12px; font-size: 16px; line-height: 1; }
+    .btn-remove:hover { color: var(--red-400); border-color: var(--red-400); }
+
+    .selector-row { display: flex; align-items: flex-end; gap: 8px; }
+
+    /* Chart */
+    .chart-section { margin-top: 32px; }
+    .chart-wrapper { position: relative; width: 100%; height: 400px; }
+    .chart-wrapper canvas { width: 100% !important; height: 100% !important; }
+
+    /* Summary table */
+    .table-section { margin-top: 24px; }
+    .table-section h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+    .summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .summary-table thead th {
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .summary-table tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+    .summary-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+    .summary-table .creator-col { color: var(--text-primary); font-weight: 600; }
+    .summary-table .val-green { color: #86efac; }
+    .summary-table .val-red { color: #fca5a5; }
+    .sig-badge { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 10px; font-weight: 700; background: var(--green-bg); color: #86efac; border: 1px solid var(--green-border); }
+    .table-responsive { overflow-x: auto; }
+
+    /* Empty state */
+    .empty-state { text-align: center; padding: 64px 16px; color: var(--text-muted); font-size: 15px; }
+    .empty-state svg { width: 48px; height: 48px; color: var(--text-faint); margin-bottom: 16px; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border-subtle); background: var(--bg-primary); padding: 64px 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 16px; display: grid; grid-template-columns: 1fr; gap: 48px; font-size: 14px; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+    .footer .mission-text { color: var(--text-muted); line-height: 1.7; }
+    .footer-connect { text-align: left; }
+    @media (min-width: 768px) { .footer-connect { text-align: right; } }
+    .footer-connect a { display: block; color: var(--text-muted); margin-bottom: 8px; transition: color 0.2s; }
+    .footer-connect a:hover { color: var(--green-400); }
+    .footer-legal { color: var(--text-faint); margin-top: 24px; font-size: 12px; line-height: 1.6; }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+      .glass-card { padding: 16px; }
+      .controls { flex-direction: column; align-items: stretch; }
+      .creator-select { min-width: 0; width: 100%; }
+      .selector-row { flex-direction: row; }
+      .chart-wrapper { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="/methodology.html">Methodology</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/blog.html">Weekly Insights</a>
+        <a href="/leaderboard/">Leaderboard</a>
+        <a href="/compare.html">Compare</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+    <a href="/index.html" class="back-link">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+      Back to Home
+    </a>
+
+    <h1 class="page-title">Compare Creators</h1>
+    <p class="page-intro">Compare the performance of multiple creators against each other and the S&P 500.</p>
+
+    <!-- Controls -->
+    <div class="glass-card">
+      <div class="controls">
+        <div id="selectorContainer">
+          <div class="selector-row" data-index="0">
+            <div class="control-group">
+              <label>Creator 1</label>
+              <select class="creator-select" data-slot="0"><option value="">Select creator...</option></select>
+            </div>
+          </div>
+          <div class="selector-row" data-index="1" style="margin-top:12px">
+            <div class="control-group">
+              <label>Creator 2</label>
+              <select class="creator-select" data-slot="1"><option value="">Select creator...</option></select>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; margin-top:12px">
+          <button id="addCreatorBtn" class="btn btn-secondary" type="button">+ Add Creator</button>
+          <div class="control-group">
+            <label>View</label>
+            <select class="period-select" id="periodSelect">
+              <option value="horizon">By Horizon (90D / 180D / 365D)</option>
+              <option value="yearly">By Year (2023 / 2024 / 2025)</option>
+            </select>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="spCheck" checked />
+            <label for="spCheck">Include S&P 500 baseline</label>
+          </div>
+          <button id="compareBtn" class="btn btn-primary" type="button">Compare</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-section glass-card" id="chartCard" style="display:none">
+      <div class="chart-wrapper">
+        <canvas id="compareChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Summary table -->
+    <div class="table-section glass-card" id="tableCard" style="display:none">
+      <h3>Summary</h3>
+      <div class="table-responsive">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>Creator</th>
+              <th>Avg Alpha</th>
+              <th>Win Rate</th>
+              <th># Picks</th>
+              <th>p-Value</th>
+              <th>Sig</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+      </svg>
+      <p>Select two or more creators above to compare their track records.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>The Mission</h4>
+        <p class="mission-text">Retail investors lose billions every year following unverified advice. True Alpha exists to bring institutional-grade accountability to the creator economy.</p>
+      </div>
+      <div class="footer-connect">
+        <h4>Connect</h4>
+        <a href="https://x.com/TruealphaInvest" target="_blank">Twitter / X</a>
+        <a href="https://www.reddit.com/user/Recent_Category7425/" target="_blank">Reddit</a>
+        <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
+        <p class="footer-legal">&copy; 2026 True Alpha Research.<br>Not financial advice. Data for entertainment purposes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const COLORS = [
+      { line: '#4ade80', bg: 'rgba(74, 222, 128, 0.15)' },
+      { line: '#60a5fa', bg: 'rgba(96, 165, 250, 0.15)' },
+      { line: '#f472b6', bg: 'rgba(244, 114, 182, 0.15)' },
+      { line: '#fbbf24', bg: 'rgba(251, 191, 36, 0.15)' },
+    ];
+
+    let dashboardData = null;
+    let creatorMap = new Map();
+    let chart = null;
+    let selectorCount = 2;
+
+    function buildCreatorMap(data) {
+      const map = new Map();
+      function ensure(name) {
+        if (!map.has(name)) {
+          map.set(name, { name, avgAlpha: null, winRate: null, n: null, pValue: null, sig: false, d90: null, d180: null, d365: null, y2023: null, y2024: null, y2025: null });
+        }
+        return map.get(name);
+      }
+
+      [...(data.alpha?.top || []), ...(data.alpha?.bottom || [])].forEach(x => {
+        const c = ensure(x.creator);
+        c.avgAlpha = x.avgAlpha;
+        c.n = x.n;
+        c.pValue = x.pValue;
+        c.sig = x.sig;
+      });
+
+      [...(data.accuracy?.top || []), ...(data.accuracy?.bottom || [])].forEach(x => {
+        const c = ensure(x.creator);
+        c.winRate = x.winRate;
+        if (c.n === null) c.n = x.n;
+        if (c.pValue === null) c.pValue = x.pValue;
+        if (!c.sig && x.sig) c.sig = true;
+      });
+
+      ['d90', 'd180', 'd365'].forEach(key => {
+        [...(data.intervals?.[key]?.top || []), ...(data.intervals?.[key]?.bottom || [])].forEach(x => {
+          const c = ensure(x.creator);
+          c[key] = x.alpha;
+        });
+      });
+
+      ['2023', '2024', '2025'].forEach(year => {
+        [...(data.yearly?.[year]?.top || []), ...(data.yearly?.[year]?.bottom || [])].forEach(x => {
+          const c = ensure(x.creator);
+          c['y' + year] = x.alpha;
+        });
+      });
+
+      return map;
+    }
+
+    function populateSelects() {
+      const names = [...creatorMap.keys()].sort((a, b) => a.localeCompare(b));
+      document.querySelectorAll('.creator-select').forEach(sel => {
+        const current = sel.value;
+        const opts = '<option value="">Select creator...</option>' +
+          names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
+        sel.innerHTML = opts;
+      });
+    }
+
+    function addCreatorSelector() {
+      if (selectorCount >= 4) return;
+      const container = document.getElementById('selectorContainer');
+      const row = document.createElement('div');
+      row.className = 'selector-row';
+      row.dataset.index = selectorCount;
+      row.style.marginTop = '12px';
+      row.innerHTML = `
+        <div class="control-group">
+          <label>Creator ${selectorCount + 1}</label>
+          <select class="creator-select" data-slot="${selectorCount}"><option value="">Select creator...</option></select>
+        </div>
+        <button class="btn btn-remove" type="button" onclick="removeSelector(this)" title="Remove">&times;</button>
+      `;
+      container.appendChild(row);
+      selectorCount++;
+      populateSelects();
+      if (selectorCount >= 4) document.getElementById('addCreatorBtn').style.display = 'none';
+    }
+
+    function removeSelector(btn) {
+      const row = btn.closest('.selector-row');
+      row.remove();
+      selectorCount--;
+      // Re-label remaining selectors
+      document.querySelectorAll('.selector-row').forEach((r, i) => {
+        r.dataset.index = i;
+        r.querySelector('label').textContent = 'Creator ' + (i + 1);
+        r.querySelector('select').dataset.slot = i;
+      });
+      document.getElementById('addCreatorBtn').style.display = '';
+    }
+
+    function getSelectedCreators() {
+      const names = [];
+      document.querySelectorAll('.creator-select').forEach(sel => {
+        if (sel.value && !names.includes(sel.value)) names.push(sel.value);
+      });
+      return names;
+    }
+
+    function runComparison() {
+      const selected = getSelectedCreators();
+      if (selected.length < 2) {
+        document.getElementById('chartCard').style.display = 'none';
+        document.getElementById('tableCard').style.display = 'none';
+        document.getElementById('emptyState').style.display = '';
+        return;
+      }
+
+      document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('chartCard').style.display = '';
+      document.getElementById('tableCard').style.display = '';
+
+      renderChart(selected);
+      renderTable(selected);
+    }
+
+    function renderChart(creators) {
+      const mode = document.getElementById('periodSelect').value;
+      const showSP = document.getElementById('spCheck').checked;
+
+      let labels, dataKeys;
+      if (mode === 'yearly') {
+        labels = ['2023', '2024', '2025'];
+        dataKeys = ['y2023', 'y2024', 'y2025'];
+      } else {
+        labels = ['90D', '180D', '365D'];
+        dataKeys = ['d90', 'd180', 'd365'];
+      }
+
+      const datasets = creators.map((name, i) => {
+        const c = creatorMap.get(name);
+        const color = COLORS[i % COLORS.length];
+        return {
+          label: name,
+          data: dataKeys.map(k => c ? c[k] : null),
+          borderColor: color.line,
+          backgroundColor: color.bg,
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointBackgroundColor: color.line,
+          tension: 0.3,
+          spanGaps: true,
+        };
+      });
+
+      if (showSP) {
+        datasets.push({
+          label: 'S&P 500 (benchmark)',
+          data: labels.map(() => 0),
+          borderColor: '#6b7280',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [8, 4],
+          pointRadius: 0,
+          tension: 0,
+        });
+      }
+
+      if (chart) chart.destroy();
+
+      const ctx = document.getElementById('compareChart').getContext('2d');
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              labels: { color: '#9ca3af', font: { family: "'Space Grotesk', sans-serif", size: 12 }, usePointStyle: true, pointStyle: 'circle' }
+            },
+            tooltip: {
+              backgroundColor: '#1a1a2e',
+              titleColor: '#f0f0f0',
+              bodyColor: '#9ca3af',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              cornerRadius: 8,
+              callbacks: {
+                label: function(ctx) {
+                  const v = ctx.parsed.y;
+                  if (v === null || v === undefined) return ctx.dataset.label + ': N/A';
+                  const sign = v > 0 ? '+' : '';
+                  return ctx.dataset.label + ': ' + sign + v.toFixed(2) + '%';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255,255,255,0.04)' },
+              ticks: { color: '#9ca3af', font: { family: "'Space Grotesk', sans-serif", size: 12 } }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.04)' },
+              ticks: {
+                color: '#9ca3af',
+                font: { family: "'JetBrains Mono', monospace", size: 11 },
+                callback: function(v) { return (v > 0 ? '+' : '') + v + '%'; }
+              },
+              title: { display: true, text: 'Alpha vs S&P 500 (%)', color: '#6b7280', font: { family: "'Space Grotesk', sans-serif", size: 12 } }
+            }
+          }
+        }
+      });
+    }
+
+    function renderTable(creators) {
+      const tbody = document.getElementById('summaryBody');
+      tbody.innerHTML = creators.map(name => {
+        const c = creatorMap.get(name);
+        if (!c) return '';
+        const alpha = c.avgAlpha !== null ? c.avgAlpha : null;
+        const alphaStr = alpha !== null ? ((alpha > 0 ? '+' : '') + alpha.toFixed(2) + '%') : '\u2014';
+        const alphaClass = alpha !== null ? (alpha >= 0 ? 'val-green' : 'val-red') : '';
+        const wr = c.winRate !== null ? c.winRate.toFixed(2) + '%' : '\u2014';
+        const wrClass = c.winRate !== null ? (c.winRate >= 50 ? 'val-green' : 'val-red') : '';
+        const nStr = c.n !== null ? c.n : '\u2014';
+        const pStr = c.pValue !== null ? c.pValue.toFixed(4) : '\u2014';
+        const sigStr = c.sig ? '<span class="sig-badge">Sig</span>' : '\u2014';
+        return `<tr>
+          <td class="creator-col">${name}</td>
+          <td class="${alphaClass}">${alphaStr}</td>
+          <td class="${wrClass}">${wr}</td>
+          <td>${nStr}</td>
+          <td>${pStr}</td>
+          <td>${sigStr}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    async function init() {
+      try {
+        const res = await fetch('/dashboard.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        dashboardData = await res.json();
+        creatorMap = buildCreatorMap(dashboardData);
+        populateSelects();
+      } catch (e) {
+        console.error('Failed to load dashboard.json', e);
+        document.getElementById('emptyState').innerHTML =
+          '<p style="color:#fca5a5">Failed to load creator data. Please refresh.</p>';
+      }
+    }
+
+    document.getElementById('addCreatorBtn').addEventListener('click', addCreatorSelector);
+    document.getElementById('compareBtn').addEventListener('click', runComparison);
+    document.getElementById('periodSelect').addEventListener('change', () => {
+      if (getSelectedCreators().length >= 2) runComparison();
+    });
+    document.getElementById('spCheck').addEventListener('change', () => {
+      if (getSelectedCreators().length >= 2) runComparison();
+    });
+
+    init();
+  </script>
+
+</body>
+</html>

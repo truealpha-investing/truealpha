@@ -287,6 +287,8 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .panel-title {
@@ -297,7 +299,8 @@
 
     .panel-subtitle {
       font-size: 12px;
-      color: var(--color-text-muted);
+      color: #888;
+      font-weight: 400;
       margin-top: 4px;
     }
 
@@ -350,7 +353,7 @@
 
     .lb-row-name {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--color-text-primary);
       overflow: hidden;
       text-overflow: ellipsis;
@@ -364,7 +367,7 @@
 
     .lb-row-value {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       white-space: nowrap;
     }
 
@@ -425,10 +428,28 @@
       padding: 8px 12px;
       border-radius: var(--radius-md);
       transition: background 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticker-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--bar-width, 0%);
+      background: rgba(34, 197, 94, 0.15);
+      border-radius: var(--radius-md);
+      pointer-events: none;
     }
 
     .ticker-row:hover {
       background: var(--color-surface-hover);
+    }
+
+    .ticker-name, .ticker-mentions {
+      position: relative;
     }
 
     .ticker-name {
@@ -478,14 +499,14 @@
 
     .inner-grid-3 {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
       margin-top: 20px;
     }
 
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
       .inner-grid-3 {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
@@ -494,6 +515,7 @@
        ====================================== */
     .horizon-section {
       margin-top: 24px;
+      overflow: hidden;
     }
 
     .horizon-header {
@@ -534,6 +556,7 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
       padding: 16px;
+      min-width: 0;
     }
 
     .inner-panel-header {
@@ -582,27 +605,52 @@
     /* ======================================
        Email CTA Section
        ====================================== */
-    .email-cta {
-      margin-top: 20px;
+    .email-cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .email-cta-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+    }
+
+    .email-cta-text {
+      flex-shrink: 0;
     }
 
     .email-cta-title {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 4px;
     }
 
     .email-cta-sub {
       font-size: 13px;
       color: var(--color-text-secondary);
-      line-height: 1.6;
-      margin-bottom: 20px;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    .email-cta-form {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .email-cta-fields {
+      display: flex;
+      gap: 8px;
     }
 
     .email-cta input[type="email"],
     .email-cta input[type="text"] {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
       padding: 10px 14px;
       background: var(--color-bg);
       border: 1px solid var(--color-border);
@@ -612,7 +660,6 @@
       font-size: 13px;
       outline: none;
       transition: border-color 0.2s;
-      margin-bottom: 10px;
     }
 
     .email-cta input:focus {
@@ -620,8 +667,7 @@
     }
 
     .email-cta button[data-element="submit"] {
-      width: 100%;
-      padding: 10px 14px;
+      padding: 10px 20px;
       background: var(--color-green-600);
       color: #fff;
       font-family: var(--font-display);
@@ -632,6 +678,7 @@
       cursor: pointer;
       transition: background 0.2s;
       box-shadow: 0 0 12px var(--color-green-glow);
+      white-space: nowrap;
     }
 
     .email-cta button[data-element="submit"]:hover {
@@ -704,6 +751,41 @@
     }
 
     /* ======================================
+       Tooltips (reusable via data-tooltip)
+       ====================================== */
+    [data-tooltip] {
+      position: relative;
+      cursor: help;
+    }
+
+    [data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      padding: 8px 12px;
+      border-radius: 6px;
+      max-width: 250px;
+      width: max-content;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-tooltip]:hover::after {
+      opacity: 1;
+    }
+
+    /* ======================================
        Responsive
        ====================================== */
     @media (max-width: 640px) {
@@ -729,6 +811,7 @@
         <a href="/methodology.html">Methodology</a>
         <a href="/faq.html">FAQ</a>
         <a href="/blog.html">Weekly Insights</a>
+        <a href="/compare.html">Compare</a>
       </div>
 
       <a href="#emailCta" class="nav-cta">Get Free Report <span aria-hidden="true">→</span></a>
@@ -749,31 +832,6 @@
           and how results change by time horizon.
         </p>
 
-        <!-- Email CTA (replaces Pro section) -->
-        <section id="emailCta" class="glass email-cta" style="margin-top:20px">
-          <div class="email-cta-title">Get the Guru Report Card</div>
-          <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
-
-          <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-
-          <form action="https://app.kit.com/forms/8848906/subscriptions"
-                class="seva-form formkit-form"
-                method="post"
-                data-sv-form="8848906"
-                data-uid="c5142792e3"
-                data-format="inline">
-            <div>
-              <input type="email"
-                     name="email_address"
-                     placeholder="Email Address"
-                     required />
-
-              <button data-element="submit">
-                Join Free Email
-              </button>
-            </div>
-          </form>
-        </section>
       </div>
 
       <div class="meta-pills">
@@ -799,10 +857,10 @@
       <div class="glass">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">Top + Bottom by Alpha</h2>
+            <h2 class="panel-title" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Top + Bottom by Alpha</h2>
             <p class="panel-subtitle" id="alphaSub">—</p>
           </div>
-          <div class="panel-badge">Avg Alpha</div>
+          <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Avg Alpha</div>
         </div>
 
         <div style="margin-top:20px">
@@ -820,10 +878,10 @@
       <div class="glass">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">Top + Bottom by Accuracy</h2>
+            <h2 class="panel-title" data-tooltip="Directional win rate: % of picks where the stock moved in the predicted direction.">Top + Bottom by Accuracy</h2>
             <p class="panel-subtitle" id="accuracySub">—</p>
           </div>
-          <div class="panel-badge">Accuracy</div>
+          <div class="panel-badge" data-tooltip="Directional win rate: % of picks where the stock moved in the predicted direction.">Accuracy</div>
         </div>
 
         <div style="margin-top:20px">
@@ -865,7 +923,7 @@
     <section class="horizon-section glass">
       <div class="horizon-header">
         <div>
-          <h2 class="panel-title">Alpha by Time Horizon</h2>
+          <h2 class="panel-title" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">Alpha by Time Horizon</h2>
           <p class="panel-subtitle">90D vs 180D vs 365D</p>
         </div>
         <div class="panel-badge">90 / 180 / 365</div>
@@ -876,7 +934,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d90Label">90D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -892,7 +950,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d180Label">180D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -908,7 +966,7 @@
         <div class="inner-panel">
           <div class="inner-panel-header">
             <div class="inner-panel-label" id="d365Label">365D</div>
-            <div class="panel-badge">alpha</div>
+            <div class="panel-badge" data-tooltip="Alpha = creator's return minus S&amp;P 500 return over the same holding period.">alpha</div>
           </div>
           <div style="margin-top:16px">
             <div class="section-label green">TOP</div>
@@ -924,6 +982,36 @@
       <div class="horizon-footer">
         <span>Alpha = Stock return − S&amp;P 500 return (same horizon). Sig uses p-value.</span>
         <a id="dbLinkBottom" href="#" target="_blank">Open dataset →</a>
+      </div>
+    </section>
+
+    <!-- Email CTA -->
+    <section id="emailCta" class="glass email-cta" style="margin-top:24px">
+      <div class="email-cta-inner">
+        <div class="email-cta-text">
+          <div class="email-cta-title">Get the Guru Report Card</div>
+          <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
+        </div>
+
+        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
+
+        <form action="https://app.kit.com/forms/8848906/subscriptions"
+              class="seva-form formkit-form email-cta-form"
+              method="post"
+              data-sv-form="8848906"
+              data-uid="c5142792e3"
+              data-format="inline">
+          <div class="email-cta-fields">
+            <input type="email"
+                   name="email_address"
+                   placeholder="Email Address"
+                   required />
+
+            <button data-element="submit">
+              Join Free Email
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -981,7 +1069,7 @@
     function fmtP(pValue) {
       const p = toNumber(pValue);
       if (!Number.isFinite(p)) return "";
-      return `p=${p.toFixed(4)}`;
+      return `<span data-tooltip="P-value: probability this result is due to chance. Lower = stronger evidence. Below 0.05 = significant.">p=${p.toFixed(4)}</span>`;
     }
 
     function pillRank(rank, kind) {
@@ -992,7 +1080,7 @@
 
     function sigPill(sig) {
       if (!sig) return "";
-      return `<span class="sig-pill">Sig</span>`;
+      return `<span class="sig-pill" data-tooltip="Statistically significant (p < 0.05). This result is unlikely due to random chance.">Sig</span>`;
     }
 
     function rowCreator({ rank, creator, valueText, valueClass, subText }) {
@@ -1010,9 +1098,9 @@
       `;
     }
 
-    function rowTicker({ ticker, mentions }) {
+    function rowTicker({ ticker, mentions, barWidth }) {
       return `
-        <div class="ticker-row">
+        <div class="ticker-row" style="--bar-width: ${barWidth}%">
           <div class="ticker-name">${ticker}</div>
           <div class="ticker-mentions">${mentions} mentions</div>
         </div>
@@ -1081,7 +1169,12 @@
         document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
         document.getElementById("accBottom").innerHTML = accBottom || `<div class="no-data">No data.</div>`;
 
-        const stocks = (data?.stocksRecommended?.items || []).slice(0, 8).map(rowTicker).join("");
+        const stockItems = (data?.stocksRecommended?.items || []).slice(0, 8);
+        const maxMentions = Math.max(...stockItems.map(s => s.mentions || 0), 1);
+        const stocks = stockItems.map(s => rowTicker({
+          ...s,
+          barWidth: ((s.mentions || 0) / maxMentions * 100).toFixed(1)
+        })).join("");
         document.getElementById("stocksList").innerHTML = stocks || `<div class="no-data">No data.</div>`;
 
         const d90 = data?.intervals?.d90 || {};
