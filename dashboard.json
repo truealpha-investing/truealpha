@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-08T14:20:23.975Z",
+    "generatedAt": "2026-02-09T14:20:24.113Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Fundstrat",
-          "alpha": 16.29,
-          "pValue": 0.3105,
+          "alpha": 12.34,
+          "pValue": 0.3641,
           "sig": false
         },
         {
@@ -552,7 +552,7 @@
       },
       {
         "ticker": "PLTR",
-        "mentions": 6
+        "mentions": 7
       },
       {
         "ticker": "BTC",
@@ -563,11 +563,11 @@
         "mentions": 6
       },
       {
-        "ticker": "NVDA",
-        "mentions": 6
+        "ticker": "VTI",
+        "mentions": 5
       },
       {
-        "ticker": "VTI",
+        "ticker": "NVDA",
         "mentions": 5
       },
       {
@@ -575,11 +575,11 @@
         "mentions": 4
       },
       {
-        "ticker": "SCHD",
+        "ticker": "AMD",
         "mentions": 3
       },
       {
-        "ticker": "AMD",
+        "ticker": "SCHD",
         "mentions": 3
       }
     ]
