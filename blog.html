@@ -127,10 +127,10 @@
     .email-form { max-width: 440px; margin: 0 auto; }
     .email-form input[type="email"] { width: 100%; padding: 12px 16px; background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
     .email-form input:focus { border-color: var(--green-500); }
-    .email-form button[data-element="submit"] { width: 100%; padding: 12px; background: var(--green-600); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 15px; border-radius: var(--radius-md); border: none; cursor: pointer; transition: background 0.2s; box-shadow: 0 0 16px var(--green-glow); }
-    .email-form button[data-element="submit"]:hover { background: var(--green-500); }
+    .email-form button[type="submit"] { width: 100%; padding: 12px; background: var(--green-600); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 15px; border-radius: var(--radius-md); border: none; cursor: pointer; transition: background 0.2s; box-shadow: 0 0 16px var(--green-glow); }
+    .email-form button[type="submit"]:hover { background: var(--green-500); }
     .email-proof { font-size: 12px; color: var(--text-muted); margin-top: 14px; }
-    .formkit-form, .seva-form { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+
 
     /* Footer */
     .footer { border-top: 1px solid var(--border-subtle); background: var(--bg-primary); padding: 64px 0; }
@@ -241,11 +241,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3>The Guru Report Card</h3>
       <p class="subtext">Free weekly email: who's beating the market, who's not, and which new creators we're tracking.</p>
       <div class="email-form">
-        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-        <form action="https://app.kit.com/forms/8848906/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8848906" data-uid="c5142792e3" data-format="inline">
+        <form action="https://app.kit.com/forms/8848906/subscriptions" method="post">
           <div>
             <input type="email" name="email_address" placeholder="Email Address" required />
-            <button data-element="submit">Join Free Email</button>
+            <button type="submit">Join Free Email</button>
           </div>
         </form>
         <p class="email-proof">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
