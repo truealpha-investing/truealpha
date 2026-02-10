@@ -680,7 +680,7 @@
       border-color: var(--color-green-500);
     }
 
-    .email-cta button[data-element="submit"] {
+    .email-cta button[type="submit"] {
       padding: 10px 20px;
       background: var(--color-green-600);
       color: #fff;
@@ -695,19 +695,11 @@
       white-space: nowrap;
     }
 
-    .email-cta button[data-element="submit"]:hover {
+    .email-cta button[type="submit"]:hover {
       background: var(--color-green-500);
     }
 
-    /* Kit embed resets */
-    .formkit-form, .seva-form {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
-    }
+
 
     /* ======================================
        Footer
@@ -917,7 +909,7 @@
       .email-cta-fields { flex-direction: column; }
       .email-cta input[type="email"],
       .email-cta input[type="text"] { width: 100%; }
-      .email-cta button[data-element="submit"] { width: 100%; }
+      .email-cta button[type="submit"] { width: 100%; }
     }
 
     @media (max-width: 640px) {
@@ -1149,21 +1141,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="email-cta-sub">Free weekly email with leaderboard changes, new creators, and rank movers.</p>
         </div>
 
-        <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-
-        <form action="https://app.kit.com/forms/8848906/subscriptions"
-              class="seva-form formkit-form email-cta-form"
-              method="post"
-              data-sv-form="8848906"
-              data-uid="c5142792e3"
-              data-format="inline">
+        <form action="https://app.kit.com/forms/8848906/subscriptions" class="email-cta-form" method="post">
           <div class="email-cta-fields">
             <input type="email"
                    name="email_address"
                    placeholder="Email Address"
                    required />
 
-            <button data-element="submit">
+            <button type="submit">
               Join Free Email
             </button>
           </div>

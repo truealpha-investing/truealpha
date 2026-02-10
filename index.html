@@ -698,7 +698,7 @@
       border-color: var(--color-green-500);
     }
 
-    .email-form-wrap button[data-element="submit"] {
+    .email-form-wrap button[type="submit"] {
       width: 100%;
       padding: 12px 16px;
       background: var(--color-green-600);
@@ -713,7 +713,7 @@
       box-shadow: 0 0 16px var(--color-green-glow);
     }
 
-    .email-form-wrap button[data-element="submit"]:hover {
+    .email-form-wrap button[type="submit"]:hover {
       background: var(--color-green-500);
     }
 
@@ -723,15 +723,6 @@
       margin-top: 16px;
     }
 
-    /* Kit embed resets */
-    .formkit-form, .seva-form {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
-    }
 
     /* ======================================
        Footer
@@ -972,14 +963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="subtext">Free weekly email: who's beating the market, who's not, and which new creators we're tracking. No spam, no fluff.</p>
 
         <div class="email-form-wrap">
-          <script src="https://f.convertkit.com/ckjs/ck.6.js"></script>
-
-          <form action="https://app.kit.com/forms/8848906/subscriptions"
-                class="seva-form formkit-form"
-                method="post"
-                data-sv-form="8848906"
-                data-uid="c5142792e3"
-                data-format="inline">
+          <form action="https://app.kit.com/forms/8848906/subscriptions" method="post">
             <div>
               <input type="email"
                      name="email_address"
@@ -990,7 +974,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                      name="fields[first_name]"
                      placeholder="Which YouTuber Should We Audit Next? (Optional)" />
 
-              <button data-element="submit">
+              <button type="submit">
                 Join Free Email
               </button>
             </div>
