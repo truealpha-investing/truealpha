@@ -940,6 +940,18 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W43WKXJK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('subscribed') === 'true') {
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'event': 'email_signup_confirmed',
+      'signup_source': 'kit_redirect'
+    });
+  }
+})();
+</script>
 
   <!-- ============ NAV ============ -->
   <nav class="nav">
@@ -1153,6 +1165,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </button>
           </div>
         </form>
+        <script>
+        (function() {
+          var form = document.querySelector('form[action*="app.kit.com/forms/8848906"]');
+          if (form) {
+            form.addEventListener('submit', function() {
+              window.dataLayer = window.dataLayer || [];
+              dataLayer.push({
+                'event': 'email_signup',
+                'signup_location': 'leaderboard'
+              });
+            });
+          }
+        })();
+        </script>
       </div>
     </section>
 

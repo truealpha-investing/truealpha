@@ -210,6 +210,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <button type="submit" class="px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold text-sm rounded-lg transition glow-green whitespace-nowrap">Subscribe</button>
                 </div>
             </form>
+            <script>
+            (function() {
+              var form = document.querySelector('form[action*="app.kit.com/forms/8848906"]');
+              if (form) {
+                form.addEventListener('submit', function() {
+                  window.dataLayer = window.dataLayer || [];
+                  dataLayer.push({
+                    'event': 'email_signup',
+                    'signup_location': 'blog_post_2025-12-20'
+                  });
+                });
+              }
+            })();
+            </script>
             <p class="text-gray-600 text-xs mt-4">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
         </div>
 
