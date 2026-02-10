@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-09T14:20:24.113Z",
+    "generatedAt": "2026-02-10T14:20:25.476Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
-    "totalCreatorsTracked": 75,
+    "totalCreatorsTracked": 78,
     "totalVerifiedCreators": 46,
-    "totalPredictions": 3044
+    "totalPredictions": 3090
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Stealth Wealth Investing",
-        "n": 71,
-        "pValue": 0.1756,
+        "n": 72,
+        "pValue": 0.1874,
         "sig": false,
-        "avgAlpha": 16.61
+        "avgAlpha": 16.05
       }
     ],
     "bottom": [
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 23,
-        "pValue": 0.1913,
-        "sig": false,
-        "winRate": 78.26
+        "n": 35,
+        "pValue": 0.0055,
+        "sig": true,
+        "winRate": 85.71
       },
       {
         "rank": 2,
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Stealth Wealth Investing",
-        "n": 71,
-        "pValue": 0.1756,
+        "n": 72,
+        "pValue": 0.1874,
         "sig": false,
-        "winRate": 63.38
+        "winRate": 62.5
       },
       {
         "rank": 4,
@@ -160,28 +160,28 @@
           "rank": 1,
           "creator": "Fundstrat",
           "alpha": 12.34,
-          "pValue": 0.3641,
+          "pValue": 0.2617,
           "sig": false
         },
         {
           "rank": 2,
-          "creator": "Will Trades",
-          "alpha": 3.36,
-          "pValue": 0.5985,
-          "sig": false
+          "creator": "Jose Najarro Stocks",
+          "alpha": 8.19,
+          "pValue": 0.0055,
+          "sig": true
         },
         {
           "rank": 3,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 3.12,
-          "pValue": 0.1913,
+          "creator": "Andrei Jikh",
+          "alpha": 4.22,
+          "pValue": 0.3745,
           "sig": false
         },
         {
           "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 2.78,
-          "pValue": 0.1756,
+          "creator": "Will Trades",
+          "alpha": 3.36,
+          "pValue": 0.5985,
           "sig": false
         }
       ],
@@ -244,8 +244,8 @@
         {
           "rank": 4,
           "creator": "Stealth Wealth Investing",
-          "alpha": 16.61,
-          "pValue": 0.1756,
+          "alpha": 16.05,
+          "pValue": 0.1874,
           "sig": false
         }
       ],
@@ -302,7 +302,7 @@
           "rank": 3,
           "creator": "Stealth Wealth Investing",
           "alpha": 118.98,
-          "pValue": 0.1756,
+          "pValue": 0.1874,
           "sig": false
         },
         {
@@ -332,7 +332,7 @@
           "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": -20.09,
-          "pValue": 0.1129,
+          "pValue": 0.3745,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1756,
+          "pValue": 0.1874,
           "sig": false
         },
         {
@@ -480,23 +480,23 @@
       "top": [
         {
           "rank": 1,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 17.67,
+          "pValue": 0.0055,
+          "sig": true
+        },
+        {
+          "rank": 2,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 16.49,
           "pValue": 0.1832,
           "sig": false
         },
         {
-          "rank": 2,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 16.02,
-          "pValue": 0.1756,
-          "sig": false
-        },
-        {
           "rank": 3,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 9.21,
-          "pValue": 0.1913,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 15.13,
+          "pValue": 0.1874,
           "sig": false
         },
         {
@@ -518,8 +518,8 @@
         {
           "rank": 2,
           "creator": "Common Sense Investing",
-          "alpha": -42.73,
-          "pValue": 0.6458,
+          "alpha": -32.02,
+          "pValue": 0.6765,
           "sig": false
         },
         {
@@ -551,10 +551,6 @@
         "mentions": 9
       },
       {
-        "ticker": "PLTR",
-        "mentions": 7
-      },
-      {
         "ticker": "BTC",
         "mentions": 6
       },
@@ -563,11 +559,15 @@
         "mentions": 6
       },
       {
-        "ticker": "VTI",
-        "mentions": 5
+        "ticker": "NVDA",
+        "mentions": 6
       },
       {
-        "ticker": "NVDA",
+        "ticker": "PLTR",
+        "mentions": 6
+      },
+      {
+        "ticker": "VTI",
         "mentions": 5
       },
       {
