@@ -979,6 +979,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </button>
             </div>
           </form>
+          <script>
+          (function() {
+            var form = document.querySelector('form[action*="app.kit.com/forms/8848906"]');
+            if (form) {
+              form.addEventListener('submit', function() {
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                  'event': 'email_signup',
+                  'signup_location': 'homepage_cta'
+                });
+              });
+            }
+          })();
+          </script>
 
           <p class="email-proof">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
         </div>
