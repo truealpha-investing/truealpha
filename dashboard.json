@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-10T14:20:25.476Z",
+    "generatedAt": "2026-02-11T14:20:24.535Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 78,
-    "totalVerifiedCreators": 46,
-    "totalPredictions": 3090
+    "totalVerifiedCreators": 47,
+    "totalPredictions": 3104
   },
   "alpha": {
     "top": [
@@ -33,7 +33,7 @@
         "rank": 3,
         "creator": "Daniel Pronk",
         "n": 66,
-        "pValue": 0.013,
+        "pValue": 0.0135,
         "sig": true,
         "avgAlpha": 17.01
       },
@@ -49,6 +49,14 @@
     "bottom": [
       {
         "rank": 1,
+        "creator": "The Prof G Pod – Scott Galloway",
+        "n": 20,
+        "pValue": 0.0521,
+        "sig": false,
+        "avgAlpha": -39.5
+      },
+      {
+        "rank": 2,
         "creator": "Patrick Boyle",
         "n": 37,
         "pValue": 0.0003,
@@ -56,7 +64,7 @@
         "avgAlpha": -38.32
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "OneOption",
         "n": 20,
         "pValue": 0.002,
@@ -64,20 +72,12 @@
         "avgAlpha": -21.41
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "FX Evolution",
         "n": 21,
         "pValue": 0.0083,
         "sig": true,
         "avgAlpha": -20.41
-      },
-      {
-        "rank": 4,
-        "creator": "Mark Moss",
-        "n": 77,
-        "pValue": 0.0018,
-        "sig": true,
-        "avgAlpha": -17.07
       }
     ]
   },
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 35,
-        "pValue": 0.0055,
+        "n": 40,
+        "pValue": 0.0138,
         "sig": true,
-        "winRate": 85.71
+        "winRate": 75
       },
       {
         "rank": 2,
@@ -119,6 +119,14 @@
     "bottom": [
       {
         "rank": 1,
+        "creator": "The Prof G Pod – Scott Galloway",
+        "n": 20,
+        "pValue": 0.0521,
+        "sig": false,
+        "winRate": 20
+      },
+      {
+        "rank": 2,
         "creator": "OneOption",
         "n": 20,
         "pValue": 0.002,
@@ -126,28 +134,20 @@
         "winRate": 20
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 43,
+        "n": 42,
         "pValue": 0,
         "sig": true,
-        "winRate": 20.93
+        "winRate": 21.43
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "The Matt Kohrs Show",
         "n": 119,
         "pValue": 0,
         "sig": true,
         "winRate": 22.69
-      },
-      {
-        "rank": 4,
-        "creator": "Will Trades",
-        "n": 21,
-        "pValue": 0.5985,
-        "sig": false,
-        "winRate": 23.81
       }
     ]
   },
@@ -160,14 +160,14 @@
           "rank": 1,
           "creator": "Fundstrat",
           "alpha": 12.34,
-          "pValue": 0.2617,
+          "pValue": 0.2642,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Jose Najarro Stocks",
-          "alpha": 8.19,
-          "pValue": 0.0055,
+          "alpha": 5.61,
+          "pValue": 0.0138,
           "sig": true
         },
         {
@@ -202,16 +202,16 @@
         },
         {
           "rank": 3,
-          "creator": "Joseph Carlson After Hours",
-          "alpha": -17.88,
-          "pValue": 0.0024,
+          "creator": "Tom Nash",
+          "alpha": -17.56,
+          "pValue": 0.0285,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Tom Nash",
-          "alpha": -17.56,
-          "pValue": 0.0285,
+          "creator": "FX Evolution",
+          "alpha": -17.29,
+          "pValue": 0.0083,
           "sig": true
         }
       ]
@@ -238,7 +238,7 @@
           "rank": 3,
           "creator": "Daniel Pronk",
           "alpha": 17.01,
-          "pValue": 0.013,
+          "pValue": 0.0135,
           "sig": true
         },
         {
@@ -252,30 +252,30 @@
       "bottom": [
         {
           "rank": 1,
+          "creator": "The Prof G Pod – Scott Galloway",
+          "alpha": -39.5,
+          "pValue": 0.0521,
+          "sig": false
+        },
+        {
+          "rank": 2,
           "creator": "Patrick Boyle",
           "alpha": -38.32,
           "pValue": 0.0003,
           "sig": true
         },
         {
-          "rank": 2,
+          "rank": 3,
           "creator": "OneOption",
           "alpha": -21.41,
           "pValue": 0.002,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "FX Evolution",
           "alpha": -20.41,
           "pValue": 0.0083,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Mark Moss",
-          "alpha": -17.07,
-          "pValue": 0.0018,
           "sig": true
         }
       ]
@@ -339,7 +339,7 @@
           "rank": 4,
           "creator": "Joseph Carlson After Hours",
           "alpha": -12.2,
-          "pValue": 0.0024,
+          "pValue": 0.0023,
           "sig": true
         }
       ]
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0018,
+          "pValue": 0.0044,
           "sig": true
         }
       ]
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 21.56,
-          "pValue": 0.013,
+          "pValue": 0.0135,
           "sig": true
         }
       ],
@@ -480,24 +480,24 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 17.67,
-          "pValue": 0.0055,
-          "sig": true
-        },
-        {
-          "rank": 2,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 16.49,
           "pValue": 0.1832,
           "sig": false
         },
         {
-          "rank": 3,
+          "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 15.13,
           "pValue": 0.1874,
           "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 13.04,
+          "pValue": 0.0138,
+          "sig": true
         },
         {
           "rank": 4,
@@ -517,23 +517,23 @@
         },
         {
           "rank": 2,
-          "creator": "Common Sense Investing",
-          "alpha": -32.02,
-          "pValue": 0.6765,
+          "creator": "The Prof G Pod – Scott Galloway",
+          "alpha": -52.53,
+          "pValue": 0.0521,
           "sig": false
         },
         {
           "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -26.56,
-          "pValue": 0.0018,
-          "sig": true
+          "creator": "Common Sense Investing",
+          "alpha": -32.02,
+          "pValue": 0.7356,
+          "sig": false
         },
         {
           "rank": 4,
-          "creator": "OneOption",
-          "alpha": -25.4,
-          "pValue": 0.002,
+          "creator": "Mark Moss",
+          "alpha": -27.18,
+          "pValue": 0.0044,
           "sig": true
         }
       ]
@@ -551,6 +551,10 @@
         "mentions": 9
       },
       {
+        "ticker": "NVDA",
+        "mentions": 7
+      },
+      {
         "ticker": "BTC",
         "mentions": 6
       },
@@ -559,16 +563,12 @@
         "mentions": 6
       },
       {
-        "ticker": "NVDA",
-        "mentions": 6
-      },
-      {
         "ticker": "PLTR",
         "mentions": 6
       },
       {
         "ticker": "VTI",
-        "mentions": 5
+        "mentions": 6
       },
       {
         "ticker": "AMZN",
