@@ -31,15 +31,6 @@
   <meta name="twitter:description" content="Ranked leaderboard of finance YouTubers by alpha vs S&P 500, directional accuracy, and statistical significance. Updated monthly." />
   <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-46BNDCWHMT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-46BNDCWHMT');
-  </script>
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -967,6 +958,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/methodology.html">Methodology</a>
         <a href="/faq.html">FAQ</a>
         <a href="/blog.html">Weekly Insights</a>
+        <a href="/creators/">Creators</a>
         <a href="/compare.html">Compare</a>
       </div>
 
@@ -1209,6 +1201,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+  <!-- ============ SHARED DATA MODULE ============ -->
+  <script src="/js/sheet-data.js"></script>
+
   <!-- ============ LEADERBOARD DATA SCRIPT ============ -->
   <script>
     const JSON_PATH = "./leaderboard.json";
@@ -1276,16 +1271,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
     }
 
+    const CREATOR_PROFILES = {
+      "Tom Nash": "/creators/tom-nash/",
+      "Jim Cramer": "/creators/jim-cramer/",
+      "Joseph Carlson": "/creators/joseph-carlson/",
+      "ClearValue Tax": "/creators/clearvalue-tax/",
+      "Meet Kevin": "/creators/meet-kevin/"
+    };
+
     function rowCreator({ rank, creator, valueText, valueClass, subText, shareText }) {
       const shareBtn = shareText
         ? `<button class="share-icon" onclick="shareOnX(this)" data-share-text="${escAttr(shareText)}" title="Share on X">${SHARE_SVG}</button>`
         : '';
+      const profileUrl = CREATOR_PROFILES[creator];
+      const nameHtml = profileUrl
+        ? `<a href="${profileUrl}" class="lb-row-name" style="color:var(--color-text-primary);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--color-green-400)'" onmouseout="this.style.color='var(--color-text-primary)'">${creator}</a>`
+        : `<div class="lb-row-name">${creator}</div>`;
       return `
         <div class="lb-row">
           <div class="lb-row-left">
             ${rank}
             <div class="lb-row-info">
-              <div class="lb-row-name">${creator}</div>
+              ${nameHtml}
               <div class="lb-row-sub">${subText}</div>
             </div>
             ${shareBtn}
@@ -1311,114 +1318,133 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
+    // ── Data fetching: Google Sheets CSV first, leaderboard.json fallback ──
+
+    async function fetchData() {
+      try {
+        console.log("[Leaderboard] Fetching from Google Sheets CSV...");
+        const creators = await SheetData.fetchCreators();
+        const data = SheetData.transformToLeaderboardData(creators);
+        console.log("[Leaderboard] Google Sheets CSV loaded successfully");
+        return data;
+      } catch (e) {
+        console.warn("[Leaderboard] Google Sheets fetch failed, falling back to leaderboard.json", e);
+        const res = await fetch(JSON_PATH, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return await res.json();
+      }
+    }
+
+    // ── Render leaderboard from data (same logic as before) ──
+
+    function renderLeaderboard(data) {
+      document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "\u2014";
+      document.getElementById("filterText").textContent = data?.meta?.filter || "\u2014";
+      document.getElementById("entryRule").textContent = data?.meta?.entry || "\u2014";
+      document.getElementById("sigRule").textContent = data?.meta?.significanceRule || "\u2014";
+
+      document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "\u2014";
+      document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "\u2014";
+      document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "\u2014";
+
+      setDbLinks(data?.meta?.databaseUrl || "#");
+
+      const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
+        rank: pillRank(x.rank ?? "", "good"),
+        creator: x.creator || "\u2014",
+        valueText: fmtPct(x.avgAlpha),
+        valueClass: "green",
+        subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+        shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+      })).join("");
+
+      const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
+        rank: pillRank(x.rank ?? "", "bad"),
+        creator: x.creator || "\u2014",
+        valueText: fmtPct(x.avgAlpha),
+        valueClass: "red",
+        subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+        shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+      })).join("");
+
+      document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="no-data">No data.</div>`;
+      document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="no-data">No data.</div>`;
+
+      const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
+        rank: pillRank(x.rank ?? "", "good"),
+        creator: x.creator || "\u2014",
+        valueText: fmtRate(x.winRate),
+        valueClass: "green",
+        subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+        shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+      })).join("");
+
+      const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
+        rank: pillRank(x.rank ?? "", "bad"),
+        creator: x.creator || "\u2014",
+        valueText: fmtRate(x.winRate),
+        valueClass: "red",
+        subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+        shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+      })).join("");
+
+      document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
+      document.getElementById("accBottom").innerHTML = accBottom || `<div class="no-data">No data.</div>`;
+
+      const stockItems = (data?.stocksRecommended?.items || []).slice(0, 8);
+      const maxMentions = Math.max(...stockItems.map(s => s.mentions || 0), 1);
+      const stocks = stockItems.map(s => rowTicker({
+        ...s,
+        barWidth: ((s.mentions || 0) / maxMentions * 100).toFixed(1)
+      })).join("");
+      document.getElementById("stocksList").innerHTML = stocks || `<div class="no-data">No data.</div>`;
+
+      const d90 = data?.intervals?.d90 || {};
+      const d180 = data?.intervals?.d180 || {};
+      const d365 = data?.intervals?.d365 || {};
+
+      document.getElementById("d90Label").textContent = d90.label || "90D";
+      document.getElementById("d180Label").textContent = d180.label || "180D";
+      document.getElementById("d365Label").textContent = d365.label || "365D";
+
+      const renderTopBottom = (block, topId, bottomId, horizonLabel) => {
+        const top = (block.top || []).slice(0, 3).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "good"),
+          creator: x.creator || "\u2014",
+          valueText: fmtPct(x.alpha),
+          valueClass: "green",
+          subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+        })).join("");
+
+        const bottom = (block.bottom || []).slice(0, 3).map(x => rowCreator({
+          rank: pillRank(x.rank ?? "", "bad"),
+          creator: x.creator || "\u2014",
+          valueText: fmtPct(x.alpha),
+          valueClass: "red",
+          subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
+          shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
+        })).join("");
+
+        document.getElementById(topId).innerHTML = top || `<div class="no-data">No data.</div>`;
+        document.getElementById(bottomId).innerHTML = bottom || `<div class="no-data">No data.</div>`;
+      };
+
+      renderTopBottom(d90, "d90Top", "d90Bottom", d90.label || "90D");
+      renderTopBottom(d180, "d180Top", "d180Bottom", d180.label || "180D");
+      renderTopBottom(d365, "d365Top", "d365Bottom", d365.label || "365D");
+    }
+
     async function initLeaderboard() {
       try {
-        const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-
-        document.getElementById("lastUpdated").textContent = data?.meta?.lastUpdated || "\u2014";
-        document.getElementById("filterText").textContent = data?.meta?.filter || "\u2014";
-        document.getElementById("entryRule").textContent = data?.meta?.entry || "\u2014";
-        document.getElementById("sigRule").textContent = data?.meta?.significanceRule || "\u2014";
-
-        document.getElementById("alphaSub").textContent = data?.meta?.metricAlpha || "\u2014";
-        document.getElementById("accuracySub").textContent = data?.meta?.metricAccuracy || "\u2014";
-        document.getElementById("stocksSub").textContent = data?.stocksRecommended?.note || "\u2014";
-
-        setDbLinks(data?.meta?.databaseUrl || "#");
-
-        const alphaTop = (data?.alpha?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "\u2014",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "green",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-          shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-        })).join("");
-
-        const alphaBottom = (data?.alpha?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "\u2014",
-          valueText: fmtPct(x.avgAlpha),
-          valueClass: "red",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-          shareText: `${x.creator || ''} has ${fmtPct(x.avgAlpha)} alpha vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-        })).join("");
-
-        document.getElementById("alphaTop").innerHTML = alphaTop || `<div class="no-data">No data.</div>`;
-        document.getElementById("alphaBottom").innerHTML = alphaBottom || `<div class="no-data">No data.</div>`;
-
-        const accTop = (data?.accuracy?.top || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "good"),
-          creator: x.creator || "\u2014",
-          valueText: fmtRate(x.winRate),
-          valueClass: "green",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-          shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-        })).join("");
-
-        const accBottom = (data?.accuracy?.bottom || []).slice(0, 4).map((x) => rowCreator({
-          rank: pillRank(x.rank ?? "", "bad"),
-          creator: x.creator || "\u2014",
-          valueText: fmtRate(x.winRate),
-          valueClass: "red",
-          subText: `${typeof x.n === "number" ? `n=${x.n}` : ""} ${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-          shareText: `${x.creator || ''} has ${fmtRate(x.winRate)} accuracy on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-        })).join("");
-
-        document.getElementById("accTop").innerHTML = accTop || `<div class="no-data">No data.</div>`;
-        document.getElementById("accBottom").innerHTML = accBottom || `<div class="no-data">No data.</div>`;
-
-        const stockItems = (data?.stocksRecommended?.items || []).slice(0, 8);
-        const maxMentions = Math.max(...stockItems.map(s => s.mentions || 0), 1);
-        const stocks = stockItems.map(s => rowTicker({
-          ...s,
-          barWidth: ((s.mentions || 0) / maxMentions * 100).toFixed(1)
-        })).join("");
-        document.getElementById("stocksList").innerHTML = stocks || `<div class="no-data">No data.</div>`;
-
-        const d90 = data?.intervals?.d90 || {};
-        const d180 = data?.intervals?.d180 || {};
-        const d365 = data?.intervals?.d365 || {};
-
-        document.getElementById("d90Label").textContent = d90.label || "90D";
-        document.getElementById("d180Label").textContent = d180.label || "180D";
-        document.getElementById("d365Label").textContent = d365.label || "365D";
-
-        const renderTopBottom = (block, topId, bottomId, horizonLabel) => {
-          const top = (block.top || []).slice(0, 3).map(x => rowCreator({
-            rank: pillRank(x.rank ?? "", "good"),
-            creator: x.creator || "\u2014",
-            valueText: fmtPct(x.alpha),
-            valueClass: "green",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-            shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-          })).join("");
-
-          const bottom = (block.bottom || []).slice(0, 3).map(x => rowCreator({
-            rank: pillRank(x.rank ?? "", "bad"),
-            creator: x.creator || "\u2014",
-            valueText: fmtPct(x.alpha),
-            valueClass: "red",
-            subText: `${fmtP(x.pValue)} ${sigPill(!!x.sig)}`.trim(),
-            shareText: `${x.creator || ''} has ${fmtPct(x.alpha)} alpha (${horizonLabel}) vs S&P 500 on @TruealphaInvest's leaderboard. See the full rankings:\n\nhttps://truealphadata.com/leaderboard/`
-          })).join("");
-
-          document.getElementById(topId).innerHTML = top || `<div class="no-data">No data.</div>`;
-          document.getElementById(bottomId).innerHTML = bottom || `<div class="no-data">No data.</div>`;
-        };
-
-        renderTopBottom(d90, "d90Top", "d90Bottom", d90.label || "90D");
-        renderTopBottom(d180, "d180Top", "d180Bottom", d180.label || "180D");
-        renderTopBottom(d365, "d365Top", "d365Bottom", d365.label || "365D");
-
+        const data = await fetchData();
+        renderLeaderboard(data);
       } catch (e) {
-        console.error(e);
+        console.error("[Leaderboard] All data sources failed:", e);
         const ids = ["alphaTop","alphaBottom","accTop","accBottom","stocksList","d90Top","d90Bottom","d180Top","d180Bottom","d365Top","d365Bottom"];
         ids.forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="error-data">Failed to load leaderboard.json</div>`;
+          if (el) el.innerHTML = `<div class="error-data">Failed to load data</div>`;
         });
       }
     }

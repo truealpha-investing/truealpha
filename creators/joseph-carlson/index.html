@@ -225,6 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/methodology.html">Methodology</a>
         <a href="/faq.html">FAQ</a>
         <a href="/blog.html">Weekly Insights</a>
+        <a href="/creators/">Creators</a>
         <a href="/leaderboard/">Leaderboard</a>
         <a href="/compare.html">Compare</a>
       </div>
@@ -402,6 +403,104 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </footer>
+
+  <!-- ============ LIVE DATA FROM GOOGLE SHEETS ============ -->
+  <script src="/js/sheet-data.js"></script>
+  <script>
+  (function() {
+    var CREATOR_NAME = "Joseph Carlson";
+
+    function fmtPct(n) {
+      if (!Number.isFinite(n)) return "\u2014";
+      return (n > 0 ? "+" : "") + n.toFixed(2) + "%";
+    }
+    function fmtRate(n) {
+      if (!Number.isFinite(n)) return "\u2014";
+      return n.toFixed(2) + "%";
+    }
+    function alphaClass(n) {
+      if (!Number.isFinite(n)) return "neutral";
+      return n >= 0 ? "green" : "red";
+    }
+
+    SheetData.fetchCreators().then(function(creators) {
+      var c = SheetData.getCreatorByName(creators, CREATOR_NAME);
+      if (!c) { console.warn("[Creator] Not found in CSV:", CREATOR_NAME); return; }
+      console.log("[Creator] Loaded live data for", CREATOR_NAME, c);
+
+      var verdict = document.querySelector('.creator-verdict');
+      if (verdict) {
+        var alpha = c.avgAlpha;
+        if (Number.isFinite(alpha)) {
+          var cls = alpha >= 0 ? "positive" : "negative";
+          var txt = alpha >= 0
+            ? "Beats the S&P 500 by " + fmtPct(alpha) + " on average"
+            : "Underperforms the S&P 500 by " + fmtPct(alpha);
+          verdict.innerHTML = '<span class="' + cls + '">' + txt.replace(/&/g,'&amp;') + '</span>';
+        }
+      }
+
+      var pills = document.querySelectorAll('.creator-pills .creator-pill .value');
+      if (pills.length >= 3) {
+        if (Number.isFinite(c.totalPicks)) pills[0].textContent = Math.round(c.totalPicks);
+        if (Number.isFinite(c.avgAlpha)) {
+          pills[1].textContent = fmtPct(c.avgAlpha);
+          pills[1].className = "value " + alphaClass(c.avgAlpha);
+        }
+        if (Number.isFinite(c.accuracy)) pills[2].textContent = fmtRate(c.accuracy);
+      }
+
+      var stats = document.querySelectorAll('.stats-grid .stat-value');
+      if (stats.length >= 7) {
+        var fields = [
+          { v: c.totalPicks, fmt: function(n){ return Math.round(n); }, cls: "neutral" },
+          { v: c.accuracy, fmt: fmtRate, cls: "neutral" },
+          { v: c.avgAlpha, fmt: fmtPct, cls: alphaClass(c.avgAlpha) },
+          { v: c.shortTermAccuracy, fmt: fmtRate, cls: "neutral" },
+          { v: c.longTermAccuracy, fmt: fmtRate, cls: "neutral" },
+          { v: c.bullishAccuracy, fmt: fmtRate, cls: "neutral" },
+          { v: c.bearishAccuracy, fmt: fmtRate, cls: "neutral" }
+        ];
+        for (var i = 0; i < fields.length && i < stats.length; i++) {
+          if (Number.isFinite(fields[i].v)) {
+            stats[i].textContent = fields[i].fmt(fields[i].v);
+            stats[i].className = "stat-value " + fields[i].cls;
+          }
+        }
+      }
+
+      var horizons = document.querySelectorAll('.inner-panel-value');
+      if (horizons.length >= 3) {
+        var hvals = [c.shortTermAlpha, c.avgAlpha, c.longTermAlpha];
+        for (var j = 0; j < 3; j++) {
+          if (Number.isFinite(hvals[j])) {
+            horizons[j].textContent = fmtPct(hvals[j]);
+            horizons[j].className = "inner-panel-value " + alphaClass(hvals[j]);
+          }
+        }
+      }
+
+      var tickers = document.querySelectorAll('.call-ticker');
+      var returns = document.querySelectorAll('.call-return');
+      if (tickers.length >= 2 && returns.length >= 2) {
+        if (c.bestCallTicker) tickers[0].textContent = c.bestCallTicker;
+        if (Number.isFinite(c.bestCall)) { returns[0].textContent = fmtPct(c.bestCall); returns[0].className = "call-return green"; }
+        if (c.worstCallTicker) tickers[1].textContent = c.worstCallTicker;
+        if (Number.isFinite(c.worstCall)) { returns[1].textContent = fmtPct(c.worstCall); returns[1].className = "call-return red"; }
+      }
+
+      if (c.recommendedAssets) {
+        var container = document.querySelector('.asset-pills');
+        if (container) {
+          var assets = c.recommendedAssets.split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+          container.innerHTML = assets.map(function(t){ return '<span class="asset-pill">' + t + '</span>'; }).join('');
+        }
+      }
+    }).catch(function(err) {
+      console.warn("[Creator] CSV fetch failed, keeping static data:", err);
+    });
+  })();
+  </script>
 
 </body>
 </html>
