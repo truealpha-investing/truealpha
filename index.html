@@ -1070,10 +1070,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <!-- ============ SCRIPTS ============ -->
+  <script src="/js/sheet-data.js"></script>
   <script>
     // ======================================
     // QuickScan Leaderboard
     // ======================================
+    var CREATOR_PROFILES = {
+      "Tom Nash": "/creators/tom-nash/",
+      "Jim Cramer": "/creators/jim-cramer/",
+      "Joseph Carlson": "/creators/joseph-carlson/",
+      "ClearValue Tax": "/creators/clearvalue-tax/",
+      "Meet Kevin": "/creators/meet-kevin/"
+    };
+
     function fmtPct(n) {
       var num = Number(n);
       if (!Number.isFinite(num)) return '—';
@@ -1086,10 +1095,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var alpha = Number(item.avgAlpha || 0);
       var width = Math.min(100, Math.max(6, Math.round((Math.abs(alpha) / (maxAbs || 1)) * 100)));
       var colorClass = isTop ? 'green' : 'red';
+      var profileUrl = CREATOR_PROFILES[creator];
+      var nameHtml = profileUrl
+        ? '<a href="' + profileUrl + '" class="name" style="color:inherit;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color=\'var(--color-green-400)\'" onmouseout="this.style.color=\'inherit\'">' + creator + '</a>'
+        : '<span class="name">' + creator + '</span>';
 
       return '<div class="leaderboard-row">' +
         '<div class="leaderboard-row-header">' +
-          '<span class="name">' + creator + '</span>' +
+          nameHtml +
           '<span class="value ' + colorClass + '">' + fmtPct(alpha) + '</span>' +
         '</div>' +
         '<div class="bar-track">' +
@@ -1101,38 +1114,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     async function loadQuickScan() {
       var topEl = document.getElementById('topList');
       var bottomEl = document.getElementById('bottomList');
+      var data;
 
       try {
-        var res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        var data = await res.json();
-
-        document.getElementById('updatedText').textContent = data?.meta?.lastUpdated || '—';
-        document.getElementById('metricText').textContent = data?.meta?.metricAlpha || 'Average Alpha vs S&P 500';
-        document.getElementById('filterText').textContent = data?.meta?.filter || 'Filter: Verified (N > 20)';
-
-        var top = (data?.alpha?.top || []).slice(0, 4);
-        var bottom = (data?.alpha?.bottom || []).slice(0, 4);
-
-        var maxAbs = Math.max.apply(null, top.concat(bottom).map(function(x) { return Math.abs(Number(x.avgAlpha) || 0); }).concat([1]));
-
-        topEl.innerHTML = top.length
-          ? top.map(function(r) { return rowHTML(r, true, maxAbs); }).join('')
-          : '<div style="font-size:14px;color:var(--color-text-secondary)">No top performer data.</div>';
-
-        bottomEl.innerHTML = bottom.length
-          ? bottom.map(function(r) { return rowHTML(r, false, maxAbs); }).join('')
-          : '<div style="font-size:14px;color:var(--color-text-secondary)">No underperformer data.</div>';
-
-      } catch (err) {
-        console.error('QuickScan error:', err);
-        var fallback = '<div class="fallback-message">' +
-          '<div class="loading-text">Live data loading…</div>' +
-          '<a href="/leaderboard/">View the full leaderboard →</a>' +
-        '</div>';
-        topEl.innerHTML = fallback;
-        bottomEl.innerHTML = fallback;
+        // Try Google Sheets CSV first via SheetData
+        console.log('[Homepage] Fetching from Google Sheets CSV...');
+        var creators = await SheetData.fetchCreators();
+        data = SheetData.transformToLeaderboardData(creators);
+        console.log('[Homepage] Google Sheets CSV loaded successfully');
+      } catch (csvErr) {
+        console.warn('[Homepage] CSV fetch failed, falling back to leaderboard.json', csvErr);
+        try {
+          var res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          data = await res.json();
+        } catch (jsonErr) {
+          console.error('[Homepage] All data sources failed:', jsonErr);
+          var fallback = '<div class="fallback-message">' +
+            '<div class="loading-text">Live data loading…</div>' +
+            '<a href="/leaderboard/">View the full leaderboard →</a>' +
+          '</div>';
+          topEl.innerHTML = fallback;
+          bottomEl.innerHTML = fallback;
+          return;
+        }
       }
+
+      document.getElementById('updatedText').textContent = data?.meta?.lastUpdated || '—';
+      document.getElementById('metricText').textContent = data?.meta?.metricAlpha || 'Average Alpha vs S&P 500';
+      document.getElementById('filterText').textContent = data?.meta?.filter || 'Filter: Verified (N > 20)';
+
+      var top = (data?.alpha?.top || []).slice(0, 4);
+      var bottom = (data?.alpha?.bottom || []).slice(0, 4);
+
+      var maxAbs = Math.max.apply(null, top.concat(bottom).map(function(x) { return Math.abs(Number(x.avgAlpha) || 0); }).concat([1]));
+
+      topEl.innerHTML = top.length
+        ? top.map(function(r) { return rowHTML(r, true, maxAbs); }).join('')
+        : '<div style="font-size:14px;color:var(--color-text-secondary)">No top performer data.</div>';
+
+      bottomEl.innerHTML = bottom.length
+        ? bottom.map(function(r) { return rowHTML(r, false, maxAbs); }).join('')
+        : '<div style="font-size:14px;color:var(--color-text-secondary)">No underperformer data.</div>';
     }
 
     // Initialize
