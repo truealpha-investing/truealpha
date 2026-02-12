@@ -958,6 +958,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/methodology.html">Methodology</a>
         <a href="/faq.html">FAQ</a>
         <a href="/blog.html">Weekly Insights</a>
+        <a href="/creators/">Creators</a>
         <a href="/compare.html">Compare</a>
       </div>
 
@@ -1270,16 +1271,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
     }
 
+    const CREATOR_PROFILES = {
+      "Tom Nash": "/creators/tom-nash/",
+      "Jim Cramer": "/creators/jim-cramer/",
+      "Joseph Carlson": "/creators/joseph-carlson/",
+      "ClearValue Tax": "/creators/clearvalue-tax/",
+      "Meet Kevin": "/creators/meet-kevin/"
+    };
+
     function rowCreator({ rank, creator, valueText, valueClass, subText, shareText }) {
       const shareBtn = shareText
         ? `<button class="share-icon" onclick="shareOnX(this)" data-share-text="${escAttr(shareText)}" title="Share on X">${SHARE_SVG}</button>`
         : '';
+      const profileUrl = CREATOR_PROFILES[creator];
+      const nameHtml = profileUrl
+        ? `<a href="${profileUrl}" class="lb-row-name" style="color:var(--color-text-primary);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--color-green-400)'" onmouseout="this.style.color='var(--color-text-primary)'">${creator}</a>`
+        : `<div class="lb-row-name">${creator}</div>`;
       return `
         <div class="lb-row">
           <div class="lb-row-left">
             ${rank}
             <div class="lb-row-info">
-              <div class="lb-row-name">${creator}</div>
+              ${nameHtml}
               <div class="lb-row-sub">${subText}</div>
             </div>
             ${shareBtn}

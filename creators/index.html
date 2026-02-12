@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W43WKXJK');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Profiles — YouTube Finance Creators Tracked &amp; Ranked | TrueAlpha</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Browse verified performance profiles for YouTube finance creators. See alpha vs S&P 500, accuracy rates, best and worst calls — all data-driven." />
+  <meta name="keywords" content="youtube finance creators, stock guru profiles, finance youtuber performance, finfluencer accuracy, stock pick tracker" />
+  <link rel="canonical" href="https://truealphadata.com/creators/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://truealphadata.com/creators/" />
+  <meta property="og:title" content="Creator Profiles — YouTube Finance Creators Tracked &amp; Ranked | TrueAlpha" />
+  <meta property="og:description" content="Browse verified performance profiles for YouTube finance creators. See alpha vs S&P 500, accuracy rates, best and worst calls — all data-driven." />
+  <meta property="og:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@TruealphaInvest" />
+  <meta name="twitter:title" content="Creator Profiles — YouTube Finance Creators Tracked &amp; Ranked | TrueAlpha" />
+  <meta name="twitter:description" content="Browse verified performance profiles for YouTube finance creators. See alpha vs S&P 500, accuracy rates, best and worst calls." />
+  <meta name="twitter:image" content="https://truealphadata.com/og-image.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ======================================
+       CSS Custom Properties
+       ====================================== */
+    :root {
+      --color-bg: #0a0f0a;
+      --color-bg-secondary: #0d1410;
+      --color-surface: rgba(255, 255, 255, 0.04);
+      --color-surface-hover: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-subtle: rgba(255, 255, 255, 0.04);
+      --color-text-primary: #f0f0f0;
+      --color-text-secondary: #9ca3af;
+      --color-text-muted: #6b7280;
+      --color-text-faint: #4b5563;
+      --color-green-500: #22c55e;
+      --color-green-400: #4ade80;
+      --color-green-600: #16a34a;
+      --color-green-glow: rgba(34, 197, 94, 0.22);
+      --color-green-bg: rgba(34, 197, 94, 0.10);
+      --color-green-border: rgba(34, 197, 94, 0.25);
+      --color-red-400: #f87171;
+      --color-red-500: #ef4444;
+      --color-gradient-start: #4ade80;
+      --color-gradient-end: #059669;
+      --color-grid-line: rgba(34, 197, 94, 0.04);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Space Grotesk', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+    }
+
+    /* ======================================
+       Reset & Base
+       ====================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ======================================
+       Navigation
+       ====================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(10, 15, 10, 0.85);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-brand:hover { opacity: 0.9; }
+    .nav-brand svg { width: 24px; height: 24px; color: var(--color-green-500); }
+
+    .nav-brand-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-text .accent { color: var(--color-green-500); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--color-green-400); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      transition: background 0.2s;
+      box-shadow: 0 0 16px var(--color-green-glow);
+    }
+
+    .nav-cta:hover { background: var(--color-green-500); }
+
+    /* ======================================
+       Layout
+       ====================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ======================================
+       Hero
+       ====================================== */
+    .page-hero {
+      padding: 64px 16px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .page-hero .subtitle {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-green-border);
+      background: var(--color-green-bg);
+      color: var(--color-green-400);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    /* ======================================
+       Creator Cards Grid
+       ====================================== */
+    .creators-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 0 64px;
+    }
+
+    @media (min-width: 640px) {
+      .creators-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .creators-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .creator-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .creator-card:hover {
+      border-color: var(--color-green-border);
+      background: var(--color-surface-hover);
+      transform: translateY(-2px);
+    }
+
+    .creator-card-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .creator-card-channel {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+    }
+
+    .creator-card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .creator-stat {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .creator-stat-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .creator-stat-value.green { color: var(--color-green-400); }
+    .creator-stat-value.red { color: var(--color-red-400); }
+
+    .creator-stat-label {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    .creator-card-verdict {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .creator-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--color-green-bg);
+      border: 1px solid var(--color-green-border);
+      border-radius: var(--radius-md);
+      color: var(--color-green-400);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      transition: background 0.2s, color 0.2s;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .creator-card-link:hover {
+      background: var(--color-green-600);
+      color: #fff;
+    }
+
+    /* ======================================
+       Email CTA
+       ====================================== */
+    .email-section {
+      padding: 64px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .email-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.5rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .email-section .subtext {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .email-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .email-form-wrap input[type="email"],
+    .email-form-wrap input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .email-form-wrap input:focus {
+      border-color: var(--color-green-500);
+    }
+
+    .email-form-wrap button[type="submit"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--color-green-600);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 0 16px var(--color-green-glow);
+    }
+
+    .email-form-wrap button[type="submit"]:hover {
+      background: var(--color-green-500);
+    }
+
+    .email-proof {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 16px;
+    }
+
+    .text-center { text-align: center; }
+
+    /* ======================================
+       Footer
+       ====================================== */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+      padding: 40px 0;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      font-size: 14px;
+      color: var(--color-text-faint);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--color-green-400); }
+
+    /* ======================================
+       Responsive
+       ====================================== */
+    @media (max-width: 768px) {
+      .nav-links { gap: 16px; font-size: 13px; }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 48px 16px 32px; }
+      .creator-card { padding: 20px; }
+      .nav-links a,
+      .nav-cta,
+      .creator-card-link { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W43WKXJK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span class="nav-brand-text">TRUE<span class="accent">ALPHA</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/methodology.html">Methodology</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/blog.html">Weekly Insights</a>
+        <a href="/creators/">Creators</a>
+        <a href="/leaderboard/">Leaderboard</a>
+        <a href="/compare.html">Compare</a>
+      </div>
+
+      <a href="#emailCta" class="nav-cta">Get Free Report <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </nav>
+
+  <main style="flex-grow:1">
+
+    <!-- ============ HERO ============ -->
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <span class="pill">CREATOR PROFILES</span>
+        <h1>YouTube Finance Creators, Tracked &amp; Ranked</h1>
+        <p class="subtitle">Deep-dive performance profiles for every creator we track. Alpha, accuracy, best and worst calls — all benchmarked vs the S&amp;P 500.</p>
+      </div>
+    </section>
+
+    <!-- ============ CREATOR CARDS ============ -->
+    <section class="container">
+      <div class="creators-grid">
+
+        <!-- Tom Nash -->
+        <div class="creator-card">
+          <div class="creator-card-name">Tom Nash</div>
+          <div class="creator-card-channel">YouTube &middot; Tech &amp; Growth Stocks</div>
+          <div class="creator-card-stats">
+            <div class="creator-stat">
+              <div class="creator-stat-value green">+57.32%</div>
+              <div class="creator-stat-label">Avg Alpha</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">51.02%</div>
+              <div class="creator-stat-label">Accuracy</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">49</div>
+              <div class="creator-stat-label">Picks Tracked</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value green">Outperform</div>
+              <div class="creator-stat-label">Verdict</div>
+            </div>
+          </div>
+          <p class="creator-card-verdict">Highest alpha of any tracked creator. Heavy PLTR concentration; best single call +531%.</p>
+          <a href="/creators/tom-nash/" class="creator-card-link">View Full Profile &rarr;</a>
+        </div>
+
+        <!-- Jim Cramer -->
+        <div class="creator-card">
+          <div class="creator-card-name">Jim Cramer</div>
+          <div class="creator-card-channel">CNBC Mad Money &middot; Broad Market</div>
+          <div class="creator-card-stats">
+            <div class="creator-stat">
+              <div class="creator-stat-value green">+0.77%</div>
+              <div class="creator-stat-label">Avg Alpha</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">50.00%</div>
+              <div class="creator-stat-label">Accuracy</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">36</div>
+              <div class="creator-stat-label">Picks Tracked</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">Market-rate</div>
+              <div class="creator-stat-label">Verdict</div>
+            </div>
+          </div>
+          <p class="creator-card-verdict">Surprisingly close to market. Coin-flip accuracy with near-zero alpha. Not the meme the internet makes him.</p>
+          <a href="/creators/jim-cramer/" class="creator-card-link">View Full Profile &rarr;</a>
+        </div>
+
+        <!-- Joseph Carlson -->
+        <div class="creator-card">
+          <div class="creator-card-name">Joseph Carlson</div>
+          <div class="creator-card-channel">YouTube &middot; Dividend &amp; Value Investing</div>
+          <div class="creator-card-stats">
+            <div class="creator-stat">
+              <div class="creator-stat-value red">-2.01%</div>
+              <div class="creator-stat-label">Avg Alpha</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">40.91%</div>
+              <div class="creator-stat-label">Accuracy</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">198</div>
+              <div class="creator-stat-label">Picks Tracked</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value red">Underperform</div>
+              <div class="creator-stat-label">Verdict</div>
+            </div>
+          </div>
+          <p class="creator-card-verdict">Large sample of 198 picks. Slight negative alpha and below-50% accuracy. High volume, moderate conviction.</p>
+          <a href="/creators/joseph-carlson/" class="creator-card-link">View Full Profile &rarr;</a>
+        </div>
+
+        <!-- ClearValue Tax -->
+        <div class="creator-card">
+          <div class="creator-card-name">ClearValue Tax</div>
+          <div class="creator-card-channel">YouTube &middot; Real Estate &amp; Macro</div>
+          <div class="creator-card-stats">
+            <div class="creator-stat">
+              <div class="creator-stat-value red">-4.88%</div>
+              <div class="creator-stat-label">Avg Alpha</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">20.41%</div>
+              <div class="creator-stat-label">Accuracy</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">68</div>
+              <div class="creator-stat-label">Picks Tracked</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value red">Underperform</div>
+              <div class="creator-stat-label">Verdict</div>
+            </div>
+          </div>
+          <p class="creator-card-verdict">Low accuracy and negative alpha across 68 tracked picks. Better known for tax advice than stock calls.</p>
+          <a href="/creators/clearvalue-tax/" class="creator-card-link">View Full Profile &rarr;</a>
+        </div>
+
+        <!-- Meet Kevin -->
+        <div class="creator-card">
+          <div class="creator-card-name">Meet Kevin</div>
+          <div class="creator-card-channel">YouTube &middot; Growth &amp; Macro</div>
+          <div class="creator-card-stats">
+            <div class="creator-stat">
+              <div class="creator-stat-value red">-15.54%</div>
+              <div class="creator-stat-label">Avg Alpha</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">33.33%</div>
+              <div class="creator-stat-label">Accuracy</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value">36</div>
+              <div class="creator-stat-label">Picks Tracked</div>
+            </div>
+            <div class="creator-stat">
+              <div class="creator-stat-value red">Underperform</div>
+              <div class="creator-stat-label">Verdict</div>
+            </div>
+          </div>
+          <p class="creator-card-verdict">Significant negative alpha with sub-50% accuracy. High-conviction, high-volatility approach that hasn't paid off in the data.</p>
+          <a href="/creators/meet-kevin/" class="creator-card-link">View Full Profile &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ EMAIL SIGNUP ============ -->
+    <section id="emailCta" class="email-section">
+      <div class="container text-center">
+        <h3>Get the Guru Report Card</h3>
+        <p class="subtext">Free weekly email: who's beating the market, who's not, and which new creators we're tracking.</p>
+
+        <div class="email-form-wrap">
+          <form action="https://app.kit.com/forms/8848906/subscriptions" method="post">
+            <div>
+              <input type="email"
+                     name="email_address"
+                     placeholder="Email Address"
+                     required />
+
+              <input type="text"
+                     name="fields[first_name]"
+                     placeholder="Which Creator Should We Profile Next? (Optional)" />
+
+              <button type="submit">Join Free Email</button>
+            </div>
+          </form>
+          <script>
+          (function() {
+            var form = document.querySelector('form[action*="app.kit.com/forms/8848906"]');
+            if (form) {
+              form.addEventListener('submit', function() {
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                  'event': 'email_signup',
+                  'signup_location': 'creators_hub'
+                });
+              });
+            }
+          })();
+          </script>
+
+          <p class="email-proof">Join 130+ investors. 100% free. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">True Alpha Research</div>
+        <div class="footer-legal">Not financial advice. For entertainment &amp; data purposes only.</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://x.com/TruealphaInvest" target="_blank">X / Twitter</a>
+        <a href="https://www.reddit.com/user/TrueAlphaData/" target="_blank">Reddit</a>
+        <a href="mailto:hello@truealphadata.com">hello@truealphadata.com</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
