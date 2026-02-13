@@ -204,6 +204,50 @@
       .stat-card .stat-value { font-size: 16px; }
       .creator-pill { font-size: 10px; padding: 6px 10px; }
     }
+
+    /* Insight Sections */
+    .risk-match-body { margin-top: 16px; }
+    .risk-badge { display: inline-block; padding: 6px 14px; border-radius: var(--radius-full); font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px; }
+    .risk-badge.risk-high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }
+    .risk-badge.risk-moderate { background: rgba(234, 179, 8, 0.12); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+    .risk-badge.risk-low { background: var(--color-green-bg); color: var(--color-green-400); border: 1px solid var(--color-green-border); }
+    .risk-insights { display: flex; flex-direction: column; gap: 8px; }
+    .risk-line { font-size: 14px; color: var(--color-text-secondary); line-height: 1.5; }
+    .risk-icon { margin-right: 6px; }
+    .style-summary-body { margin-top: 16px; border-left: 3px solid var(--color-green-border); padding-left: 16px; }
+    .style-summary-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; }
+    .style-summary-disclaimer { font-size: 11px; color: var(--color-text-faint); margin-top: 12px; }
+    .bullbear-body { margin-top: 16px; }
+    .bullbear-row { margin-bottom: 16px; }
+    .bullbear-label { font-size: 13px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 6px; }
+    .bullbear-bar-wrap { display: flex; align-items: center; gap: 12px; }
+    .bullbear-track { flex: 1; height: 10px; background: rgba(255,255,255,0.06); border-radius: var(--radius-full); overflow: hidden; }
+    .bullbear-fill { height: 100%; border-radius: var(--radius-full); transition: width 0.6s ease-out; }
+    .bullbear-fill.green { background: var(--color-green-500); }
+    .bullbear-fill.red { background: var(--color-red-500); }
+    .bullbear-value { font-family: var(--font-mono); font-size: 14px; font-weight: 700; white-space: nowrap; min-width: 60px; }
+    .bullbear-value.green { color: var(--color-green-400); }
+    .bullbear-value.red { color: var(--color-red-400); }
+    .bullbear-insight { font-size: 13px; color: var(--color-text-muted); margin-top: 4px; font-style: italic; }
+    .op-live-badge { color: var(--color-green-400) !important; }
+    .op-loading, .op-empty, .op-error { font-size: 14px; color: var(--color-text-muted); margin-top: 16px; }
+    .op-error a { color: var(--color-green-400); font-weight: 600; }
+    .op-count { font-size: 12px; color: var(--color-text-muted); margin-top: 12px; margin-bottom: 12px; }
+    .op-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 4px; }
+    .op-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+    .op-table th { text-align: left; padding: 8px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); white-space: nowrap; }
+    .op-table td { padding: 10px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--color-text-secondary); vertical-align: top; }
+    .op-table tbody tr:hover { background: var(--color-surface-hover); }
+    .op-ticker { font-family: var(--font-mono); font-weight: 700; color: var(--color-text-primary) !important; text-transform: uppercase; letter-spacing: 0.04em; }
+    .op-price { font-family: var(--font-mono); white-space: nowrap; }
+    .op-dir-pill { display: inline-block; padding: 2px 8px; border-radius: var(--radius-full); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; }
+    .op-dir-pill.green { background: var(--color-green-bg); color: var(--color-green-400); border: 1px solid var(--color-green-border); }
+    .op-dir-pill.red { background: var(--color-red-bg); color: var(--color-red-400); border: 1px solid var(--color-red-border); }
+    .op-conf { display: inline-block; padding: 2px 8px; border-radius: var(--radius-full); font-size: 10px; font-weight: 600; }
+    .op-conf.conf-high { background: rgba(234,179,8,0.12); color: #facc15; border: 1px solid rgba(234,179,8,0.25); }
+    .op-conf.conf-med { background: var(--color-gray-bg); color: var(--color-text-secondary); border: 1px solid var(--color-gray-border); }
+    .op-quote { font-style: italic; color: var(--color-text-faint) !important; font-size: 12px !important; max-width: 200px; }
+    .op-disclaimer { font-size: 11px; color: var(--color-text-faint); margin-top: 16px; }
   </style>
 </head>
 
@@ -320,6 +364,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <section id="insightRiskMatch" class="glass section-gap"></section>
+
+    <section id="insightStyleSummary" class="glass section-gap"></section>
+
     <section class="glass section-gap">
       <div class="panel-header">
         <h2 class="panel-title">Best &amp; Worst Calls</h2>
@@ -339,6 +387,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <section id="insightBullBear" class="glass section-gap"></section>
+
     <section class="glass section-gap">
       <div class="panel-header">
         <h2 class="panel-title">Frequently Recommended Assets</h2>
@@ -350,6 +400,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="asset-pill">QQQ</span>
       </div>
     </section>
+
+    <section id="insightOpenPredictions" class="glass section-gap"></section>
 
     <section class="methodology-summary">
       Every prediction is extracted from public YouTube video transcripts, matched to real market data, and tracked over 90, 180, and 365-day horizons. Alpha is calculated as the creator's return minus the S&amp;P 500 return over the same period. <a href="/methodology.html">Read our full methodology →</a>
@@ -500,6 +552,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       console.warn("[Creator] CSV fetch failed, keeping static data:", err);
     });
   })();
+  </script>
+  <script src="/js/creator-insights.js"></script>
+  <script>
+  CreatorInsights.init({
+    creatorId: "C10",
+    name: "Jim Cramer",
+    totalPicks: 36,
+    accuracy: 50.00,
+    avgAlpha: 0.77,
+    shortTermAlpha: -0.23,
+    longTermAlpha: 0.00,
+    bestCall: 18.42,
+    worstCall: -17.55,
+    bullishAccuracy: 43.75,
+    bearishAccuracy: 0.00,
+    bestCallTicker: "BBY",
+    worstCallTicker: "GME",
+    alphaStdDev: 8.52
+  });
   </script>
 
 </body>
