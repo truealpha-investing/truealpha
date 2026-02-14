@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-13T14:20:26.695Z",
+    "generatedAt": "2026-02-14T14:20:25.487Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
-    "totalVerifiedCreators": 47,
-    "totalPredictions": 3180
+    "totalVerifiedCreators": 48,
+    "totalPredictions": 3224
   },
   "alpha": {
     "top": [
@@ -23,6 +23,14 @@
       },
       {
         "rank": 2,
+        "creator": "Jeremy Lefebvre Clips",
+        "n": 21,
+        "pValue": 0.0321,
+        "sig": true,
+        "avgAlpha": 29.21
+      },
+      {
+        "rank": 3,
         "creator": "YT Finance",
         "n": 92,
         "pValue": 0.0572,
@@ -30,20 +38,12 @@
         "avgAlpha": 18.25
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "Daniel Pronk",
         "n": 66,
-        "pValue": 0.0135,
+        "pValue": 0.013,
         "sig": true,
         "avgAlpha": 17.01
-      },
-      {
-        "rank": 4,
-        "creator": "Stealth Wealth Investing",
-        "n": 72,
-        "pValue": 0.1874,
-        "sig": false,
-        "avgAlpha": 16.05
       }
     ],
     "bottom": [
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Stealth Wealth Investing",
-        "n": 72,
-        "pValue": 0.1874,
+        "n": 74,
+        "pValue": 0.1878,
         "sig": false,
-        "winRate": 62.5
+        "winRate": 63.51
       },
       {
         "rank": 4,
@@ -143,11 +143,11 @@
       },
       {
         "rank": 4,
-        "creator": "Fundstrat",
-        "n": 50,
-        "pValue": 0.2517,
-        "sig": false,
-        "winRate": 22
+        "creator": "The Matt Kohrs Show",
+        "n": 119,
+        "pValue": 0,
+        "sig": true,
+        "winRate": 22.69
       }
     ]
   },
@@ -159,29 +159,29 @@
         {
           "rank": 1,
           "creator": "Fundstrat",
-          "alpha": 12.5,
-          "pValue": 0.2517,
+          "alpha": 12.34,
+          "pValue": 0.2575,
           "sig": false
         },
         {
           "rank": 2,
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 5.47,
+          "pValue": 0.0321,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "Jose Najarro Stocks",
           "alpha": 5.13,
           "pValue": 0.0003,
           "sig": true
         },
         {
-          "rank": 3,
-          "creator": "Will Trades",
-          "alpha": 3.36,
-          "pValue": 0.5985,
-          "sig": false
-        },
-        {
           "rank": 4,
-          "creator": "The Patient Investor",
-          "alpha": 1.81,
-          "pValue": 0.3013,
+          "creator": "Andrei Jikh",
+          "alpha": 4.22,
+          "pValue": 0.0782,
           "sig": false
         }
       ],
@@ -229,24 +229,24 @@
         },
         {
           "rank": 2,
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 29.21,
+          "pValue": 0.0321,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "YT Finance",
           "alpha": 18.25,
           "pValue": 0.0572,
           "sig": false
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 17.01,
-          "pValue": 0.0135,
+          "pValue": 0.013,
           "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 16.05,
-          "pValue": 0.1874,
-          "sig": false
         }
       ],
       "bottom": [
@@ -301,46 +301,46 @@
         {
           "rank": 3,
           "creator": "Stealth Wealth Investing",
-          "alpha": 118.98,
-          "pValue": 0.1874,
+          "alpha": 96.65,
+          "pValue": 0.1878,
           "sig": false
         },
         {
           "rank": 4,
-          "creator": "Long Term Mindset",
-          "alpha": 55.28,
-          "pValue": 0.6638,
-          "sig": false
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 69.31,
+          "pValue": 0.0321,
+          "sig": true
         }
       ],
       "bottom": [
         {
           "rank": 1,
           "creator": "Andrei Jikh",
-          "alpha": -30.24,
-          "pValue": 0.0871,
+          "alpha": -31.61,
+          "pValue": 0.0782,
           "sig": false
         },
         {
           "rank": 2,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -26.14,
-          "pValue": 0.0194,
-          "sig": true
+          "creator": "The Patient Investor",
+          "alpha": -27.8,
+          "pValue": 0.38,
+          "sig": false
         },
         {
           "rank": 3,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -26.14,
+          "pValue": 0.0181,
+          "sig": true
+        },
+        {
+          "rank": 4,
           "creator": "Sasha Yanshin",
           "alpha": -20.46,
           "pValue": 0.6904,
           "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Joseph Carlson After Hours",
-          "alpha": -12.2,
-          "pValue": 0.0024,
-          "sig": true
         }
       ]
     }
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1874,
+          "pValue": 0.1878,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0023,
+          "pValue": 0.0018,
           "sig": true
         }
       ]
@@ -437,9 +437,9 @@
         },
         {
           "rank": 4,
-          "creator": "Daniel Pronk",
-          "alpha": 21.56,
-          "pValue": 0.0135,
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 27.96,
+          "pValue": 0.0321,
           "sig": true
         }
       ],
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "Everything Money",
           "alpha": -7.2,
-          "pValue": 0.0001,
+          "pValue": 0.0002,
           "sig": true
         }
       ]
@@ -480,30 +480,30 @@
       "top": [
         {
           "rank": 1,
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 30.59,
+          "pValue": 0.0321,
+          "sig": true
+        },
+        {
+          "rank": 2,
           "creator": "Jose Najarro Stocks",
           "alpha": 16.72,
           "pValue": 0.0003,
           "sig": true
         },
         {
-          "rank": 2,
+          "rank": 3,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 16.49,
           "pValue": 0.1832,
           "sig": false
         },
         {
-          "rank": 3,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 15.13,
-          "pValue": 0.1874,
-          "sig": false
-        },
-        {
           "rank": 4,
-          "creator": "Mr. FIRED Up Wealth",
-          "alpha": 8.02,
-          "pValue": 0.0929,
+          "creator": "Stealth Wealth Investing",
+          "alpha": 14.8,
+          "pValue": 0.1878,
           "sig": false
         }
       ],
@@ -532,8 +532,8 @@
         {
           "rank": 4,
           "creator": "Mark Moss",
-          "alpha": -27.41,
-          "pValue": 0.0023,
+          "alpha": -26.56,
+          "pValue": 0.0018,
           "sig": true
         }
       ]
@@ -571,15 +571,15 @@
         "mentions": 6
       },
       {
+        "ticker": "AMD",
+        "mentions": 4
+      },
+      {
         "ticker": "AMZN",
         "mentions": 4
       },
       {
         "ticker": "QQQ",
-        "mentions": 3
-      },
-      {
-        "ticker": "AMD",
         "mentions": 3
       }
     ]
