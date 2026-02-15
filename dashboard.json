@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-14T14:20:25.487Z",
+    "generatedAt": "2026-02-15T14:20:25.812Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
     "totalVerifiedCreators": 48,
-    "totalPredictions": 3224
+    "totalPredictions": 3210
   },
   "alpha": {
     "top": [
@@ -41,7 +41,7 @@
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 66,
-        "pValue": 0.013,
+        "pValue": 0.014,
         "sig": true,
         "avgAlpha": 17.01
       }
@@ -73,11 +73,11 @@
       },
       {
         "rank": 4,
-        "creator": "FX Evolution",
-        "n": 21,
-        "pValue": 0.0083,
+        "creator": "Mark Moss",
+        "n": 69,
+        "pValue": 0.0001,
         "sig": true,
-        "avgAlpha": -20.41
+        "avgAlpha": -21.07
       }
     ]
   },
@@ -181,7 +181,7 @@
           "rank": 4,
           "creator": "Andrei Jikh",
           "alpha": 4.22,
-          "pValue": 0.0782,
+          "pValue": 0.211,
           "sig": false
         }
       ],
@@ -245,7 +245,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 17.01,
-          "pValue": 0.013,
+          "pValue": 0.014,
           "sig": true
         }
       ],
@@ -273,9 +273,9 @@
         },
         {
           "rank": 4,
-          "creator": "FX Evolution",
-          "alpha": -20.41,
-          "pValue": 0.0083,
+          "creator": "Mark Moss",
+          "alpha": -21.07,
+          "pValue": 0.0001,
           "sig": true
         }
       ]
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0782,
+          "pValue": 0.211,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0018,
+          "pValue": 0.0001,
           "sig": true
         }
       ]
@@ -432,7 +432,7 @@
           "rank": 3,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.6638,
+          "pValue": 0.669,
           "sig": false
         },
         {
@@ -532,8 +532,8 @@
         {
           "rank": 4,
           "creator": "Mark Moss",
-          "alpha": -26.56,
-          "pValue": 0.0018,
+          "alpha": -26.36,
+          "pValue": 0.0001,
           "sig": true
         }
       ]
