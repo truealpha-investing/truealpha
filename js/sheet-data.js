@@ -198,7 +198,11 @@ window.SheetData = (function () {
         sampleSizeMet:    COL.sampleSizeMet >= 0 ? /^y/i.test((row[COL.sampleSizeMet] || "").trim()) : true,
         bestCallTicker:   COL.bestCallTicker >= 0 ? (row[COL.bestCallTicker] || "").trim() : "",
         worstCallTicker:  COL.worstCallTicker >= 0 ? (row[COL.worstCallTicker] || "").trim() : "",
-        recommendedAssets:COL.recommendedAssets >= 0 ? (row[COL.recommendedAssets] || "").trim() : ""
+        recommendedAssets:COL.recommendedAssets >= 0 ? (row[COL.recommendedAssets] || "").trim() : "",
+        alphaStdDev:      COL.alphaStdDev >= 0 ? pct(row[COL.alphaStdDev]) : NaN,
+        alpha2023:        COL.alpha2023 >= 0 ? pct(row[COL.alpha2023]) : NaN,
+        alpha2024:        COL.alpha2024 >= 0 ? pct(row[COL.alpha2024]) : NaN,
+        alpha2025:        COL.alpha2025 >= 0 ? pct(row[COL.alpha2025]) : NaN
       });
     }
 
