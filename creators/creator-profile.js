@@ -220,7 +220,11 @@ window.CreatorProfile = (function () {
         bearishAccuracy: c.bearishAccuracy,
         recommendedAssets: c.recommendedAssets || "",
         pValue: c.pValue,
-        sig: c.sig
+        sig: c.sig,
+        alphaStdDev: c.alphaStdDev,
+        alpha2023: c.alpha2023,
+        alpha2024: c.alpha2024,
+        alpha2025: c.alpha2025
       };
 
       // Render all sections
@@ -247,7 +251,11 @@ window.CreatorProfile = (function () {
           bearishAccuracy: Number.isFinite(merged.bearishAccuracy) ? merged.bearishAccuracy : 0,
           bestCallTicker: merged.bestCallTicker,
           worstCallTicker: merged.worstCallTicker,
-          alphaStdDev: 0
+          alphaStdDev: Number.isFinite(merged.alphaStdDev) ? merged.alphaStdDev : NaN,
+          alpha2023: merged.alpha2023,
+          alpha2024: merged.alpha2024,
+          alpha2025: merged.alpha2025,
+          pValue: merged.pValue
         });
       }
     }).catch(function (err) {
