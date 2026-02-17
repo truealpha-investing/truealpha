@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-16T14:20:24.738Z",
+    "generatedAt": "2026-02-17T14:20:24.173Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
     "totalVerifiedCreators": 48,
-    "totalPredictions": 3220
+    "totalPredictions": 3244
   },
   "alpha": {
     "top": [
@@ -58,10 +58,10 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 45,
+        "n": 46,
         "pValue": 0.0003,
         "sig": true,
-        "avgAlpha": -33.78
+        "avgAlpha": -32.59
       },
       {
         "rank": 3,
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 60,
-        "pValue": 0.0003,
+        "n": 68,
+        "pValue": 0.0005,
         "sig": true,
-        "winRate": 76.67
+        "winRate": 72.06
       },
       {
         "rank": 2,
@@ -136,10 +136,10 @@
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 42,
+        "n": 43,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.43
+        "winRate": 20.93
       },
       {
         "rank": 4,
@@ -160,7 +160,7 @@
           "rank": 1,
           "creator": "Fundstrat",
           "alpha": 12.34,
-          "pValue": 0.3566,
+          "pValue": 0.2575,
           "sig": false
         },
         {
@@ -172,16 +172,16 @@
         },
         {
           "rank": 3,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 5.13,
-          "pValue": 0.0003,
-          "sig": true
+          "creator": "Andrei Jikh",
+          "alpha": 4.22,
+          "pValue": 0.0782,
+          "sig": false
         },
         {
           "rank": 4,
-          "creator": "Andrei Jikh",
-          "alpha": 4.22,
-          "pValue": 0.0384,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 3.54,
+          "pValue": 0.0005,
           "sig": true
         }
       ],
@@ -260,7 +260,7 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -33.78,
+          "alpha": -32.59,
           "pValue": 0.0003,
           "sig": true
         },
@@ -318,8 +318,8 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0384,
-          "sig": true
+          "pValue": 0.0782,
+          "sig": false
         },
         {
           "rank": 2,
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "Everything Money",
           "alpha": -7.2,
-          "pValue": 0.0001,
+          "pValue": 0.0002,
           "sig": true
         }
       ]
@@ -487,24 +487,24 @@
         },
         {
           "rank": 2,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 16.72,
-          "pValue": 0.0003,
-          "sig": true
-        },
-        {
-          "rank": 3,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 16.49,
           "pValue": 0.1832,
           "sig": false
         },
         {
-          "rank": 4,
+          "rank": 3,
           "creator": "Stealth Wealth Investing",
           "alpha": 14.8,
           "pValue": 0.1878,
           "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 14.07,
+          "pValue": 0.0005,
+          "sig": true
         }
       ],
       "bottom": [
@@ -526,7 +526,7 @@
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": -32.02,
-          "pValue": 0.7356,
+          "pValue": 0.6702,
           "sig": false
         },
         {
@@ -571,15 +571,15 @@
         "mentions": 6
       },
       {
-        "ticker": "AMD",
-        "mentions": 4
-      },
-      {
         "ticker": "AMZN",
         "mentions": 4
       },
       {
-        "ticker": "QQQ",
+        "ticker": "AMD",
+        "mentions": 4
+      },
+      {
+        "ticker": "SCHD",
         "mentions": 3
       }
     ]
