@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-17T14:20:24.173Z",
+    "generatedAt": "2026-02-18T14:20:28.021Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
     "totalVerifiedCreators": 48,
-    "totalPredictions": 3244
+    "totalPredictions": 3259
   },
   "alpha": {
     "top": [
@@ -93,19 +93,19 @@
       },
       {
         "rank": 2,
+        "creator": "Stealth Wealth Investing",
+        "n": 76,
+        "pValue": 0.1868,
+        "sig": false,
+        "winRate": 64.47
+      },
+      {
+        "rank": 3,
         "creator": "Let's Talk Money! with Joseph Hogue, CFA",
         "n": 42,
         "pValue": 0.1832,
         "sig": false,
         "winRate": 64.29
-      },
-      {
-        "rank": 3,
-        "creator": "Stealth Wealth Investing",
-        "n": 74,
-        "pValue": 0.1878,
-        "sig": false,
-        "winRate": 63.51
       },
       {
         "rank": 4,
@@ -136,18 +136,18 @@
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 43,
+        "n": 42,
         "pValue": 0,
         "sig": true,
-        "winRate": 20.93
+        "winRate": 21.43
       },
       {
         "rank": 4,
         "creator": "The Matt Kohrs Show",
-        "n": 119,
+        "n": 123,
         "pValue": 0,
         "sig": true,
-        "winRate": 22.69
+        "winRate": 21.95
       }
     ]
   },
@@ -174,15 +174,15 @@
           "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": 4.22,
-          "pValue": 0.0782,
-          "sig": false
+          "pValue": 0.0384,
+          "sig": true
         },
         {
           "rank": 4,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 3.54,
-          "pValue": 0.0005,
-          "sig": true
+          "creator": "이효석아카데미",
+          "alpha": 3.78,
+          "pValue": 0.9358,
+          "sig": false
         }
       ],
       "bottom": [
@@ -301,8 +301,8 @@
         {
           "rank": 3,
           "creator": "Stealth Wealth Investing",
-          "alpha": 96.65,
-          "pValue": 0.1878,
+          "alpha": 81.25,
+          "pValue": 0.1868,
           "sig": false
         },
         {
@@ -318,14 +318,14 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0782,
-          "sig": false
+          "pValue": 0.0384,
+          "sig": true
         },
         {
           "rank": 2,
           "creator": "The Patient Investor",
           "alpha": -27.8,
-          "pValue": 0.38,
+          "pValue": 0.3503,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1878,
+          "pValue": 0.1868,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0018,
+          "pValue": 0.001,
           "sig": true
         }
       ]
@@ -495,8 +495,8 @@
         {
           "rank": 3,
           "creator": "Stealth Wealth Investing",
-          "alpha": 14.8,
-          "pValue": 0.1878,
+          "alpha": 14.37,
+          "pValue": 0.1868,
           "sig": false
         },
         {
@@ -525,15 +525,15 @@
         {
           "rank": 3,
           "creator": "Common Sense Investing",
-          "alpha": -32.02,
-          "pValue": 0.6702,
+          "alpha": -27.65,
+          "pValue": 0.5877,
           "sig": false
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
-          "alpha": -26.56,
-          "pValue": 0.0018,
+          "alpha": -26.71,
+          "pValue": 0.001,
           "sig": true
         }
       ]
