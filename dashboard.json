@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-18T14:20:28.021Z",
+    "generatedAt": "2026-02-19T14:20:24.474Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
-    "totalVerifiedCreators": 48,
-    "totalPredictions": 3259
+    "totalVerifiedCreators": 50,
+    "totalPredictions": 3282
   },
   "alpha": {
     "top": [
@@ -110,15 +110,23 @@
       {
         "rank": 4,
         "creator": "Mr. FIRED Up Wealth",
-        "n": 97,
-        "pValue": 0.0929,
+        "n": 98,
+        "pValue": 0.1105,
         "sig": false,
-        "winRate": 55.67
+        "winRate": 55.1
       }
     ],
     "bottom": [
       {
         "rank": 1,
+        "creator": "StockedUp",
+        "n": 21,
+        "pValue": 0.0036,
+        "sig": true,
+        "winRate": 19.05
+      },
+      {
+        "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
         "n": 20,
         "pValue": 0.0521,
@@ -126,7 +134,7 @@
         "winRate": 20
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "OneOption",
         "n": 20,
         "pValue": 0.002,
@@ -134,20 +142,12 @@
         "winRate": 20
       },
       {
-        "rank": 3,
-        "creator": "Beavis Wealth",
-        "n": 42,
-        "pValue": 0,
-        "sig": true,
-        "winRate": 21.43
-      },
-      {
         "rank": 4,
-        "creator": "The Matt Kohrs Show",
-        "n": 123,
+        "creator": "Beavis Wealth",
+        "n": 43,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.95
+        "winRate": 20.93
       }
     ]
   },
@@ -174,8 +174,8 @@
           "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": 4.22,
-          "pValue": 0.0384,
-          "sig": true
+          "pValue": 0.0782,
+          "sig": false
         },
         {
           "rank": 4,
@@ -318,8 +318,8 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0384,
-          "sig": true
+          "pValue": 0.0782,
+          "sig": false
         },
         {
           "rank": 2,
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.0929,
+          "pValue": 0.1105,
           "sig": false
         }
       ],
@@ -526,7 +526,7 @@
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": -27.65,
-          "pValue": 0.5877,
+          "pValue": 0.5938,
           "sig": false
         },
         {
@@ -551,12 +551,12 @@
         "mentions": 9
       },
       {
-        "ticker": "NVDA",
+        "ticker": "PLTR",
         "mentions": 7
       },
       {
-        "ticker": "PLTR",
-        "mentions": 6
+        "ticker": "BTC",
+        "mentions": 7
       },
       {
         "ticker": "VTI",
@@ -567,7 +567,7 @@
         "mentions": 6
       },
       {
-        "ticker": "BTC",
+        "ticker": "NVDA",
         "mentions": 6
       },
       {
