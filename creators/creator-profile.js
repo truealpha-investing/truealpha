@@ -200,6 +200,7 @@ window.CreatorProfile = (function () {
         alpha2023: merged.alpha2023,
         alpha2024: merged.alpha2024,
         alpha2025: merged.alpha2025,
+        alpha2026: merged.alpha2026,
         pValue: merged.pValue
       });
     }
@@ -263,7 +264,8 @@ window.CreatorProfile = (function () {
         alphaStdDev: c.alphaStdDev,
         alpha2023: c.alpha2023,
         alpha2024: c.alpha2024,
-        alpha2025: c.alpha2025
+        alpha2025: c.alpha2025,
+        alpha2026: c.alpha2026
       };
 
       renderAllSections(merged);
