@@ -1150,9 +1150,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.log('[Homepage] Fetching from Google Sheets CSV...');
         var creators = await SheetData.fetchCreators();
         data = SheetData.transformToLeaderboardData(creators);
-        console.log('[Homepage] Google Sheets CSV loaded successfully');
+        if (data && data.alpha && data.alpha.top && data.alpha.top.length > 0) {
+          console.log('[Homepage] Google Sheets CSV loaded successfully');
+        } else {
+          console.warn('[Homepage] Google Sheets returned empty data, falling back to leaderboard.json');
+          data = null;
+        }
       } catch (csvErr) {
         console.warn('[Homepage] CSV fetch failed, falling back to leaderboard.json', csvErr);
+      }
+
+      if (!data) {
         try {
           var res = await fetch('/leaderboard/leaderboard.json', { cache: 'no-store' });
           if (!res.ok) throw new Error('HTTP ' + res.status);
