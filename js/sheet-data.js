@@ -11,7 +11,7 @@ window.SheetData = (function () {
   "use strict";
 
   var CSV_URL =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKqLL2jTM-NNTXbMQNJgFQEpyX8jnE0jE6z8UCDbP_QGoK2RArS5jHKI7lqBs3gJ7DMOlWq3glr0Vh/pub?gid=1723289430&single=true&output=csv";
+    "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/export?format=csv&gid=1723289430";
 
   var CSV_URL_ALT =
     "https://docs.google.com/spreadsheets/d/1JFZaZ_jC9PR7EKucweHkkO-vdCPXiWSk_6-ey02T2RE/gviz/tq?tqx=out:csv&gid=1723289430";
@@ -128,14 +128,14 @@ window.SheetData = (function () {
 
     // Try primary URL first, then alternate
     try {
-      var res = await fetch(CSV_URL, { cache: "no-store" });
+      var res = await fetch(CSV_URL, { redirect: "follow" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       csvText = await res.text();
       source = "primary";
     } catch (e1) {
       console.warn("[SheetData] Primary CSV URL failed, trying alternate:", e1.message);
       try {
-        var res2 = await fetch(CSV_URL_ALT, { cache: "no-store" });
+        var res2 = await fetch(CSV_URL_ALT, { redirect: "follow" });
         if (!res2.ok) throw new Error("HTTP " + res2.status);
         csvText = await res2.text();
         source = "alternate";
@@ -197,8 +197,9 @@ window.SheetData = (function () {
       return -1;
     }
 
+    // Exact sheet column names are listed FIRST, fuzzy aliases follow as fallback
     var COL = {
-      creator:          col(["creator name", "creator", "channel", "channel name", "name"]),
+      creator:          col(["creators", "creator name", "creator", "channel", "channel name", "name"]),
       totalPicks:       col(["total scorable predictions", "total predictions", "total picks", "scorable predictions", "n", "predictions", "num predictions", "total scored predictions"]),
       accuracy:         col(["accuracy", "win rate", "winrate", "accuracy rate", "directional accuracy", "overall accuracy"]),
       shortTermAcc:     col(["short term accuracy", "short-term accuracy", "st accuracy", "90d accuracy"]),
@@ -290,6 +291,14 @@ window.SheetData = (function () {
 
     console.log("[SheetData] CSV loaded: " + creators.length + " creators" +
       " (alpha: " + withAlpha + ", accuracy: " + withAccuracy + ", picks: " + withPicks + ")");
+
+    // Debug: print first 3 creators with all mapped fields
+    if (creators.length > 0) {
+      console.log("[SheetData] Sample creators (first 3):");
+      creators.slice(0, 3).forEach(function (c, i) {
+        console.log("[SheetData]  #" + (i + 1) + " " + c.creator + ":", JSON.stringify(c));
+      });
+    }
 
     // If we parsed creators but none have any real data, the headers are wrong
     if (creators.length > 0 && withAlpha === 0 && withAccuracy === 0 && withPicks === 0) {
