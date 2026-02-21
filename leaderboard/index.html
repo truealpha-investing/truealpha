@@ -1354,14 +1354,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.log("[Leaderboard] Fetching from Google Sheets CSV...");
         const creators = await SheetData.fetchCreators();
         const data = SheetData.transformToLeaderboardData(creators);
-        console.log("[Leaderboard] Google Sheets CSV loaded successfully");
-        return data;
+        if (data?.alpha?.top?.length > 0) {
+          console.log("[Leaderboard] Google Sheets CSV loaded successfully");
+          return data;
+        }
+        console.warn("[Leaderboard] Google Sheets returned empty data, falling back to leaderboard.json");
       } catch (e) {
         console.warn("[Leaderboard] Google Sheets fetch failed, falling back to leaderboard.json", e);
-        const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return await res.json();
       }
+      const res = await fetch(JSON_PATH, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return await res.json();
     }
 
     // ── Render leaderboard from data (same logic as before) ──
