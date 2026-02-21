@@ -790,20 +790,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     window.addEventListener("hashchange", handleHash);
 
-    // Fetch data and render
-    SheetData.fetchCreators().then(function (creators) {
-      // Filter to creators that have profile pages (30+ picks, in our slug map)
-      allCreators = creators.filter(function (c) {
-        return CREATOR_SLUGS[c.creator] !== undefined;
+    // Build creator list from JSON leaderboard data as fallback
+    function creatorsFromJSON(data) {
+      var map = {};
+      function ensure(name) { if (!map[name]) map[name] = {}; }
+
+      (data.alpha && data.alpha.top || []).concat(data.alpha && data.alpha.bottom || []).forEach(function (c) {
+        ensure(c.creator); map[c.creator].avgAlpha = c.avgAlpha; map[c.creator].totalPicks = c.n;
+      });
+      (data.accuracy && data.accuracy.top || []).concat(data.accuracy && data.accuracy.bottom || []).forEach(function (c) {
+        ensure(c.creator); map[c.creator].accuracy = c.winRate;
+        if (!map[c.creator].totalPicks) map[c.creator].totalPicks = c.n;
       });
 
-      console.log("[Hub] Loaded " + allCreators.length + " creators with profiles");
+      return Object.keys(CREATOR_SLUGS).map(function (name) {
+        var d = map[name] || {};
+        return {
+          creator: name,
+          avgAlpha: d.avgAlpha !== undefined ? d.avgAlpha : NaN,
+          accuracy: d.accuracy !== undefined ? d.accuracy : NaN,
+          totalPicks: d.totalPicks !== undefined ? d.totalPicks : NaN
+        };
+      });
+    }
+
+    // Fetch data and render
+    async function loadHub() {
+      try {
+        var creators = await SheetData.fetchCreators();
+        var filtered = creators.filter(function (c) {
+          return CREATOR_SLUGS[c.creator] !== undefined;
+        });
+        if (filtered.length > 0) {
+          allCreators = filtered;
+          console.log("[Hub] Loaded " + allCreators.length + " creators from Google Sheets");
+          filterAndRender();
+          handleHash();
+          return;
+        }
+        console.warn("[Hub] Google Sheets returned no matching creators, falling back to JSON");
+      } catch (err) {
+        console.warn("[Hub] Google Sheets fetch failed, falling back to JSON", err);
+      }
+
+      // Fallback: build creator list from JSON + CREATOR_SLUGS
+      try {
+        var res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        var data = await res.json();
+        allCreators = creatorsFromJSON(data);
+        console.log("[Hub] Loaded " + allCreators.length + " creators from JSON fallback");
+      } catch (jsonErr) {
+        console.error("[Hub] All data sources failed:", jsonErr);
+        // Last resort: show cards with names only
+        allCreators = Object.keys(CREATOR_SLUGS).map(function (name) {
+          return { creator: name, avgAlpha: NaN, accuracy: NaN, totalPicks: NaN };
+        });
+        console.log("[Hub] Using static creator list (" + allCreators.length + " creators)");
+      }
+
       filterAndRender();
       handleHash();
-    }).catch(function (err) {
-      console.error("[Hub] Failed to load creator data:", err);
-      grid.innerHTML = '<div class="no-results">Unable to load creator data. Please try refreshing the page.</div>';
-    });
+    }
+
+    loadHub();
   })();
   </script>
 
