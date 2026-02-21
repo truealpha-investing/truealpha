@@ -108,76 +108,149 @@ window.SheetData = (function () {
     return Number.isFinite(n2) ? n2 : NaN;
   }
 
+  // ─── Header normalisation ────────────────────────────────────────────
+  // Collapse whitespace, strip non-alphanumeric (keep digits), lowercase.
+  // "Creator Name" → "creatorname", "P-Value" → "pvalue", "2023 Alpha" → "2023alpha"
+  function normalize(s) {
+    return String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+  }
+
   // ─── Fetch + parse ───────────────────────────────────────────────────
 
   /**
    * Fetch the published CSV and return an array of creator objects.
    * Column mapping is determined dynamically from the header row.
+   * Uses fuzzy matching so minor header renames don't break parsing.
    */
   async function fetchCreators() {
     var csvText;
+    var source = "";
 
     // Try primary URL first, then alternate
     try {
       var res = await fetch(CSV_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       csvText = await res.text();
+      source = "primary";
     } catch (e1) {
-      console.warn("Primary CSV URL failed, trying alternate:", e1);
-      var res2 = await fetch(CSV_URL_ALT, { cache: "no-store" });
-      if (!res2.ok) throw new Error("HTTP " + res2.status);
-      csvText = await res2.text();
+      console.warn("[SheetData] Primary CSV URL failed, trying alternate:", e1.message);
+      try {
+        var res2 = await fetch(CSV_URL_ALT, { cache: "no-store" });
+        if (!res2.ok) throw new Error("HTTP " + res2.status);
+        csvText = await res2.text();
+        source = "alternate";
+      } catch (e2) {
+        console.error("[SheetData] CSV failed, falling back to JSON. Primary: " + e1.message + ", Alternate: " + e2.message);
+        throw new Error("Both CSV endpoints failed (" + e1.message + " / " + e2.message + ")");
+      }
+    }
+
+    // Guard against HTML login pages returned as 200
+    if (csvText.trim().charAt(0) === "<") {
+      console.error("[SheetData] CSV failed, falling back to JSON — received HTML instead of CSV (likely auth/redirect issue)");
+      throw new Error("CSV endpoint returned HTML instead of CSV data");
     }
 
     var rows = parseCSV(csvText);
-    if (rows.length < 2) throw new Error("CSV has no data rows");
+    if (rows.length < 2) {
+      console.error("[SheetData] CSV failed, falling back to JSON — no data rows");
+      throw new Error("CSV has no data rows");
+    }
 
-    // Build header map — normalise to lowercase, trim whitespace
-    var headers = rows[0].map(function (h) { return h.trim().toLowerCase(); });
-    console.log("[SheetData] CSV headers:", headers);
+    // Build header maps for matching
+    var rawHeaders = rows[0].map(function (h) { return h.trim(); });
+    var lcHeaders = rawHeaders.map(function (h) { return h.toLowerCase(); });
+    var normHeaders = rawHeaders.map(function (h) { return normalize(h); });
 
-    // Map known header names to column indices
-    function col(names) {
-      if (!Array.isArray(names)) names = [names];
-      for (var i = 0; i < names.length; i++) {
-        var idx = headers.indexOf(names[i].toLowerCase());
-        if (idx !== -1) return idx;
+    console.log("[SheetData] CSV headers (" + source + "):", rawHeaders);
+
+    // Resilient column finder: tries exact (lowercase), then normalised, then substring
+    function col(aliases) {
+      if (!Array.isArray(aliases)) aliases = [aliases];
+      var i, j, alias, normAlias;
+
+      // Pass 1: exact lowercase match
+      for (i = 0; i < aliases.length; i++) {
+        alias = aliases[i].toLowerCase();
+        j = lcHeaders.indexOf(alias);
+        if (j !== -1) return j;
       }
+
+      // Pass 2: normalised match (strips all punctuation/spaces)
+      for (i = 0; i < aliases.length; i++) {
+        normAlias = normalize(aliases[i]);
+        for (j = 0; j < normHeaders.length; j++) {
+          if (normHeaders[j] === normAlias) return j;
+        }
+      }
+
+      // Pass 3: substring — header contains the alias or alias contains the header
+      for (i = 0; i < aliases.length; i++) {
+        normAlias = normalize(aliases[i]);
+        if (normAlias.length < 3) continue; // skip very short aliases for substring
+        for (j = 0; j < normHeaders.length; j++) {
+          if (normHeaders[j].length < 3) continue;
+          if (normHeaders[j].indexOf(normAlias) !== -1 || normAlias.indexOf(normHeaders[j]) !== -1) return j;
+        }
+      }
+
       return -1;
     }
 
     var COL = {
-      creator:          col(["creator name", "creator"]),
-      totalPicks:       col(["total scorable predictions", "total predictions"]),
-      accuracy:         col(["accuracy"]),
-      shortTermAcc:     col(["short term accuracy"]),
-      longTermAcc:      col(["long term accuracy"]),
-      avgAlpha:         col(["average alpha", "avg alpha"]),
-      alpha2023:        col(["2023 alpha"]),
-      alpha2024:        col(["2024 alpha"]),
-      alpha2025:        col(["2025 alpha"]),
-      alphaStdDev:      col(["alpha std dev"]),
-      stdError:         col(["std error"]),
-      tStat:            col(["t-statistic", "t-stat"]),
-      pValue:           col(["p-value", "p value"]),
-      sigFlag:          col(["significance flag", "sig flag"]),
-      shortTermAlpha:   col(["short term alpha"]),
-      longTermAlpha:    col(["long term alpha"]),
-      bestCall:         col(["best call"]),
-      worstCall:        col(["worst call"]),
-      bullishAcc:       col(["bullish accuracy"]),
-      bearishAcc:       col(["bearish accuracy"]),
-      sampleSizeMet:    col(["sample size met?", "sample size met"]),
-      bestCallTicker:   col(["best call ticker"]),
-      worstCallTicker:  col(["worst call ticker"]),
-      recommendedAssets:col(["recommended assets"])
+      creator:          col(["creator name", "creator", "channel", "channel name", "name"]),
+      totalPicks:       col(["total scorable predictions", "total predictions", "total picks", "scorable predictions", "n", "predictions", "num predictions", "total scored predictions"]),
+      accuracy:         col(["accuracy", "win rate", "winrate", "accuracy rate", "directional accuracy", "overall accuracy"]),
+      shortTermAcc:     col(["short term accuracy", "short-term accuracy", "st accuracy", "90d accuracy"]),
+      longTermAcc:      col(["long term accuracy", "long-term accuracy", "lt accuracy", "365d accuracy"]),
+      avgAlpha:         col(["average alpha", "avg alpha", "alpha", "avg. alpha", "mean alpha", "alpha avg", "overall alpha"]),
+      alpha2023:        col(["2023 alpha", "alpha 2023", "alpha2023"]),
+      alpha2024:        col(["2024 alpha", "alpha 2024", "alpha2024"]),
+      alpha2025:        col(["2025 alpha", "alpha 2025", "alpha2025"]),
+      alpha2026:        col(["2026 alpha", "alpha 2026", "alpha2026"]),
+      alphaStdDev:      col(["alpha std dev", "alpha std. dev", "alpha stddev", "std dev", "standard deviation", "alpha standard deviation", "stdev"]),
+      stdError:         col(["std error", "standard error", "se", "std. error"]),
+      tStat:            col(["t-statistic", "t-stat", "tstat", "t statistic", "t stat"]),
+      pValue:           col(["p-value", "p value", "pvalue", "p-val", "pval"]),
+      sigFlag:          col(["significance flag", "sig flag", "significance", "significant", "stat sig", "statistical significance"]),
+      shortTermAlpha:   col(["short term alpha", "short-term alpha", "st alpha", "90d alpha", "short alpha"]),
+      longTermAlpha:    col(["long term alpha", "long-term alpha", "lt alpha", "365d alpha", "long alpha"]),
+      bestCall:         col(["best call", "best call alpha", "best pick", "top call", "best call return"]),
+      worstCall:        col(["worst call", "worst call alpha", "worst pick", "bottom call", "worst call return"]),
+      bullishAcc:       col(["bullish accuracy", "bullish acc", "bull accuracy", "bullish win rate"]),
+      bearishAcc:       col(["bearish accuracy", "bearish acc", "bear accuracy", "bearish win rate"]),
+      sampleSizeMet:    col(["sample size met?", "sample size met", "sample size", "n >= 20", "n>=20", "meets sample size"]),
+      bestCallTicker:   col(["best call ticker", "best ticker", "best call stock", "best call asset"]),
+      worstCallTicker:  col(["worst call ticker", "worst ticker", "worst call stock", "worst call asset"]),
+      recommendedAssets:col(["recommended assets", "rec assets", "assets", "tickers", "recommended tickers", "rec tickers", "recommended stocks"])
     };
+
+    // Log which columns matched and which didn't
+    var matched = [];
+    var unmatched = [];
+    for (var colName in COL) {
+      if (COL[colName] >= 0) {
+        matched.push(colName + "→" + COL[colName] + '("' + rawHeaders[COL[colName]] + '")');
+      } else {
+        unmatched.push(colName);
+      }
+    }
+    console.log("[SheetData] Matched columns: " + matched.join(", "));
+    if (unmatched.length) {
+      console.warn("[SheetData] Unmatched columns: " + unmatched.join(", "));
+    }
+
+    // Critical: if we can't find the creator name column, data is useless
+    if (COL.creator < 0) {
+      console.error("[SheetData] CSV failed, falling back to JSON — could not find creator name column. Headers: " + rawHeaders.join(", "));
+      throw new Error("CSV missing creator name column");
+    }
 
     var creators = [];
 
     for (var r = 1; r < rows.length; r++) {
       var row = rows[r];
-      var name = COL.creator >= 0 ? (row[COL.creator] || "").trim() : "";
+      var name = (row[COL.creator] || "").trim();
       if (!name) continue; // skip empty rows
 
       creators.push({
@@ -202,11 +275,29 @@ window.SheetData = (function () {
         alphaStdDev:      COL.alphaStdDev >= 0 ? pct(row[COL.alphaStdDev]) : NaN,
         alpha2023:        COL.alpha2023 >= 0 ? pct(row[COL.alpha2023]) : NaN,
         alpha2024:        COL.alpha2024 >= 0 ? pct(row[COL.alpha2024]) : NaN,
-        alpha2025:        COL.alpha2025 >= 0 ? pct(row[COL.alpha2025]) : NaN
+        alpha2025:        COL.alpha2025 >= 0 ? pct(row[COL.alpha2025]) : NaN,
+        alpha2026:        COL.alpha2026 >= 0 ? pct(row[COL.alpha2026]) : NaN
       });
     }
 
-    console.log("[SheetData] Parsed " + creators.length + " creators from CSV");
+    // Validate: check how many creators have real numeric data
+    var withAlpha = 0, withAccuracy = 0, withPicks = 0;
+    creators.forEach(function (c) {
+      if (Number.isFinite(c.avgAlpha)) withAlpha++;
+      if (Number.isFinite(c.accuracy)) withAccuracy++;
+      if (Number.isFinite(c.totalPicks)) withPicks++;
+    });
+
+    console.log("[SheetData] CSV loaded: " + creators.length + " creators" +
+      " (alpha: " + withAlpha + ", accuracy: " + withAccuracy + ", picks: " + withPicks + ")");
+
+    // If we parsed creators but none have any real data, the headers are wrong
+    if (creators.length > 0 && withAlpha === 0 && withAccuracy === 0 && withPicks === 0) {
+      console.error("[SheetData] CSV failed, falling back to JSON — parsed " + creators.length +
+        " creators but ALL numeric fields are NaN. Headers likely changed. Raw headers: " + rawHeaders.join(", "));
+      throw new Error("CSV parsed " + creators.length + " rows but no numeric data — column headers likely changed");
+    }
+
     return creators;
   }
 

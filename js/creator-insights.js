@@ -208,10 +208,12 @@ window.CreatorInsights = (function () {
     var a23 = parseFloat(c.alpha2023);
     var a24 = parseFloat(c.alpha2024);
     var a25 = parseFloat(c.alpha2025);
+    var a26 = parseFloat(c.alpha2026);
     var years = [];
     if (!isNaN(a23) && a23 !== 0) years.push({ year: 2023, alpha: a23 });
     if (!isNaN(a24) && a24 !== 0) years.push({ year: 2024, alpha: a24 });
     if (!isNaN(a25) && a25 !== 0) years.push({ year: 2025, alpha: a25 });
+    if (!isNaN(a26) && a26 !== 0) years.push({ year: 2026, alpha: a26 });
 
     if (years.length >= 2) {
       var first = years[0];
@@ -613,6 +615,7 @@ window.CreatorInsights = (function () {
           alpha2023: Number.isFinite(live.alpha2023) ? live.alpha2023 : c.alpha2023,
           alpha2024: Number.isFinite(live.alpha2024) ? live.alpha2024 : c.alpha2024,
           alpha2025: Number.isFinite(live.alpha2025) ? live.alpha2025 : c.alpha2025,
+          alpha2026: Number.isFinite(live.alpha2026) ? live.alpha2026 : c.alpha2026,
           pValue: Number.isFinite(live.pValue) ? live.pValue : c.pValue
         };
 
