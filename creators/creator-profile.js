@@ -171,6 +171,40 @@ window.CreatorProfile = (function () {
     }
   }
 
+  // ─── Render all sections with whatever data is available ──────
+
+  function renderAllSections(merged) {
+    renderVerdict(merged);
+    renderPills(merged);
+    renderPerfOverview(merged);
+    renderTimeHorizon(merged);
+    renderBestWorstCalls(merged);
+    renderRecAssets(merged);
+
+    if (window.CreatorInsights) {
+      CreatorInsights.init({
+        creatorId: merged.creatorId,
+        name: merged.name,
+        totalPicks: merged.totalPicks,
+        accuracy: merged.accuracy,
+        avgAlpha: Number.isFinite(merged.avgAlpha) ? merged.avgAlpha : 0,
+        shortTermAlpha: Number.isFinite(merged.shortTermAlpha) ? merged.shortTermAlpha : 0,
+        longTermAlpha: Number.isFinite(merged.longTermAlpha) ? merged.longTermAlpha : 0,
+        bestCall: Number.isFinite(merged.bestCall) ? merged.bestCall : 0,
+        worstCall: Number.isFinite(merged.worstCall) ? merged.worstCall : 0,
+        bullishAccuracy: Number.isFinite(merged.bullishAccuracy) ? merged.bullishAccuracy : 0,
+        bearishAccuracy: Number.isFinite(merged.bearishAccuracy) ? merged.bearishAccuracy : 0,
+        bestCallTicker: merged.bestCallTicker || "",
+        worstCallTicker: merged.worstCallTicker || "",
+        alphaStdDev: Number.isFinite(merged.alphaStdDev) ? merged.alphaStdDev : NaN,
+        alpha2023: merged.alpha2023,
+        alpha2024: merged.alpha2024,
+        alpha2025: merged.alpha2025,
+        pValue: merged.pValue
+      });
+    }
+  }
+
   // ─── Main init ────────────────────────────────────────────────
 
   function init() {
@@ -191,13 +225,18 @@ window.CreatorProfile = (function () {
 
     // Fetch live data from Google Sheets
     if (!window.SheetData) {
-      console.warn("[CreatorProfile] SheetData not available");
+      console.warn("[CreatorProfile] SheetData not available, rendering static data");
+      renderAllSections(data);
       return;
     }
 
     SheetData.fetchCreators().then(function (creators) {
       var c = SheetData.getCreatorByName(creators, data.name);
-      if (!c) { console.warn("[CreatorProfile] Creator not found in CSV:", data.name); return; }
+      if (!c) {
+        console.warn("[CreatorProfile] Creator not found in CSV, rendering static data:", data.name);
+        renderAllSections(data);
+        return;
+      }
       console.log("[CreatorProfile] Loaded live data for", data.name, c);
 
       // Merge live data with static fallback
@@ -227,43 +266,10 @@ window.CreatorProfile = (function () {
         alpha2025: c.alpha2025
       };
 
-      // Render all sections
-      renderVerdict(merged);
-      renderPills(merged);
-      renderPerfOverview(merged);
-      renderTimeHorizon(merged);
-      renderBestWorstCalls(merged);
-      renderRecAssets(merged);
-
-      // Initialize CreatorInsights for insight sections
-      if (window.CreatorInsights) {
-        CreatorInsights.init({
-          creatorId: data.creatorId,
-          name: data.name,
-          totalPicks: merged.totalPicks,
-          accuracy: merged.accuracy,
-          avgAlpha: Number.isFinite(merged.avgAlpha) ? merged.avgAlpha : 0,
-          shortTermAlpha: Number.isFinite(merged.shortTermAlpha) ? merged.shortTermAlpha : 0,
-          longTermAlpha: Number.isFinite(merged.longTermAlpha) ? merged.longTermAlpha : 0,
-          bestCall: Number.isFinite(merged.bestCall) ? merged.bestCall : 0,
-          worstCall: Number.isFinite(merged.worstCall) ? merged.worstCall : 0,
-          bullishAccuracy: Number.isFinite(merged.bullishAccuracy) ? merged.bullishAccuracy : 0,
-          bearishAccuracy: Number.isFinite(merged.bearishAccuracy) ? merged.bearishAccuracy : 0,
-          bestCallTicker: merged.bestCallTicker,
-          worstCallTicker: merged.worstCallTicker,
-          alphaStdDev: Number.isFinite(merged.alphaStdDev) ? merged.alphaStdDev : NaN,
-          alpha2023: merged.alpha2023,
-          alpha2024: merged.alpha2024,
-          alpha2025: merged.alpha2025,
-          pValue: merged.pValue
-        });
-      }
+      renderAllSections(merged);
     }).catch(function (err) {
       console.warn("[CreatorProfile] CSV fetch failed, showing static data:", err);
-      // Render what we can from static data
-      renderPerfOverview(data);
-      renderVerdict(data);
-      renderPills(data);
+      renderAllSections(data);
     });
   }
 
