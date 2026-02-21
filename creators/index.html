@@ -790,18 +790,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     window.addEventListener("hashchange", handleHash);
 
-    // Build creator list from JSON leaderboard data as fallback
+    // Build creator list from JSON data, mining ALL sections for maximum coverage
     function creatorsFromJSON(data) {
       var map = {};
       function ensure(name) { if (!map[name]) map[name] = {}; }
+      function list(obj) { return obj || []; }
 
-      (data.alpha && data.alpha.top || []).concat(data.alpha && data.alpha.bottom || []).forEach(function (c) {
-        ensure(c.creator); map[c.creator].avgAlpha = c.avgAlpha; map[c.creator].totalPicks = c.n;
+      // alpha.top/bottom have avgAlpha and n
+      list(data.alpha && data.alpha.top).concat(list(data.alpha && data.alpha.bottom)).forEach(function (c) {
+        ensure(c.creator);
+        if (c.avgAlpha !== undefined) map[c.creator].avgAlpha = c.avgAlpha;
+        if (c.n !== undefined) map[c.creator].totalPicks = c.n;
       });
-      (data.accuracy && data.accuracy.top || []).concat(data.accuracy && data.accuracy.bottom || []).forEach(function (c) {
-        ensure(c.creator); map[c.creator].accuracy = c.winRate;
-        if (!map[c.creator].totalPicks) map[c.creator].totalPicks = c.n;
+
+      // accuracy.top/bottom have winRate and n
+      list(data.accuracy && data.accuracy.top).concat(list(data.accuracy && data.accuracy.bottom)).forEach(function (c) {
+        ensure(c.creator);
+        if (c.winRate !== undefined) map[c.creator].accuracy = c.winRate;
+        if (c.n !== undefined && !map[c.creator].totalPicks) map[c.creator].totalPicks = c.n;
       });
+
+      // intervals.d90/d180/d365 have creator names (for cards with no other data)
+      if (data.intervals) {
+        ["d90", "d180", "d365"].forEach(function (key) {
+          var block = data.intervals[key];
+          if (!block) return;
+          list(block.top).concat(list(block.bottom)).forEach(function (c) { ensure(c.creator); });
+        });
+      }
+
+      // yearly sections (dashboard.json) have creator names
+      if (data.yearly) {
+        Object.keys(data.yearly).forEach(function (yr) {
+          var block = data.yearly[yr];
+          if (!block) return;
+          list(block.top).concat(list(block.bottom)).forEach(function (c) { ensure(c.creator); });
+        });
+      }
 
       return Object.keys(CREATOR_SLUGS).map(function (name) {
         var d = map[name] || {};
@@ -810,6 +835,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           avgAlpha: d.avgAlpha !== undefined ? d.avgAlpha : NaN,
           accuracy: d.accuracy !== undefined ? d.accuracy : NaN,
           totalPicks: d.totalPicks !== undefined ? d.totalPicks : NaN
+        };
+      });
+    }
+
+    // Merge two JSON datasets to maximize creator coverage
+    function mergeJSONData(primary, secondary) {
+      var result = creatorsFromJSON(primary);
+      if (!secondary) return result;
+      var secMap = {};
+      creatorsFromJSON(secondary).forEach(function (c) { secMap[c.creator] = c; });
+      return result.map(function (c) {
+        var s = secMap[c.creator];
+        if (!s) return c;
+        return {
+          creator: c.creator,
+          avgAlpha: Number.isFinite(c.avgAlpha) ? c.avgAlpha : s.avgAlpha,
+          accuracy: Number.isFinite(c.accuracy) ? c.accuracy : s.accuracy,
+          totalPicks: Number.isFinite(c.totalPicks) ? c.totalPicks : s.totalPicks
         };
       });
     }
@@ -833,20 +876,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.warn("[Hub] Google Sheets fetch failed, falling back to JSON", err);
       }
 
-      // Fallback: build creator list from JSON + CREATOR_SLUGS
+      // Fallback: fetch both JSON files for maximum creator coverage
+      var dashData = null;
+      var lbData = null;
       try {
-        var res = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        var data = await res.json();
-        allCreators = creatorsFromJSON(data);
+        var res1 = await fetch("/dashboard.json", { cache: "no-store" });
+        if (res1.ok) dashData = await res1.json();
+      } catch (e) { /* ignore */ }
+      try {
+        var res2 = await fetch("/leaderboard/leaderboard.json", { cache: "no-store" });
+        if (res2.ok) lbData = await res2.json();
+      } catch (e) { /* ignore */ }
+
+      if (dashData || lbData) {
+        allCreators = mergeJSONData(dashData || lbData, dashData ? lbData : null);
         console.log("[Hub] Loaded " + allCreators.length + " creators from JSON fallback");
-      } catch (jsonErr) {
-        console.error("[Hub] All data sources failed:", jsonErr);
-        // Last resort: show cards with names only
+      } else {
+        console.error("[Hub] All data sources failed");
         allCreators = Object.keys(CREATOR_SLUGS).map(function (name) {
           return { creator: name, avgAlpha: NaN, accuracy: NaN, totalPicks: NaN };
         });
-        console.log("[Hub] Using static creator list (" + allCreators.length + " creators)");
       }
 
       filterAndRender();
