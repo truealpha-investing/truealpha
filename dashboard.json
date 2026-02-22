@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-21T14:20:25.545Z",
+    "generatedAt": "2026-02-22T14:20:24.005Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
     "totalVerifiedCreators": 50,
-    "totalPredictions": 3301
+    "totalPredictions": 3299
   },
   "alpha": {
     "top": [
@@ -41,7 +41,7 @@
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 66,
-        "pValue": 0.013,
+        "pValue": 0.014,
         "sig": true,
         "avgAlpha": 17.01
       }
@@ -58,10 +58,10 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 46,
+        "n": 45,
         "pValue": 0.0003,
         "sig": true,
-        "avgAlpha": -32.59
+        "avgAlpha": -33.78
       },
       {
         "rank": 3,
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 68,
-        "pValue": 0.0005,
+        "n": 69,
+        "pValue": 0.0003,
         "sig": true,
-        "winRate": 72.06
+        "winRate": 72.46
       },
       {
         "rank": 2,
@@ -144,10 +144,10 @@
       {
         "rank": 4,
         "creator": "Beavis Wealth",
-        "n": 42,
+        "n": 43,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.43
+        "winRate": 20.93
       }
     ]
   },
@@ -165,24 +165,24 @@
         },
         {
           "rank": 2,
+          "creator": "이효석아카데미",
+          "alpha": 5.54,
+          "pValue": 0.7361,
+          "sig": false
+        },
+        {
+          "rank": 3,
           "creator": "Jeremy Lefebvre Clips",
           "alpha": 5.47,
           "pValue": 0.0321,
           "sig": true
         },
         {
-          "rank": 3,
-          "creator": "이효석아카데미",
-          "alpha": 4.59,
-          "pValue": 0.9007,
-          "sig": false
-        },
-        {
           "rank": 4,
           "creator": "Andrei Jikh",
           "alpha": 4.22,
-          "pValue": 0.1035,
-          "sig": false
+          "pValue": 0.0384,
+          "sig": true
         }
       ],
       "bottom": [
@@ -245,7 +245,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 17.01,
-          "pValue": 0.013,
+          "pValue": 0.014,
           "sig": true
         }
       ],
@@ -260,7 +260,7 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -32.59,
+          "alpha": -33.78,
           "pValue": 0.0003,
           "sig": true
         },
@@ -318,8 +318,8 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.1035,
-          "sig": false
+          "pValue": 0.0384,
+          "sig": true
         },
         {
           "rank": 2,
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.001,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "Everything Money",
           "alpha": -7.2,
-          "pValue": 0.0002,
+          "pValue": 0.0001,
           "sig": true
         }
       ]
@@ -494,17 +494,17 @@
         },
         {
           "rank": 3,
+          "creator": "Jose Najarro Stocks",
+          "alpha": 14.4,
+          "pValue": 0.0003,
+          "sig": true
+        },
+        {
+          "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 14.37,
           "pValue": 0.1868,
           "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Jose Najarro Stocks",
-          "alpha": 14.07,
-          "pValue": 0.0005,
-          "sig": true
         }
       ],
       "bottom": [
@@ -526,14 +526,14 @@
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": -27.65,
-          "pValue": 0.5938,
+          "pValue": 0.6497,
           "sig": false
         },
         {
           "rank": 4,
-          "creator": "Mark Moss",
-          "alpha": -26.71,
-          "pValue": 0.001,
+          "creator": "OneOption",
+          "alpha": -25.4,
+          "pValue": 0.002,
           "sig": true
         }
       ]
