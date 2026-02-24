@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch YouTube transcripts for pending rows in a Google Sheet.
 
-Converted from the Google Colab version for GitHub Actions.
+Converted from the working Google Colab version for GitHub Actions.
 Reads credentials from GOOGLE_CREDENTIALS and SHEET_KEY env vars.
 """
 
@@ -24,8 +24,8 @@ log = logging.getLogger(__name__)
 MAX_ROWS_PER_RUN = 50
 WORKSHEET_NAME = "Ingest_Queue"
 
-# Statuses that should never be touched — these rows are already processed
-SKIP_STATUSES = {"Analyzed", "Analyzed (Empty)"}
+# Only process rows with these statuses (matches Colab behavior)
+PROCESS_STATUSES = {"Pending", "Pending Transcript", "Transcript Failed"}
 
 
 def get_gspread_client():
@@ -72,31 +72,41 @@ def fetch_transcript(video_id):
     """
     url = f"https://www.youtube.com/watch?v={video_id}"
 
-    # Match Colab: request all subtitle languages, prefer English
+    # Use explicit language codes matching the working Colab version
     cmd = [
         "yt-dlp",
+        "--no-warnings",
         "--skip-download",
         "--write-auto-sub",
         "--write-sub",
-        "--sub-lang", "en,.*",
+        "--sub-lang", "en,en-US,en-orig,ko,ko-KR",
         "--output", f"temp_{video_id}",
         "--no-check-certificate",
         url,
     ]
 
     try:
-        subprocess.run(
+        result = subprocess.run(
             cmd,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            capture_output=True,
+            text=True,
             timeout=45,
         )
+
+        if result.returncode != 0:
+            stderr = result.stderr.strip()
+            # Log the actual error so it shows in GitHub Actions
+            log.warning("yt-dlp exit code %d for %s: %s", result.returncode, video_id, stderr[:200])
 
         found_text = ""
         lang_found = "xx"
 
         for filename in os.listdir("."):
-            if filename.startswith(f"temp_{video_id}") and filename.endswith(".vtt"):
+            if filename.startswith(f"temp_{video_id}") and (
+                filename.endswith(".vtt")
+                or filename.endswith(".srv3")
+                or filename.endswith(".ttml")
+            ):
                 with open(filename, "r", encoding="utf-8", errors="ignore") as f:
                     content = f.read()
                     lines = []
@@ -107,10 +117,11 @@ def fetch_transcript(video_id):
                             and "-->" not in line
                             and "WEBVTT" not in line
                             and "<c>" not in line
+                            and not stripped.isdigit()
                         ):
                             lines.append(stripped.replace("&nbsp;", " "))
                     found_text = " ".join(lines)
-                    # Extract language code from filename (e.g. temp_xxx.en.vtt → en)
+                    # Extract language code from filename (e.g. temp_xxx.en.vtt -> en)
                     lang_found = filename.split(".")[-2]
 
                 os.remove(filename)
@@ -126,6 +137,16 @@ def fetch_transcript(video_id):
 
         if len(found_text) > 50:
             return "OK", found_text[:49000], lang_found
+
+        # Log why it failed so we can debug from Actions logs
+        if result.returncode != 0:
+            stderr_short = result.stderr.strip()[:100]
+            if "Sign in" in result.stderr:
+                return "FAILED", "Age Restricted / Sign-in Required", "xx"
+            if "Video unavailable" in result.stderr:
+                return "FAILED", "Video Deleted or Private", "xx"
+            return "FAILED", f"yt-dlp error: {stderr_short}", "xx"
+
         return "FAILED", "No transcript data found", "xx"
 
     except subprocess.TimeoutExpired:
@@ -146,7 +167,15 @@ def process_rows(worksheet):
     except ValueError as exc:
         sys.exit(f"Required column not found in sheet headers: {exc}")
 
-    log.info("Found %d rows. Scanning...", len(rows))
+    log.info("Found %d rows (including header). Scanning...", len(rows))
+
+    # Count statuses for visibility in logs
+    status_counts = {}
+    for row in rows[1:]:
+        if len(row) > status_col:
+            s = row[status_col].strip()
+            status_counts[s] = status_counts.get(s, 0) + 1
+    log.info("Status counts: %s", json.dumps(status_counts, indent=2))
 
     processed = 0
     for i in range(1, len(rows)):
@@ -162,19 +191,16 @@ def process_rows(worksheet):
         status = row[status_col].strip()
         row_num = i + 1  # 1-indexed for Google Sheets
 
-        # Skip rows that are already fully processed
-        if status in SKIP_STATUSES:
-            continue
-
-        # Skip rows that already have a "Ready" status (don't overwrite)
-        if "Ready" in status:
+        # Only process rows with explicit pending/failed statuses
+        if status not in PROCESS_STATUSES:
             continue
 
         # Skip rows with no video ID
         if not video_id:
+            log.warning("Row %d: status is '%s' but Video ID is empty", row_num, status)
             continue
 
-        log.info("Row %d (%s): fetching transcript...", row_num, video_id)
+        log.info("Row %d (%s): status='%s', fetching transcript...", row_num, video_id, status)
 
         try:
             code, text, lang = fetch_transcript(video_id)
@@ -187,13 +213,12 @@ def process_rows(worksheet):
             worksheet.update_cell(row_num, transcript_col + 1, text)
             worksheet.update_cell(row_num, status_col + 1, f"Ready for AI ({lang})")
             processed += 1
-            time.sleep(2)  # Rate-limit to avoid YouTube throttling
+            time.sleep(3)  # Rate-limit to avoid YouTube throttling
         else:
-            log.warning("Row %d: %s — %s", row_num, code, text[:100])
-            # Only mark as failed if not already in a "Ready" state
+            log.warning("Row %d: %s — %s", row_num, code, text[:200])
             worksheet.update_cell(row_num, status_col + 1, "Transcript Failed")
             processed += 1
-            time.sleep(1)
+            time.sleep(2)
 
     log.info("Done. Processed %d rows.", processed)
 
