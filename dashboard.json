@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-23T14:20:26.442Z",
+    "generatedAt": "2026-02-24T14:20:25.482Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,17 +9,17 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 79,
     "totalVerifiedCreators": 50,
-    "totalPredictions": 3313
+    "totalPredictions": 3328
   },
   "alpha": {
     "top": [
       {
         "rank": 1,
         "creator": "Tom Nash",
-        "n": 49,
-        "pValue": 0.0318,
+        "n": 52,
+        "pValue": 0.0304,
         "sig": true,
-        "avgAlpha": 57.32
+        "avgAlpha": 54.59
       },
       {
         "rank": 2,
@@ -41,7 +41,7 @@
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 66,
-        "pValue": 0.014,
+        "pValue": 0.013,
         "sig": true,
         "avgAlpha": 17.01
       }
@@ -65,19 +65,19 @@
       },
       {
         "rank": 3,
-        "creator": "OneOption",
-        "n": 20,
-        "pValue": 0.002,
-        "sig": true,
-        "avgAlpha": -21.41
-      },
-      {
-        "rank": 4,
         "creator": "FX Evolution",
         "n": 21,
         "pValue": 0.0083,
         "sig": true,
         "avgAlpha": -20.41
+      },
+      {
+        "rank": 4,
+        "creator": "OneOption",
+        "n": 26,
+        "pValue": 0.0031,
+        "sig": true,
+        "avgAlpha": -17.03
       }
     ]
   },
@@ -93,19 +93,19 @@
       },
       {
         "rank": 2,
-        "creator": "Stealth Wealth Investing",
-        "n": 76,
-        "pValue": 0.1868,
-        "sig": false,
-        "winRate": 64.47
-      },
-      {
-        "rank": 3,
         "creator": "Let's Talk Money! with Joseph Hogue, CFA",
         "n": 42,
         "pValue": 0.1832,
         "sig": false,
         "winRate": 64.29
+      },
+      {
+        "rank": 3,
+        "creator": "Stealth Wealth Investing",
+        "n": 77,
+        "pValue": 0.19,
+        "sig": false,
+        "winRate": 63.64
       },
       {
         "rank": 4,
@@ -127,6 +127,14 @@
       },
       {
         "rank": 2,
+        "creator": "OneOption",
+        "n": 26,
+        "pValue": 0.0031,
+        "sig": true,
+        "winRate": 19.23
+      },
+      {
+        "rank": 3,
         "creator": "The Prof G Pod – Scott Galloway",
         "n": 20,
         "pValue": 0.0521,
@@ -134,20 +142,12 @@
         "winRate": 20
       },
       {
-        "rank": 3,
-        "creator": "OneOption",
-        "n": 20,
-        "pValue": 0.002,
-        "sig": true,
-        "winRate": 20
-      },
-      {
         "rank": 4,
         "creator": "Beavis Wealth",
-        "n": 43,
+        "n": 42,
         "pValue": 0,
         "sig": true,
-        "winRate": 20.93
+        "winRate": 21.43
       }
     ]
   },
@@ -158,16 +158,16 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Fundstrat",
-          "alpha": 12.34,
-          "pValue": 0.2575,
+          "creator": "Common Sense Investing",
+          "alpha": 16.71,
+          "pValue": 0.6173,
           "sig": false
         },
         {
           "rank": 2,
-          "creator": "이효석아카데미",
-          "alpha": 5.54,
-          "pValue": 0.7361,
+          "creator": "Fundstrat",
+          "alpha": 12.34,
+          "pValue": 0.2575,
           "sig": false
         },
         {
@@ -179,9 +179,9 @@
         },
         {
           "rank": 4,
-          "creator": "Andrei Jikh",
-          "alpha": 4.22,
-          "pValue": 0.0782,
+          "creator": "이효석아카데미",
+          "alpha": 4.62,
+          "pValue": 0.8341,
           "sig": false
         }
       ],
@@ -204,7 +204,7 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -17.56,
-          "pValue": 0.0318,
+          "pValue": 0.0304,
           "sig": true
         },
         {
@@ -223,8 +223,8 @@
         {
           "rank": 1,
           "creator": "Tom Nash",
-          "alpha": 57.32,
-          "pValue": 0.0318,
+          "alpha": 54.59,
+          "pValue": 0.0304,
           "sig": true
         },
         {
@@ -245,7 +245,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 17.01,
-          "pValue": 0.014,
+          "pValue": 0.013,
           "sig": true
         }
       ],
@@ -266,16 +266,16 @@
         },
         {
           "rank": 3,
-          "creator": "OneOption",
-          "alpha": -21.41,
-          "pValue": 0.002,
+          "creator": "FX Evolution",
+          "alpha": -20.41,
+          "pValue": 0.0083,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "FX Evolution",
-          "alpha": -20.41,
-          "pValue": 0.0083,
+          "creator": "OneOption",
+          "alpha": -17.03,
+          "pValue": 0.0031,
           "sig": true
         }
       ]
@@ -287,8 +287,8 @@
         {
           "rank": 1,
           "creator": "Tom Nash",
-          "alpha": 335.63,
-          "pValue": 0.0318,
+          "alpha": 246.8,
+          "pValue": 0.0304,
           "sig": true
         },
         {
@@ -309,7 +309,7 @@
           "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 81.25,
-          "pValue": 0.1868,
+          "pValue": 0.19,
           "sig": false
         }
       ],
@@ -317,8 +317,8 @@
         {
           "rank": 1,
           "creator": "Andrei Jikh",
-          "alpha": -31.61,
-          "pValue": 0.0782,
+          "alpha": -29.93,
+          "pValue": 0.1225,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1868,
+          "pValue": 0.19,
           "sig": false
         },
         {
@@ -391,21 +391,21 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.002,
+          "pValue": 0.0031,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0318,
+          "pValue": 0.0304,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0,
+          "pValue": 0.0019,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0318,
+          "pValue": 0.0304,
           "sig": true
         },
         {
@@ -487,24 +487,24 @@
         },
         {
           "rank": 2,
+          "creator": "Common Sense Investing",
+          "alpha": 28.93,
+          "pValue": 0.6173,
+          "sig": false
+        },
+        {
+          "rank": 3,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 16.49,
           "pValue": 0.1832,
           "sig": false
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Jose Najarro Stocks",
           "alpha": 14.4,
           "pValue": 0.0003,
           "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 14.37,
-          "pValue": 0.1868,
-          "sig": false
         }
       ],
       "bottom": [
@@ -524,16 +524,16 @@
         },
         {
           "rank": 3,
-          "creator": "Common Sense Investing",
-          "alpha": -27.65,
-          "pValue": 0.5938,
-          "sig": false
+          "creator": "FX Evolution",
+          "alpha": -25.09,
+          "pValue": 0.0083,
+          "sig": true
         },
         {
           "rank": 4,
-          "creator": "OneOption",
-          "alpha": -25.4,
-          "pValue": 0.002,
+          "creator": "Mark Moss",
+          "alpha": -24.55,
+          "pValue": 0.0019,
           "sig": true
         }
       ]
@@ -551,16 +551,12 @@
         "mentions": 9
       },
       {
+        "ticker": "PLTR",
+        "mentions": 7
+      },
+      {
         "ticker": "BTC",
         "mentions": 7
-      },
-      {
-        "ticker": "NVDA",
-        "mentions": 7
-      },
-      {
-        "ticker": "PLTR",
-        "mentions": 6
       },
       {
         "ticker": "VTI",
@@ -568,6 +564,10 @@
       },
       {
         "ticker": "TSLA",
+        "mentions": 6
+      },
+      {
+        "ticker": "NVDA",
         "mentions": 6
       },
       {
