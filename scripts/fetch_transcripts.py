@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Fetch YouTube transcripts for pending rows in a Google Sheet."""
+"""Fetch YouTube transcripts for pending rows in a Google Sheet.
+
+Converted from the Google Colab version for GitHub Actions.
+Reads credentials from GOOGLE_CREDENTIALS and SHEET_KEY env vars.
+"""
 
 import json
 import logging
 import os
 import subprocess
 import sys
-import tempfile
+import time
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -18,8 +22,10 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 MAX_ROWS_PER_RUN = 50
-PENDING_STATUSES = {"Pending", "Pending Transcript", "Transcript Failed"}
 WORKSHEET_NAME = "Ingest_Queue"
+
+# Statuses that should never be touched — these rows are already processed
+SKIP_STATUSES = {"Analyzed", "Analyzed (Empty)"}
 
 
 def get_gspread_client():
@@ -28,13 +34,15 @@ def get_gspread_client():
     if not creds_json:
         sys.exit("GOOGLE_CREDENTIALS environment variable is not set")
 
-    log.info("CREDS length: %d, first char: %s, last char: %s", len(creds_json), creds_json[0], creds_json[-1])
-
     try:
         creds_dict = json.loads(creds_json)
-        log.info("JSON parsed OK. Project: %s, Client email: %s", creds_dict.get("project_id"), creds_dict.get("client_email"))
+        log.info(
+            "Credentials loaded. Project: %s, Email: %s",
+            creds_dict.get("project_id"),
+            creds_dict.get("client_email"),
+        )
     except Exception as e:
-        log.error("JSON parse failed: %s", e)
+        log.error("Failed to parse GOOGLE_CREDENTIALS JSON: %s", e)
         sys.exit(1)
 
     scope = [
@@ -50,121 +58,152 @@ def open_sheet(client):
     sheet_key = os.environ.get("SHEET_KEY", "").strip()
     if not sheet_key:
         sys.exit("SHEET_KEY environment variable is not set")
-    log.info("SHEET_KEY length: %d, starts with: %s", len(sheet_key), sheet_key[:4])
 
     spreadsheet = client.open_by_key(sheet_key)
     return spreadsheet.worksheet(WORKSHEET_NAME)
 
 
-def fetch_transcript(video_url):
+def fetch_transcript(video_id):
     """Use yt-dlp to download the transcript for a YouTube video.
 
-    Returns the transcript text on success, or None on failure.
+    Returns (status, text, lang):
+      - ("OK", transcript_text, "en")   on success
+      - ("FAILED", reason, "xx")        on failure
     """
-    with tempfile.TemporaryDirectory() as tmpdir:
-        output_path = os.path.join(tmpdir, "transcript")
-        cmd = [
-            "yt-dlp",
-            "--skip-download",
-            "--write-subs",
-            "--write-auto-subs",
-            "--sub-lang", "en",
-            "--sub-format", "vtt",
-            "--convert-subs", "srt",
-            "--output", output_path,
-            video_url,
-        ]
+    url = f"https://www.youtube.com/watch?v={video_id}"
 
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
-        if result.returncode != 0:
-            log.error("yt-dlp failed for %s: %s", video_url, result.stderr)
-            return None
-
-        srt_path = None
-        for fname in os.listdir(tmpdir):
-            if fname.endswith(".srt"):
-                srt_path = os.path.join(tmpdir, fname)
-                break
-
-        if srt_path is None:
-            log.error("No subtitle file found for %s", video_url)
-            return None
-
-        raw = open(srt_path, encoding="utf-8").read()
-        return _clean_srt(raw)
-
-
-def _clean_srt(srt_text):
-    """Strip SRT timing lines and indices, returning plain text."""
-    lines = []
-    for line in srt_text.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        if line.isdigit():
-            continue
-        if "-->" in line:
-            continue
-        lines.append(line)
-    return "\n".join(lines)
-
-
-def process_pending_rows(worksheet):
-    """Find pending rows, fetch transcripts, and update the sheet."""
-    all_records = worksheet.get_all_records()
-    headers = worksheet.row_values(1)
+    # Match Colab: request all subtitle languages, prefer English
+    cmd = [
+        "yt-dlp",
+        "--skip-download",
+        "--write-auto-sub",
+        "--write-sub",
+        "--sub-lang", "en,.*",
+        "--output", f"temp_{video_id}",
+        "--no-check-certificate",
+        url,
+    ]
 
     try:
-        status_col = headers.index("Status") + 1
-        url_col = headers.index("URL") + 1
-        transcript_col = headers.index("Transcript") + 1
+        subprocess.run(
+            cmd,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=45,
+        )
+
+        found_text = ""
+        lang_found = "xx"
+
+        for filename in os.listdir("."):
+            if filename.startswith(f"temp_{video_id}") and filename.endswith(".vtt"):
+                with open(filename, "r", encoding="utf-8", errors="ignore") as f:
+                    content = f.read()
+                    lines = []
+                    for line in content.splitlines():
+                        stripped = line.strip()
+                        if (
+                            stripped
+                            and "-->" not in line
+                            and "WEBVTT" not in line
+                            and "<c>" not in line
+                        ):
+                            lines.append(stripped.replace("&nbsp;", " "))
+                    found_text = " ".join(lines)
+                    # Extract language code from filename (e.g. temp_xxx.en.vtt → en)
+                    lang_found = filename.split(".")[-2]
+
+                os.remove(filename)
+                break
+
+        # Clean up any other temp files that yt-dlp may have created
+        for filename in os.listdir("."):
+            if filename.startswith(f"temp_{video_id}"):
+                try:
+                    os.remove(filename)
+                except OSError:
+                    pass
+
+        if len(found_text) > 50:
+            return "OK", found_text[:49000], lang_found
+        return "FAILED", "No transcript data found", "xx"
+
+    except subprocess.TimeoutExpired:
+        return "ERROR", "yt-dlp timed out after 45s", "xx"
+    except Exception as e:
+        return "ERROR", str(e), "xx"
+
+
+def process_rows(worksheet):
+    """Find actionable rows, fetch transcripts, and update the sheet."""
+    rows = worksheet.get_all_values()
+    headers = rows[0]
+
+    try:
+        id_col = headers.index("Video ID")
+        transcript_col = headers.index("Transcript")
+        status_col = headers.index("Status")
     except ValueError as exc:
         sys.exit(f"Required column not found in sheet headers: {exc}")
 
+    log.info("Found %d rows. Scanning...", len(rows))
+
     processed = 0
-    for idx, record in enumerate(all_records):
+    for i in range(1, len(rows)):
         if processed >= MAX_ROWS_PER_RUN:
             log.info("Reached max rows per run (%d). Stopping.", MAX_ROWS_PER_RUN)
             break
 
-        status = str(record.get("Status", "")).strip()
-        if status not in PENDING_STATUSES:
+        row = rows[i]
+        if len(row) <= status_col:
             continue
 
-        row_num = idx + 2
-        video_url = str(record.get("URL", "")).strip()
-        if not video_url:
-            log.warning("Row %d: no URL found, skipping", row_num)
+        video_id = row[id_col].strip()
+        status = row[status_col].strip()
+        row_num = i + 1  # 1-indexed for Google Sheets
+
+        # Skip rows that are already fully processed
+        if status in SKIP_STATUSES:
             continue
 
-        log.info("Row %d: fetching transcript for %s", row_num, video_url)
+        # Skip rows that already have a "Ready" status (don't overwrite)
+        if "Ready" in status:
+            continue
+
+        # Skip rows with no video ID
+        if not video_id:
+            continue
+
+        log.info("Row %d (%s): fetching transcript...", row_num, video_id)
 
         try:
-            transcript = fetch_transcript(video_url)
+            code, text, lang = fetch_transcript(video_id)
         except Exception:
-            log.exception("Row %d: unexpected error fetching transcript", row_num)
-            transcript = None
+            log.exception("Row %d: unexpected error", row_num)
+            code, text, lang = "ERROR", "Unexpected Python exception", "xx"
 
-        if transcript:
-            if len(transcript) > 50000:
-                transcript = transcript[:50000]
-            worksheet.update_cell(row_num, transcript_col, transcript)
-            worksheet.update_cell(row_num, status_col, "Ready for AI (en)")
-            log.info("Row %d: transcript saved (%d chars)", row_num, len(transcript))
+        if code == "OK":
+            log.info("Row %d: SUCCESS (%s, %d chars)", row_num, lang, len(text))
+            worksheet.update_cell(row_num, transcript_col + 1, text)
+            worksheet.update_cell(row_num, status_col + 1, f"Ready for AI ({lang})")
+            processed += 1
+            time.sleep(2)  # Rate-limit to avoid YouTube throttling
         else:
-            worksheet.update_cell(row_num, status_col, "Transcript Failed")
-            log.warning("Row %d: marked as Transcript Failed", row_num)
-
-        processed += 1
+            log.warning("Row %d: %s — %s", row_num, code, text[:100])
+            # Only mark as failed if not already in a "Ready" state
+            worksheet.update_cell(row_num, status_col + 1, "Transcript Failed")
+            processed += 1
+            time.sleep(1)
 
     log.info("Done. Processed %d rows.", processed)
 
 
 def main():
-    log.info("Starting transcript fetcher")
+    log.info("--- TRANSCRIPT FETCHER STARTED ---")
     client = get_gspread_client()
     worksheet = open_sheet(client)
-    process_pending_rows(worksheet)
+    process_rows(worksheet)
+    log.info("--- TRANSCRIPT FETCHER FINISHED ---")
 
 
 if __name__ == "__main__":

@@ -2,8 +2,8 @@ name: Fetch YouTube Transcripts
 
 on:
   schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:
+    - cron: '0 2 * * *'   # Daily at 2:00 AM UTC
+  workflow_dispatch:        # Manual trigger from Actions tab
 
 jobs:
   fetch-transcripts:
