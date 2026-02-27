@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-26T14:20:27.829Z",
+    "generatedAt": "2026-02-27T14:20:26.554Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
-    "totalCreatorsTracked": 79,
+    "totalCreatorsTracked": 80,
     "totalVerifiedCreators": 52,
-    "totalPredictions": 3360
+    "totalPredictions": 3391
   },
   "alpha": {
     "top": [
@@ -86,32 +86,32 @@
       {
         "rank": 1,
         "creator": "Alex Dito - Invertir en Valor",
-        "n": 23,
-        "pValue": 0.0677,
+        "n": 24,
+        "pValue": 0.0612,
         "sig": false,
-        "winRate": 73.91
+        "winRate": 75
       },
       {
         "rank": 2,
         "creator": "Jose Najarro Stocks",
-        "n": 69,
-        "pValue": 0.0003,
+        "n": 70,
+        "pValue": 0.0002,
         "sig": true,
-        "winRate": 72.46
+        "winRate": 72.86
       },
       {
         "rank": 3,
-        "creator": "Let's Talk Money! with Joseph Hogue, CFA",
-        "n": 42,
-        "pValue": 0.1832,
-        "sig": false,
-        "winRate": 64.29
-      },
-      {
-        "rank": 4,
         "creator": "Stealth Wealth Investing",
         "n": 77,
         "pValue": 0.19,
+        "sig": false,
+        "winRate": 63.64
+      },
+      {
+        "rank": 4,
+        "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+        "n": 44,
+        "pValue": 0.1615,
         "sig": false,
         "winRate": 63.64
       }
@@ -159,22 +159,22 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 16.57,
-          "pValue": 0.6189,
+          "alpha": 17.53,
+          "pValue": 0.5952,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 10.23,
-          "pValue": 0.0677,
+          "alpha": 10.44,
+          "pValue": 0.0612,
           "sig": false
         },
         {
           "rank": 3,
           "creator": "Fundstrat",
-          "alpha": 9.12,
-          "pValue": 0.2174,
+          "alpha": 9.88,
+          "pValue": 0.2487,
           "sig": false
         },
         {
@@ -318,8 +318,8 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0256,
-          "sig": true
+          "pValue": 0.0875,
+          "sig": false
         },
         {
           "rank": 2,
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0017,
+          "pValue": 0.0016,
           "sig": true
         }
       ]
@@ -489,21 +489,21 @@
           "rank": 2,
           "creator": "Common Sense Investing",
           "alpha": 28.59,
-          "pValue": 0.6189,
+          "pValue": 0.5952,
           "sig": false
         },
         {
           "rank": 3,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
-          "alpha": 16.49,
-          "pValue": 0.1832,
+          "alpha": 23.21,
+          "pValue": 0.1615,
           "sig": false
         },
         {
           "rank": 4,
           "creator": "Jose Najarro Stocks",
-          "alpha": 14.4,
-          "pValue": 0.0003,
+          "alpha": 14.83,
+          "pValue": 0.0002,
           "sig": true
         }
       ],
@@ -533,7 +533,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -24.77,
-          "pValue": 0.0017,
+          "pValue": 0.0016,
           "sig": true
         }
       ]
@@ -544,7 +544,7 @@
     "items": [
       {
         "ticker": "AIQ",
-        "mentions": 12
+        "mentions": 13
       },
       {
         "ticker": "SPY",
