@@ -1,15 +1,15 @@
 {
   "meta": {
-    "lastUpdated": "Feb 2026",
-    "generatedAt": "2026-02-28T14:20:24.326Z",
+    "lastUpdated": "Mar 2026",
+    "generatedAt": "2026-03-01T14:20:25.800Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
-    "totalVerifiedCreators": 56,
-    "totalPredictions": 3888
+    "totalVerifiedCreators": 58,
+    "totalPredictions": 3945
   },
   "alpha": {
     "top": [
@@ -32,10 +32,10 @@
       {
         "rank": 3,
         "creator": "Daniel Pronk",
-        "n": 67,
-        "pValue": 0.0136,
+        "n": 69,
+        "pValue": 0.0142,
         "sig": true,
-        "avgAlpha": 16.76
+        "avgAlpha": 16.27
       },
       {
         "rank": 4,
@@ -179,9 +179,9 @@
         },
         {
           "rank": 4,
-          "creator": "Fundstrat",
-          "alpha": 9.88,
-          "pValue": 0.2487,
+          "creator": "Stock Moe",
+          "alpha": 8.83,
+          "pValue": 0.4072,
           "sig": false
         }
       ],
@@ -202,17 +202,17 @@
         },
         {
           "rank": 3,
-          "creator": "Meet Kevin",
-          "alpha": -19.96,
-          "pValue": 0.101,
-          "sig": false
-        },
-        {
-          "rank": 4,
           "creator": "Tom Nash",
           "alpha": -17.56,
           "pValue": 0.0304,
           "sig": true
+        },
+        {
+          "rank": 4,
+          "creator": "Meet Kevin",
+          "alpha": -17.4,
+          "pValue": 0.0938,
+          "sig": false
         }
       ]
     },
@@ -237,8 +237,8 @@
         {
           "rank": 3,
           "creator": "Daniel Pronk",
-          "alpha": 16.76,
-          "pValue": 0.0136,
+          "alpha": 16.27,
+          "pValue": 0.0142,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0875,
+          "pValue": 0.2307,
           "sig": false
         },
         {
@@ -432,7 +432,7 @@
           "rank": 3,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.6638,
+          "pValue": 0.669,
           "sig": false
         },
         {
@@ -548,10 +548,14 @@
       },
       {
         "ticker": "SPY",
-        "mentions": 11
+        "mentions": 10
       },
       {
         "ticker": "NVDA",
+        "mentions": 8
+      },
+      {
+        "ticker": "BTC",
         "mentions": 8
       },
       {
@@ -559,24 +563,20 @@
         "mentions": 7
       },
       {
-        "ticker": "BTC",
-        "mentions": 7
-      },
-      {
         "ticker": "VTI",
-        "mentions": 6
+        "mentions": 7
       },
       {
         "ticker": "TSLA",
         "mentions": 6
       },
       {
-        "ticker": "AMD",
+        "ticker": "AMZN",
         "mentions": 5
       },
       {
-        "ticker": "AMZN",
-        "mentions": 4
+        "ticker": "AMD",
+        "mentions": 5
       },
       {
         "ticker": "QQQ",
