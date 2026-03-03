@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-02T14:20:28.422Z",
+    "generatedAt": "2026-03-03T14:20:27.777Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
-    "totalVerifiedCreators": 58,
-    "totalPredictions": 3960
+    "totalVerifiedCreators": 59,
+    "totalPredictions": 4012
   },
   "alpha": {
     "top": [
@@ -33,7 +33,7 @@
         "rank": 3,
         "creator": "Daniel Pronk",
         "n": 69,
-        "pValue": 0.0142,
+        "pValue": 0.0148,
         "sig": true,
         "avgAlpha": 16.27
       },
@@ -66,10 +66,10 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 83,
-        "pValue": 0.0016,
+        "n": 80,
+        "pValue": 0.002,
         "sig": true,
-        "avgAlpha": -16.45
+        "avgAlpha": -16.61
       },
       {
         "rank": 4,
@@ -85,19 +85,19 @@
     "top": [
       {
         "rank": 1,
-        "creator": "Alex Dito - Invertir en Valor",
-        "n": 25,
-        "pValue": 0.0552,
-        "sig": false,
-        "winRate": 76
-      },
-      {
-        "rank": 2,
         "creator": "Jose Najarro Stocks",
         "n": 70,
         "pValue": 0.0002,
         "sig": true,
         "winRate": 72.86
+      },
+      {
+        "rank": 2,
+        "creator": "Alex Dito - Invertir en Valor",
+        "n": 31,
+        "pValue": 0.0332,
+        "sig": true,
+        "winRate": 70.97
       },
       {
         "rank": 3,
@@ -159,16 +159,16 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 16.57,
-          "pValue": 0.6189,
+          "alpha": 14.34,
+          "pValue": 0.6157,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 10.63,
-          "pValue": 0.0552,
-          "sig": false
+          "alpha": 12.06,
+          "pValue": 0.0332,
+          "sig": true
         },
         {
           "rank": 3,
@@ -179,9 +179,9 @@
         },
         {
           "rank": 4,
-          "creator": "Stock Moe",
-          "alpha": 8.83,
-          "pValue": 0.4072,
+          "creator": "이효석아카데미",
+          "alpha": 8.02,
+          "pValue": 0.405,
           "sig": false
         }
       ],
@@ -209,10 +209,10 @@
         },
         {
           "rank": 4,
-          "creator": "Meet Kevin",
-          "alpha": -17.4,
-          "pValue": 0.0938,
-          "sig": false
+          "creator": "Everything Money",
+          "alpha": -16.42,
+          "pValue": 0.0001,
+          "sig": true
         }
       ]
     },
@@ -238,7 +238,7 @@
           "rank": 3,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
-          "pValue": 0.0142,
+          "pValue": 0.0148,
           "sig": true
         },
         {
@@ -267,8 +267,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -16.45,
-          "pValue": 0.0016,
+          "alpha": -16.61,
+          "pValue": 0.002,
           "sig": true
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0016,
+          "pValue": 0.002,
           "sig": true
         }
       ]
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "FX Evolution",
           "alpha": -12.45,
-          "pValue": 0.0001,
+          "pValue": 0.0002,
           "sig": true
         }
       ]
@@ -480,23 +480,23 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Common Sense Investing",
-          "alpha": 28.59,
-          "pValue": 0.6189,
-          "sig": false
-        },
-        {
-          "rank": 2,
           "creator": "ClearValue Tax",
           "alpha": 24.61,
           "pValue": 0.0263,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 2,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 23.21,
           "pValue": 0.1615,
+          "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Common Sense Investing",
+          "alpha": 21.37,
+          "pValue": 0.6157,
           "sig": false
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -24.77,
-          "pValue": 0.0016,
+          "alpha": -25.43,
+          "pValue": 0.002,
           "sig": true
         },
         {
@@ -548,22 +548,22 @@
       },
       {
         "ticker": "SPY",
-        "mentions": 10
+        "mentions": 12
       },
       {
         "ticker": "NVDA",
-        "mentions": 8
+        "mentions": 9
       },
       {
         "ticker": "BTC",
+        "mentions": 9
+      },
+      {
+        "ticker": "VTI",
         "mentions": 8
       },
       {
         "ticker": "PLTR",
-        "mentions": 7
-      },
-      {
-        "ticker": "VTI",
         "mentions": 7
       },
       {
