@@ -1,25 +1,25 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-03T14:20:27.777Z",
+    "generatedAt": "2026-03-04T14:20:24.437Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
-    "totalVerifiedCreators": 59,
-    "totalPredictions": 4012
+    "totalVerifiedCreators": 60,
+    "totalPredictions": 4292
   },
   "alpha": {
     "top": [
       {
         "rank": 1,
         "creator": "Tom Nash",
-        "n": 52,
-        "pValue": 0.0304,
+        "n": 54,
+        "pValue": 0.0314,
         "sig": true,
-        "avgAlpha": 54.59
+        "avgAlpha": 52.57
       },
       {
         "rank": 2,
@@ -33,17 +33,17 @@
         "rank": 3,
         "creator": "Daniel Pronk",
         "n": 69,
-        "pValue": 0.0148,
+        "pValue": 0.0142,
         "sig": true,
         "avgAlpha": 16.27
       },
       {
         "rank": 4,
-        "creator": "Stealth Wealth Investing",
-        "n": 77,
-        "pValue": 0.19,
-        "sig": false,
-        "avgAlpha": 15.29
+        "creator": "Jerry Romine Stocks",
+        "n": 56,
+        "pValue": 0.0208,
+        "sig": true,
+        "avgAlpha": 15.52
       }
     ],
     "bottom": [
@@ -58,26 +58,26 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 46,
-        "pValue": 0.0003,
+        "n": 72,
+        "pValue": 0,
         "sig": true,
-        "avgAlpha": -32.59
+        "avgAlpha": -36.33
       },
       {
         "rank": 3,
-        "creator": "Mark Moss",
-        "n": 80,
-        "pValue": 0.002,
-        "sig": true,
-        "avgAlpha": -16.61
-      },
-      {
-        "rank": 4,
         "creator": "OneOption",
         "n": 29,
         "pValue": 0.003,
         "sig": true,
         "avgAlpha": -15.28
+      },
+      {
+        "rank": 4,
+        "creator": "Mark Moss",
+        "n": 86,
+        "pValue": 0.0022,
+        "sig": true,
+        "avgAlpha": -15.2
       }
     ]
   },
@@ -119,6 +119,14 @@
     "bottom": [
       {
         "rank": 1,
+        "creator": "Fat Cat",
+        "n": 22,
+        "pValue": 0.0318,
+        "sig": true,
+        "winRate": 9.09
+      },
+      {
+        "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
         "n": 21,
         "pValue": 0.0502,
@@ -126,7 +134,7 @@
         "winRate": 19.05
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "OneOption",
         "n": 29,
         "pValue": 0.003,
@@ -134,20 +142,12 @@
         "winRate": 20.69
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "Beavis Wealth",
         "n": 43,
         "pValue": 0,
         "sig": true,
         "winRate": 20.93
-      },
-      {
-        "rank": 4,
-        "creator": "The Matt Kohrs Show",
-        "n": 123,
-        "pValue": 0,
-        "sig": true,
-        "winRate": 21.95
       }
     ]
   },
@@ -202,9 +202,9 @@
         },
         {
           "rank": 3,
-          "creator": "Tom Nash",
-          "alpha": -17.56,
-          "pValue": 0.0304,
+          "creator": "Patrick Boyle",
+          "alpha": -21.75,
+          "pValue": 0,
           "sig": true
         },
         {
@@ -223,8 +223,8 @@
         {
           "rank": 1,
           "creator": "Tom Nash",
-          "alpha": 54.59,
-          "pValue": 0.0304,
+          "alpha": 52.57,
+          "pValue": 0.0314,
           "sig": true
         },
         {
@@ -238,15 +238,15 @@
           "rank": 3,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
-          "pValue": 0.0148,
+          "pValue": 0.0142,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 15.29,
-          "pValue": 0.19,
-          "sig": false
+          "creator": "Jerry Romine Stocks",
+          "alpha": 15.52,
+          "pValue": 0.0208,
+          "sig": true
         }
       ],
       "bottom": [
@@ -260,22 +260,22 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -32.59,
-          "pValue": 0.0003,
+          "alpha": -36.33,
+          "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -16.61,
-          "pValue": 0.002,
+          "creator": "OneOption",
+          "alpha": -15.28,
+          "pValue": 0.003,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "OneOption",
-          "alpha": -15.28,
-          "pValue": 0.003,
+          "creator": "Mark Moss",
+          "alpha": -15.2,
+          "pValue": 0.0022,
           "sig": true
         }
       ]
@@ -288,7 +288,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 246.8,
-          "pValue": 0.0304,
+          "pValue": 0.0314,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0875,
+          "pValue": 0.0684,
           "sig": false
         },
         {
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0304,
+          "pValue": 0.0314,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.002,
+          "pValue": 0.0022,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0304,
+          "pValue": 0.0314,
           "sig": true
         },
         {
@@ -454,8 +454,8 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -21.38,
-          "pValue": 0.0003,
+          "alpha": -21.17,
+          "pValue": 0,
           "sig": true
         },
         {
@@ -501,18 +501,18 @@
         },
         {
           "rank": 4,
-          "creator": "Ticker Symbol: YOU",
-          "alpha": 15,
-          "pValue": 0.425,
-          "sig": false
+          "creator": "Jerry Romine Stocks",
+          "alpha": 15.08,
+          "pValue": 0.0208,
+          "sig": true
         }
       ],
       "bottom": [
         {
           "rank": 1,
           "creator": "Patrick Boyle",
-          "alpha": -51.14,
-          "pValue": 0.0003,
+          "alpha": -53.34,
+          "pValue": 0,
           "sig": true
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -25.43,
-          "pValue": 0.002,
+          "alpha": -22.66,
+          "pValue": 0.0022,
           "sig": true
         },
         {
@@ -552,14 +552,10 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 9
+        "mentions": 10
       },
       {
         "ticker": "BTC",
-        "mentions": 9
-      },
-      {
-        "ticker": "VTI",
         "mentions": 8
       },
       {
@@ -567,19 +563,23 @@
         "mentions": 7
       },
       {
-        "ticker": "TSLA",
-        "mentions": 6
+        "ticker": "VTI",
+        "mentions": 7
       },
       {
         "ticker": "AMZN",
-        "mentions": 5
+        "mentions": 6
+      },
+      {
+        "ticker": "TSLA",
+        "mentions": 6
       },
       {
         "ticker": "AMD",
         "mentions": 5
       },
       {
-        "ticker": "QQQ",
+        "ticker": "AAPL",
         "mentions": 4
       }
     ]
