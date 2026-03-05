@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-04T14:20:24.437Z",
+    "generatedAt": "2026-03-05T14:20:24.802Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
     "totalVerifiedCreators": 60,
-    "totalPredictions": 4292
+    "totalPredictions": 4319
   },
   "alpha": {
     "top": [
@@ -39,11 +39,11 @@
       },
       {
         "rank": 4,
-        "creator": "Jerry Romine Stocks",
-        "n": 56,
-        "pValue": 0.0208,
-        "sig": true,
-        "avgAlpha": 15.52
+        "creator": "Stealth Wealth Investing",
+        "n": 79,
+        "pValue": 0.1917,
+        "sig": false,
+        "avgAlpha": 14.91
       }
     ],
     "bottom": [
@@ -74,10 +74,10 @@
       {
         "rank": 4,
         "creator": "Mark Moss",
-        "n": 86,
-        "pValue": 0.0022,
+        "n": 85,
+        "pValue": 0.0028,
         "sig": true,
-        "avgAlpha": -15.2
+        "avgAlpha": -14.94
       }
     ]
   },
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Stealth Wealth Investing",
-        "n": 77,
-        "pValue": 0.19,
+        "n": 79,
+        "pValue": 0.1917,
         "sig": false,
-        "winRate": 63.64
+        "winRate": 64.56
       },
       {
         "rank": 4,
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 14.34,
-          "pValue": 0.6157,
+          "alpha": 14.25,
+          "pValue": 0.6185,
           "sig": false
         },
         {
@@ -189,8 +189,8 @@
         {
           "rank": 1,
           "creator": "ClearValue Tax",
-          "alpha": -34.59,
-          "pValue": 0.0263,
+          "alpha": -23.09,
+          "pValue": 0.0272,
           "sig": true
         },
         {
@@ -209,9 +209,9 @@
         },
         {
           "rank": 4,
-          "creator": "Everything Money",
-          "alpha": -16.42,
-          "pValue": 0.0001,
+          "creator": "The Matt Kohrs Show",
+          "alpha": -15.97,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -243,10 +243,10 @@
         },
         {
           "rank": 4,
-          "creator": "Jerry Romine Stocks",
-          "alpha": 15.52,
-          "pValue": 0.0208,
-          "sig": true
+          "creator": "Stealth Wealth Investing",
+          "alpha": 14.91,
+          "pValue": 0.1917,
+          "sig": false
         }
       ],
       "bottom": [
@@ -274,8 +274,8 @@
         {
           "rank": 4,
           "creator": "Mark Moss",
-          "alpha": -15.2,
-          "pValue": 0.0022,
+          "alpha": -14.94,
+          "pValue": 0.0028,
           "sig": true
         }
       ]
@@ -308,8 +308,8 @@
         {
           "rank": 4,
           "creator": "Stealth Wealth Investing",
-          "alpha": 81.25,
-          "pValue": 0.19,
+          "alpha": 69.67,
+          "pValue": 0.1917,
           "sig": false
         }
       ],
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0684,
+          "pValue": 0.0875,
           "sig": false
         },
         {
@@ -361,7 +361,7 @@
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.19,
+          "pValue": 0.1917,
           "sig": false
         },
         {
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.1138,
+          "pValue": 0.2604,
           "sig": false
         }
       ],
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0022,
+          "pValue": 0.0028,
           "sig": true
         }
       ]
@@ -481,8 +481,8 @@
         {
           "rank": 1,
           "creator": "ClearValue Tax",
-          "alpha": 24.61,
-          "pValue": 0.0263,
+          "alpha": 23.98,
+          "pValue": 0.0272,
           "sig": true
         },
         {
@@ -496,15 +496,15 @@
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.6157,
+          "pValue": 0.6185,
           "sig": false
         },
         {
           "rank": 4,
-          "creator": "Jerry Romine Stocks",
-          "alpha": 15.08,
-          "pValue": 0.0208,
-          "sig": true
+          "creator": "Ticker Symbol: YOU",
+          "alpha": 15,
+          "pValue": 0.425,
+          "sig": false
         }
       ],
       "bottom": [
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -22.66,
-          "pValue": 0.0022,
+          "alpha": -22.42,
+          "pValue": 0.0028,
           "sig": true
         },
         {
@@ -567,11 +567,11 @@
         "mentions": 7
       },
       {
-        "ticker": "AMZN",
-        "mentions": 6
+        "ticker": "TSLA",
+        "mentions": 7
       },
       {
-        "ticker": "TSLA",
+        "ticker": "AMZN",
         "mentions": 6
       },
       {
