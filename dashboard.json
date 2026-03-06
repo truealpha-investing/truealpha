@@ -1,20 +1,28 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-05T14:20:24.802Z",
+    "generatedAt": "2026-03-06T14:20:24.854Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
-    "totalVerifiedCreators": 60,
-    "totalPredictions": 4319
+    "totalVerifiedCreators": 61,
+    "totalPredictions": 4343
   },
   "alpha": {
     "top": [
       {
         "rank": 1,
+        "creator": "Chit Chat Stocks Podcast",
+        "n": 20,
+        "pValue": 0.0042,
+        "sig": true,
+        "avgAlpha": 57.85
+      },
+      {
+        "rank": 2,
         "creator": "Tom Nash",
         "n": 54,
         "pValue": 0.0314,
@@ -22,7 +30,7 @@
         "avgAlpha": 52.57
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "YT Finance",
         "n": 97,
         "pValue": 0.0122,
@@ -30,20 +38,12 @@
         "avgAlpha": 24.54
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "Daniel Pronk",
         "n": 69,
         "pValue": 0.0142,
         "sig": true,
         "avgAlpha": 16.27
-      },
-      {
-        "rank": 4,
-        "creator": "Stealth Wealth Investing",
-        "n": 79,
-        "pValue": 0.1917,
-        "sig": false,
-        "avgAlpha": 14.91
       }
     ],
     "bottom": [
@@ -74,10 +74,10 @@
       {
         "rank": 4,
         "creator": "Mark Moss",
-        "n": 85,
-        "pValue": 0.0028,
+        "n": 86,
+        "pValue": 0.0022,
         "sig": true,
-        "avgAlpha": -14.94
+        "avgAlpha": -15.2
       }
     ]
   },
@@ -85,6 +85,14 @@
     "top": [
       {
         "rank": 1,
+        "creator": "Chit Chat Stocks Podcast",
+        "n": 20,
+        "pValue": 0.0042,
+        "sig": true,
+        "winRate": 75
+      },
+      {
+        "rank": 2,
         "creator": "Jose Najarro Stocks",
         "n": 70,
         "pValue": 0.0002,
@@ -92,28 +100,20 @@
         "winRate": 72.86
       },
       {
-        "rank": 2,
+        "rank": 3,
         "creator": "Alex Dito - Invertir en Valor",
-        "n": 31,
-        "pValue": 0.0332,
+        "n": 33,
+        "pValue": 0.0446,
         "sig": true,
-        "winRate": 70.97
+        "winRate": 66.67
       },
       {
-        "rank": 3,
+        "rank": 4,
         "creator": "Stealth Wealth Investing",
         "n": 79,
         "pValue": 0.1917,
         "sig": false,
         "winRate": 64.56
-      },
-      {
-        "rank": 4,
-        "creator": "Let's Talk Money! with Joseph Hogue, CFA",
-        "n": 44,
-        "pValue": 0.1615,
-        "sig": false,
-        "winRate": 63.64
       }
     ],
     "bottom": [
@@ -159,15 +159,15 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 14.25,
-          "pValue": 0.6185,
+          "alpha": 15.19,
+          "pValue": 0.5913,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Alex Dito - Invertir en Valor",
           "alpha": 12.06,
-          "pValue": 0.0332,
+          "pValue": 0.0446,
           "sig": true
         },
         {
@@ -181,7 +181,7 @@
           "rank": 4,
           "creator": "이효석아카데미",
           "alpha": 8.02,
-          "pValue": 0.405,
+          "pValue": 0.6789,
           "sig": false
         }
       ],
@@ -222,31 +222,31 @@
       "top": [
         {
           "rank": 1,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": 57.85,
+          "pValue": 0.0042,
+          "sig": true
+        },
+        {
+          "rank": 2,
           "creator": "Tom Nash",
           "alpha": 52.57,
           "pValue": 0.0314,
           "sig": true
         },
         {
-          "rank": 2,
+          "rank": 3,
           "creator": "YT Finance",
           "alpha": 24.54,
           "pValue": 0.0122,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
           "pValue": 0.0142,
           "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 14.91,
-          "pValue": 0.1917,
-          "sig": false
         }
       ],
       "bottom": [
@@ -274,8 +274,8 @@
         {
           "rank": 4,
           "creator": "Mark Moss",
-          "alpha": -14.94,
-          "pValue": 0.0028,
+          "alpha": -15.2,
+          "pValue": 0.0022,
           "sig": true
         }
       ]
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0028,
+          "pValue": 0.0022,
           "sig": true
         }
       ]
@@ -423,23 +423,23 @@
         },
         {
           "rank": 2,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": 77.25,
+          "pValue": 0.0042,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
           "pValue": 0.0122,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
           "pValue": 0.6638,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Jeremy Lefebvre Clips",
-          "alpha": 36.05,
-          "pValue": 0.1487,
           "sig": false
         }
       ],
@@ -480,30 +480,30 @@
       "top": [
         {
           "rank": 1,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": 28.75,
+          "pValue": 0.0042,
+          "sig": true
+        },
+        {
+          "rank": 2,
           "creator": "ClearValue Tax",
           "alpha": 23.98,
           "pValue": 0.0272,
           "sig": true
         },
         {
-          "rank": 2,
+          "rank": 3,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 23.21,
           "pValue": 0.1615,
           "sig": false
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.6185,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Ticker Symbol: YOU",
-          "alpha": 15,
-          "pValue": 0.425,
+          "pValue": 0.5913,
           "sig": false
         }
       ],
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -22.42,
-          "pValue": 0.0028,
+          "alpha": -22.66,
+          "pValue": 0.0022,
           "sig": true
         },
         {
@@ -552,7 +552,7 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 10
+        "mentions": 9
       },
       {
         "ticker": "BTC",
@@ -567,11 +567,11 @@
         "mentions": 7
       },
       {
-        "ticker": "TSLA",
-        "mentions": 7
+        "ticker": "AMZN",
+        "mentions": 6
       },
       {
-        "ticker": "AMZN",
+        "ticker": "TSLA",
         "mentions": 6
       },
       {
