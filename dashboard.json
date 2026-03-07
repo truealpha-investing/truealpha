@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-06T14:20:24.854Z",
+    "generatedAt": "2026-03-07T14:20:24.680Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
     "totalVerifiedCreators": 61,
-    "totalPredictions": 4343
+    "totalPredictions": 4386
   },
   "alpha": {
     "top": [
@@ -65,19 +65,19 @@
       },
       {
         "rank": 3,
-        "creator": "OneOption",
-        "n": 29,
-        "pValue": 0.003,
+        "creator": "Mark Moss",
+        "n": 90,
+        "pValue": 0.0027,
         "sig": true,
-        "avgAlpha": -15.28
+        "avgAlpha": -15
       },
       {
         "rank": 4,
-        "creator": "Mark Moss",
-        "n": 86,
-        "pValue": 0.0022,
+        "creator": "The Matt Kohrs Show",
+        "n": 123,
+        "pValue": 0,
         "sig": true,
-        "avgAlpha": -15.2
+        "avgAlpha": -14.62
       }
     ]
   },
@@ -94,10 +94,10 @@
       {
         "rank": 2,
         "creator": "Jose Najarro Stocks",
-        "n": 70,
+        "n": 71,
         "pValue": 0.0002,
         "sig": true,
-        "winRate": 72.86
+        "winRate": 71.83
       },
       {
         "rank": 3,
@@ -110,10 +110,10 @@
       {
         "rank": 4,
         "creator": "Stealth Wealth Investing",
-        "n": 79,
-        "pValue": 0.1917,
+        "n": 80,
+        "pValue": 0.1823,
         "sig": false,
-        "winRate": 64.56
+        "winRate": 65
       }
     ],
     "bottom": [
@@ -135,19 +135,19 @@
       },
       {
         "rank": 3,
-        "creator": "OneOption",
-        "n": 29,
-        "pValue": 0.003,
-        "sig": true,
-        "winRate": 20.69
-      },
-      {
-        "rank": 4,
         "creator": "Beavis Wealth",
         "n": 43,
         "pValue": 0,
         "sig": true,
         "winRate": 20.93
+      },
+      {
+        "rank": 4,
+        "creator": "The Matt Kohrs Show",
+        "n": 123,
+        "pValue": 0,
+        "sig": true,
+        "winRate": 21.95
       }
     ]
   },
@@ -180,8 +180,8 @@
         {
           "rank": 4,
           "creator": "이효석아카데미",
-          "alpha": 8.02,
-          "pValue": 0.6789,
+          "alpha": 7.88,
+          "pValue": 0.963,
           "sig": false
         }
       ],
@@ -266,16 +266,16 @@
         },
         {
           "rank": 3,
-          "creator": "OneOption",
-          "alpha": -15.28,
-          "pValue": 0.003,
+          "creator": "Mark Moss",
+          "alpha": -15,
+          "pValue": 0.0027,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Mark Moss",
-          "alpha": -15.2,
-          "pValue": 0.0022,
+          "creator": "The Matt Kohrs Show",
+          "alpha": -14.62,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -309,7 +309,7 @@
           "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 69.67,
-          "pValue": 0.1917,
+          "pValue": 0.1823,
           "sig": false
         }
       ],
@@ -325,7 +325,7 @@
           "rank": 2,
           "creator": "The Patient Investor",
           "alpha": -27.8,
-          "pValue": 0.3503,
+          "pValue": 0.5001,
           "sig": false
         },
         {
@@ -361,7 +361,7 @@
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1917,
+          "pValue": 0.1823,
           "sig": false
         },
         {
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.2604,
+          "pValue": 0.2333,
           "sig": false
         }
       ],
@@ -391,7 +391,7 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.003,
+          "pValue": 0.0039,
           "sig": true
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0022,
+          "pValue": 0.0027,
           "sig": true
         }
       ]
@@ -481,7 +481,7 @@
         {
           "rank": 1,
           "creator": "Chit Chat Stocks Podcast",
-          "alpha": 28.75,
+          "alpha": 28.74,
           "pValue": 0.0042,
           "sig": true
         },
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -22.66,
-          "pValue": 0.0022,
+          "alpha": -21.94,
+          "pValue": 0.0027,
           "sig": true
         },
         {
@@ -543,12 +543,12 @@
     "note": "Ticker mentions across verified creators' Recommended Assets.",
     "items": [
       {
-        "ticker": "AIQ",
-        "mentions": 13
+        "ticker": "SPY",
+        "mentions": 14
       },
       {
-        "ticker": "SPY",
-        "mentions": 12
+        "ticker": "AIQ",
+        "mentions": 13
       },
       {
         "ticker": "NVDA",
