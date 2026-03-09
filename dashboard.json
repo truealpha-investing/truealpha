@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-08T13:20:23.908Z",
+    "generatedAt": "2026-03-09T13:20:24.311Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 81,
     "totalVerifiedCreators": 62,
-    "totalPredictions": 4427
+    "totalPredictions": 4412
   },
   "alpha": {
     "top": [
@@ -41,7 +41,7 @@
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 69,
-        "pValue": 0.0142,
+        "pValue": 0.0149,
         "sig": true,
         "avgAlpha": 16.27
       }
@@ -58,18 +58,18 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 72,
+        "n": 71,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -36.33
+        "avgAlpha": -36.86
       },
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 90,
-        "pValue": 0.0027,
+        "n": 88,
+        "pValue": 0.0018,
         "sig": true,
-        "avgAlpha": -15
+        "avgAlpha": -15.53
       },
       {
         "rank": 4,
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 14.25,
-          "pValue": 0.6185,
+          "alpha": 14.34,
+          "pValue": 0.6157,
           "sig": false
         },
         {
@@ -245,7 +245,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
-          "pValue": 0.0142,
+          "pValue": 0.0149,
           "sig": true
         }
       ],
@@ -260,15 +260,15 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -36.33,
+          "alpha": -36.86,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -15,
-          "pValue": 0.0027,
+          "alpha": -15.53,
+          "pValue": 0.0018,
           "sig": true
         },
         {
@@ -317,8 +317,8 @@
         {
           "rank": 1,
           "creator": "Andrei Jikh",
-          "alpha": -31.61,
-          "pValue": 0.0875,
+          "alpha": -29.95,
+          "pValue": 0.401,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0027,
+          "pValue": 0.0018,
           "sig": true
         }
       ]
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.6638,
+          "pValue": 0.669,
           "sig": false
         }
       ],
@@ -503,7 +503,7 @@
           "rank": 4,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.6185,
+          "pValue": 0.6157,
           "sig": false
         }
       ],
@@ -526,7 +526,7 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -21.94,
-          "pValue": 0.0027,
+          "pValue": 0.0018,
           "sig": true
         },
         {
