@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-09T13:20:24.311Z",
+    "generatedAt": "2026-03-10T13:20:26.226Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
-    "totalCreatorsTracked": 81,
+    "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 62,
-    "totalPredictions": 4412
+    "totalPredictions": 4484
   },
   "alpha": {
     "top": [
@@ -24,24 +24,24 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 55,
-        "pValue": 0.0341,
+        "n": 59,
+        "pValue": 0.0374,
         "sig": true,
-        "avgAlpha": 50.83
+        "avgAlpha": 47.53
       },
       {
         "rank": 3,
         "creator": "YT Finance",
-        "n": 97,
-        "pValue": 0.0122,
+        "n": 99,
+        "pValue": 0.0125,
         "sig": true,
-        "avgAlpha": 24.54
+        "avgAlpha": 24.07
       },
       {
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 69,
-        "pValue": 0.0149,
+        "pValue": 0.0142,
         "sig": true,
         "avgAlpha": 16.27
       }
@@ -58,18 +58,18 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 71,
+        "n": 72,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -36.86
+        "avgAlpha": -36.33
       },
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 88,
-        "pValue": 0.0018,
+        "n": 90,
+        "pValue": 0.0027,
         "sig": true,
-        "avgAlpha": -15.53
+        "avgAlpha": -15
       },
       {
         "rank": 4,
@@ -110,10 +110,10 @@
       {
         "rank": 4,
         "creator": "Stealth Wealth Investing",
-        "n": 80,
-        "pValue": 0.1823,
+        "n": 81,
+        "pValue": 0.1846,
         "sig": false,
-        "winRate": 65
+        "winRate": 65.43
       }
     ],
     "bottom": [
@@ -143,11 +143,11 @@
       },
       {
         "rank": 4,
-        "creator": "The Matt Kohrs Show",
-        "n": 123,
-        "pValue": 0,
-        "sig": true,
-        "winRate": 21.95
+        "creator": "Pi-Fi",
+        "n": 23,
+        "pValue": 0.2536,
+        "sig": false,
+        "winRate": 21.74
       }
     ]
   },
@@ -174,7 +174,7 @@
           "rank": 3,
           "creator": "Jeremy Lefebvre Clips",
           "alpha": 9.88,
-          "pValue": 0.1627,
+          "pValue": 0.1703,
           "sig": false
         },
         {
@@ -188,17 +188,17 @@
       "bottom": [
         {
           "rank": 1,
-          "creator": "Pi-Fi",
-          "alpha": -22.85,
-          "pValue": 0.2461,
-          "sig": false
-        },
-        {
-          "rank": 2,
           "creator": "Patrick Boyle",
           "alpha": -21.75,
           "pValue": 0,
           "sig": true
+        },
+        {
+          "rank": 2,
+          "creator": "Pi-Fi",
+          "alpha": -21.49,
+          "pValue": 0.2536,
+          "sig": false
         },
         {
           "rank": 3,
@@ -230,22 +230,22 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 50.83,
-          "pValue": 0.0341,
+          "alpha": 47.53,
+          "pValue": 0.0374,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "YT Finance",
-          "alpha": 24.54,
-          "pValue": 0.0122,
+          "alpha": 24.07,
+          "pValue": 0.0125,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
-          "pValue": 0.0149,
+          "pValue": 0.0142,
           "sig": true
         }
       ],
@@ -260,15 +260,15 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -36.86,
+          "alpha": -36.33,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -15.53,
-          "pValue": 0.0018,
+          "alpha": -15,
+          "pValue": 0.0027,
           "sig": true
         },
         {
@@ -288,14 +288,14 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 246.8,
-          "pValue": 0.0341,
+          "pValue": 0.0374,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "YT Finance",
           "alpha": 143.77,
-          "pValue": 0.0122,
+          "pValue": 0.0125,
           "sig": true
         },
         {
@@ -309,7 +309,7 @@
           "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 69.67,
-          "pValue": 0.1823,
+          "pValue": 0.1846,
           "sig": false
         }
       ],
@@ -317,29 +317,29 @@
         {
           "rank": 1,
           "creator": "Andrei Jikh",
-          "alpha": -29.95,
-          "pValue": 0.401,
+          "alpha": -31.61,
+          "pValue": 0.0875,
           "sig": false
         },
         {
           "rank": 2,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -28.5,
+          "pValue": 0.022,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "The Patient Investor",
           "alpha": -27.8,
           "pValue": 0.5001,
           "sig": false
         },
         {
-          "rank": 3,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -26.14,
-          "pValue": 0.0181,
-          "sig": true
-        },
-        {
           "rank": 4,
           "creator": "Sasha Yanshin",
           "alpha": -20.46,
-          "pValue": 0.6904,
+          "pValue": 0.7061,
           "sig": false
         }
       ]
@@ -354,21 +354,21 @@
           "rank": 1,
           "creator": "YT Finance",
           "alpha": 23.4,
-          "pValue": 0.0122,
+          "pValue": 0.0125,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1823,
+          "pValue": 0.1846,
           "sig": false
         },
         {
           "rank": 3,
           "creator": "Sasha Yanshin",
           "alpha": 12.56,
-          "pValue": 0.6904,
+          "pValue": 0.7061,
           "sig": false
         },
         {
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0341,
+          "pValue": 0.0374,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0018,
+          "pValue": 0.0027,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0341,
+          "pValue": 0.0374,
           "sig": true
         },
         {
@@ -432,14 +432,14 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
-          "pValue": 0.0122,
+          "pValue": 0.0125,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.669,
+          "pValue": 0.6767,
           "sig": false
         }
       ],
@@ -462,7 +462,7 @@
           "rank": 3,
           "creator": "Sasha Yanshin",
           "alpha": -14.05,
-          "pValue": 0.6904,
+          "pValue": 0.7061,
           "sig": false
         },
         {
@@ -526,14 +526,14 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -21.94,
-          "pValue": 0.0018,
+          "pValue": 0.0027,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "YT Finance",
-          "alpha": -17.99,
-          "pValue": 0.0122,
+          "creator": "Beavis Wealth",
+          "alpha": -17.38,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -544,7 +544,7 @@
     "items": [
       {
         "ticker": "SPY",
-        "mentions": 15
+        "mentions": 14
       },
       {
         "ticker": "AIQ",
@@ -552,7 +552,7 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 10
+        "mentions": 9
       },
       {
         "ticker": "BTC",
@@ -571,12 +571,12 @@
         "mentions": 6
       },
       {
-        "ticker": "AMD",
+        "ticker": "TSLA",
         "mentions": 5
       },
       {
-        "ticker": "TSLA",
-        "mentions": 5
+        "ticker": "AMD",
+        "mentions": 4
       },
       {
         "ticker": "AAPL",
