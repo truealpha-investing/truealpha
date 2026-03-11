@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-10T13:20:26.226Z",
+    "generatedAt": "2026-03-11T13:20:24.606Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 62,
-    "totalPredictions": 4484
+    "totalPredictions": 4564
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 59,
-        "pValue": 0.0374,
+        "n": 61,
+        "pValue": 0.0383,
         "sig": true,
-        "avgAlpha": 47.53
+        "avgAlpha": 45.49
       },
       {
         "rank": 3,
@@ -41,7 +41,7 @@
         "rank": 4,
         "creator": "Daniel Pronk",
         "n": 69,
-        "pValue": 0.0142,
+        "pValue": 0.0148,
         "sig": true,
         "avgAlpha": 16.27
       }
@@ -66,18 +66,18 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 90,
-        "pValue": 0.0027,
+        "n": 89,
+        "pValue": 0.0045,
         "sig": true,
-        "avgAlpha": -15
+        "avgAlpha": -14.44
       },
       {
         "rank": 4,
-        "creator": "The Matt Kohrs Show",
-        "n": 123,
+        "creator": "Click Capital",
+        "n": 149,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -14.62
+        "avgAlpha": -14.35
       }
     ]
   },
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Alex Dito - Invertir en Valor",
-        "n": 35,
-        "pValue": 0.0195,
+        "n": 41,
+        "pValue": 0.0075,
         "sig": true,
-        "winRate": 68.57
+        "winRate": 65.85
       },
       {
         "rank": 4,
@@ -136,18 +136,18 @@
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 43,
+        "n": 47,
         "pValue": 0,
         "sig": true,
-        "winRate": 20.93
+        "winRate": 21.28
       },
       {
         "rank": 4,
-        "creator": "Pi-Fi",
-        "n": 23,
-        "pValue": 0.2536,
-        "sig": false,
-        "winRate": 21.74
+        "creator": "The Matt Kohrs Show",
+        "n": 128,
+        "pValue": 0,
+        "sig": true,
+        "winRate": 23.44
       }
     ]
   },
@@ -166,8 +166,8 @@
         {
           "rank": 2,
           "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 13.96,
-          "pValue": 0.0195,
+          "alpha": 13.38,
+          "pValue": 0.0075,
           "sig": true
         },
         {
@@ -180,8 +180,8 @@
         {
           "rank": 4,
           "creator": "이효석아카데미",
-          "alpha": 7.88,
-          "pValue": 0.963,
+          "alpha": 7.77,
+          "pValue": 0.9738,
           "sig": false
         }
       ],
@@ -195,24 +195,24 @@
         },
         {
           "rank": 2,
-          "creator": "Pi-Fi",
-          "alpha": -21.49,
-          "pValue": 0.2536,
-          "sig": false
-        },
-        {
-          "rank": 3,
           "creator": "ClearValue Tax",
           "alpha": -16.57,
           "pValue": 0.0276,
           "sig": true
         },
         {
-          "rank": 4,
+          "rank": 3,
           "creator": "The Matt Kohrs Show",
-          "alpha": -15.97,
+          "alpha": -15.31,
           "pValue": 0,
           "sig": true
+        },
+        {
+          "rank": 4,
+          "creator": "Pi-Fi",
+          "alpha": -14.91,
+          "pValue": 0.2773,
+          "sig": false
         }
       ]
     },
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 47.53,
-          "pValue": 0.0374,
+          "alpha": 45.49,
+          "pValue": 0.0383,
           "sig": true
         },
         {
@@ -245,7 +245,7 @@
           "rank": 4,
           "creator": "Daniel Pronk",
           "alpha": 16.27,
-          "pValue": 0.0142,
+          "pValue": 0.0148,
           "sig": true
         }
       ],
@@ -267,14 +267,14 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -15,
-          "pValue": 0.0027,
+          "alpha": -14.44,
+          "pValue": 0.0045,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "The Matt Kohrs Show",
-          "alpha": -14.62,
+          "creator": "Click Capital",
+          "alpha": -14.35,
           "pValue": 0,
           "sig": true
         }
@@ -287,8 +287,8 @@
         {
           "rank": 1,
           "creator": "Tom Nash",
-          "alpha": 246.8,
-          "pValue": 0.0374,
+          "alpha": 206.58,
+          "pValue": 0.0383,
           "sig": true
         },
         {
@@ -323,17 +323,17 @@
         },
         {
           "rank": 2,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -28.5,
-          "pValue": 0.022,
-          "sig": true
-        },
-        {
-          "rank": 3,
           "creator": "The Patient Investor",
           "alpha": -27.8,
           "pValue": 0.5001,
           "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -26.14,
+          "pValue": 0.0181,
+          "sig": true
         },
         {
           "rank": 4,
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.2333,
+          "pValue": 0.2417,
           "sig": false
         }
       ],
@@ -384,7 +384,7 @@
           "rank": 1,
           "creator": "Adam Khoo",
           "alpha": -29.83,
-          "pValue": 0.2575,
+          "pValue": 0.2396,
           "sig": false
         },
         {
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0374,
+          "pValue": 0.0383,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0027,
+          "pValue": 0.0045,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0374,
+          "pValue": 0.0383,
           "sig": true
         },
         {
@@ -448,8 +448,8 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.0285,
-          "sig": true
+          "pValue": 0.1166,
+          "sig": false
         },
         {
           "rank": 2,
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "FX Evolution",
           "alpha": -12.45,
-          "pValue": 0.0002,
+          "pValue": 0.0003,
           "sig": true
         }
       ]
@@ -525,15 +525,15 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -21.94,
-          "pValue": 0.0027,
+          "alpha": -21.3,
+          "pValue": 0.0045,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Beavis Wealth",
-          "alpha": -17.38,
-          "pValue": 0,
+          "creator": "YT Finance",
+          "alpha": -16.7,
+          "pValue": 0.0125,
           "sig": true
         }
       ]
@@ -552,11 +552,11 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 9
+        "mentions": 11
       },
       {
         "ticker": "BTC",
-        "mentions": 9
+        "mentions": 10
       },
       {
         "ticker": "PLTR",
@@ -568,10 +568,10 @@
       },
       {
         "ticker": "AMZN",
-        "mentions": 6
+        "mentions": 5
       },
       {
-        "ticker": "TSLA",
+        "ticker": "AVGO",
         "mentions": 5
       },
       {
@@ -579,7 +579,7 @@
         "mentions": 4
       },
       {
-        "ticker": "AAPL",
+        "ticker": "TSLA",
         "mentions": 4
       }
     ]
