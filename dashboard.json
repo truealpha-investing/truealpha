@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-11T13:20:24.606Z",
+    "generatedAt": "2026-03-12T13:20:29.277Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
-    "totalVerifiedCreators": 62,
-    "totalPredictions": 4564
+    "totalVerifiedCreators": 63,
+    "totalPredictions": 4705
   },
   "alpha": {
     "top": [
@@ -24,26 +24,26 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 61,
-        "pValue": 0.0383,
+        "n": 63,
+        "pValue": 0.0391,
         "sig": true,
-        "avgAlpha": 45.49
+        "avgAlpha": 44.07
       },
       {
         "rank": 3,
-        "creator": "YT Finance",
-        "n": 99,
-        "pValue": 0.0125,
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 20,
+        "pValue": 0.0396,
         "sig": true,
-        "avgAlpha": 24.07
+        "avgAlpha": 23.78
       },
       {
         "rank": 4,
-        "creator": "Daniel Pronk",
-        "n": 69,
-        "pValue": 0.0148,
+        "creator": "YT Finance",
+        "n": 101,
+        "pValue": 0.0137,
         "sig": true,
-        "avgAlpha": 16.27
+        "avgAlpha": 23.27
       }
     ],
     "bottom": [
@@ -66,8 +66,8 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 89,
-        "pValue": 0.0045,
+        "n": 93,
+        "pValue": 0.0032,
         "sig": true,
         "avgAlpha": -14.44
       },
@@ -101,19 +101,19 @@
       },
       {
         "rank": 3,
-        "creator": "Alex Dito - Invertir en Valor",
-        "n": 41,
-        "pValue": 0.0075,
-        "sig": true,
-        "winRate": 65.85
-      },
-      {
-        "rank": 4,
         "creator": "Stealth Wealth Investing",
         "n": 81,
         "pValue": 0.1846,
         "sig": false,
         "winRate": 65.43
+      },
+      {
+        "rank": 4,
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 20,
+        "pValue": 0.0396,
+        "sig": true,
+        "winRate": 65
       }
     ],
     "bottom": [
@@ -136,18 +136,18 @@
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 47,
+        "n": 46,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.28
+        "winRate": 21.74
       },
       {
         "rank": 4,
-        "creator": "The Matt Kohrs Show",
-        "n": 128,
-        "pValue": 0,
+        "creator": "세상학개론",
+        "n": 63,
+        "pValue": 0.0369,
         "sig": true,
-        "winRate": 23.44
+        "winRate": 23.81
       }
     ]
   },
@@ -165,23 +165,23 @@
         },
         {
           "rank": 2,
-          "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 13.38,
-          "pValue": 0.0075,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 11.58,
+          "pValue": 0.0396,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "Jeremy Lefebvre Clips",
-          "alpha": 9.88,
-          "pValue": 0.1703,
-          "sig": false
+          "creator": "Alex Dito - Invertir en Valor",
+          "alpha": 11.18,
+          "pValue": 0.0069,
+          "sig": true
         },
         {
           "rank": 4,
-          "creator": "이효석아카데미",
-          "alpha": 7.77,
-          "pValue": 0.9738,
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 9.88,
+          "pValue": 0.1703,
           "sig": false
         }
       ],
@@ -203,16 +203,16 @@
         {
           "rank": 3,
           "creator": "The Matt Kohrs Show",
-          "alpha": -15.31,
+          "alpha": -14.71,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Pi-Fi",
-          "alpha": -14.91,
-          "pValue": 0.2773,
-          "sig": false
+          "creator": "Joseph Carlson After Hours",
+          "alpha": -13.71,
+          "pValue": 0.0059,
+          "sig": true
         }
       ]
     },
@@ -230,22 +230,22 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 45.49,
-          "pValue": 0.0383,
+          "alpha": 44.07,
+          "pValue": 0.0391,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "YT Finance",
-          "alpha": 24.07,
-          "pValue": 0.0125,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 23.78,
+          "pValue": 0.0396,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Daniel Pronk",
-          "alpha": 16.27,
-          "pValue": 0.0148,
+          "creator": "YT Finance",
+          "alpha": 23.27,
+          "pValue": 0.0137,
           "sig": true
         }
       ],
@@ -268,7 +268,7 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -14.44,
-          "pValue": 0.0045,
+          "pValue": 0.0032,
           "sig": true
         },
         {
@@ -288,14 +288,14 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0383,
+          "pValue": 0.0391,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "YT Finance",
           "alpha": 143.77,
-          "pValue": 0.0125,
+          "pValue": 0.0137,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0875,
+          "pValue": 0.0919,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "YT Finance",
           "alpha": 23.4,
-          "pValue": 0.0125,
+          "pValue": 0.0137,
           "sig": true
         },
         {
@@ -391,21 +391,21 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.0039,
+          "pValue": 0.0043,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0383,
+          "pValue": 0.0391,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0045,
+          "pValue": 0.0032,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0383,
+          "pValue": 0.0391,
           "sig": true
         },
         {
@@ -432,14 +432,14 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
-          "pValue": 0.0125,
+          "pValue": 0.0137,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.6767,
+          "pValue": 0.7066,
           "sig": false
         }
       ],
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.1166,
+          "pValue": 0.1173,
           "sig": false
         },
         {
@@ -494,16 +494,16 @@
         },
         {
           "rank": 3,
-          "creator": "Let's Talk Money! with Joseph Hogue, CFA",
-          "alpha": 23.21,
-          "pValue": 0.1615,
-          "sig": false
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 23.26,
+          "pValue": 0.0396,
+          "sig": true
         },
         {
           "rank": 4,
-          "creator": "Common Sense Investing",
-          "alpha": 21.37,
-          "pValue": 0.6157,
+          "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+          "alpha": 23.21,
+          "pValue": 0.1615,
           "sig": false
         }
       ],
@@ -525,15 +525,15 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -21.3,
-          "pValue": 0.0045,
+          "alpha": -20.91,
+          "pValue": 0.0032,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "YT Finance",
-          "alpha": -16.7,
-          "pValue": 0.0125,
+          "creator": "세상학개론",
+          "alpha": -18.13,
+          "pValue": 0.0369,
           "sig": true
         }
       ]
@@ -567,19 +567,19 @@
         "mentions": 7
       },
       {
+        "ticker": "BOTZ",
+        "mentions": 5
+      },
+      {
         "ticker": "AMZN",
         "mentions": 5
       },
       {
-        "ticker": "AVGO",
+        "ticker": "TSLA",
         "mentions": 5
       },
       {
         "ticker": "AMD",
-        "mentions": 4
-      },
-      {
-        "ticker": "TSLA",
         "mentions": 4
       }
     ]
