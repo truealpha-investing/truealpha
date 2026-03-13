@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-12T13:20:29.277Z",
+    "generatedAt": "2026-03-13T13:20:24.839Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,17 +9,17 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 63,
-    "totalPredictions": 4705
+    "totalPredictions": 4788
   },
   "alpha": {
     "top": [
       {
         "rank": 1,
         "creator": "Chit Chat Stocks Podcast",
-        "n": 20,
-        "pValue": 0.0042,
+        "n": 22,
+        "pValue": 0.0053,
         "sig": true,
-        "avgAlpha": 57.85
+        "avgAlpha": 52.41
       },
       {
         "rank": 2,
@@ -31,29 +31,29 @@
       },
       {
         "rank": 3,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 20,
-        "pValue": 0.0396,
-        "sig": true,
-        "avgAlpha": 23.78
-      },
-      {
-        "rank": 4,
         "creator": "YT Finance",
         "n": 101,
         "pValue": 0.0137,
         "sig": true,
         "avgAlpha": 23.27
+      },
+      {
+        "rank": 4,
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 23,
+        "pValue": 0.0254,
+        "sig": true,
+        "avgAlpha": 22.68
       }
     ],
     "bottom": [
       {
         "rank": 1,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 21,
-        "pValue": 0.0502,
+        "n": 22,
+        "pValue": 0.0503,
         "sig": false,
-        "avgAlpha": -37.78
+        "avgAlpha": -36.78
       },
       {
         "rank": 2,
@@ -73,11 +73,11 @@
       },
       {
         "rank": 4,
-        "creator": "Click Capital",
-        "n": 149,
-        "pValue": 0,
+        "creator": "세상학개론",
+        "n": 63,
+        "pValue": 0.0369,
         "sig": true,
-        "avgAlpha": -14.35
+        "avgAlpha": -13.81
       }
     ]
   },
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Chit Chat Stocks Podcast",
-        "n": 20,
-        "pValue": 0.0042,
+        "n": 22,
+        "pValue": 0.0053,
         "sig": true,
-        "winRate": 75
+        "winRate": 72.73
       },
       {
         "rank": 2,
@@ -101,19 +101,19 @@
       },
       {
         "rank": 3,
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 23,
+        "pValue": 0.0254,
+        "sig": true,
+        "winRate": 69.57
+      },
+      {
+        "rank": 4,
         "creator": "Stealth Wealth Investing",
         "n": 81,
         "pValue": 0.1846,
         "sig": false,
         "winRate": 65.43
-      },
-      {
-        "rank": 4,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 20,
-        "pValue": 0.0396,
-        "sig": true,
-        "winRate": 65
       }
     ],
     "bottom": [
@@ -128,18 +128,18 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 21,
-        "pValue": 0.0502,
+        "n": 22,
+        "pValue": 0.0503,
         "sig": false,
-        "winRate": 19.05
+        "winRate": 18.18
       },
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 46,
+        "n": 47,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.74
+        "winRate": 21.28
       },
       {
         "rank": 4,
@@ -159,15 +159,15 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 14.34,
-          "pValue": 0.6157,
+          "alpha": 15.19,
+          "pValue": 0.5913,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 11.58,
-          "pValue": 0.0396,
+          "alpha": 12.17,
+          "pValue": 0.0254,
           "sig": true
         },
         {
@@ -203,7 +203,7 @@
         {
           "rank": 3,
           "creator": "The Matt Kohrs Show",
-          "alpha": -14.71,
+          "alpha": -14.17,
           "pValue": 0,
           "sig": true
         },
@@ -223,8 +223,8 @@
         {
           "rank": 1,
           "creator": "Chit Chat Stocks Podcast",
-          "alpha": 57.85,
-          "pValue": 0.0042,
+          "alpha": 52.41,
+          "pValue": 0.0053,
           "sig": true
         },
         {
@@ -236,16 +236,16 @@
         },
         {
           "rank": 3,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 23.78,
-          "pValue": 0.0396,
+          "creator": "YT Finance",
+          "alpha": 23.27,
+          "pValue": 0.0137,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "YT Finance",
-          "alpha": 23.27,
-          "pValue": 0.0137,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 22.68,
+          "pValue": 0.0254,
           "sig": true
         }
       ],
@@ -253,8 +253,8 @@
         {
           "rank": 1,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -37.78,
-          "pValue": 0.0502,
+          "alpha": -36.78,
+          "pValue": 0.0503,
           "sig": false
         },
         {
@@ -273,9 +273,9 @@
         },
         {
           "rank": 4,
-          "creator": "Click Capital",
-          "alpha": -14.35,
-          "pValue": 0,
+          "creator": "세상학개론",
+          "alpha": -13.81,
+          "pValue": 0.0369,
           "sig": true
         }
       ]
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.0919,
+          "pValue": 0.1528,
           "sig": false
         },
         {
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.2417,
+          "pValue": 0.2443,
           "sig": false
         }
       ],
@@ -425,7 +425,7 @@
           "rank": 2,
           "creator": "Chit Chat Stocks Podcast",
           "alpha": 77.25,
-          "pValue": 0.0042,
+          "pValue": 0.0053,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.1173,
+          "pValue": 0.1538,
           "sig": false
         },
         {
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "FX Evolution",
           "alpha": -12.45,
-          "pValue": 0.0003,
+          "pValue": 0.0005,
           "sig": true
         }
       ]
@@ -480,31 +480,31 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": 28.74,
-          "pValue": 0.0042,
-          "sig": true
-        },
-        {
-          "rank": 2,
           "creator": "ClearValue Tax",
           "alpha": 23.45,
           "pValue": 0.0276,
           "sig": true
         },
         {
-          "rank": 3,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 23.26,
-          "pValue": 0.0396,
-          "sig": true
-        },
-        {
-          "rank": 4,
+          "rank": 2,
           "creator": "Let's Talk Money! with Joseph Hogue, CFA",
           "alpha": 23.21,
           "pValue": 0.1615,
           "sig": false
+        },
+        {
+          "rank": 3,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": 22.6,
+          "pValue": 0.0053,
+          "sig": true
+        },
+        {
+          "rank": 4,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 22.18,
+          "pValue": 0.0254,
+          "sig": true
         }
       ],
       "bottom": [
@@ -518,8 +518,8 @@
         {
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -49.46,
-          "pValue": 0.0502,
+          "alpha": -47.47,
+          "pValue": 0.0503,
           "sig": false
         },
         {
@@ -552,11 +552,11 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 11
+        "mentions": 10
       },
       {
         "ticker": "BTC",
-        "mentions": 10
+        "mentions": 9
       },
       {
         "ticker": "PLTR",
@@ -575,12 +575,12 @@
         "mentions": 5
       },
       {
-        "ticker": "TSLA",
+        "ticker": "AAPL",
         "mentions": 5
       },
       {
-        "ticker": "AMD",
-        "mentions": 4
+        "ticker": "TSLA",
+        "mentions": 5
       }
     ]
   },
