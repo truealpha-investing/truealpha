@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-13T13:20:24.839Z",
+    "generatedAt": "2026-03-14T13:20:24.376Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 63,
-    "totalPredictions": 4788
+    "totalPredictions": 4832
   },
   "alpha": {
     "top": [
@@ -32,10 +32,10 @@
       {
         "rank": 3,
         "creator": "YT Finance",
-        "n": 101,
-        "pValue": 0.0137,
+        "n": 102,
+        "pValue": 0.0128,
         "sig": true,
-        "avgAlpha": 23.27
+        "avgAlpha": 23.24
       },
       {
         "rank": 4,
@@ -66,18 +66,18 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 93,
-        "pValue": 0.0032,
+        "n": 90,
+        "pValue": 0.0042,
         "sig": true,
-        "avgAlpha": -14.44
+        "avgAlpha": -14.52
       },
       {
         "rank": 4,
         "creator": "세상학개론",
-        "n": 63,
-        "pValue": 0.0369,
+        "n": 62,
+        "pValue": 0.0324,
         "sig": true,
-        "avgAlpha": -13.81
+        "avgAlpha": -14.36
       }
     ]
   },
@@ -109,11 +109,11 @@
       },
       {
         "rank": 4,
-        "creator": "Stealth Wealth Investing",
-        "n": 81,
-        "pValue": 0.1846,
-        "sig": false,
-        "winRate": 65.43
+        "creator": "Alex Dito - Invertir en Valor",
+        "n": 50,
+        "pValue": 0.0031,
+        "sig": true,
+        "winRate": 66
       }
     ],
     "bottom": [
@@ -144,10 +144,10 @@
       {
         "rank": 4,
         "creator": "세상학개론",
-        "n": 63,
-        "pValue": 0.0369,
+        "n": 62,
+        "pValue": 0.0324,
         "sig": true,
-        "winRate": 23.81
+        "winRate": 22.58
       }
     ]
   },
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 15.19,
-          "pValue": 0.5913,
+          "alpha": 14.34,
+          "pValue": 0.6157,
           "sig": false
         },
         {
@@ -173,8 +173,8 @@
         {
           "rank": 3,
           "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 11.18,
-          "pValue": 0.0069,
+          "alpha": 11.05,
+          "pValue": 0.0031,
           "sig": true
         },
         {
@@ -237,8 +237,8 @@
         {
           "rank": 3,
           "creator": "YT Finance",
-          "alpha": 23.27,
-          "pValue": 0.0137,
+          "alpha": 23.24,
+          "pValue": 0.0128,
           "sig": true
         },
         {
@@ -267,15 +267,15 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -14.44,
-          "pValue": 0.0032,
+          "alpha": -14.52,
+          "pValue": 0.0042,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "세상학개론",
-          "alpha": -13.81,
-          "pValue": 0.0369,
+          "alpha": -14.36,
+          "pValue": 0.0324,
           "sig": true
         }
       ]
@@ -295,7 +295,7 @@
           "rank": 2,
           "creator": "YT Finance",
           "alpha": 143.77,
-          "pValue": 0.0137,
+          "pValue": 0.0128,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.61,
-          "pValue": 0.1528,
+          "pValue": 0.1468,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "YT Finance",
           "alpha": 23.4,
-          "pValue": 0.0137,
+          "pValue": 0.0128,
           "sig": true
         },
         {
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.2443,
+          "pValue": 0.2795,
           "sig": false
         }
       ],
@@ -384,7 +384,7 @@
           "rank": 1,
           "creator": "Adam Khoo",
           "alpha": -29.83,
-          "pValue": 0.2396,
+          "pValue": 0.1719,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0032,
+          "pValue": 0.0042,
           "sig": true
         }
       ]
@@ -432,7 +432,7 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
-          "pValue": 0.0137,
+          "pValue": 0.0128,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.1538,
+          "pValue": 0.1372,
           "sig": false
         },
         {
@@ -525,15 +525,15 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -20.91,
-          "pValue": 0.0032,
+          "alpha": -21.3,
+          "pValue": 0.0042,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "세상학개론",
-          "alpha": -18.13,
-          "pValue": 0.0369,
+          "alpha": -18.86,
+          "pValue": 0.0324,
           "sig": true
         }
       ]
@@ -544,7 +544,7 @@
     "items": [
       {
         "ticker": "SPY",
-        "mentions": 14
+        "mentions": 15
       },
       {
         "ticker": "AIQ",
@@ -559,12 +559,12 @@
         "mentions": 9
       },
       {
-        "ticker": "PLTR",
+        "ticker": "VTI",
         "mentions": 7
       },
       {
-        "ticker": "VTI",
-        "mentions": 7
+        "ticker": "PLTR",
+        "mentions": 6
       },
       {
         "ticker": "BOTZ",
@@ -575,12 +575,12 @@
         "mentions": 5
       },
       {
-        "ticker": "AAPL",
+        "ticker": "TSLA",
         "mentions": 5
       },
       {
-        "ticker": "TSLA",
-        "mentions": 5
+        "ticker": "AMD",
+        "mentions": 4
       }
     ]
   },
