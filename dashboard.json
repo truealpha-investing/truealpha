@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-16T13:20:26.901Z",
+    "generatedAt": "2026-03-17T13:20:25.463Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 63,
-    "totalPredictions": 4852
+    "totalPredictions": 4858
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 24,
-        "pValue": 0.0253,
-        "sig": true,
-        "avgAlpha": 22.16
+        "n": 27,
+        "pValue": 0.0551,
+        "sig": false,
+        "avgAlpha": 17.53
       }
     ],
     "bottom": [
@@ -74,10 +74,10 @@
       {
         "rank": 4,
         "creator": "세상학개론",
-        "n": 62,
-        "pValue": 0.0456,
+        "n": 63,
+        "pValue": 0.0369,
         "sig": true,
-        "avgAlpha": -13.58
+        "avgAlpha": -13.81
       }
     ]
   },
@@ -102,18 +102,18 @@
       {
         "rank": 3,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 24,
-        "pValue": 0.0253,
-        "sig": true,
-        "winRate": 70.83
+        "n": 27,
+        "pValue": 0.0551,
+        "sig": false,
+        "winRate": 66.67
       },
       {
         "rank": 4,
-        "creator": "Alex Dito - Invertir en Valor",
-        "n": 50,
-        "pValue": 0.0031,
-        "sig": true,
-        "winRate": 66
+        "creator": "Stealth Wealth Investing",
+        "n": 81,
+        "pValue": 0.1846,
+        "sig": false,
+        "winRate": 65.43
       }
     ],
     "bottom": [
@@ -144,10 +144,10 @@
       {
         "rank": 4,
         "creator": "세상학개론",
-        "n": 62,
-        "pValue": 0.0456,
+        "n": 63,
+        "pValue": 0.0369,
         "sig": true,
-        "winRate": 24.19
+        "winRate": 23.81
       }
     ]
   },
@@ -165,23 +165,23 @@
         },
         {
           "rank": 2,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 12.17,
-          "pValue": 0.0253,
+          "creator": "Alex Dito - Invertir en Valor",
+          "alpha": 11.05,
+          "pValue": 0.0184,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 11.05,
-          "pValue": 0.0031,
-          "sig": true
-        },
-        {
-          "rank": 4,
           "creator": "Jeremy Lefebvre Clips",
           "alpha": 9.88,
           "pValue": 0.1703,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+          "alpha": 7.86,
+          "pValue": 0.0551,
           "sig": false
         }
       ],
@@ -244,9 +244,9 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 22.16,
-          "pValue": 0.0253,
-          "sig": true
+          "alpha": 17.53,
+          "pValue": 0.0551,
+          "sig": false
         }
       ],
       "bottom": [
@@ -274,8 +274,8 @@
         {
           "rank": 4,
           "creator": "세상학개론",
-          "alpha": -13.58,
-          "pValue": 0.0456,
+          "alpha": -13.81,
+          "pValue": 0.0369,
           "sig": true
         }
       ]
@@ -317,8 +317,8 @@
         {
           "rank": 1,
           "creator": "Andrei Jikh",
-          "alpha": -31.61,
-          "pValue": 0.1468,
+          "alpha": -31.51,
+          "pValue": 0.1079,
           "sig": false
         },
         {
@@ -494,16 +494,16 @@
         },
         {
           "rank": 3,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 21.66,
-          "pValue": 0.0253,
-          "sig": true
-        },
-        {
-          "rank": 4,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
           "pValue": 0.6157,
+          "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+          "alpha": 17.5,
+          "pValue": 0.2025,
           "sig": false
         }
       ],
@@ -533,7 +533,7 @@
           "rank": 4,
           "creator": "세상학개론",
           "alpha": -18.13,
-          "pValue": 0.0456,
+          "pValue": 0.0369,
           "sig": true
         }
       ]
