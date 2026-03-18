@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-17T13:20:25.463Z",
+    "generatedAt": "2026-03-18T13:20:26.197Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 63,
-    "totalPredictions": 4858
+    "totalPredictions": 4890
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 63,
-        "pValue": 0.0391,
+        "n": 62,
+        "pValue": 0.0366,
         "sig": true,
-        "avgAlpha": 44.07
+        "avgAlpha": 45.05
       },
       {
         "rank": 3,
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 27,
-        "pValue": 0.0551,
-        "sig": false,
-        "avgAlpha": 17.53
+        "n": 29,
+        "pValue": 0.0398,
+        "sig": true,
+        "avgAlpha": 17.62
       }
     ],
     "bottom": [
@@ -66,10 +66,10 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 93,
-        "pValue": 0.0032,
+        "n": 91,
+        "pValue": 0.0033,
         "sig": true,
-        "avgAlpha": -14.44
+        "avgAlpha": -14.77
       },
       {
         "rank": 4,
@@ -102,18 +102,18 @@
       {
         "rank": 3,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 27,
-        "pValue": 0.0551,
-        "sig": false,
-        "winRate": 66.67
+        "n": 29,
+        "pValue": 0.0398,
+        "sig": true,
+        "winRate": 68.97
       },
       {
         "rank": 4,
-        "creator": "Stealth Wealth Investing",
-        "n": 81,
-        "pValue": 0.1846,
+        "creator": "Let's Talk Money! with Joseph Hogue, CFA",
+        "n": 46,
+        "pValue": 0.2025,
         "sig": false,
-        "winRate": 65.43
+        "winRate": 63.04
       }
     ],
     "bottom": [
@@ -159,16 +159,16 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 14.34,
-          "pValue": 0.6157,
+          "alpha": 15.1,
+          "pValue": 0.594,
           "sig": false
         },
         {
           "rank": 2,
           "creator": "Alex Dito - Invertir en Valor",
           "alpha": 11.05,
-          "pValue": 0.0184,
-          "sig": true
+          "pValue": 0.0634,
+          "sig": false
         },
         {
           "rank": 3,
@@ -180,9 +180,9 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 7.86,
-          "pValue": 0.0551,
-          "sig": false
+          "alpha": 8.78,
+          "pValue": 0.0398,
+          "sig": true
         }
       ],
       "bottom": [
@@ -202,16 +202,16 @@
         },
         {
           "rank": 3,
-          "creator": "The Matt Kohrs Show",
-          "alpha": -14.17,
-          "pValue": 0,
+          "creator": "Joseph Carlson After Hours",
+          "alpha": -13.71,
+          "pValue": 0.0059,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Joseph Carlson After Hours",
-          "alpha": -13.71,
-          "pValue": 0.0059,
+          "creator": "The Matt Kohrs Show",
+          "alpha": -13.27,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 44.07,
-          "pValue": 0.0391,
+          "alpha": 45.05,
+          "pValue": 0.0366,
           "sig": true
         },
         {
@@ -244,9 +244,9 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 17.53,
-          "pValue": 0.0551,
-          "sig": false
+          "alpha": 17.62,
+          "pValue": 0.0398,
+          "sig": true
         }
       ],
       "bottom": [
@@ -267,8 +267,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -14.44,
-          "pValue": 0.0032,
+          "alpha": -14.77,
+          "pValue": 0.0033,
           "sig": true
         },
         {
@@ -288,7 +288,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0391,
+          "pValue": 0.0366,
           "sig": true
         },
         {
@@ -309,7 +309,7 @@
           "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 69.67,
-          "pValue": 0.1846,
+          "pValue": 0.1966,
           "sig": false
         }
       ],
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1079,
+          "pValue": 0.1185,
           "sig": false
         },
         {
@@ -361,7 +361,7 @@
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.1846,
+          "pValue": 0.1966,
           "sig": false
         },
         {
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0391,
+          "pValue": 0.0366,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0032,
+          "pValue": 0.0033,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0391,
+          "pValue": 0.0366,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.1372,
+          "pValue": 0.1245,
           "sig": false
         },
         {
@@ -496,7 +496,7 @@
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.6157,
+          "pValue": 0.594,
           "sig": false
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -20.91,
-          "pValue": 0.0032,
+          "alpha": -21.54,
+          "pValue": 0.0033,
           "sig": true
         },
         {
