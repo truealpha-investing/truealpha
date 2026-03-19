@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-18T13:20:26.197Z",
+    "generatedAt": "2026-03-19T13:20:23.985Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 63,
-    "totalPredictions": 4890
+    "totalPredictions": 4916
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 62,
-        "pValue": 0.0366,
+        "n": 63,
+        "pValue": 0.0391,
         "sig": true,
-        "avgAlpha": 45.05
+        "avgAlpha": 44.07
       },
       {
         "rank": 3,
@@ -67,7 +67,7 @@
         "rank": 3,
         "creator": "Mark Moss",
         "n": 91,
-        "pValue": 0.0033,
+        "pValue": 0.0039,
         "sig": true,
         "avgAlpha": -14.77
       },
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 15.1,
-          "pValue": 0.594,
+          "alpha": 14.34,
+          "pValue": 0.6157,
           "sig": false
         },
         {
@@ -197,7 +197,7 @@
           "rank": 2,
           "creator": "ClearValue Tax",
           "alpha": -16.57,
-          "pValue": 0.0276,
+          "pValue": 0.0294,
           "sig": true
         },
         {
@@ -209,8 +209,8 @@
         },
         {
           "rank": 4,
-          "creator": "The Matt Kohrs Show",
-          "alpha": -13.27,
+          "creator": "Beavis Wealth",
+          "alpha": -12.73,
           "pValue": 0,
           "sig": true
         }
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 45.05,
-          "pValue": 0.0366,
+          "alpha": 44.07,
+          "pValue": 0.0391,
           "sig": true
         },
         {
@@ -268,7 +268,7 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -14.77,
-          "pValue": 0.0033,
+          "pValue": 0.0039,
           "sig": true
         },
         {
@@ -288,7 +288,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0366,
+          "pValue": 0.0391,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1185,
+          "pValue": 0.0876,
           "sig": false
         },
         {
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0366,
+          "pValue": 0.0391,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Mark Moss",
           "alpha": -12,
-          "pValue": 0.0033,
+          "pValue": 0.0039,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0366,
+          "pValue": 0.0391,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.1245,
+          "pValue": 0.0909,
           "sig": false
         },
         {
@@ -480,23 +480,23 @@
       "top": [
         {
           "rank": 1,
-          "creator": "ClearValue Tax",
-          "alpha": 23.45,
-          "pValue": 0.0276,
-          "sig": true
-        },
-        {
-          "rank": 2,
           "creator": "Chit Chat Stocks Podcast",
           "alpha": 22.6,
           "pValue": 0.0053,
           "sig": true
         },
         {
+          "rank": 2,
+          "creator": "ClearValue Tax",
+          "alpha": 22.34,
+          "pValue": 0.0294,
+          "sig": true
+        },
+        {
           "rank": 3,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.594,
+          "pValue": 0.6157,
           "sig": false
         },
         {
@@ -526,7 +526,7 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -21.54,
-          "pValue": 0.0033,
+          "pValue": 0.0039,
           "sig": true
         },
         {
