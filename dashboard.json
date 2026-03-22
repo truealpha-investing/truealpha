@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-21T13:20:24.156Z",
+    "generatedAt": "2026-03-22T13:20:24.973Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
-    "totalVerifiedCreators": 67,
-    "totalPredictions": 5132
+    "totalVerifiedCreators": 69,
+    "totalPredictions": 5222
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 29,
-        "pValue": 0.0398,
+        "n": 31,
+        "pValue": 0.0291,
         "sig": true,
-        "avgAlpha": 17.62
+        "avgAlpha": 17.23
       }
     ],
     "bottom": [
@@ -101,19 +101,19 @@
       },
       {
         "rank": 3,
-        "creator": "Parkev Tatevosian, CFA",
-        "n": 23,
-        "pValue": 0.0431,
+        "creator": "미국주식에 미치다 TV",
+        "n": 21,
+        "pValue": 0.0181,
         "sig": true,
-        "winRate": 69.57
+        "winRate": 71.43
       },
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 29,
-        "pValue": 0.0398,
+        "n": 31,
+        "pValue": 0.0291,
         "sig": true,
-        "winRate": 68.97
+        "winRate": 70.97
       }
     ],
     "bottom": [
@@ -166,23 +166,23 @@
         {
           "rank": 2,
           "creator": "Parkev Tatevosian, CFA",
-          "alpha": 12.99,
-          "pValue": 0.0431,
+          "alpha": 13.66,
+          "pValue": 0.0304,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "Alex Dito - Invertir en Valor",
-          "alpha": 10.64,
-          "pValue": 0.0396,
-          "sig": true
+          "creator": "Rick Orford - Trading Stocks and Options For All",
+          "alpha": 13.38,
+          "pValue": 0.1268,
+          "sig": false
         },
         {
           "rank": 4,
-          "creator": "Jeremy Lefebvre Clips",
-          "alpha": 9.88,
-          "pValue": 0.1703,
-          "sig": false
+          "creator": "미국주식에 미치다 TV",
+          "alpha": 13.26,
+          "pValue": 0.0181,
+          "sig": true
         }
       ],
       "bottom": [
@@ -244,8 +244,8 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 17.62,
-          "pValue": 0.0398,
+          "alpha": 17.23,
+          "pValue": 0.0291,
           "sig": true
         }
       ],
@@ -391,14 +391,14 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.0087,
+          "pValue": 0.0084,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.3162,
+          "pValue": 0.1268,
           "sig": false
         },
         {
@@ -502,8 +502,8 @@
         {
           "rank": 4,
           "creator": "Ticker Symbol: YOU",
-          "alpha": 18.37,
-          "pValue": 0.2076,
+          "alpha": 17.96,
+          "pValue": 0.2053,
           "sig": false
         }
       ],
@@ -544,11 +544,11 @@
     "items": [
       {
         "ticker": "SPY",
-        "mentions": 17
+        "mentions": 18
       },
       {
         "ticker": "AIQ",
-        "mentions": 13
+        "mentions": 15
       },
       {
         "ticker": "NVDA",
@@ -560,7 +560,7 @@
       },
       {
         "ticker": "VTI",
-        "mentions": 7
+        "mentions": 8
       },
       {
         "ticker": "PLTR",
