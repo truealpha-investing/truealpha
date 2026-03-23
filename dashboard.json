@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-22T13:20:24.973Z",
+    "generatedAt": "2026-03-23T13:20:27.065Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 69,
-    "totalPredictions": 5222
+    "totalPredictions": 5216
   },
   "alpha": {
     "top": [
@@ -66,10 +66,10 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 93,
-        "pValue": 0.0037,
+        "n": 88,
+        "pValue": 0.0004,
         "sig": true,
-        "avgAlpha": -14.44
+        "avgAlpha": -17.09
       },
       {
         "rank": 4,
@@ -267,8 +267,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -14.44,
-          "pValue": 0.0037,
+          "alpha": -17.09,
+          "pValue": 0.0004,
           "sig": true
         },
         {
@@ -526,7 +526,7 @@
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -20.91,
-          "pValue": 0.0037,
+          "pValue": 0.0004,
           "sig": true
         },
         {
