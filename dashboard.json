@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-24T13:20:23.964Z",
+    "generatedAt": "2026-03-25T13:20:27.440Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 69,
-    "totalPredictions": 5287
+    "totalPredictions": 5376
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 63,
-        "pValue": 0.0391,
+        "n": 65,
+        "pValue": 0.0382,
         "sig": true,
-        "avgAlpha": 44.07
+        "avgAlpha": 43.56
       },
       {
         "rank": 3,
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Parkev Tatevosian, CFA",
-        "n": 26,
-        "pValue": 0.0229,
+        "n": 27,
+        "pValue": 0.0128,
         "sig": true,
-        "winRate": 73.08
+        "winRate": 74.07
       },
       {
         "rank": 2,
@@ -109,11 +109,11 @@
       },
       {
         "rank": 4,
-        "creator": "미국주식에 미치다 TV",
-        "n": 21,
-        "pValue": 0.0181,
+        "creator": "Chit Chat Stocks Podcast",
+        "n": 24,
+        "pValue": 0.0068,
         "sig": true,
-        "winRate": 71.43
+        "winRate": 70.83
       }
     ],
     "bottom": [
@@ -158,31 +158,31 @@
       "top": [
         {
           "rank": 1,
+          "creator": "Parkev Tatevosian, CFA",
+          "alpha": 14.93,
+          "pValue": 0.0128,
+          "sig": true
+        },
+        {
+          "rank": 2,
           "creator": "Common Sense Investing",
           "alpha": 14.34,
           "pValue": 0.6157,
           "sig": false
         },
         {
-          "rank": 2,
-          "creator": "Parkev Tatevosian, CFA",
-          "alpha": 13.8,
-          "pValue": 0.0229,
-          "sig": true
-        },
-        {
           "rank": 3,
-          "creator": "Rick Orford - Trading Stocks and Options For All",
-          "alpha": 13.38,
-          "pValue": 0.1268,
-          "sig": false
+          "creator": "미국주식에 미치다 TV",
+          "alpha": 13.21,
+          "pValue": 0.005,
+          "sig": true
         },
         {
           "rank": 4,
-          "creator": "미국주식에 미치다 TV",
-          "alpha": 13.26,
-          "pValue": 0.0181,
-          "sig": true
+          "creator": "Rick Orford - Trading Stocks and Options For All",
+          "alpha": 11.64,
+          "pValue": 0.1549,
+          "sig": false
         }
       ],
       "bottom": [
@@ -204,7 +204,7 @@
           "rank": 3,
           "creator": "Joseph Carlson After Hours",
           "alpha": -13.71,
-          "pValue": 0.0059,
+          "pValue": 0.0062,
           "sig": true
         },
         {
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 44.07,
-          "pValue": 0.0391,
+          "alpha": 43.56,
+          "pValue": 0.0382,
           "sig": true
         },
         {
@@ -288,7 +288,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0391,
+          "pValue": 0.0382,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1479,
+          "pValue": 0.3442,
           "sig": false
         },
         {
@@ -375,7 +375,7 @@
           "rank": 4,
           "creator": "Mr. FIRED Up Wealth",
           "alpha": 9.69,
-          "pValue": 0.2795,
+          "pValue": 0.2643,
           "sig": false
         }
       ],
@@ -398,14 +398,14 @@
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.1268,
+          "pValue": 0.1549,
           "sig": false
         },
         {
           "rank": 4,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0391,
+          "pValue": 0.0382,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0391,
+          "pValue": 0.0382,
           "sig": true
         },
         {
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.7291,
+          "pValue": 0.7323,
           "sig": false
         }
       ],
@@ -544,7 +544,7 @@
     "items": [
       {
         "ticker": "SPY",
-        "mentions": 18
+        "mentions": 17
       },
       {
         "ticker": "AIQ",
@@ -552,7 +552,7 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 13
+        "mentions": 12
       },
       {
         "ticker": "BTC",
@@ -564,14 +564,14 @@
       },
       {
         "ticker": "PLTR",
+        "mentions": 7
+      },
+      {
+        "ticker": "AMZN",
         "mentions": 6
       },
       {
         "ticker": "BOTZ",
-        "mentions": 5
-      },
-      {
-        "ticker": "AMZN",
         "mentions": 5
       },
       {
