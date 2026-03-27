@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-26T13:20:26.024Z",
+    "generatedAt": "2026-03-27T13:20:24.680Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
-    "totalVerifiedCreators": 69,
-    "totalPredictions": 5393
+    "totalVerifiedCreators": 70,
+    "totalPredictions": 5427
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 32,
-        "pValue": 0.0293,
+        "n": 34,
+        "pValue": 0.0208,
         "sig": true,
-        "avgAlpha": 16.91
+        "avgAlpha": 17.31
       }
     ],
     "bottom": [
@@ -86,32 +86,32 @@
       {
         "rank": 1,
         "creator": "Parkev Tatevosian, CFA",
-        "n": 27,
-        "pValue": 0.0128,
+        "n": 28,
+        "pValue": 0.0102,
         "sig": true,
-        "winRate": 74.07
+        "winRate": 75
       },
       {
         "rank": 2,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 32,
-        "pValue": 0.0293,
+        "creator": "Jose Najarro Stocks",
+        "n": 72,
+        "pValue": 0.0001,
         "sig": true,
-        "winRate": 71.88
+        "winRate": 72.22
       },
       {
         "rank": 3,
-        "creator": "Jose Najarro Stocks",
-        "n": 71,
-        "pValue": 0.0002,
-        "sig": true,
-        "winRate": 71.83
-      },
-      {
-        "rank": 4,
         "creator": "Chit Chat Stocks Podcast",
         "n": 24,
         "pValue": 0.0068,
+        "sig": true,
+        "winRate": 70.83
+      },
+      {
+        "rank": 4,
+        "creator": "미국주식에 미치다 TV",
+        "n": 24,
+        "pValue": 0.005,
         "sig": true,
         "winRate": 70.83
       }
@@ -158,17 +158,17 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Parkev Tatevosian, CFA",
-          "alpha": 14.93,
-          "pValue": 0.0128,
-          "sig": true
+          "creator": "Common Sense Investing",
+          "alpha": 15.19,
+          "pValue": 0.5913,
+          "sig": false
         },
         {
           "rank": 2,
-          "creator": "Common Sense Investing",
-          "alpha": 14.34,
-          "pValue": 0.6157,
-          "sig": false
+          "creator": "Parkev Tatevosian, CFA",
+          "alpha": 15.15,
+          "pValue": 0.0102,
+          "sig": true
         },
         {
           "rank": 3,
@@ -244,8 +244,8 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 16.91,
-          "pValue": 0.0293,
+          "alpha": 17.31,
+          "pValue": 0.0208,
           "sig": true
         }
       ],
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1479,
+          "pValue": 0.0876,
           "sig": false
         },
         {
@@ -482,7 +482,7 @@
           "rank": 1,
           "creator": "Common Sense Investing",
           "alpha": 21.37,
-          "pValue": 0.6157,
+          "pValue": 0.5913,
           "sig": false
         },
         {
@@ -544,7 +544,7 @@
     "items": [
       {
         "ticker": "SPY",
-        "mentions": 17
+        "mentions": 18
       },
       {
         "ticker": "AIQ",
@@ -552,7 +552,7 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 13
+        "mentions": 14
       },
       {
         "ticker": "BTC",
