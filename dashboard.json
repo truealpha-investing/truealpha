@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-29T13:20:37.126Z",
+    "generatedAt": "2026-03-30T13:20:24.654Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 5618
+    "totalPredictions": 5617
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 65,
-        "pValue": 0.0382,
+        "n": 64,
+        "pValue": 0.0358,
         "sig": true,
-        "avgAlpha": 43.56
+        "avgAlpha": 44.5
       },
       {
         "rank": 3,
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 43.56,
-          "pValue": 0.0382,
+          "alpha": 44.5,
+          "pValue": 0.0358,
           "sig": true
         },
         {
@@ -288,7 +288,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0382,
+          "pValue": 0.0358,
           "sig": true
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0382,
+          "pValue": 0.0358,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0382,
+          "pValue": 0.0358,
           "sig": true
         },
         {
