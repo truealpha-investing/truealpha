@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Mar 2026",
-    "generatedAt": "2026-03-30T13:20:24.654Z",
+    "generatedAt": "2026-03-31T13:20:23.975Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 5617
+    "totalPredictions": 5680
   },
   "alpha": {
     "top": [
@@ -24,26 +24,26 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 64,
-        "pValue": 0.0358,
+        "n": 65,
+        "pValue": 0.0382,
         "sig": true,
-        "avgAlpha": 44.5
+        "avgAlpha": 43.56
       },
       {
         "rank": 3,
         "creator": "YT Finance",
-        "n": 102,
-        "pValue": 0.0128,
+        "n": 103,
+        "pValue": 0.0121,
         "sig": true,
-        "avgAlpha": 23.24
+        "avgAlpha": 23.3
       },
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 34,
-        "pValue": 0.0208,
+        "n": 35,
+        "pValue": 0.0218,
         "sig": true,
-        "avgAlpha": 17.31
+        "avgAlpha": 16.89
       }
     ],
     "bottom": [
@@ -58,26 +58,26 @@
       {
         "rank": 2,
         "creator": "Patrick Boyle",
-        "n": 75,
+        "n": 74,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -34.06
+        "avgAlpha": -34.8
       },
       {
         "rank": 3,
-        "creator": "Mark Moss",
-        "n": 93,
-        "pValue": 0.0037,
+        "creator": "세상학개론",
+        "n": 58,
+        "pValue": 0.042,
         "sig": true,
-        "avgAlpha": -14.44
+        "avgAlpha": -14.36
       },
       {
         "rank": 4,
-        "creator": "세상학개론",
-        "n": 63,
-        "pValue": 0.0369,
+        "creator": "Click Capital",
+        "n": 159,
+        "pValue": 0,
         "sig": true,
-        "avgAlpha": -13.81
+        "avgAlpha": -12.92
       }
     ]
   },
@@ -85,14 +85,6 @@
     "top": [
       {
         "rank": 1,
-        "creator": "Parkev Tatevosian, CFA",
-        "n": 30,
-        "pValue": 0.0076,
-        "sig": true,
-        "winRate": 73.33
-      },
-      {
-        "rank": 2,
         "creator": "Jose Najarro Stocks",
         "n": 72,
         "pValue": 0.0001,
@@ -100,20 +92,28 @@
         "winRate": 72.22
       },
       {
+        "rank": 2,
+        "creator": "Parkev Tatevosian, CFA",
+        "n": 32,
+        "pValue": 0.0063,
+        "sig": true,
+        "winRate": 71.88
+      },
+      {
         "rank": 3,
+        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
+        "n": 35,
+        "pValue": 0.0218,
+        "sig": true,
+        "winRate": 71.43
+      },
+      {
+        "rank": 4,
         "creator": "Chit Chat Stocks Podcast",
         "n": 24,
         "pValue": 0.0068,
         "sig": true,
         "winRate": 70.83
-      },
-      {
-        "rank": 4,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 34,
-        "pValue": 0.0208,
-        "sig": true,
-        "winRate": 70.59
       }
     ],
     "bottom": [
@@ -144,10 +144,10 @@
       {
         "rank": 4,
         "creator": "세상학개론",
-        "n": 63,
-        "pValue": 0.0369,
+        "n": 58,
+        "pValue": 0.042,
         "sig": true,
-        "winRate": 23.81
+        "winRate": 22.41
       }
     ]
   },
@@ -159,15 +159,15 @@
         {
           "rank": 1,
           "creator": "Parkev Tatevosian, CFA",
-          "alpha": 14.66,
-          "pValue": 0.0076,
+          "alpha": 13.88,
+          "pValue": 0.0063,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "Common Sense Investing",
-          "alpha": 14.34,
-          "pValue": 0.6157,
+          "alpha": 13.15,
+          "pValue": 0.623,
           "sig": false
         },
         {
@@ -179,10 +179,10 @@
         },
         {
           "rank": 4,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 9.93,
-          "pValue": 0.0208,
-          "sig": true
+          "creator": "Jeremy Lefebvre Clips",
+          "alpha": 9.88,
+          "pValue": 0.1153,
+          "sig": false
         }
       ],
       "bottom": [
@@ -230,22 +230,22 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 44.5,
-          "pValue": 0.0358,
+          "alpha": 43.56,
+          "pValue": 0.0382,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "YT Finance",
-          "alpha": 23.24,
-          "pValue": 0.0128,
+          "alpha": 23.3,
+          "pValue": 0.0121,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 17.31,
-          "pValue": 0.0208,
+          "alpha": 16.89,
+          "pValue": 0.0218,
           "sig": true
         }
       ],
@@ -260,22 +260,22 @@
         {
           "rank": 2,
           "creator": "Patrick Boyle",
-          "alpha": -34.06,
+          "alpha": -34.8,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -14.44,
-          "pValue": 0.0037,
+          "creator": "세상학개론",
+          "alpha": -14.36,
+          "pValue": 0.042,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "세상학개론",
-          "alpha": -13.81,
-          "pValue": 0.0369,
+          "creator": "Click Capital",
+          "alpha": -12.92,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -288,14 +288,14 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 206.58,
-          "pValue": 0.0358,
+          "pValue": 0.0382,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "YT Finance",
           "alpha": 143.77,
-          "pValue": 0.0128,
+          "pValue": 0.0121,
           "sig": true
         },
         {
@@ -318,29 +318,29 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1479,
+          "pValue": 0.2722,
           "sig": false
         },
         {
           "rank": 2,
-          "creator": "Benjamin Cowen",
-          "alpha": -28.45,
-          "pValue": 0.6754,
-          "sig": false
+          "creator": "Chicken Genius Singapore",
+          "alpha": -28.5,
+          "pValue": 0.022,
+          "sig": true
         },
         {
           "rank": 3,
-          "creator": "The Patient Investor",
-          "alpha": -27.8,
-          "pValue": 0.2853,
+          "creator": "Benjamin Cowen",
+          "alpha": -28.45,
+          "pValue": 0.7782,
           "sig": false
         },
         {
           "rank": 4,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -26.14,
-          "pValue": 0.0181,
-          "sig": true
+          "creator": "The Patient Investor",
+          "alpha": -27.8,
+          "pValue": 0.2853,
+          "sig": false
         }
       ]
     }
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "YT Finance",
           "alpha": 23.4,
-          "pValue": 0.0128,
+          "pValue": 0.0121,
           "sig": true
         },
         {
@@ -391,21 +391,21 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.0084,
+          "pValue": 0.0092,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.2229,
+          "pValue": 0.3484,
           "sig": false
         },
         {
           "rank": 4,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.0358,
+          "pValue": 0.0382,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.0358,
+          "pValue": 0.0382,
           "sig": true
         },
         {
@@ -432,14 +432,14 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
-          "pValue": 0.0128,
+          "pValue": 0.0121,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.7291,
+          "pValue": 0.7323,
           "sig": false
         }
       ],
@@ -480,23 +480,23 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Common Sense Investing",
-          "alpha": 21.37,
-          "pValue": 0.6157,
-          "sig": false
-        },
-        {
-          "rank": 2,
           "creator": "Chit Chat Stocks Podcast",
           "alpha": 18.81,
           "pValue": 0.0068,
           "sig": true
         },
         {
+          "rank": 2,
+          "creator": "Common Sense Investing",
+          "alpha": 18.2,
+          "pValue": 0.623,
+          "sig": false
+        },
+        {
           "rank": 3,
           "creator": "Ticker Symbol: YOU",
           "alpha": 17.96,
-          "pValue": 0.2053,
+          "pValue": 0.2062,
           "sig": false
         },
         {
@@ -524,16 +524,16 @@
         },
         {
           "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -20.91,
-          "pValue": 0.0037,
+          "creator": "세상학개론",
+          "alpha": -18.86,
+          "pValue": 0.042,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "세상학개론",
-          "alpha": -18.13,
-          "pValue": 0.0369,
+          "creator": "Mark Moss",
+          "alpha": -18.35,
+          "pValue": 0.0082,
           "sig": true
         }
       ]
