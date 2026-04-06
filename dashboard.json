@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-05T13:20:24.309Z",
+    "generatedAt": "2026-04-06T13:20:24.504Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 82,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 5887
+    "totalPredictions": 5875
   },
   "alpha": {
     "top": [
@@ -65,19 +65,19 @@
       },
       {
         "rank": 3,
+        "creator": "Mark Moss",
+        "n": 93,
+        "pValue": 0.0007,
+        "sig": true,
+        "avgAlpha": -15.68
+      },
+      {
+        "rank": 4,
         "creator": "세상학개론",
         "n": 60,
         "pValue": 0.0495,
         "sig": true,
         "avgAlpha": -13.43
-      },
-      {
-        "rank": 4,
-        "creator": "Mark Moss",
-        "n": 99,
-        "pValue": 0.0062,
-        "sig": true,
-        "avgAlpha": -13.06
       }
     ]
   },
@@ -266,16 +266,16 @@
         },
         {
           "rank": 3,
-          "creator": "세상학개론",
-          "alpha": -13.43,
-          "pValue": 0.0495,
+          "creator": "Mark Moss",
+          "alpha": -15.68,
+          "pValue": 0.0007,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "Mark Moss",
-          "alpha": -13.06,
-          "pValue": 0.0062,
+          "creator": "세상학개론",
+          "alpha": -13.43,
+          "pValue": 0.0495,
           "sig": true
         }
       ]
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1252,
+          "pValue": 0.2521,
           "sig": false
         },
         {
@@ -339,7 +339,7 @@
           "rank": 4,
           "creator": "Chicken Genius Singapore",
           "alpha": -26.14,
-          "pValue": 0.0181,
+          "pValue": 0.0194,
           "sig": true
         }
       ]
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.7291,
+          "pValue": 0.7323,
           "sig": false
         }
       ],
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -18.6,
-          "pValue": 0.0062,
+          "alpha": -18.91,
+          "pValue": 0.0007,
           "sig": true
         },
         {
