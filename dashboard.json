@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-10T13:20:34.621Z",
+    "generatedAt": "2026-04-11T13:20:26.314Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
-    "totalCreatorsTracked": 82,
+    "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 6306
+    "totalPredictions": 6444
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 43,
-        "pValue": 0.0147,
+        "n": 44,
+        "pValue": 0.0149,
         "sig": true,
-        "avgAlpha": 15.53
+        "avgAlpha": 15.31
       }
     ],
     "bottom": [
@@ -58,10 +58,10 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 27,
-        "pValue": 0.0532,
-        "sig": false,
-        "avgAlpha": -29.73
+        "n": 29,
+        "pValue": 0.0456,
+        "sig": true,
+        "avgAlpha": -28.21
       },
       {
         "rank": 3,
@@ -73,11 +73,11 @@
       },
       {
         "rank": 4,
-        "creator": "세상학개론",
-        "n": 65,
-        "pValue": 0.0573,
-        "sig": false,
-        "avgAlpha": -12.35
+        "creator": "Click Capital",
+        "n": 163,
+        "pValue": 0,
+        "sig": true,
+        "avgAlpha": -12.1
       }
     ]
   },
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 80,
-        "pValue": 0.0001,
+        "n": 84,
+        "pValue": 0,
         "sig": true,
-        "winRate": 71.25
+        "winRate": 72.62
       },
       {
         "rank": 2,
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 43,
-        "pValue": 0.0147,
+        "n": 44,
+        "pValue": 0.0149,
         "sig": true,
-        "winRate": 67.44
+        "winRate": 68.18
       },
       {
         "rank": 4,
@@ -128,10 +128,10 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 27,
-        "pValue": 0.0532,
-        "sig": false,
-        "winRate": 18.52
+        "n": 29,
+        "pValue": 0.0456,
+        "sig": true,
+        "winRate": 20.69
       },
       {
         "rank": 3,
@@ -143,11 +143,11 @@
       },
       {
         "rank": 4,
-        "creator": "세상학개론",
-        "n": 65,
-        "pValue": 0.0573,
-        "sig": false,
-        "winRate": 24.62
+        "creator": "The Matt Kohrs Show",
+        "n": 177,
+        "pValue": 0,
+        "sig": true,
+        "winRate": 26.55
       }
     ]
   },
@@ -166,8 +166,8 @@
         {
           "rank": 2,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 9.67,
-          "pValue": 0.0147,
+          "alpha": 9.57,
+          "pValue": 0.0149,
           "sig": true
         },
         {
@@ -179,9 +179,9 @@
         },
         {
           "rank": 4,
-          "creator": "Parkev Tatevosian, CFA",
-          "alpha": 7.9,
-          "pValue": 0.0838,
+          "creator": "이효석아카데미",
+          "alpha": 8.32,
+          "pValue": 0.6901,
           "sig": false
         }
       ],
@@ -244,8 +244,8 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 15.53,
-          "pValue": 0.0147,
+          "alpha": 15.31,
+          "pValue": 0.0149,
           "sig": true
         }
       ],
@@ -260,9 +260,9 @@
         {
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -29.73,
-          "pValue": 0.0532,
-          "sig": false
+          "alpha": -28.21,
+          "pValue": 0.0456,
+          "sig": true
         },
         {
           "rank": 3,
@@ -273,10 +273,10 @@
         },
         {
           "rank": 4,
-          "creator": "세상학개론",
-          "alpha": -12.35,
-          "pValue": 0.0573,
-          "sig": false
+          "creator": "Click Capital",
+          "alpha": -12.1,
+          "pValue": 0,
+          "sig": true
         }
       ]
     },
@@ -309,7 +309,7 @@
           "rank": 4,
           "creator": "Stealth Wealth Investing",
           "alpha": 69.67,
-          "pValue": 0.2894,
+          "pValue": 0.3099,
           "sig": false
         }
       ],
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "Andrei Jikh",
           "alpha": -31.51,
-          "pValue": 0.1625,
+          "pValue": 0.1561,
           "sig": false
         },
         {
@@ -332,7 +332,7 @@
           "rank": 3,
           "creator": "The Patient Investor",
           "alpha": -27.8,
-          "pValue": 0.2316,
+          "pValue": 0.2302,
           "sig": false
         },
         {
@@ -361,7 +361,7 @@
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.2894,
+          "pValue": 0.3099,
           "sig": false
         },
         {
@@ -391,14 +391,14 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.0177,
+          "pValue": 0.0156,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.636,
+          "pValue": 0.6987,
           "sig": false
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.4407,
+          "pValue": 0.476,
           "sig": false
         },
         {
@@ -519,8 +519,8 @@
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
           "alpha": -47.47,
-          "pValue": 0.0532,
-          "sig": false
+          "pValue": 0.0456,
+          "sig": true
         },
         {
           "rank": 3,
@@ -533,7 +533,7 @@
           "rank": 4,
           "creator": "세상학개론",
           "alpha": -16.29,
-          "pValue": 0.0573,
+          "pValue": 0.0951,
           "sig": false
         }
       ]
