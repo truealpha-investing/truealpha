@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-20T13:20:25.850Z",
+    "generatedAt": "2026-04-21T13:20:25.725Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 6731
+    "totalPredictions": 6798
   },
   "alpha": {
     "top": [
@@ -24,10 +24,10 @@
       {
         "rank": 2,
         "creator": "Tom Nash",
-        "n": 74,
-        "pValue": 0.015,
+        "n": 75,
+        "pValue": 0.0159,
         "sig": true,
-        "avgAlpha": 38.96
+        "avgAlpha": 38.35
       },
       {
         "rank": 3,
@@ -50,26 +50,26 @@
       {
         "rank": 1,
         "creator": "Patrick Boyle",
-        "n": 75,
+        "n": 77,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -34.06
+        "avgAlpha": -29.41
       },
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 30,
-        "pValue": 0.0468,
+        "n": 34,
+        "pValue": 0.0453,
         "sig": true,
-        "avgAlpha": -27.54
+        "avgAlpha": -24.77
       },
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 104,
-        "pValue": 0.0046,
+        "n": 106,
+        "pValue": 0.0065,
         "sig": true,
-        "avgAlpha": -12.77
+        "avgAlpha": -12.37
       },
       {
         "rank": 4,
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 91,
+        "n": 92,
         "pValue": 0,
         "sig": true,
-        "winRate": 73.63
+        "winRate": 73.91
       },
       {
         "rank": 2,
@@ -128,18 +128,18 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 30,
-        "pValue": 0.0468,
+        "n": 34,
+        "pValue": 0.0453,
         "sig": true,
-        "winRate": 20
+        "winRate": 20.59
       },
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 46,
+        "n": 47,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.74
+        "winRate": 21.28
       },
       {
         "rank": 4,
@@ -159,8 +159,8 @@
         {
           "rank": 1,
           "creator": "Common Sense Investing",
-          "alpha": 13.94,
-          "pValue": 0.5986,
+          "alpha": 13.15,
+          "pValue": 0.623,
           "sig": false
         },
         {
@@ -196,15 +196,15 @@
         {
           "rank": 2,
           "creator": "Beavis Wealth",
-          "alpha": -13.24,
+          "alpha": -12.73,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Joseph Carlson After Hours",
-          "alpha": -13.11,
-          "pValue": 0.0063,
+          "alpha": -12.19,
+          "pValue": 0.0061,
           "sig": true
         },
         {
@@ -230,8 +230,8 @@
         {
           "rank": 2,
           "creator": "Tom Nash",
-          "alpha": 38.96,
-          "pValue": 0.015,
+          "alpha": 38.35,
+          "pValue": 0.0159,
           "sig": true
         },
         {
@@ -253,22 +253,22 @@
         {
           "rank": 1,
           "creator": "Patrick Boyle",
-          "alpha": -34.06,
+          "alpha": -29.41,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -27.54,
-          "pValue": 0.0468,
+          "alpha": -24.77,
+          "pValue": 0.0453,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -12.77,
-          "pValue": 0.0046,
+          "alpha": -12.37,
+          "pValue": 0.0065,
           "sig": true
         },
         {
@@ -286,53 +286,53 @@
       "top": [
         {
           "rank": 1,
-          "creator": "Tom Nash",
-          "alpha": 206.58,
-          "pValue": 0.015,
+          "creator": "Patrick Boyle",
+          "alpha": 324.89,
+          "pValue": 0,
           "sig": true
         },
         {
           "rank": 2,
+          "creator": "Tom Nash",
+          "alpha": 206.58,
+          "pValue": 0.0159,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "YT Finance",
           "alpha": 143.77,
           "pValue": 0.0146,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Ziptrader",
           "alpha": 87.51,
           "pValue": 1,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 69.67,
-          "pValue": 0.3269,
           "sig": false
         }
       ],
       "bottom": [
         {
           "rank": 1,
+          "creator": "The Patient Investor",
+          "alpha": -32.34,
+          "pValue": 0.0921,
+          "sig": false
+        },
+        {
+          "rank": 2,
           "creator": "Benjamin Cowen",
           "alpha": -28.45,
           "pValue": 0.8248,
           "sig": false
         },
         {
-          "rank": 2,
+          "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": -27.92,
-          "pValue": 0.145,
-          "sig": false
-        },
-        {
-          "rank": 3,
-          "creator": "The Patient Investor",
-          "alpha": -27.8,
-          "pValue": 0.2962,
+          "pValue": 0.1684,
           "sig": false
         },
         {
@@ -405,7 +405,7 @@
           "rank": 4,
           "creator": "Tom Nash",
           "alpha": -15.85,
-          "pValue": 0.015,
+          "pValue": 0.0159,
           "sig": true
         }
       ]
@@ -418,7 +418,7 @@
           "rank": 1,
           "creator": "Tom Nash",
           "alpha": 267.3,
-          "pValue": 0.015,
+          "pValue": 0.0159,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.4502,
+          "pValue": 0.4025,
           "sig": false
         },
         {
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "FX Evolution",
           "alpha": -12.45,
-          "pValue": 0.0002,
+          "pValue": 0.0003,
           "sig": true
         }
       ]
@@ -489,7 +489,7 @@
           "rank": 2,
           "creator": "Common Sense Investing",
           "alpha": 18.2,
-          "pValue": 0.5986,
+          "pValue": 0.623,
           "sig": false
         },
         {
@@ -510,23 +510,23 @@
       "bottom": [
         {
           "rank": 1,
-          "creator": "Patrick Boyle",
-          "alpha": -48.3,
-          "pValue": 0,
+          "creator": "The Prof G Pod – Scott Galloway",
+          "alpha": -47.47,
+          "pValue": 0.0453,
           "sig": true
         },
         {
           "rank": 2,
-          "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -47.47,
-          "pValue": 0.0468,
+          "creator": "Patrick Boyle",
+          "alpha": -39.9,
+          "pValue": 0,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Mark Moss",
           "alpha": -17.8,
-          "pValue": 0.0046,
+          "pValue": 0.0065,
           "sig": true
         },
         {
