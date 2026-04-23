@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-22T13:20:24.424Z",
+    "generatedAt": "2026-04-23T13:20:26.672Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,17 +9,17 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 6864
+    "totalPredictions": 6920
   },
   "alpha": {
     "top": [
       {
         "rank": 1,
         "creator": "Chit Chat Stocks Podcast",
-        "n": 24,
-        "pValue": 0.0066,
+        "n": 25,
+        "pValue": 0.0099,
         "sig": true,
-        "avgAlpha": 48.03
+        "avgAlpha": 44.19
       },
       {
         "rank": 2,
@@ -86,18 +86,18 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 92,
-        "pValue": 0,
+        "n": 93,
+        "pValue": 0.0001,
         "sig": true,
-        "winRate": 73.91
+        "winRate": 73.12
       },
       {
         "rank": 2,
         "creator": "Chit Chat Stocks Podcast",
-        "n": 24,
-        "pValue": 0.0066,
+        "n": 25,
+        "pValue": 0.0099,
         "sig": true,
-        "winRate": 70.83
+        "winRate": 68
       },
       {
         "rank": 3,
@@ -195,23 +195,23 @@
         },
         {
           "rank": 2,
+          "creator": "Chit Chat Stocks Podcast",
+          "alpha": -12.93,
+          "pValue": 0.0099,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "Beavis Wealth",
           "alpha": -12.73,
           "pValue": 0,
           "sig": true
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Joseph Carlson After Hours",
           "alpha": -12.19,
           "pValue": 0.0061,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Click Capital",
-          "alpha": -11.33,
-          "pValue": 0,
           "sig": true
         }
       ]
@@ -223,8 +223,8 @@
         {
           "rank": 1,
           "creator": "Chit Chat Stocks Podcast",
-          "alpha": 48.03,
-          "pValue": 0.0066,
+          "alpha": 44.19,
+          "pValue": 0.0099,
           "sig": true
         },
         {
@@ -332,7 +332,7 @@
           "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": -27.93,
-          "pValue": 0.1683,
+          "pValue": 0.3998,
           "sig": false
         },
         {
@@ -425,7 +425,7 @@
           "rank": 2,
           "creator": "Chit Chat Stocks Podcast",
           "alpha": 77.25,
-          "pValue": 0.0066,
+          "pValue": 0.0099,
           "sig": true
         },
         {
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.7291,
+          "pValue": 0.7323,
           "sig": false
         }
       ],
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.4355,
+          "pValue": 0.3795,
           "sig": false
         },
         {
@@ -469,7 +469,7 @@
           "rank": 4,
           "creator": "FX Evolution",
           "alpha": -12.45,
-          "pValue": 0.0003,
+          "pValue": 0.0002,
           "sig": true
         }
       ]
@@ -482,7 +482,7 @@
           "rank": 1,
           "creator": "Chit Chat Stocks Podcast",
           "alpha": 18.81,
-          "pValue": 0.0066,
+          "pValue": 0.0099,
           "sig": true
         },
         {
