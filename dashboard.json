@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-23T13:20:26.672Z",
+    "generatedAt": "2026-04-24T13:20:24.834Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 71,
-    "totalPredictions": 6920
+    "totalPredictions": 6967
   },
   "alpha": {
     "top": [
@@ -58,10 +58,10 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 36,
-        "pValue": 0.0403,
+        "n": 37,
+        "pValue": 0.0422,
         "sig": true,
-        "avgAlpha": -24.12
+        "avgAlpha": -23.53
       },
       {
         "rank": 3,
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 93,
-        "pValue": 0.0001,
+        "n": 102,
+        "pValue": 0.0004,
         "sig": true,
-        "winRate": 73.12
+        "winRate": 73.53
       },
       {
         "rank": 2,
@@ -128,10 +128,10 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 36,
-        "pValue": 0.0403,
+        "n": 37,
+        "pValue": 0.0422,
         "sig": true,
-        "winRate": 19.44
+        "winRate": 18.92
       },
       {
         "rank": 3,
@@ -260,8 +260,8 @@
         {
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -24.12,
-          "pValue": 0.0403,
+          "alpha": -23.53,
+          "pValue": 0.0422,
           "sig": true
         },
         {
@@ -318,7 +318,7 @@
           "rank": 1,
           "creator": "The Patient Investor",
           "alpha": -32.34,
-          "pValue": 0.0921,
+          "pValue": 0.0801,
           "sig": false
         },
         {
@@ -332,7 +332,7 @@
           "rank": 3,
           "creator": "Andrei Jikh",
           "alpha": -27.93,
-          "pValue": 0.3998,
+          "pValue": 0.1683,
           "sig": false
         },
         {
@@ -439,7 +439,7 @@
           "rank": 4,
           "creator": "Long Term Mindset",
           "alpha": 52.59,
-          "pValue": 0.7323,
+          "pValue": 0.7291,
           "sig": false
         }
       ],
@@ -512,7 +512,7 @@
           "rank": 1,
           "creator": "The Prof G Pod – Scott Galloway",
           "alpha": -47.47,
-          "pValue": 0.0403,
+          "pValue": 0.0422,
           "sig": true
         },
         {
