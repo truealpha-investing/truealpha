@@ -1,15 +1,15 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-24T13:20:24.834Z",
+    "generatedAt": "2026-04-25T13:20:24.046Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
-    "totalVerifiedCreators": 71,
-    "totalPredictions": 6967
+    "totalVerifiedCreators": 72,
+    "totalPredictions": 7017
   },
   "alpha": {
     "top": [
@@ -66,10 +66,10 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 106,
-        "pValue": 0.0065,
+        "n": 107,
+        "pValue": 0.0066,
         "sig": true,
-        "avgAlpha": -12.37
+        "avgAlpha": -12.29
       },
       {
         "rank": 4,
@@ -143,11 +143,11 @@
       },
       {
         "rank": 4,
-        "creator": "Ziptrader",
-        "n": 91,
-        "pValue": 1,
+        "creator": "세상학개론",
+        "n": 67,
+        "pValue": 0.0951,
         "sig": false,
-        "winRate": 26.37
+        "winRate": 26.87
       }
     ]
   },
@@ -267,8 +267,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -12.37,
-          "pValue": 0.0065,
+          "alpha": -12.29,
+          "pValue": 0.0066,
           "sig": true
         },
         {
@@ -391,14 +391,14 @@
           "rank": 2,
           "creator": "OneOption",
           "alpha": -20.89,
-          "pValue": 0.0156,
+          "pValue": 0.0173,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.5795,
+          "pValue": 0.5514,
           "sig": false
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.3795,
+          "pValue": 0.3823,
           "sig": false
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -17.8,
-          "pValue": 0.0065,
+          "alpha": -17.63,
+          "pValue": 0.0066,
           "sig": true
         },
         {
