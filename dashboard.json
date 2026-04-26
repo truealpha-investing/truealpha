@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-25T13:20:24.046Z",
+    "generatedAt": "2026-04-26T13:20:23.722Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 72,
-    "totalPredictions": 7017
+    "totalPredictions": 7061
   },
   "alpha": {
     "top": [
@@ -66,10 +66,10 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 107,
-        "pValue": 0.0066,
+        "n": 108,
+        "pValue": 0.0053,
         "sig": true,
-        "avgAlpha": -12.29
+        "avgAlpha": -12.56
       },
       {
         "rank": 4,
@@ -209,9 +209,9 @@
         },
         {
           "rank": 4,
-          "creator": "Joseph Carlson After Hours",
-          "alpha": -12.19,
-          "pValue": 0.0061,
+          "creator": "Click Capital",
+          "alpha": -11.33,
+          "pValue": 0,
           "sig": true
         }
       ]
@@ -267,8 +267,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -12.29,
-          "pValue": 0.0066,
+          "alpha": -12.56,
+          "pValue": 0.0053,
           "sig": true
         },
         {
@@ -325,7 +325,7 @@
           "rank": 2,
           "creator": "Benjamin Cowen",
           "alpha": -28.45,
-          "pValue": 0.5209,
+          "pValue": 0.5584,
           "sig": false
         },
         {
@@ -361,7 +361,7 @@
           "rank": 2,
           "creator": "Stealth Wealth Investing",
           "alpha": 17.14,
-          "pValue": 0.3269,
+          "pValue": 0.3238,
           "sig": false
         },
         {
@@ -398,7 +398,7 @@
           "rank": 3,
           "creator": "Rick Orford - Trading Stocks and Options For All",
           "alpha": -20.16,
-          "pValue": 0.5514,
+          "pValue": 0.7162,
           "sig": false
         },
         {
@@ -525,16 +525,16 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -17.63,
-          "pValue": 0.0066,
+          "alpha": -17.92,
+          "pValue": 0.0053,
           "sig": true
         },
         {
           "rank": 4,
-          "creator": "세상학개론",
-          "alpha": -16.29,
-          "pValue": 0.0951,
-          "sig": false
+          "creator": "Wolf of Dubai Day Trading & Investing",
+          "alpha": -16.75,
+          "pValue": 0.0281,
+          "sig": true
         }
       ]
     }
