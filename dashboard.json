@@ -1,588 +1,67 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-27T13:20:24.996Z",
+    "generatedAt": "2026-04-28T13:20:30.591Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
     "entry": "Close price on next trading day after publish",
     "significanceRule": "Significant if p < 0.05",
-    "totalCreatorsTracked": 83,
-    "totalVerifiedCreators": 72,
-    "totalPredictions": 7054
+    "totalCreatorsTracked": 0,
+    "totalVerifiedCreators": 0,
+    "totalPredictions": 0
   },
   "alpha": {
-    "top": [
-      {
-        "rank": 1,
-        "creator": "Chit Chat Stocks Podcast",
-        "n": 25,
-        "pValue": 0.0099,
-        "sig": true,
-        "avgAlpha": 44.19
-      },
-      {
-        "rank": 2,
-        "creator": "Tom Nash",
-        "n": 75,
-        "pValue": 0.0159,
-        "sig": true,
-        "avgAlpha": 38.35
-      },
-      {
-        "rank": 3,
-        "creator": "YT Finance",
-        "n": 111,
-        "pValue": 0.0146,
-        "sig": true,
-        "avgAlpha": 21.5
-      },
-      {
-        "rank": 4,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 46,
-        "pValue": 0.0227,
-        "sig": true,
-        "avgAlpha": 13.93
-      }
-    ],
-    "bottom": [
-      {
-        "rank": 1,
-        "creator": "Patrick Boyle",
-        "n": 77,
-        "pValue": 0,
-        "sig": true,
-        "avgAlpha": -29.41
-      },
-      {
-        "rank": 2,
-        "creator": "The Prof G Pod – Scott Galloway",
-        "n": 37,
-        "pValue": 0.0422,
-        "sig": true,
-        "avgAlpha": -23.53
-      },
-      {
-        "rank": 3,
-        "creator": "Mark Moss",
-        "n": 108,
-        "pValue": 0.0056,
-        "sig": true,
-        "avgAlpha": -12.56
-      },
-      {
-        "rank": 4,
-        "creator": "Click Capital",
-        "n": 164,
-        "pValue": 0,
-        "sig": true,
-        "avgAlpha": -12.17
-      }
-    ]
+    "top": [],
+    "bottom": []
   },
   "accuracy": {
-    "top": [
-      {
-        "rank": 1,
-        "creator": "Jose Najarro Stocks",
-        "n": 102,
-        "pValue": 0.0004,
-        "sig": true,
-        "winRate": 73.53
-      },
-      {
-        "rank": 2,
-        "creator": "Chit Chat Stocks Podcast",
-        "n": 25,
-        "pValue": 0.0099,
-        "sig": true,
-        "winRate": 68
-      },
-      {
-        "rank": 3,
-        "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 46,
-        "pValue": 0.0227,
-        "sig": true,
-        "winRate": 65.22
-      },
-      {
-        "rank": 4,
-        "creator": "미국주식에 미치다 TV",
-        "n": 37,
-        "pValue": 0.0062,
-        "sig": true,
-        "winRate": 64.86
-      }
-    ],
-    "bottom": [
-      {
-        "rank": 1,
-        "creator": "Fat Cat",
-        "n": 22,
-        "pValue": 0.0318,
-        "sig": true,
-        "winRate": 9.09
-      },
-      {
-        "rank": 2,
-        "creator": "The Prof G Pod – Scott Galloway",
-        "n": 37,
-        "pValue": 0.0422,
-        "sig": true,
-        "winRate": 18.92
-      },
-      {
-        "rank": 3,
-        "creator": "Beavis Wealth",
-        "n": 46,
-        "pValue": 0,
-        "sig": true,
-        "winRate": 21.74
-      },
-      {
-        "rank": 4,
-        "creator": "세상학개론",
-        "n": 65,
-        "pValue": 0.1093,
-        "sig": false,
-        "winRate": 26.15
-      }
-    ]
+    "top": [],
+    "bottom": []
   },
   "intervals": {
     "d90": {
       "label": "90D (short)",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "Common Sense Investing",
-          "alpha": 13.94,
-          "pValue": 0.5986,
-          "sig": false
-        },
-        {
-          "rank": 2,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 9.22,
-          "pValue": 0.0227,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "미국주식에 미치다 TV",
-          "alpha": 8.97,
-          "pValue": 0.0062,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Parkev Tatevosian, CFA",
-          "alpha": 8.55,
-          "pValue": 0.0138,
-          "sig": true
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "Patrick Boyle",
-          "alpha": -16.46,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Beavis Wealth",
-          "alpha": -13.24,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": -12.93,
-          "pValue": 0.0099,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Click Capital",
-          "alpha": -11.33,
-          "pValue": 0,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     },
     "d180": {
       "label": "180D (mid)",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": 44.19,
-          "pValue": 0.0099,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Tom Nash",
-          "alpha": 38.35,
-          "pValue": 0.0159,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "YT Finance",
-          "alpha": 21.5,
-          "pValue": 0.0146,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 13.93,
-          "pValue": 0.0227,
-          "sig": true
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "Patrick Boyle",
-          "alpha": -29.41,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -23.53,
-          "pValue": 0.0422,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -12.56,
-          "pValue": 0.0056,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Click Capital",
-          "alpha": -12.17,
-          "pValue": 0,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     },
     "d365": {
       "label": "365D (long)",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "Patrick Boyle",
-          "alpha": 324.89,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Tom Nash",
-          "alpha": 206.58,
-          "pValue": 0.0159,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "YT Finance",
-          "alpha": 143.77,
-          "pValue": 0.0146,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Ziptrader",
-          "alpha": 87.51,
-          "pValue": 1,
-          "sig": false
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "The Patient Investor",
-          "alpha": -32.34,
-          "pValue": 0.0801,
-          "sig": false
-        },
-        {
-          "rank": 2,
-          "creator": "Benjamin Cowen",
-          "alpha": -28.45,
-          "pValue": 0.5584,
-          "sig": false
-        },
-        {
-          "rank": 3,
-          "creator": "Andrei Jikh",
-          "alpha": -27.93,
-          "pValue": 0.1683,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -26.14,
-          "pValue": 0.0181,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     }
   },
   "yearly": {
     "2023": {
       "label": "2023",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "YT Finance",
-          "alpha": 23.4,
-          "pValue": 0.0146,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Stealth Wealth Investing",
-          "alpha": 17.14,
-          "pValue": 0.3238,
-          "sig": false
-        },
-        {
-          "rank": 3,
-          "creator": "Sasha Yanshin",
-          "alpha": 12.56,
-          "pValue": 0.7975,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Mr. FIRED Up Wealth",
-          "alpha": 9.69,
-          "pValue": 0.2373,
-          "sig": false
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "Adam Khoo",
-          "alpha": -29.83,
-          "pValue": 0.1526,
-          "sig": false
-        },
-        {
-          "rank": 2,
-          "creator": "OneOption",
-          "alpha": -20.89,
-          "pValue": 0.0173,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "Rick Orford - Trading Stocks and Options For All",
-          "alpha": -20.16,
-          "pValue": 0.7162,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Tom Nash",
-          "alpha": -15.85,
-          "pValue": 0.0159,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     },
     "2024": {
       "label": "2024",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "Tom Nash",
-          "alpha": 267.3,
-          "pValue": 0.0159,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": 77.25,
-          "pValue": 0.0099,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "YT Finance",
-          "alpha": 55.95,
-          "pValue": 0.0146,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Long Term Mindset",
-          "alpha": 52.59,
-          "pValue": 0.7291,
-          "sig": false
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "StockCharts TV",
-          "alpha": -26.72,
-          "pValue": 0.3823,
-          "sig": false
-        },
-        {
-          "rank": 2,
-          "creator": "Patrick Boyle",
-          "alpha": -21.17,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "Sasha Yanshin",
-          "alpha": -14.05,
-          "pValue": 0.7975,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "FX Evolution",
-          "alpha": -12.45,
-          "pValue": 0.0002,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     },
     "2025": {
       "label": "2025",
       "metric": "alpha",
-      "top": [
-        {
-          "rank": 1,
-          "creator": "Chit Chat Stocks Podcast",
-          "alpha": 18.81,
-          "pValue": 0.0099,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Common Sense Investing",
-          "alpha": 18.2,
-          "pValue": 0.5986,
-          "sig": false
-        },
-        {
-          "rank": 3,
-          "creator": "Ticker Symbol: YOU",
-          "alpha": 17.96,
-          "pValue": 0.2053,
-          "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "ClearValue Tax",
-          "alpha": 17.73,
-          "pValue": 0.0439,
-          "sig": true
-        }
-      ],
-      "bottom": [
-        {
-          "rank": 1,
-          "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -47.47,
-          "pValue": 0.0422,
-          "sig": true
-        },
-        {
-          "rank": 2,
-          "creator": "Patrick Boyle",
-          "alpha": -39.9,
-          "pValue": 0,
-          "sig": true
-        },
-        {
-          "rank": 3,
-          "creator": "Mark Moss",
-          "alpha": -17.92,
-          "pValue": 0.0056,
-          "sig": true
-        },
-        {
-          "rank": 4,
-          "creator": "Wolf of Dubai Day Trading & Investing",
-          "alpha": -16.75,
-          "pValue": 0.0281,
-          "sig": true
-        }
-      ]
+      "top": [],
+      "bottom": []
     }
   },
   "stocksRecommended": {
     "note": "Ticker mentions across verified creators' Recommended Assets.",
-    "items": [
-      {
-        "ticker": "SPY",
-        "mentions": 19
-      },
-      {
-        "ticker": "NVDA",
-        "mentions": 16
-      },
-      {
-        "ticker": "AIQ",
-        "mentions": 14
-      },
-      {
-        "ticker": "BTC",
-        "mentions": 9
-      },
-      {
-        "ticker": "VTI",
-        "mentions": 8
-      },
-      {
-        "ticker": "PLTR",
-        "mentions": 6
-      },
-      {
-        "ticker": "AMZN",
-        "mentions": 6
-      },
-      {
-        "ticker": "BOTZ",
-        "mentions": 5
-      },
-      {
-        "ticker": "AMD",
-        "mentions": 5
-      },
-      {
-        "ticker": "TSLA",
-        "mentions": 5
-      }
-    ]
+    "items": []
   },
   "horizons": {
     "bucketOrder": [
