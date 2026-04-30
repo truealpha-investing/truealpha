@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-29T13:20:24.494Z",
+    "generatedAt": "2026-04-30T13:20:23.668Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 72,
-    "totalPredictions": 7213
+    "totalPredictions": 7274
   },
   "alpha": {
     "top": [
@@ -32,10 +32,10 @@
       {
         "rank": 3,
         "creator": "YT Finance",
-        "n": 112,
-        "pValue": 0.0151,
+        "n": 116,
+        "pValue": 0.016,
         "sig": true,
-        "avgAlpha": 21.31
+        "avgAlpha": 20.42
       },
       {
         "rank": 4,
@@ -50,10 +50,10 @@
       {
         "rank": 1,
         "creator": "Patrick Boyle",
-        "n": 77,
+        "n": 76,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -29.41
+        "avgAlpha": -30.07
       },
       {
         "rank": 2,
@@ -66,18 +66,18 @@
       {
         "rank": 3,
         "creator": "Mark Moss",
-        "n": 108,
-        "pValue": 0.0053,
+        "n": 106,
+        "pValue": 0.0086,
         "sig": true,
-        "avgAlpha": -12.56
+        "avgAlpha": -12.18
       },
       {
         "rank": 4,
         "creator": "Click Capital",
-        "n": 172,
+        "n": 176,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -11.69
+        "avgAlpha": -11.41
       }
     ]
   },
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 103,
-        "pValue": 0.0008,
+        "n": 105,
+        "pValue": 0.0006,
         "sig": true,
-        "winRate": 72.82
+        "winRate": 72.38
       },
       {
         "rank": 2,
@@ -110,10 +110,10 @@
       {
         "rank": 4,
         "creator": "미국주식에 미치다 TV",
-        "n": 37,
-        "pValue": 0.0062,
+        "n": 41,
+        "pValue": 0.0119,
         "sig": true,
-        "winRate": 64.86
+        "winRate": 60.98
       }
     ],
     "bottom": [
@@ -172,17 +172,17 @@
         },
         {
           "rank": 3,
-          "creator": "미국주식에 미치다 TV",
-          "alpha": 8.97,
-          "pValue": 0.0062,
-          "sig": true
-        },
-        {
-          "rank": 4,
           "creator": "이효석아카데미",
           "alpha": 8.32,
           "pValue": 0.7322,
           "sig": false
+        },
+        {
+          "rank": 4,
+          "creator": "미국주식에 미치다 TV",
+          "alpha": 7.71,
+          "pValue": 0.0119,
+          "sig": true
         }
       ],
       "bottom": [
@@ -210,7 +210,7 @@
         {
           "rank": 4,
           "creator": "Click Capital",
-          "alpha": -10.73,
+          "alpha": -10.37,
           "pValue": 0,
           "sig": true
         }
@@ -237,8 +237,8 @@
         {
           "rank": 3,
           "creator": "YT Finance",
-          "alpha": 21.31,
-          "pValue": 0.0151,
+          "alpha": 20.42,
+          "pValue": 0.016,
           "sig": true
         },
         {
@@ -253,7 +253,7 @@
         {
           "rank": 1,
           "creator": "Patrick Boyle",
-          "alpha": -29.41,
+          "alpha": -30.07,
           "pValue": 0,
           "sig": true
         },
@@ -267,14 +267,14 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -12.56,
-          "pValue": 0.0053,
+          "alpha": -12.18,
+          "pValue": 0.0086,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Click Capital",
-          "alpha": -11.69,
+          "alpha": -11.41,
           "pValue": 0,
           "sig": true
         }
@@ -302,7 +302,7 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 143.77,
-          "pValue": 0.0151,
+          "pValue": 0.016,
           "sig": true
         },
         {
@@ -325,7 +325,7 @@
           "rank": 2,
           "creator": "Benjamin Cowen",
           "alpha": -28.45,
-          "pValue": 0.5584,
+          "pValue": 0.5908,
           "sig": false
         },
         {
@@ -354,7 +354,7 @@
           "rank": 1,
           "creator": "YT Finance",
           "alpha": 23.4,
-          "pValue": 0.0151,
+          "pValue": 0.016,
           "sig": true
         },
         {
@@ -432,7 +432,7 @@
           "rank": 3,
           "creator": "YT Finance",
           "alpha": 55.95,
-          "pValue": 0.0151,
+          "pValue": 0.016,
           "sig": true
         },
         {
@@ -448,7 +448,7 @@
           "rank": 1,
           "creator": "StockCharts TV",
           "alpha": -26.72,
-          "pValue": 0.448,
+          "pValue": 0.3395,
           "sig": false
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -17.92,
-          "pValue": 0.0053,
+          "alpha": -17.55,
+          "pValue": 0.0086,
           "sig": true
         },
         {
