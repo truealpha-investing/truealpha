@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "Apr 2026",
-    "generatedAt": "2026-04-30T13:20:23.668Z",
+    "lastUpdated": "May 2026",
+    "generatedAt": "2026-05-01T13:20:24.305Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 72,
-    "totalPredictions": 7274
+    "totalPredictions": 7306
   },
   "alpha": {
     "top": [
@@ -50,34 +50,34 @@
       {
         "rank": 1,
         "creator": "Patrick Boyle",
-        "n": 76,
+        "n": 77,
         "pValue": 0,
         "sig": true,
-        "avgAlpha": -30.07
+        "avgAlpha": -29.41
       },
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 43,
-        "pValue": 0.0165,
+        "n": 47,
+        "pValue": 0.0125,
         "sig": true,
-        "avgAlpha": -22.98
+        "avgAlpha": -21.59
       },
       {
         "rank": 3,
         "creator": "Mark Moss",
         "n": 106,
-        "pValue": 0.0086,
+        "pValue": 0.0037,
         "sig": true,
-        "avgAlpha": -12.18
+        "avgAlpha": -12.95
       },
       {
         "rank": 4,
         "creator": "Click Capital",
-        "n": 176,
-        "pValue": 0,
+        "n": 180,
+        "pValue": 0.0001,
         "sig": true,
-        "avgAlpha": -11.41
+        "avgAlpha": -10.66
       }
     ]
   },
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 105,
-        "pValue": 0.0006,
+        "n": 107,
+        "pValue": 0.0009,
         "sig": true,
-        "winRate": 72.38
+        "winRate": 71.96
       },
       {
         "rank": 2,
@@ -128,10 +128,10 @@
       {
         "rank": 2,
         "creator": "The Prof G Pod – Scott Galloway",
-        "n": 43,
-        "pValue": 0.0165,
+        "n": 47,
+        "pValue": 0.0125,
         "sig": true,
-        "winRate": 16.28
+        "winRate": 17.02
       },
       {
         "rank": 3,
@@ -143,11 +143,11 @@
       },
       {
         "rank": 4,
-        "creator": "세상학개론",
-        "n": 66,
-        "pValue": 0.1121,
+        "creator": "Ziptrader",
+        "n": 98,
+        "pValue": 1,
         "sig": false,
-        "winRate": 27.27
+        "winRate": 27.55
       }
     ]
   },
@@ -173,8 +173,8 @@
         {
           "rank": 3,
           "creator": "이효석아카데미",
-          "alpha": 8.32,
-          "pValue": 0.7322,
+          "alpha": 7.91,
+          "pValue": 0.8052,
           "sig": false
         },
         {
@@ -209,9 +209,9 @@
         },
         {
           "rank": 4,
-          "creator": "Click Capital",
-          "alpha": -10.37,
-          "pValue": 0,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -10,
+          "pValue": 0.0181,
           "sig": true
         }
       ]
@@ -253,29 +253,29 @@
         {
           "rank": 1,
           "creator": "Patrick Boyle",
-          "alpha": -30.07,
+          "alpha": -29.41,
           "pValue": 0,
           "sig": true
         },
         {
           "rank": 2,
           "creator": "The Prof G Pod – Scott Galloway",
-          "alpha": -22.98,
-          "pValue": 0.0165,
+          "alpha": -21.59,
+          "pValue": 0.0125,
           "sig": true
         },
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -12.18,
-          "pValue": 0.0086,
+          "alpha": -12.95,
+          "pValue": 0.0037,
           "sig": true
         },
         {
           "rank": 4,
           "creator": "Click Capital",
-          "alpha": -11.41,
-          "pValue": 0,
+          "alpha": -10.66,
+          "pValue": 0.0001,
           "sig": true
         }
       ]
@@ -325,7 +325,7 @@
           "rank": 2,
           "creator": "Benjamin Cowen",
           "alpha": -28.45,
-          "pValue": 0.5908,
+          "pValue": 0.7117,
           "sig": false
         },
         {
@@ -512,7 +512,7 @@
           "rank": 1,
           "creator": "The Prof G Pod – Scott Galloway",
           "alpha": -47.47,
-          "pValue": 0.0165,
+          "pValue": 0.0125,
           "sig": true
         },
         {
@@ -525,8 +525,8 @@
         {
           "rank": 3,
           "creator": "Mark Moss",
-          "alpha": -17.55,
-          "pValue": 0.0086,
+          "alpha": -17.92,
+          "pValue": 0.0037,
           "sig": true
         },
         {
