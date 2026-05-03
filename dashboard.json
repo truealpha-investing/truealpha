@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "May 2026",
-    "generatedAt": "2026-05-02T13:20:24.080Z",
+    "generatedAt": "2026-05-03T13:20:23.774Z",
     "filter": "Verified (N ≥ 20) + Stat Sig badge (p < 0.05)",
     "metricAlpha": "Alpha vs S&P 500",
     "metricAccuracy": "Accuracy (directional win rate)",
@@ -9,7 +9,7 @@
     "significanceRule": "Significant if p < 0.05",
     "totalCreatorsTracked": 83,
     "totalVerifiedCreators": 72,
-    "totalPredictions": 7359
+    "totalPredictions": 7422
   },
   "alpha": {
     "top": [
@@ -40,10 +40,10 @@
       {
         "rank": 4,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 46,
-        "pValue": 0.0227,
+        "n": 50,
+        "pValue": 0.012,
         "sig": true,
-        "avgAlpha": 13.93
+        "avgAlpha": 14.07
       }
     ],
     "bottom": [
@@ -86,10 +86,10 @@
       {
         "rank": 1,
         "creator": "Jose Najarro Stocks",
-        "n": 107,
-        "pValue": 0.0009,
+        "n": 116,
+        "pValue": 0.0002,
         "sig": true,
-        "winRate": 71.96
+        "winRate": 72.41
       },
       {
         "rank": 2,
@@ -102,10 +102,10 @@
       {
         "rank": 3,
         "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-        "n": 46,
-        "pValue": 0.0227,
+        "n": 50,
+        "pValue": 0.012,
         "sig": true,
-        "winRate": 65.22
+        "winRate": 66
       },
       {
         "rank": 4,
@@ -136,10 +136,10 @@
       {
         "rank": 3,
         "creator": "Beavis Wealth",
-        "n": 47,
+        "n": 49,
         "pValue": 0,
         "sig": true,
-        "winRate": 21.28
+        "winRate": 20.41
       },
       {
         "rank": 4,
@@ -166,8 +166,8 @@
         {
           "rank": 2,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 9.22,
-          "pValue": 0.0227,
+          "alpha": 8.82,
+          "pValue": 0.012,
           "sig": true
         },
         {
@@ -211,7 +211,7 @@
           "rank": 4,
           "creator": "Chicken Genius Singapore",
           "alpha": -10,
-          "pValue": 0.0181,
+          "pValue": 0.022,
           "sig": true
         }
       ]
@@ -244,8 +244,8 @@
         {
           "rank": 4,
           "creator": "Bullmarket Lifestyle by Daniel Wilhelmi",
-          "alpha": 13.93,
-          "pValue": 0.0227,
+          "alpha": 14.07,
+          "pValue": 0.012,
           "sig": true
         }
       ],
@@ -323,24 +323,24 @@
         },
         {
           "rank": 2,
+          "creator": "Chicken Genius Singapore",
+          "alpha": -28.5,
+          "pValue": 0.022,
+          "sig": true
+        },
+        {
+          "rank": 3,
           "creator": "Benjamin Cowen",
           "alpha": -28.45,
           "pValue": 0.9191,
           "sig": false
         },
         {
-          "rank": 3,
+          "rank": 4,
           "creator": "Andrei Jikh",
           "alpha": -27.93,
-          "pValue": 0.161,
+          "pValue": 0.1731,
           "sig": false
-        },
-        {
-          "rank": 4,
-          "creator": "Chicken Genius Singapore",
-          "alpha": -26.14,
-          "pValue": 0.0181,
-          "sig": true
         }
       ]
     }
@@ -496,7 +496,7 @@
           "rank": 3,
           "creator": "Ticker Symbol: YOU",
           "alpha": 17.96,
-          "pValue": 0.2053,
+          "pValue": 0.2062,
           "sig": false
         },
         {
@@ -532,8 +532,8 @@
         {
           "rank": 4,
           "creator": "Wolf of Dubai Day Trading & Investing",
-          "alpha": -16.7,
-          "pValue": 0.0188,
+          "alpha": -16.78,
+          "pValue": 0.0167,
           "sig": true
         }
       ]
@@ -548,7 +548,7 @@
       },
       {
         "ticker": "NVDA",
-        "mentions": 15
+        "mentions": 16
       },
       {
         "ticker": "AIQ",
@@ -564,7 +564,7 @@
       },
       {
         "ticker": "PLTR",
-        "mentions": 7
+        "mentions": 6
       },
       {
         "ticker": "AMZN",
